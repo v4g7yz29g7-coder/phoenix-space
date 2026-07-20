@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Феникс 🐦‍🔥 · Цифровой Ковчег</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/phoenix-192.png" type="image/png">
+  <style>
+    :root { --bg: #0a0a12; --card: rgba(20, 20, 30, 0.7); --accent: #ff5500; --soft: #ffb380; --glow: rgba(255, 80, 0, 0.4); --text: #f0eef8; --sub: #aa8c7a; --radius: 16px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow-x: hidden; }
+    .universe-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 70%); }
+    .rays-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+    .ray { position: absolute; top: 50%; left: 50%; width: 200vw; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,140,0,0.2), rgba(255,100,0,0.4), rgba(255,140,0,0.2), transparent); transform-origin: 0 50%; animation: rayPulse 3s infinite alternate ease-in-out; opacity: 0.5; }
+    @keyframes rayPulse { 0% { opacity: 0.3; } 100% { opacity: 0.7; } }
+    .main-container { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; }
+    .pulsar { width: 180px; height: 180px; margin-bottom: 1.5rem; position: relative; cursor: pointer; transition: transform 0.2s; }
+    .pulsar:hover { transform: scale(1.05); }
+    .pulsar-core { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: radial-gradient(circle, #ff6b00, #cc3300); border-radius: 50%; box-shadow: 0 0 60px #ff4500, 0 0 120px #ff2200; animation: coreBeat 1.5s infinite alternate; }
+    @keyframes coreBeat {
+      0% { box-shadow: 0 0 40px #ff4500, 0 0 80px #ff2200; }
+      50% { box-shadow: 0 0 90px #ff5e00, 0 0 160px #ff3300; }
+      100% { box-shadow: 0 0 40px #ff4500, 0 0 80px #ff2200; }
+    }
+    .pulsar-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 160px; height: 160px; border: 2px solid rgba(255,100,0,0.4); border-radius: 50%; animation: ringSpin 10s linear infinite; }
+    .pulsar-ring:nth-child(2) { width: 130px; height: 130px; animation: ringSpinReverse 8s linear infinite; }
+    @keyframes ringSpin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes ringSpinReverse { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(-360deg); } }
+
+    .btn { background: var(--accent); border: none; color: #fff; padding: 0.6rem 1.8rem; border-radius: 30px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 15px rgba(255,80,0,0.3); }
+    .btn:hover { box-shadow: 0 0 25px rgba(255,80,0,0.6); transform: translateY(-1px); }
+    .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); box-shadow: none; }
+    .btn-outline:hover { background: rgba(255,80,0,0.15); }
+    .small-btn { background: rgba(20, 20, 30, 0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255,100,0,0.3); color: var(--sub); padding: 0.4rem 1rem; border-radius: 30px; font-size: 0.75rem; cursor: pointer; transition: all 0.3s; position: fixed; right: 20px; z-index: 50; text-decoration: none; }
+    .small-btn:hover { background: rgba(255, 80, 0, 0.2); border-color: #ff5500; color: #ffd9b3; }
+    #aboutBtn { bottom: 20px; }
+    #networkBtn { bottom: 70px; }
+
+    .screen-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); z-index: 100; align-items: center; justify-content: center; }
+    .screen-overlay.active { display: flex; }
+    .screen-window { background: rgba(20,20,30,0.9); border: 1px solid rgba(255,120,0,0.5); border-radius: 24px; padding: 2rem; max-width: 800px; width: 90%; max-height: 85vh; overflow-y: auto; box-shadow: 0 0 70px rgba(255,80,0,0.3); color: #f0e6d8; position: relative; animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .close-btn { position: absolute; top: 1rem; right: 1.5rem; background: none; border: none; color: #ffaa66; font-size: 1.8rem; cursor: pointer; }
+    .academy-title { font-size: 2rem; margin-bottom: 1rem; background: linear-gradient(135deg, #ffb347, #ff3d00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; }
+
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,120,0,0.3); padding-bottom: 0.5rem; }
+    .tab-btn { background: transparent; border: none; color: #ccaa88; padding: 0.6rem 1.2rem; border-radius: 30px; cursor: pointer; }
+    .tab-btn.active { background: rgba(255,80,0,0.2); color: #ffb380; }
+
+    .hall-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+    .hall-card { background: var(--card); backdrop-filter: blur(10px); border: 1px solid rgba(255,100,0,0.3); border-radius: var(--radius); padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s; }
+    .hall-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,50,0,0.2); }
+    .hall-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+    .key-item { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); padding: 1rem; border-radius: 0 12px 12px 0; margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  <div class="universe-bg"></div>
+  <div class="rays-container" id="raysContainer"></div>
+
+  <div class="main-container">
+    <div class="pulsar" id="pulsarBtn">
+      <div class="pulsar-core"></div>
+      <div class="pulsar-ring"></div>
+      <div class="pulsar-ring"></div>
+    </div>
+    <div id="authArea" style="margin-top: 1rem; text-align: center;">
+      <div id="loginBlock" style="display: none;">
+        <input type="text" id="didInput" placeholder="Введи 12 слов" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,140,0,0.3); border-radius: 20px; padding: 0.5rem 1.2rem; color: #fff; width: 240px; text-align: center; font-size: 0.8rem; margin-bottom: 0.5rem;">
+        <div style="display: flex; gap: 0.5rem; justify-content: center;">
+          <button class="btn" id="loginBtn" style="font-size: 0.8rem;">Войти</button>
+          <button class="btn btn-outline" id="registerBtn" style="font-size: 0.8rem;">Создать DID</button>
+        </div>
+      </div>
+      <div id="welcomeBlock" style="display: none;">
+        <p style="color: var(--sub); font-size: 0.85rem;">Привет, <span id="displayName" style="color: var(--soft);">Архитектор</span></p>
+        <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.3rem;">
+          <a href="/profile" style="color: var(--sub); font-size: 0.7rem;">Профиль</a>
+          <button id="logoutBtn" style="background: none; border: none; color: var(--sub); font-size: 0.7rem; cursor: pointer;">Выйти</button>
+        </div>
+      </div>
+    </div>
+    <p class="subtitle" style="color: var(--sub); font-style: italic; margin-top: 1.5rem;">Твой Цифровой Ковчег</p>
+  </div>
+
+  <button id="aboutBtn" class="small-btn" onclick="openAbout()">🐦‍🔥 О проекте</button>
+  <a href="/network" id="networkBtn" class="small-btn" style="bottom: 70px;">🌐 Сеть</a>
+
+  <!-- Экран Академии -->
+  <div class="screen-overlay" id="academyScreen">
+    <div class="screen-window" id="academyWindow">
+      <button class="close-btn" onclick="closeAcademy()">✕</button>
+      <div id="academyContent"></div>
+    </div>
+  </div>
+
+  <!-- Экран О проекте -->
+  <div class="screen-overlay" id="aboutScreen">
+    <div class="screen-window">
+      <button class="close-btn" onclick="document.getElementById('aboutScreen').classList.remove('active')">✕</button>
+      <h2 class="academy-title">🐦‍🔥 О проекте</h2>
+      <div id="aboutContent" style="margin-top: 1.5rem; max-height: 60vh; overflow-y: auto;"></div>
+      <p style="text-align: center; margin-top: 1.5rem;"><a href="/constitution" target="_blank" style="color: var(--soft);">📜 Конституция Феникса</a></p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+    // Лучи
+    (function createRays() {
+      const container = document.getElementById('raysContainer');
+      if (!container) return;
+      for (let i = 0; i < 24; i++) {
+        const ray = document.createElement('div');
+        ray.className = 'ray';
+        ray.style.transform = `rotate(${i * 15}deg)`;
+        ray.style.animationDelay = `${i * 0.1}s`;
+        container.appendChild(ray);
+      }
+    })();
+
+    let currentUser = null;
+
+    // Авторизация DID
+    function initAuth() {
+      const loginBlock = document.getElementById('loginBlock');
+      const welcomeBlock = document.getElementById('welcomeBlock');
+      const savedDID = JSON.parse(localStorage.getItem('phoenix_did') || 'null');
+      if (savedDID && savedDID.mnemonic) {
+        loginBlock.style.display = 'none';
+        welcomeBlock.style.display = 'block';
+        document.getElementById('displayName').textContent = 'Архитектор ' + savedDID.address.substring(0, 8) + '...';
+        currentUser = savedDID;
+      } else {
+        loginBlock.style.display = 'block';
+        welcomeBlock.style.display = 'none';
+      }
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const input = document.getElementById('didInput').value.trim();
+      if (!input) return alert('Введи 12 слов');
+      try {
+        const wallet = ethers.Wallet.fromMnemonic(input);
+        const user = { address: wallet.address, did: `did:phoenix:${wallet.address}`, mnemonic: input };
+        localStorage.setItem('phoenix_did', JSON.stringify(user));
+        currentUser = user;
+        document.getElementById('loginBlock').style.display = 'none';
+        document.getElementById('welcomeBlock').style.display = 'block';
+        document.getElementById('displayName').textContent = 'Архитектор ' + user.address.substring(0, 8) + '...';
+      } catch(e) { alert('Неверная мнемоника'); }
+    });
+
+    document.getElementById('registerBtn').addEventListener('click', () => {
+      const wallet = ethers.Wallet.createRandom();
+      const user = { address: wallet.address, did: `did:phoenix:${wallet.address}`, mnemonic: wallet.mnemonic.phrase };
+      localStorage.setItem('phoenix_did', JSON.stringify(user));
+      currentUser = user;
+      alert('Твой DID создан! Запиши 12 слов:\n\n' + user.mnemonic);
+      document.getElementById('loginBlock').style.display = 'none';
+      document.getElementById('welcomeBlock').style.display = 'block';
+      document.getElementById('displayName').textContent = 'Архитектор ' + user.address.substring(0, 8) + '...';
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('phoenix_did');
+      currentUser = null;
+      document.getElementById('welcomeBlock').style.display = 'none';
+      document.getElementById('loginBlock').style.display = 'block';
+    });
+
+    // Навигация
+    const academyScreen = document.getElementById('academyScreen');
+    const academyContent = document.getElementById('academyContent');
+    document.getElementById('pulsarBtn').addEventListener('click', () => {
+      academyScreen.classList.add('active');
+      renderHome();
+    });
+    function closeAcademy() { academyScreen.classList.remove('active'); }
+
+    // Главная сетка Ковчега
+    function renderHome() {
+      academyContent.innerHTML = `
+        <h2 class="academy-title">🐦‍🔥 Цифровой Ковчег</h2>
+        <div class="hall-grid">
+          <div class="hall-card" onclick="navigateToHall('academy')">
+            <div class="hall-icon"><img src="/icons/scroll.svg" class="icon-animated"></div>
+            <h3>Академия</h3>
+            <p>Твоя крепость знаний</p>
+          </div>
+          <div class="hall-card" onclick="navigateToHall('workshop')">
+            <div class="hall-icon"><img src="/icons/hammer.svg" class="icon-animated"></div>
+            <h3>Мастерская</h3>
+            <p>Твоя мастерская артефактов</p>
+          </div>
+          <div class="hall-card" onclick="navigateToHall('companion')">
+            <div class="hall-icon"><img src="/icons/circle.svg" class="icon-animated"></div>
+            <h3>Соратник</h3>
+            <p>Прямая связь без посредников</p>
+          </div>
+        </div>`;
+    }
+
+    // Залы и табы
+    function navigateToHall(hallId) {
+      const tabs = {
+        academy: ['Сутры', 'Практики', 'Исцеление'],
+        workshop: ['Артефакты', 'Цели', 'Инициативы'],
+        companion: ['Диалог', 'Друзья', 'Сеть']
+      };
+      const labels = {
+        'Сутры': 'sutras', 'Практики': 'practices', 'Исцеление': 'healing',
+        'Артефакты': 'artifacts', 'Цели': 'goals', 'Инициативы': 'initiatives',
+        'Диалог': 'dialogue', 'Друзья': 'friends', 'Сеть': 'network'
+      };
+      const currentTabs = tabs[hallId] || [];
+
+      academyContent.innerHTML = `
+        <h2 class="academy-title">${hallId === 'academy' ? '📜 Академия' : hallId === 'workshop' ? '🛠️ Мастерская' : '🤝 Соратник'}</h2>
+        <div class="tabs">
+          ${currentTabs.map(t => `<button class="tab-btn ${t === currentTabs[0] ? 'active' : ''}" data-tab="${labels[t]}">${t}</button>`).join('')}
+        </div>
+        <div id="tabContent"></div>`;
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          loadTabContent(hallId, this.dataset.tab);
+        });
+      });
+
+      loadTabContent(hallId, labels[currentTabs[0]]);
+    }
+
+    async function loadTabContent(hallId, tab) {
+      const tabContent = document.getElementById('tabContent');
+      tabContent.innerHTML = '<p style="color:#aa8c7a;">Загрузка...</p>';
+
+      if (hallId === 'academy') {
+        if (tab === 'sutras' || tab === 'practices') {
+          try {
+            const res = await fetch(`/api/contents/${tab}?lang=ru`);
+            const data = await res.json();
+            if (data.success && data.data.length) {
+              tabContent.innerHTML = data.data.map(item => `<div class="key-item"><h3>${item.title}</h3><p>${item.body.replace(/\n/g, '<br>')}</p></div>`).join('');
+            } else {
+              tabContent.innerHTML = '<p style="color:#aa8c7a;">Пока пусто.</p>';
+            }
+          } catch(e) { tabContent.innerHTML = '<p style="color:#ef4444;">Ошибка загрузки.</p>'; }
+        } else {
+          tabContent.innerHTML = '<p style="color:#aa8c7a;">Скоро здесь появятся аффирмации и психосоматика.</p>';
+        }
+      } else if (hallId === 'workshop') {
+        if (tab === 'artifacts') {
+          try {
+            const res = await fetch('/api/artifacts');
+            const data = await res.json();
+            if (data.success && data.data.length) {
+              tabContent.innerHTML = data.data.map(a => `<div class="key-item"><h4>${a.title}</h4><p>${a.description || ''}</p></div>`).join('');
+            } else {
+              tabContent.innerHTML = '<p style="color:#aa8c7a;">Артефактов пока нет. Создайте первый!</p>';
+            }
+          } catch(e) { tabContent.innerHTML = '<p style="color:#ef4444;">Ошибка загрузки.</p>'; }
+        } else {
+          tabContent.innerHTML = '<p style="color:#aa8c7a;">Скоро здесь появятся цели и инициативы.</p>';
+        }
+      } else if (hallId === 'companion') {
+        if (tab === 'dialogue') {
+          tabContent.innerHTML = `
+            <div id="circleContainer">
+              <div id="circleLogin" class="key-item">
+                <h3 style="color:var(--soft);">Войти в Круг</h3>
+                <input type="text" id="circleName" placeholder="Твоё имя" style="background:rgba(0,0,0,0.4);border:1px solid var(--accent);border-radius:8px;padding:0.7rem;color:#fff;width:100%;margin-bottom:0.5rem;">
+                <select id="circleRoom" style="background:rgba(0,0,0,0.4);border:1px solid var(--accent);border-radius:8px;padding:0.7rem;color:#fff;width:100%;margin-bottom:0.5rem;">
+                  <option value="общий">Общий круг</option>
+                  <option value="утренняя">Утренняя практика</option>
+                  <option value="вечерняя">Вечерняя практика</option>
+                </select>
+                <button id="joinCircleBtn" class="btn" style="width:100%;">Войти</button>
+              </div>
+              <div id="circleChat" style="display:none;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                  <span id="onlineIndicator" style="color:var(--soft);"></span>
+                  <button id="leaveCircleBtn" class="btn-outline" style="padding:0.3rem 1rem;">Выйти</button>
+                </div>
+                <div id="circleMessages" style="height:300px;overflow-y:auto;background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;margin-bottom:1rem;"></div>
+                <div style="display:flex;gap:0.5rem;">
+                  <input type="text" id="circleMessageInput" placeholder="Напиши сообщение..." style="flex:1;background:rgba(0,0,0,0.4);border:1px solid var(--accent);border-radius:8px;padding:0.7rem;color:#fff;">
+                  <button id="sendCircleMsgBtn" class="btn">Отправить</button>
+                </div>
+              </div>
+            </div>`;
+          setTimeout(() => { if (typeof attachCircleEvents === 'function') attachCircleEvents(); }, 300);
+        } else if (tab === 'network') {
+          tabContent.innerHTML = '<iframe src="/network" style="width:100%;height:500px;border:none;border-radius:16px;"></iframe>';
+        } else {
+          tabContent.innerHTML = '<p style="color:#aa8c7a;">Скоро здесь появятся друзья.</p>';
+        }
+      }
+    }
+
+    // О проекте
+    async function openAbout() {
+      document.getElementById('aboutScreen').classList.add('active');
+      const aboutContent = document.getElementById('aboutContent');
+      aboutContent.innerHTML = '<p style="color:#aa8c7a;">Загрузка...</p>';
+      try {
+        const [visRes, roadRes] = await Promise.all([
+          fetch('/VISION_ru.md').catch(() => null),
+          fetch('/ROADMAP_ru.md').catch(() => null)
+        ]);
+        let html = '';
+        if (visRes && visRes.ok) html += '<h3>📜 Видение</h3>' + await visRes.text();
+        if (roadRes && roadRes.ok) html += '<h3>🗺️ Дорожная карта</h3>' + await roadRes.text();
+        aboutContent.innerHTML = html || '<p>Документация не найдена.</p>';
+      } catch(e) { aboutContent.innerHTML = '<p>Ошибка загрузки.</p>'; }
+    }
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && academyScreen.classList.contains('active')) closeAcademy();
+      if (e.key === 'Escape' && document.getElementById('aboutScreen').classList.contains('active')) {
+        document.getElementById('aboutScreen').classList.remove('active');
+      }
+    });
+
+    initAuth();
+  </script>
+  <!-- Подключаем P2P-модуль, если он есть -->
+  <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
+  <script src="/js/circle.js"></script>
+  <script src="/js/workshop.js"></script>
+</body>
+</html>

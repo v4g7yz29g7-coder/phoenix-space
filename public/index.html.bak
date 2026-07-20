@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Феникс 🐦‍🔥</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/phoenix-192.png" type="image/png">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="universe-bg"></div>
+  <div class="rays-container" id="raysContainer"></div>
+
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn-current" id="langBtnCurrent">🌐</button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option" data-lang="en">🇬🇧 English</button>
+      <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+      <button class="lang-option" data-lang="zh">🇨🇳 中文</button>
+      <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+      <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+      <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
+      <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="pulsar" id="pulsarBtn" data-tooltip="Пульсар — центр Феникса">
+      <div class="pulsar-core"></div>
+      <div class="pulsar-ring"></div>
+      <div class="pulsar-ring"></div>
+    </div>
+    
+    <div id="authArea" style="margin-top: 1.5rem; text-align: center;">
+      <div id="loginBlock" style="display: none;">
+        <input type="text" id="didInput" placeholder="12 слов или 'создать'" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,140,0,0.3); border-radius: 20px; padding: 0.5rem 1.2rem; color: #ddc; width: 260px; text-align: center; font-size: 0.8rem; backdrop-filter: blur(5px);">
+        <div style="margin-top: 0.6rem; display: flex; gap: 0.6rem; justify-content: center;">
+          <button id="loginBtn" style="background: rgba(255,100,0,0.15); border: 1px solid rgba(255,140,0,0.4); color: #ffd9b3; padding: 0.4rem 1.4rem; border-radius: 20px; cursor: pointer; font-size: 0.8rem;">Войти</button>
+          <button id="registerBtn" style="background: transparent; border: 1px solid rgba(255,180,50,0.3); color: #ccaa88; padding: 0.4rem 1.4rem; border-radius: 20px; cursor: pointer; font-size: 0.8rem;">Создать DID</button>
+        </div>
+      </div>
+      <div id="welcomeBlock" style="display: none;">
+        <p style="color: #aa8c7a; font-size: 0.85rem; margin-bottom: 0.4rem;"><span id="helloWord">Привет</span>, <span id="displayName" style="color: var(--accent-soft);">Архитектор</span></p>
+        <a href="/profile" style="color: #aa8c7a; font-size: 0.7rem; text-decoration: underline; margin-right: 1rem;">Профиль</a>
+        <button id="logoutBtn" style="background: none; border: none; color: #aa8c7a; cursor: pointer; font-size: 0.7rem; text-decoration: underline;">Выйти</button>
+      </div>
+    </div>
+
+    <div class="subtitle">Пространство пробуждения</div>
+  </div>
+
+  <a href="/network" id="networkBtnSmall" class="small-about-btn" style="bottom: 70px;" title="Сеть Садов">🌐 Сеть</a>
+  <button id="aboutBtnSmall" class="small-about-btn" title="Узнать о проекте">🐦‍🔥 О проекте</button>
+
+  <!-- Экран Академии -->
+  <div class="screen-overlay" id="academyScreen">
+    <div class="screen-window" id="academyWindow">
+      <button class="close-btn" id="closeAcademyBtn"><i class="fa-solid fa-times"></i></button>
+      <div id="mainMenu" class="hall-grid" style="margin-top: 1rem;">
+        <div class="hall-card" data-hall="keys"><span class="hall-icon"><img src="/icons/feather.svg" style="width: 2.2rem; height: 2.2rem; filter: drop-shadow(0 0 5px var(--accent-glow));"></span><p data-i18n="six_gates_desc">Войди в свою глубину</p></div>
+        <div class="hall-card" data-hall="practices"><span class="hall-icon"><img src="/icons/lotus.svg" style="width: 2.2rem; height: 2.2rem; filter: drop-shadow(0 0 5px var(--accent-glow));"></span><p data-i18n="breath_path_desc">Медитации и практики</p></div>
+        <div class="hall-card" data-hall="sutras"><span class="hall-icon"><img src="/icons/scroll.svg" style="width: 2.2rem; height: 2.2rem; filter: drop-shadow(0 0 5px var(--accent-glow));"></span><p data-i18n="scrolls_light_desc">Сутры и мудрость</p></div>
+        <div class="hall-card" data-hall="media"><span class="hall-icon"><img src="/icons/headphones.svg" style="width: 2.2rem; height: 2.2rem; filter: drop-shadow(0 0 5px var(--accent-glow));"></span><p data-i18n="sound_silence_desc">Слушать, смотреть, внимать</p></div>
+        <div class="hall-card" data-hall="workshop"><span class="hall-icon"><img src="/icons/hammer.svg" style="width: 2.2rem; height: 2.2rem; filter: drop-shadow(0 0 5px var(--accent-glow));"></span><p data-i18n="workshop_desc">Твори свои артефакты</p></div>
+        <div class="hall-card" data-hall="circle"><span class="hall-icon"><img src="/icons/circle.svg" style="width: 2.2rem; height: 2.2rem; filter: drop-shadow(0 0 5px var(--accent-glow));"></span><p data-i18n="circle_desc">Общение и практики</p></div>
+        <div class="hall-card" data-hall="life-school"><span class="hall-icon"><img src="/icons/tree.svg" style="width: 2.2rem; height: 2.2rem; filter: drop-shadow(0 0 5px var(--accent-glow));"></span><p data-i18n="life_school_desc">Школа Жизни</p></div>
+      </div>
+      <div id="hallContent" style="display: none;">
+        <button id="backToMenuBtn" class="nav-btn" style="margin-bottom: 1.5rem; padding: 0.4rem 1.5rem; font-size: 0.9rem;"><img src="/icons/arrow-left.svg" style="width: 1rem; height: 1rem; vertical-align: middle;"> <span data-i18n="back_to_halls">Вернуться к Залам</span></button>
+        <div id="hallContentInner"></div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <button id="openGardenFromMenuBtn" class="nav-btn" style="font-size: 0.9rem;"><img src="/icons/seedling.svg" style="width: 1.2rem; height: 1.2rem; vertical-align: middle;"> <span data-i18n="living_field">Живое Поле</span></button>
+      </div>
+      <p class="subtitle-small" data-i18n="build_garden">Мы строим Сад вместе. 🐦‍🔥</p>
+    </div>
+  </div>
+
+  <!-- Экран "О проекте" -->
+  <div class="screen-overlay" id="aboutScreen">
+    <div class="screen-window" id="aboutWindow">
+      <button class="close-btn" id="closeAboutBtn"><img src="/icons/xmark.svg" style="width: 1.2rem; height: 1.2rem;"></button>
+      <h2 class="academy-title">🐦‍🔥 О проекте</h2>
+      <div id="aboutContent" style="margin-top: 2rem; line-height: 1.7; font-size: 1.05rem; max-height: 70vh; overflow-y: auto;">
+        <p style="color:#aa8c7a; text-align:center;" data-i18n="about_loading">Загрузка...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(console.error);
+    }
+  </script>
+  <script src="/js/locales.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/stars.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/garden.js"></script>
+</body>
+</html>

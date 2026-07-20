@@ -1,0 +1,28 @@
+{
+  "name": "phoenix-academy",
+  "version": "1.0.0",
+  "description": "Академия Феникса – пространство пробуждения",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "tunnel": "ngrok http 3000"
+  },
+  "dependencies": {
+    "@scure/bip32": "^2.2.0",
+    "@scure/bip39": "^2.2.0",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^9.4.3",
+    "bip39": "^3.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.17.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.5.2",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.2.0",
+    "socket.io": "^4.8.3",
+    "uuid": "^14.0.1",
+    "ws": "^8.21.1",
+    "zod": "^3.23.8"
+  }
+}

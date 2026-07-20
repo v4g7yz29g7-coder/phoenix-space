@@ -1,0 +1,21 @@
+{
+  "name": "Феникс: Цифровой Ковчег",
+  "short_name": "Феникс",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a12",
+  "theme_color": "#ff5500",
+  "description": "Твой Цифровой Ковчег для суверенного общения и творчества.",
+  "icons": [
+    {
+      "src": "/icons/phoenix-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/phoenix-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

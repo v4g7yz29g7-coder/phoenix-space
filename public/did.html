@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phoenix DID</title>
+  <style>
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Inter', sans-serif; padding: 2rem; text-align: center; }
+    button { background: #ff5500; border: none; padding: 1rem 2rem; border-radius: 30px; color: #fff; cursor: pointer; font-size: 1rem; margin: 1rem; }
+    .mnemonic { background: rgba(0,0,0,0.5); border: 1px solid #ff5500; border-radius: 12px; padding: 1.5rem; margin: 1rem auto; max-width: 500px; font-family: monospace; font-size: 1.2rem; letter-spacing: 2px; }
+    .address { color: #ffb380; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <h1>🐦‍🔥 Phoenix DID</h1>
+  <p>Создай свой децентрализованный идентификатор</p>
+  <button onclick="generateDID()">Создать DID</button>
+  <div id="result"></div>
+
+  <script>
+    async function generateDID() {
+      try {
+        const res = await fetch('/api/did/generate', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('result').innerHTML = `
+            <h3 style="color:var(--accent-soft);">Твой DID:</h3>
+            <p class="address">${data.data.did}</p>
+            <h3 style="color:var(--accent-soft);">Мнемоническая фраза (сохрани её!):</h3>
+            <div class="mnemonic">${data.data.mnemonic}</div>
+            <p style="color:#aa8c7a; font-size:0.85rem;">⚠️ Запиши эти 12 слов на бумаге. Это единственный ключ к твоему DID.</p>
+          `;
+        }
+      } catch(e) {
+        document.getElementById('result').innerHTML = '<p style="color:red;">Ошибка генерации DID</p>';
+      }
+    }
+  </script>
+</body>
+</html>

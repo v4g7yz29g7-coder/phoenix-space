@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Сеть Садов | Феникс 🐦‍🔥</title>
+  <link rel="stylesheet" href="/css/core.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Inter', sans-serif; padding: 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .back-link { display: inline-block; margin-bottom: 2rem; color: #ffaa66; text-decoration: none; background: rgba(20,20,30,0.7); backdrop-filter: blur(10px); padding: 0.5rem 1.2rem; border-radius: 30px; border: 1px solid rgba(255,120,0,0.4); font-size: 0.85rem; transition: 0.3s; }
+    .back-link:hover { background: rgba(255,80,0,0.25); border-color: #ff8c00; color: #fff; box-shadow: 0 0 25px rgba(255,100,0,0.4); }
+    h1 { font-family: 'Cormorant Garamond', serif; color: #ffb347; text-align: center; }
+    #map { height: 500px; width: 100%; border-radius: 20px; border: 1px solid rgba(255,100,0,0.3); margin: 1.5rem 0; }
+    @media (max-width: 600px) { #map { height: 350px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Вернуться в Сад</a>
+    <h1>🌐 Сеть Садов</h1>
+    <div id="map"></div>
+    <div class="garden-list" id="gardenList">Загрузка...</div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+
+    const wonders = [
+      { name: 'Великая Китайская стена', lat: 40.43, lon: 116.57, color: '#ff4444' },
+      { name: 'Петра', lat: 30.32, lon: 35.44, color: '#ff8844' },
+      { name: 'Колизей', lat: 41.89, lon: 12.49, color: '#ffaa00' },
+      { name: 'Чичен-Ица', lat: 20.68, lon: -88.57, color: '#ffdd44' },
+      { name: 'Мачу-Пикчу', lat: -13.16, lon: -72.54, color: '#88cc44' },
+      { name: 'Тадж-Махал', lat: 27.17, lon: 78.04, color: '#ff66aa' },
+      { name: 'Христос-Искупитель', lat: -22.95, lon: -43.21, color: '#44bbff' },
+      { name: 'Пирамида Хеопса', lat: 29.97, lon: 31.13, color: '#ffaa44' },
+      { name: 'Висячие сады', lat: 32.54, lon: 44.42, color: '#66cc44' },
+      { name: 'Статуя Зевса', lat: 37.64, lon: 21.63, color: '#ffcc88' },
+      { name: 'Храм Артемиды', lat: 37.94, lon: 27.36, color: '#ffaaaa' },
+      { name: 'Мавзолей', lat: 37.04, lon: 27.42, color: '#cc88ff' },
+      { name: 'Колосс Родосский', lat: 36.43, lon: 28.21, color: '#88ccff' },
+      { name: 'Александрийский маяк', lat: 31.21, lon: 29.91, color: '#aaccff' }
+    ];
+
+    wonders.forEach(w => {
+      const icon = L.divIcon({ className: 'wonder-icon', html: `<div style="width:10px;height:10px;background:${w.color};border-radius:50%;box-shadow:0 0 10px ${w.color};"></div>`, iconSize: [10, 10] });
+      L.marker([w.lat, w.lon], { icon }).addTo(map).bindPopup(`<b>${w.name}</b>`);
+    });
+
+    const demos = [
+      { name: 'Сад Архитектора', lat: 57.15, lon: 65.53, color: '#ff5500', url: '/' },
+      { name: 'Сад Брата', lat: 41.90, lon: 12.49, color: '#3b82f6', url: '#' },
+      { name: 'Сад Сестры', lat: 52.52, lon: 13.40, color: '#34d399', url: '#' },
+      { name: 'Сад Мудреца', lat: 35.68, lon: 139.76, color: '#f97316', url: '#' }
+    ];
+
+    demos.forEach(g => {
+      const icon = L.divIcon({ className: 'garden-icon', html: `<div style="width:16px;height:16px;background:${g.color};border-radius:50%;box-shadow:0 0 15px ${g.color};border:2px solid #fff;"></div>`, iconSize: [16, 16] });
+      L.marker([g.lat, g.lon], { icon }).addTo(map).bindPopup(`<b>${g.name}</b>`);
+    });
+  </script>
+</body>
+</html>

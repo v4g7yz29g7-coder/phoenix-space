@@ -1,0 +1,65 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+contract ArtifactRegistry {
+    struct Artifact {
+        string id;
+        string title;
+        string author;
+        string contentHash;
+        uint256 timestamp;
+        address creator;
+    }
+
+    mapping(string => Artifact) public artifacts;
+    mapping(address => string[]) public creatorArtifacts;
+    string[] public allArtifactIds;
+
+    event ArtifactRegistered(
+        string indexed id,
+        string title,
+        string author,
+        string contentHash,
+        address creator,
+        uint256 timestamp
+    );
+
+    function registerArtifact(
+        string memory _id,
+        string memory _title,
+        string memory _author,
+        string memory _contentHash
+    ) public {
+        require(bytes(artifacts[_id].id).length == 0, "Already registered");
+        
+        artifacts[_id] = Artifact({
+            id: _id,
+            title: _title,
+            author: _author,
+            contentHash: _contentHash,
+            timestamp: block.timestamp,
+            creator: msg.sender
+        });
+        
+        creatorArtifacts[msg.sender].push(_id);
+        allArtifactIds.push(_id);
+        
+        emit ArtifactRegistered(_id, _title, _author, _contentHash, msg.sender, block.timestamp);
+    }
+
+    function getArtifact(string memory _id) public view returns (Artifact memory) {
+        return artifacts[_id];
+    }
+
+    function getCreatorArtifacts(address _creator) public view returns (string[] memory) {
+        return creatorArtifacts[_creator];
+    }
+
+    function getAllArtifacts() public view returns (string[] memory) {
+        return allArtifactIds;
+    }
+
+    function getArtifactCount() public view returns (uint256) {
+        return allArtifactIds.length;
+    }
+}
