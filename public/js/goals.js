@@ -28,7 +28,7 @@
     }
     container.innerHTML = html;
 
-    // Обработчики добавления
+    // Обработчики
     document.getElementById('addGoalBtn')?.addEventListener('click', () => {
       const input = document.getElementById('goalInput');
       if (!input.value.trim()) return;
@@ -38,7 +38,6 @@
       renderGoals();
     });
 
-    // Обработчики удаления и выполнения
     document.querySelectorAll('.delGoalBtn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const index = e.target.dataset.index;
@@ -58,8 +57,5 @@
     });
   }
 
-  // Экспортируем функцию инициализации глобально
-  window.initGoalsModule = function() {
-    renderGoals();
-  };
+  window.initGoalsModule = renderGoals;
 })();
