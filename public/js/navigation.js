@@ -9,12 +9,27 @@ const HALLS = {
 function renderHome() {
   const mainMenu = document.getElementById('mainMenu');
   const t = window.currentLocale || {};
-  mainMenu.innerHTML = `
+  
+  let html = `
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:1.5rem; margin-bottom:2rem;">
-      <div class="hall-card" onclick="navigateToHall('academy')"><span class="hall-icon"><img src="/icons/scroll.svg" style="width:3rem; height:3rem;"></span><h3>${t.academy || 'Академия'}</h3><p>${t.academy_desc || 'Мудрость, практики, исцеление'}</p></div>
-      <div class="hall-card" onclick="navigateToHall('workshop')"><span class="hall-icon"><img src="/icons/hammer.svg" style="width:3rem; height:3rem;"></span><h3>${t.workshop || 'Мастерская'}</h3><p>${t.workshop_desc || 'Творчество, цели, инициативы'}</p></div>
-      <div class="hall-card" onclick="navigateToHall('companion')"><span class="hall-icon"><img src="/icons/circle.svg" style="width:3rem; height:3rem;"></span><h3>${t.companion || 'Соратник'}</h3><p>${t.companion_desc || 'Общение, друзья, сеть'}</p></div>
-    </div>`;
+      <div class="hall-card" onclick="navigateToHall('academy')">
+        <span class="hall-icon"><img src="/icons/scroll.svg" style="width:3rem; height:3rem;"></span>
+        <h3>${t.academy || 'Академия'}</h3>
+        <p>${t.academy_desc || 'Твоя крепость знаний'}</p>
+      </div>
+      <div class="hall-card" onclick="navigateToHall('workshop')">
+        <span class="hall-icon"><img src="/icons/hammer.svg" style="width:3rem; height:3rem;"></span>
+        <h3>${t.workshop || 'Мастерская'}</h3>
+        <p>${t.workshop_desc || 'Твоя мастерская артефактов'}</p>
+      </div>
+      <div class="hall-card" onclick="navigateToHall('companion')">
+        <span class="hall-icon"><img src="/icons/circle.svg" style="width:3rem; height:3rem;"></span>
+        <h3>${t.companion || 'Соратник'}</h3>
+        <p>${t.companion_desc || 'Прямая связь без посредников'}</p>
+      </div>
+    </div>
+  `;
+  mainMenu.innerHTML = html;
 }
 
 function navigateToHall(hallId) {
@@ -76,7 +91,9 @@ function switchHallTab(hallId, tab) {
         tabContent.innerHTML = data.success && data.data.length ? data.data.map(item => `<div class="key-item"><h3>${item.title}</h3><p>${item.body.replace(/\n/g, '<br>')}</p></div>`).join('') : '<p style="color:#aa8c7a;">Практики пока не добавлены.</p>';
       });
     } else if (tab === 'healing') {
-      tabContent.innerHTML = '<p style="color:#aa8c7a;">Психосоматика и аффирмации скоро появятся.</p>';
+      safeFetch(`/api/contents/healing?lang=${currentLang || 'ru'}`).then(data => {
+        tabContent.innerHTML = data.success && data.data.length ? data.data.map(item => `<div class="key-item"><h3>${item.title}</h3><p>${item.body.replace(/\n/g, '<br>')}</p></div>`).join('') : '<p style="color:#aa8c7a;">Исцеляющая мудрость скоро появится.</p>';
+      });
     }
   } else if (hallId === 'workshop') {
     if (tab === 'artifacts') {
@@ -85,12 +102,18 @@ function switchHallTab(hallId, tab) {
       });
     } else if (tab === 'goals') {
       tabContent.innerHTML = '<div id="goalsContainer"><p style="color:#aa8c7a;">Загрузка целей...</p></div>';
+      if (typeof loadGoals === 'function') loadGoals();
     } else if (tab === 'initiatives') {
       tabContent.innerHTML = '<p style="color:#aa8c7a;">Инициативы скоро появятся.</p>';
     }
   } else if (hallId === 'companion') {
-    if (tab === 'dialogue') tabContent.innerHTML = '<p style="color:#aa8c7a;">Откройте Круг для общения.</p>';
-    else if (tab === 'friends') tabContent.innerHTML = '<p style="color:#aa8c7a;">Список друзей скоро появится.</p>';
-    else if (tab === 'network') tabContent.innerHTML = '<iframe src="/network" style="width:100%;height:500px;border:none;border-radius:16px;"></iframe>';
+    if (tab === 'dialogue') {
+      tabContent.innerHTML = `<div id="circleContainer"><div id="circleLogin" class="key-item"><h3 style="color:var(--soft);">Войти в Круг</h3><input type="text" id="circleName" placeholder="Твоё имя" style="background:rgba(0,0,0,0.4);border:1px solid var(--accent);border-radius:8px;padding:0.7rem;color:#fff;width:100%;margin-bottom:0.5rem;"><select id="circleRoom" style="background:rgba(0,0,0,0.4);border:1px solid var(--accent);border-radius:8px;padding:0.7rem;color:#fff;width:100%;margin-bottom:0.5rem;"><option value="общий">Общий круг</option><option value="утренняя">Утренняя практика</option><option value="вечерняя">Вечерняя практика</option></select><button id="joinCircleBtn" class="btn" style="width:100%;">Войти</button></div><div id="circleChat" style="display:none;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;"><span id="onlineIndicator" style="color:var(--soft);"></span><button id="leaveCircleBtn" class="btn-outline" style="padding:0.3rem 1rem;">Выйти</button></div><div id="circleMessages" style="height:300px;overflow-y:auto;background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;margin-bottom:1rem;"></div><div style="display:flex;gap:0.5rem;"><input type="text" id="circleMessageInput" placeholder="Напиши сообщение..." style="flex:1;background:rgba(0,0,0,0.4);border:1px solid var(--accent);border-radius:8px;padding:0.7rem;color:#fff;"><button id="sendCircleMsgBtn" class="btn">Отправить</button></div></div></div>`;
+      setTimeout(() => { if (typeof attachCircleEvents === 'function') attachCircleEvents(); }, 200);
+    } else if (tab === 'friends') {
+      tabContent.innerHTML = '<p style="color:#aa8c7a;">Список друзей скоро появится.</p>';
+    } else if (tab === 'network') {
+      tabContent.innerHTML = '<iframe src="/network" style="width:100%;height:500px;border:none;border-radius:16px;"></iframe>';
+    }
   }
 }

@@ -42,6 +42,8 @@ app.get("/admin", (req, res) => res.sendFile(path.join(__dirname, "public", "adm
 app.get("/admin.html", (req, res) => res.sendFile(path.join(__dirname, "public", "admin.html")));
 app.get("/admin", (req, res) => res.sendFile(path.join(__dirname, "public", "admin.html")));
 app.get("/admin.html", (req, res) => res.sendFile(path.join(__dirname, "public", "admin.html")));
+app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "public", "profile.html")));
+app.get("/bounties", (req, res) => res.sendFile(path.join(__dirname, "public", "bounties.html")));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
 const onlineUsers = new Map();

@@ -40,8 +40,9 @@ const avatarStorage = multer.diskStorage({
   filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
 });
 const uploadAvatar = multer({ storage: avatarStorage, limits: { fileSize: 5 * 1024 * 1024 } });
+router.post('/profile/update', uploadAvatar.single('avatar'), profileController.updateProfile);
 
-// Контент Залов с языковой поддержкой
+// Контент Залов с языковой поддержкой (включая healing)
 router.get('/contents/:hall', (req, res) => {
   try {
     const lang = req.query.lang || 'ru';
@@ -108,3 +109,14 @@ router.delete('/admin/contents/:id', checkAdmin, (req, res) => {
 });
 
 module.exports = router;
+
+// Витрина задач (Bounties)
+router.get('/bounties', (req, res) => {
+  try {
+    const db = require('../config/db');
+    const bounties = db.prepare('SELECT * FROM bounties ORDER BY created_at DESC').all();
+    res.json({ success: true, data: bounties });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});

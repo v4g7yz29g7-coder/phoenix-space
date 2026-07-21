@@ -128,3 +128,43 @@ document.addEventListener('DOMContentLoaded', function() {
     pulsar.addEventListener('click', openAcademy);
   }
 });
+
+// Замена эмодзи на SVG-иконки
+function replaceEmojis() {
+  const emojiMap = {
+    '🕊️': '/icons/dove.svg',
+    '💎': '/icons/gem.svg',
+    '🌿': '/icons/leaf.svg',
+    '✨': '/icons/star.svg',
+    '📝': '/icons/book.svg',
+    '🌳': '/icons/tree.svg',
+    '🔥': '/icons/fire.svg',
+    '💧': '/icons/water.svg',
+    '⛰️': '/icons/mountain.svg'
+  };
+  
+  const walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+  
+  let node;
+  while (node = walker.nextNode()) {
+    let text = node.textContent;
+    let changed = false;
+    for (const [emoji, icon] of Object.entries(emojiMap)) {
+      if (text.includes(emoji)) {
+        text = text.replace(new RegExp(emoji, 'g'), '');
+        changed = true;
+      }
+    }
+    if (changed) {
+      const span = document.createElement('span');
+      span.innerHTML = text;
+      node.parentNode.replaceChild(span, node);
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded', replaceEmojis);

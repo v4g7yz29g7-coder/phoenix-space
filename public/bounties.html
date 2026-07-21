@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Витрина задач | Феникс 🐦‍🔥</title>
+  <link rel="stylesheet" href="/css/core.css">
+  <style>
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Inter', sans-serif; padding: 2rem; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .container { max-width: 700px; width: 100%; }
+    .back-link { display: inline-block; margin-bottom: 2rem; color: #ffaa66; text-decoration: none; }
+    h1, h2 { font-family: 'Cormorant Garamond', serif; color: #ffb347; }
+    .card { background: rgba(20,20,30,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,100,0,0.3); border-radius: 16px; padding: 1.5rem; margin: 1rem 0; }
+    .btn { display: inline-block; background: #ff5500; color: #fff; padding: 0.6rem 1.8rem; border-radius: 30px; text-decoration: none; cursor: pointer; }
+    .disclaimer { color: #ef4444; font-weight: bold; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Вернуться в Сад</a>
+    <h1>🐦‍🔥 Витрина задач</h1>
+    <p style="color: #aa8c7a;">Поддержите разработку конкретной функции — и мы реализуем её в ближайшем обновлении.</p>
+    <div id="bountiesList">Загрузка...</div>
+    <div class="disclaimer">
+      ⚠️ Это не инвестиции и не покупка услуг. Это целевое пожертвование на развитие открытого кода. Мы не гарантируем сроки, но гарантируем, что все средства пойдут на оплату работы разработчиков.
+    </div>
+  </div>
+  <script>
+    async function loadBounties() {
+      try {
+        const res = await fetch('/api/bounties');
+        const data = await res.json();
+        if (!data.success || !data.data.length) {
+          document.getElementById('bountiesList').innerHTML = '<p>Пока нет активных задач. Предложите свою!</p>';
+          return;
+        }
+        document.getElementById('bountiesList').innerHTML = data.data.map(b => `
+          <div class="card">
+            <h2>${b.title}</h2>
+            <p>${b.description || ''}</p>
+            <p><strong>Сумма:</strong> ${b.amount}</p>
+            <p><strong>Статус:</strong> ${b.status === 'open' ? 'Открыта' : 'В работе'}</p>
+            <a href="/support" class="btn">Поддержать эту задачу</a>
+          </div>
+        `).join('');
+      } catch(e) {
+        document.getElementById('bountiesList').innerHTML = '<p>Не удалось загрузить задачи.</p>';
+      }
+    }
+    loadBounties();
+  </script>
+</body>
+</html>
