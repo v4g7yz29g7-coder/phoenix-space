@@ -100,10 +100,10 @@ function switchHallTab(hallId, tab) {
       safeFetch('/api/artifacts').then(data => {
         tabContent.innerHTML = data.success && data.data.length ? data.data.map(a => `<div class="key-item"><h4>${a.title}</h4><p>${a.description || ''}</p></div>`).join('') : '<p style="color:#aa8c7a;">Артефактов пока нет. Создайте первый!</p>';
       });
-      if (tab === 'goals') {
-        tabContent.innerHTML = '<div id="goalsContainer"></div>';
-        if (typeof window.initGoalsModule === 'function') window.initGoalsModule();
-      } else if (tab === 'initiatives') {
+    } else if (tab === 'goals') {
+      tabContent.innerHTML = '<div id="goalsContainer"></div>';
+      if (typeof window.initGoalsModule === 'function') window.initGoalsModule();
+    } else if (tab === 'initiatives') {
       tabContent.innerHTML = '<p style="color:#aa8c7a;">Инициативы скоро появятся.</p>';
     }
   } else if (hallId === 'companion') {
@@ -117,20 +117,3 @@ function switchHallTab(hallId, tab) {
     }
   }
 }
-
-// При входе в Диалог проверяем DID и сразу заходим в чат
-(function() {
-  const origSwitchHallTab = switchHallTab;
-  switchHallTab = function(hallId, tab) {
-    origSwitchHallTab(hallId, tab);
-    if (hallId === 'companion' && tab === 'dialogue') {
-      setTimeout(() => {
-        const did = JSON.parse(localStorage.getItem('phoenix_did') || '{}');
-        if (did.mnemonic) {
-          const joinBtn = document.getElementById('joinCircleBtn');
-          if (joinBtn) joinBtn.click();
-        }
-      }, 500);
-    }
-  };
-})();
