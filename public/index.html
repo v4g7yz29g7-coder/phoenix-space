@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <style> * { scrollbar-width: none !important; -ms-overflow-style: none !important; } *::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; } </style>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -57,6 +58,9 @@
     .hall-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
 
     .key-item { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); padding: 1rem; border-radius: 0 12px 12px 0; margin: 0.5rem 0; }
+  /* Бесшовный скролл */
+  .screen-window { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+  .screen-window::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
   </style>
 </head>
 <body>
@@ -85,7 +89,7 @@
         </div>
       </div>
     </div>
-    <p class="subtitle" style="color: var(--sub); font-style: italic; margin-top: 1.5rem;">Твой Цифровой Ковчег</p>
+    <p class="subtitle" style="color: var(--sub); font-style: italic; margin-top: 1.5rem;">Твой Цифровой Сад</p>
   </div>
 
   <button id="aboutBtn" class="small-btn" onclick="openAbout()">🐦‍🔥 О проекте</button>
@@ -105,7 +109,6 @@
       <button class="close-btn" onclick="document.getElementById('aboutScreen').classList.remove('active')">✕</button>
       <h2 class="academy-title">🐦‍🔥 О проекте</h2>
       <div id="aboutContent" style="margin-top: 1.5rem; max-height: 60vh; overflow-y: auto;"></div>
-      <p style="text-align: center; margin-top: 1.5rem;"><a href="/constitution" target="_blank" style="color: var(--soft);">📜 Конституция Феникса</a></p>
     </div>
   </div>
 
@@ -308,6 +311,16 @@
     }
 
     // О проекте
+    async function loadConstitution() {
+      document.getElementById("aboutScreen").classList.add("active");
+      const aboutContent = document.getElementById("aboutContent");
+      aboutContent.innerHTML = "<p style=\"color:#aa8c7a;\">Загрузка...</p>";
+      try {
+        const res = await fetch("/constitution");
+        const html = await res.text();
+        aboutContent.innerHTML = html.split("<body>")[1].split("</body>")[0];
+      } catch(e) { aboutContent.innerHTML = "<p>Ошибка загрузки.</p>"; }
+    }
     async function openAbout() {
       document.getElementById('aboutScreen').classList.add('active');
       const aboutContent = document.getElementById('aboutContent');
@@ -336,7 +349,7 @@
   </script>
   <!-- Подключаем P2P-модуль, если он есть -->
   <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
-  <script src="/js/circle.js"></script>
-  <script src="/js/workshop.js"></script>
+  <script src="/js/circle.js?v=2"></script>
+  <script src="/js/workshop.js?v=2"></script>
 </body>
 </html>
