@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="fire" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff5500"/>
+      <stop offset="100%" stop-color="#ffb347"/>
+    </linearGradient>
+  </defs>
+  <rect width="780" height="440" fill="url(#bg)"/>
+  <!-- Пламя Феникса -->
+  <circle cx="200" cy="220" r="80" fill="none" stroke="url(#fire)" stroke-width="4" opacity="0.8"/>
+  <circle cx="200" cy="220" r="120" fill="none" stroke="url(#fire)" stroke-width="2" opacity="0.5"/>
+  <circle cx="200" cy="220" r="160" fill="none" stroke="url(#fire)" stroke-width="1" opacity="0.3"/>
+  <text x="200" y="235" font-family="Arial" font-size="40" fill="#ffb347" text-anchor="middle" font-weight="bold">🐦‍🔥</text>
+  <!-- Текст -->
+  <text x="420" y="180" font-family="Arial" font-size="28" fill="#ffb380" font-weight="bold">Как мы строим</text>
+  <text x="420" y="220" font-family="Arial" font-size="28" fill="#ffb380" font-weight="bold">«Цифровой Ковчег»</text>
+  <text x="420" y="260" font-family="Arial" font-size="16" fill="#aa8c7a">и почему отказались от инвестиций</text>
+  <text x="420" y="310" font-family="Arial" font-size="14" fill="#ff5500">phoenixsearch.ru</text>
+</svg>
