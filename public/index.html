@@ -318,6 +318,7 @@
       try {
         const res = await fetch("/constitution");
         const html = await res.text();
+  <script src="/js/profile-sync.js"></script>
         aboutContent.innerHTML = html.split("<body>")[1].split("</body>")[0];
       } catch(e) { aboutContent.innerHTML = "<p>Ошибка загрузки.</p>"; }
     }
@@ -351,5 +352,6 @@
   <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
   <script src="/js/circle.js?v=2"></script>
   <script src="/js/workshop.js?v=2"></script>
+  <script src="/js/profile-sync.js"></script>
 </body>
 </html>
