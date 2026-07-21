@@ -112,8 +112,8 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js?v=3"></script>
+  <script src="/socket.io/socket.io.js?v=3"></script>
 
   <script>
     // Лучи
@@ -318,10 +318,10 @@
       try {
         const res = await fetch("/constitution");
         const html = await res.text();
-  <script src="/js/profile-sync.js"></script>
-  <link rel="stylesheet" href="/css/fix-scroll.css">
-  <script src="/js/fix-constitution.js"></script>
-  <script src="/js/fix-emojis.js"></script>
+  <script src="/js/profile-sync.js?v=3"></script>
+  <link rel="stylesheet" href="/css/fix-scroll.css?v=3">
+  <script src="/js/fix-constitution.js?v=3"></script>
+  <script src="/js/fix-emojis.js?v=3"></script>
         aboutContent.innerHTML = html.split("<body>")[1].split("</body>")[0];
       } catch(e) { aboutContent.innerHTML = "<p>Ошибка загрузки.</p>"; }
     }
@@ -352,12 +352,12 @@
     initAuth();
   </script>
   <!-- Подключаем P2P-модуль, если он есть -->
-  <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
-  <script src="/js/circle.js?v=2"></script>
-  <script src="/js/workshop.js?v=2"></script>
-  <script src="/js/profile-sync.js"></script>
-  <link rel="stylesheet" href="/css/fix-scroll.css">
-  <script src="/js/fix-constitution.js"></script>
-  <script src="/js/fix-emojis.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js?v=3"></script>
+  <script src="/js/circle.js?v=3"></script>
+  <script src="/js/workshop.js?v=3"></script>
+  <script src="/js/profile-sync.js?v=3"></script>
+  <link rel="stylesheet" href="/css/fix-scroll.css?v=3">
+  <script src="/js/fix-constitution.js?v=3"></script>
+  <script src="/js/fix-emojis.js?v=3"></script>
 </body>
 </html>
