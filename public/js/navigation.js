@@ -100,10 +100,15 @@ function switchHallTab(hallId, tab) {
       safeFetch('/api/artifacts').then(data => {
         tabContent.innerHTML = data.success && data.data.length ? data.data.map(a => `<div class="key-item"><h4>${a.title}</h4><p>${a.description || ''}</p></div>`).join('') : '<p style="color:#aa8c7a;">Артефактов пока нет. Создайте первый!</p>';
       });
-      if (tab === 'goals') {
-        tabContent.innerHTML = '<div id="goalsContainer"></div>';
-        if (typeof window.initGoalsModule === 'function') window.initGoalsModule();
-      } else if (tab === 'initiatives') {
+    } else if (tab === 'goals') {
+      // Вызываем модуль целей
+      tabContent.innerHTML = '<div id="goalsContainer"></div>';
+      setTimeout(() => {
+        if (typeof window.initGoalsModule === 'function') {
+          window.initGoalsModule();
+        }
+      }, 100);
+    } else if (tab === 'initiatives') {
       tabContent.innerHTML = '<p style="color:#aa8c7a;">Инициативы скоро появятся.</p>';
     }
   } else if (hallId === 'companion') {
