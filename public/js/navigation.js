@@ -117,3 +117,20 @@ function switchHallTab(hallId, tab) {
     }
   }
 }
+
+// При входе в Диалог проверяем DID и сразу заходим в чат
+(function() {
+  const origSwitchHallTab = switchHallTab;
+  switchHallTab = function(hallId, tab) {
+    origSwitchHallTab(hallId, tab);
+    if (hallId === 'companion' && tab === 'dialogue') {
+      setTimeout(() => {
+        const did = JSON.parse(localStorage.getItem('phoenix_did') || '{}');
+        if (did.mnemonic) {
+          const joinBtn = document.getElementById('joinCircleBtn');
+          if (joinBtn) joinBtn.click();
+        }
+      }, 500);
+    }
+  };
+})();
