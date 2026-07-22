@@ -1,0 +1,58 @@
+.living-field {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+.pulsar {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pulsar-core {
+  width: 12px;
+  height: 12px;
+  background: #a78bfa;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.pulsar.active .pulsar-core {
+  background: #fbbf24;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+}
+.pulsar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  animation: pulse-ring 3s ease-out infinite;
+}
+.ring-1 { width: 24px; height: 24px; animation-delay: 0s; }
+.ring-2 { width: 40px; height: 40px; animation-delay: 1s; }
+.pulsar.active .pulsar-ring {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.living-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #a09ab8;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+.living-field:hover .living-label {
+  opacity: 1;
+  color: #a78bfa;
+}

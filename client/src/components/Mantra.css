@@ -1,0 +1,12 @@
+.mantra-footer {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 100;
+  font-style: italic;
+  color: #a09ab8;
+  opacity: 0.5;
+  font-size: 0.85rem;
+  margin: 0;
+  pointer-events: none;
+}

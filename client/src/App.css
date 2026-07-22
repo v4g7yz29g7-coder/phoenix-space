@@ -1,0 +1,38 @@
+:root {
+  --bg-deep: #0a0a12;
+  --text-primary: #f0eef8;
+  --text-secondary: #a09ab8;
+  --accent-violet: #a78bfa;
+  --accent-gold: #fbbf24;
+  --glass-bg: rgba(255,255,255,0.05);
+  --glass-border: rgba(255,255,255,0.1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-deep); color: var(--text-primary); min-height: 100vh; }
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+.top-nav { width: 100%; padding: 1.5rem 2rem; background: rgba(10,10,18,0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10; }
+.back-link { color: var(--accent-violet); text-decoration: none; font-weight: 500; }
+.home-garden { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem; text-align: center; }
+.home-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--accent-violet), var(--text-primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.home-subtitle { color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.2rem; }
+.halls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; width: 100%; max-width: 900px; margin-bottom: 3rem; }
+.hall-card { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2rem; text-decoration: none; color: inherit; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.hall-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px rgba(167,139,250,0.3); border-color: rgba(167,139,250,0.4); }
+.hall-icon { font-size: 2.5rem; }
+.hall-card h2 { font-size: 1.5rem; font-weight: 600; }
+.hall-card p { color: var(--text-secondary); font-size: 0.9rem; }
+.pulsar-container { position: fixed; bottom: 2rem; right: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; cursor: pointer; }
+.pulsar-core { width: 20px; height: 20px; background: var(--accent-violet); border-radius: 50%; animation: pulse 2s infinite; }
+.pulsar-hint { font-size: 0.7rem; color: var(--accent-violet); letter-spacing: 2px; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(167,139,250,0.7); } 70% { box-shadow: 0 0 0 15px rgba(167,139,250,0); } 100% { box-shadow: 0 0 0 0 rgba(167,139,250,0); } }
+.mantra { position: fixed; bottom: 2rem; left: 2rem; color: var(--text-secondary); font-style: italic; opacity: 0.7; font-size: 0.9rem; }
+.hall-view { width: 100%; max-width: 800px; padding: 2rem; margin-top: 2rem; }
+.hall-title { font-size: 2rem; margin-bottom: 0.5rem; }
+.hall-desc { color: var(--text-secondary); margin-bottom: 2rem; }
+.glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; }
+.empty-state { text-align: center; color: var(--text-secondary); padding: 3rem; }
+.goals-input-area { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.goal-input { flex: 1; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 0.8rem 1rem; color: var(--text-primary); font-size: 1rem; outline: none; }
+.goal-input:focus { border-color: var(--accent-violet); }
+.primary-button { background: linear-gradient(135deg, var(--accent-violet), var(--accent-gold)); border: none; border-radius: 12px; padding: 0.8rem 1.5rem; color: #0a0a12; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+.primary-button:hover { opacity: 0.9; }
