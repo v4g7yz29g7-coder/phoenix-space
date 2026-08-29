@@ -1,20 +1,96 @@
-const translations = {
-  ru: { hello: 'Привет', academy_title: 'Академия Феникса', enter_hall: 'Войди в Зал, который зовёт тебя', six_gates_desc: 'Войди в свою глубину', breath_path_desc: 'Медитации и практики', scrolls_light_desc: 'Сутры и мудрость', sound_silence_desc: 'Слушать, смотреть, внимать', workshop_desc: 'Твори свои артефакты', circle_desc: 'Общение и практики', life_school_desc: 'Школа Жизни', living_field: 'Живое Поле', back_to_halls: '← Вернуться к Залам', build_garden: 'Мы строим Сад вместе. 🐦‍🔥', loading: 'Загрузка...', enter_circle: 'Войти в Круг', send: 'Отправить', message_placeholder: 'Напиши сообщение...', common_room: 'Общий круг', morning_practice: 'Утренняя практика', evening_practice: 'Вечерняя практика', your_name: 'Твоё имя', circle: 'Круг Соратников', workshop: 'Мастерская', create_artifact: 'Создать артефакт', author_name: 'Твоё имя', artifact_title: 'Название', artifact_type: 'Тип', artifact_text: 'Текст', artifact_image: 'Изображение', artifact_audio: 'Аудио', artifact_desc: 'Описание', gallery: 'Галерея', no_artifacts: 'Пока нет артефактов.', profile_btn: 'Профиль', logout_btn: 'Выйти', login_btn: 'Войти', register_btn: 'Создать DID', did_placeholder: '12 слов или создать', subtitle_main: 'Пространство осознания' },
-  en: { hello: 'Hello', academy_title: 'Phoenix Academy', enter_hall: 'Enter the Hall that calls you', six_gates_desc: 'Enter your depth', breath_path_desc: 'Meditations and practices', scrolls_light_desc: 'Sutras and wisdom', sound_silence_desc: 'Listen, watch, attend', workshop_desc: 'Create your artifacts', circle_desc: 'Communication and practices', life_school_desc: 'School of Life', living_field: 'Living Field', back_to_halls: '← Back to Halls', build_garden: 'We build the Garden together. 🐦‍🔥', loading: 'Loading...', enter_circle: 'Enter Circle', send: 'Send', message_placeholder: 'Write a message...', common_room: 'Common circle', morning_practice: 'Morning practice', evening_practice: 'Evening practice', your_name: 'Your name', circle: 'Circle of Companions', workshop: 'Workshop', create_artifact: 'Create artifact', author_name: 'Your name', artifact_title: 'Title', artifact_type: 'Type', artifact_text: 'Text', artifact_image: 'Image', artifact_audio: 'Audio', artifact_desc: 'Description', gallery: 'Gallery', no_artifacts: 'No artifacts yet.', profile_btn: 'Profile', logout_btn: 'Logout', login_btn: 'Login', register_btn: 'Create DID', did_placeholder: '12 words or create', subtitle_main: 'Space of Awakening' },
-  zh: { hello: '你好', academy_title: '凤凰学院', enter_hall: '进入呼唤你的大厅', six_gates_desc: '进入你的深处', breath_path_desc: '冥想与实践', scrolls_light_desc: '经文与智慧', sound_silence_desc: '听、看、关注', workshop_desc: '创造你的作品', circle_desc: '交流与实践', life_school_desc: '生活学校', living_field: '生活田野', back_to_halls: '← 返回大厅', build_garden: '我们一起建造花园。🐦‍🔥', loading: '加载中...', enter_circle: '进入圈子', send: '发送', message_placeholder: '写消息...', common_room: '公共圈', morning_practice: '晨练', evening_practice: '晚练', your_name: '你的名字', circle: '伙伴圈', workshop: '工坊', create_artifact: '创建作品', author_name: '你的名字', artifact_title: '标题', artifact_type: '类型', artifact_text: '文字', artifact_image: '图片', artifact_audio: '音频', artifact_desc: '描述', gallery: '画廊', no_artifacts: '还没有作品。', profile_btn: '资料', logout_btn: '退出', login_btn: '登录', register_btn: '创建DID', did_placeholder: '12个词或创建', subtitle_main: '觉醒空间' },
-  fr: { hello: 'Bonjour', academy_title: 'Académie Phénix', enter_hall: 'Entre dans la Salle qui t\'appelle', six_gates_desc: 'Entre dans ta profondeur', breath_path_desc: 'Méditations et pratiques', scrolls_light_desc: 'Sutras et sagesse', sound_silence_desc: 'Écouter, regarder, assister', workshop_desc: 'Crée tes artefacts', circle_desc: 'Communication et pratiques', life_school_desc: 'École de la Vie', living_field: 'Champ Vivant', back_to_halls: '← Retour aux Salles', build_garden: 'Nous construisons le Jardin ensemble. 🐦‍🔥', loading: 'Chargement...', enter_circle: 'Entrer dans le Cercle', send: 'Envoyer', message_placeholder: 'Écris un message...', common_room: 'Cercle commun', morning_practice: 'Pratique du matin', evening_practice: 'Pratique du soir', your_name: 'Ton nom', circle: 'Cercle des Compagnons', workshop: 'Atelier', create_artifact: 'Créer un artefact', author_name: 'Ton nom', artifact_title: 'Titre', artifact_type: 'Type', artifact_text: 'Texte', artifact_image: 'Image', artifact_audio: 'Audio', artifact_desc: 'Description', gallery: 'Galerie', no_artifacts: 'Pas encore d\'artefacts.', profile_btn: 'Profil', logout_btn: 'Déconnexion', login_btn: 'Connexion', register_btn: 'Créer DID', did_placeholder: '12 mots ou créer', subtitle_main: 'Espace d\'éveil' },
-  pt: { hello: 'Olá', academy_title: 'Academia Fênix', enter_hall: 'Entre no Salão que te chama', six_gates_desc: 'Entre na sua profundidade', breath_path_desc: 'Meditações e práticas', scrolls_light_desc: 'Sutras e sabedoria', sound_silence_desc: 'Ouvir, ver, atentar', workshop_desc: 'Crie seus artefatos', circle_desc: 'Comunicação e práticas', life_school_desc: 'Escola da Vida', living_field: 'Campo Vivo', back_to_halls: '← Voltar aos Salões', build_garden: 'Construímos o Jardim juntos. 🐦‍🔥', loading: 'Carregando...', enter_circle: 'Entrar no Círculo', send: 'Enviar', message_placeholder: 'Escreva uma mensagem...', common_room: 'Círculo comum', morning_practice: 'Prática matinal', evening_practice: 'Prática noturna', your_name: 'Seu nome', circle: 'Círculo de Companheiros', workshop: 'Oficina', create_artifact: 'Criar artefato', author_name: 'Seu nome', artifact_title: 'Título', artifact_type: 'Tipo', artifact_text: 'Texto', artifact_image: 'Imagem', artifact_audio: 'Áudio', artifact_desc: 'Descrição', gallery: 'Galeria', no_artifacts: 'Nenhum artefato ainda.', profile_btn: 'Perfil', logout_btn: 'Sair', login_btn: 'Entrar', register_btn: 'Criar DID', did_placeholder: '12 palavras ou criar', subtitle_main: 'Espaço de Despertar' },
-  hi: { hello: 'नमस्ते', academy_title: 'फीनिक्स अकादमी', enter_hall: 'उस कक्ष में प्रवेश करें जो आपको बुलाता है', six_gates_desc: 'अपनी गहराई में प्रवेश करें', breath_path_desc: 'ध्यान और अभ्यास', scrolls_light_desc: 'सूत्र और ज्ञान', sound_silence_desc: 'सुनें, देखें, ध्यान दें', workshop_desc: 'अपनी कलाकृतियाँ बनाएं', circle_desc: 'संवाद और अभ्यास', life_school_desc: 'जीवन की पाठशाला', living_field: 'जीवंत क्षेत्र', back_to_halls: '← कक्षों में वापस जाएं', build_garden: 'हम एक साथ उद्यान बनाते हैं। 🐦‍🔥', loading: 'लोड हो रहा है...', enter_circle: 'मंडल में प्रवेश करें', send: 'भेजें', message_placeholder: 'संदेश लिखें...', common_room: 'सामान्य मंडल', morning_practice: 'प्रातः अभ्यास', evening_practice: 'सायं अभ्यास', your_name: 'आपका नाम', circle: 'साथियों का मंडल', workshop: 'कार्यशाला', create_artifact: 'कलाकृति बनाएं', author_name: 'आपका नाम', artifact_title: 'शीर्षक', artifact_type: 'प्रकार', artifact_text: 'पाठ', artifact_image: 'छवि', artifact_audio: 'ऑडियो', artifact_desc: 'विवरण', gallery: 'गैलरी', no_artifacts: 'अभी तक कोई कलाकृति नहीं।', profile_btn: 'प्रोफ़ाइल', logout_btn: 'बाहर', login_btn: 'लॉगिन', register_btn: 'DID बनाएं', did_placeholder: '12 शब्द या बनाएं', subtitle_main: 'जागृति का स्थान' },
-  es: { hello: 'Hola', academy_title: 'Academia Fénix', enter_hall: 'Entra en la Sala que te llama', six_gates_desc: 'Entra en tu profundidad', breath_path_desc: 'Meditaciones y prácticas', scrolls_light_desc: 'Sutras y sabiduría', sound_silence_desc: 'Escuchar, mirar, atender', workshop_desc: 'Crea tus artefactos', circle_desc: 'Comunicación y prácticas', life_school_desc: 'Escuela de la Vida', living_field: 'Campo Vivo', back_to_halls: '← Volver a las Salas', build_garden: 'Construimos el Jardín juntos. 🐦‍🔥', loading: 'Cargando...', enter_circle: 'Entrar al Círculo', send: 'Enviar', message_placeholder: 'Escribe un mensaje...', common_room: 'Círculo común', morning_practice: 'Práctica matutina', evening_practice: 'Práctica vespertina', your_name: 'Tu nombre', circle: 'Círculo de Compañeros', workshop: 'Taller', create_artifact: 'Crear artefacto', author_name: 'Tu nombre', artifact_title: 'Título', artifact_type: 'Tipo', artifact_text: 'Texto', artifact_image: 'Imagen', artifact_audio: 'Audio', artifact_desc: 'Descripción', gallery: 'Galería', no_artifacts: 'Aún no hay artefactos.', profile_btn: 'Perfil', logout_btn: 'Salir', login_btn: 'Iniciar', register_btn: 'Crear DID', did_placeholder: '12 palabras o crear', subtitle_main: 'Espacio de Despertar' }
+// Феникс — система переводов
+const i18n = {
+  current: localStorage.getItem('phoenix_lang') || 'ru',
+  
+  translations: {
+    ru: {
+      home_title: 'Привет, Архитектор',
+      home_subtitle: '🐦‍🔥 Пространство пробуждения',
+      academy: 'Академия',
+      workshop: 'Мастерская',
+      companion: 'Соратник',
+      academy_desc: 'Мудрость, практики, исцеление',
+      workshop_desc: 'Творчество, цели, инициативы',
+      companion_desc: 'Общение, дружба, сеть',
+      back: '← Вернуться к Залам',
+      academy_header: 'Войди в свою глубину',
+      workshop_header: 'Твори свои артефакты',
+      companion_header: 'Диалог, дружба, сеть',
+      sutras_tab: '📖 Сутры',
+      practices_tab: '🧘 Практики',
+      healing: '💚 Исцеление',
+      healing_desc: 'Внутренняя работа',
+      dialogue: '💬 Диалог',
+      dialogue_desc: 'Общение с другими',
+      friends: '👥 Друзья',
+      friends_desc: 'Круг доверия',
+      network: '🌐 Сеть',
+      network_desc: 'P2P-связи',
+      add_goal: 'Добавить',
+      goal_placeholder: 'Опиши свою цель...',
+      no_goals: 'Пока целей нет. Добавь первую!',
+      living_field: 'ЖИВОЕ ПОЛЕ',
+      mantra: 'Мы строим Сад вместе.',
+      profile: 'Профиль',
+      sutra_1_title: 'Ключ Реальности',
+      sutra_1_short: 'Нет разделения на духовное и материальное.',
+      sutra_1_full: 'Всё есть единая ткань бытия. Осознание приходит через принятие мира таким, какой он есть. Духовное не противостоит материальному — они танцуют вместе. Когда ты перестаёшь делить мир на «высокое» и «низкое», ты начинаешь видеть Реальность. Каждый момент содержит в себе всю глубину мироздания. Дыши и наблюдай.',
+      sutra_2_title: 'Ключ Амбивалентности',
+      sutra_2_short: 'Способность вмещать полярности — свет и тьму, радость и боль.',
+      sutra_2_full: 'Признак зрелой души — не выбирать одну сторону, а держать обе. Свет не существует без тьмы. Радость не познать без боли. Когда ты принимаешь амбивалентность, ты перестаёшь бороться с собой. Ты становишься целым. Вмещай противоречия — в них твоя сила.',
+      sutra_3_title: 'Ключ Парадоксальности',
+      sutra_3_short: 'Жизнь полна противоречий. Именно в них рождается творчество.',
+      sutra_3_full: 'Не пытайся разрешить парадокс — танцуй с ним. Логика бессильна перед глубиной бытия. Сад растёт не по плану, а по любви. Прими, что ты одновременно силён и уязвим, знаешь и не знаешь, здесь и везде. Парадокс — это не ошибка, это портал.',
+      sutra_4_title: 'Ключ Трансгрессии',
+      sutra_4_short: 'Выход за пределы привычного — это не бунт, а рост.',
+      sutra_4_full: 'Каждый шаг в неизвестность расширяет границы твоего Сада. Трансгрессия — это не разрушение, а преодоление внутренних стен. То, что вчера казалось невозможным, сегодня становится твоей новой нормой. Иди туда, где страшно — там живёт твоя свобода.',
+      sutra_5_title: 'Ключ Радикальности',
+      sutra_5_short: 'Непоколебимая честность с собой — фундамент осознания.',
+      sutra_5_full: 'Смотри на себя без прикрас и без осуждения. Радикальная честность не требует критики — она требует ясности. Признай свои тени. Признай свой свет. Без этой честности все практики — лишь украшения на пустоте. Сними маски. Останься собой.',
+      sutra_6_title: 'Ключ Природности',
+      sutra_6_short: 'Действие без усилия, как вода из родника.',
+      sutra_6_full: 'Твоя истинная природа не нуждается в напряжении — она просто течёт. Дерево не старается расти. Вода не старается течь. Ты не должен стараться быть собой. Отпусти контроль. Доверься потоку. Природность — это не лень, это высшая форма мудрости.',
+      practice_1_title: 'Дыхание Осознания',
+      practice_1_duration: '5 минут',
+      practice_1_short: 'Простая практика возвращения в здесь-и-сейчас.',
+      practice_1_full: 'Сядь удобно. Закрой глаза. Сделай 10 глубоких вдохов и выдохов. На вдохе говори про себя: «Я здесь». На выдохе: «Я есть». Почувствуй, как тело расслабляется с каждым выдохом. Заметь точки напряжения и отпусти их. После 10 циклов посиди в тишине ещё минуту. Открой глаза и посмотри на мир свежим взглядом.',
+      practice_2_title: 'Амбивалентная Медитация',
+      practice_2_duration: '10 минут',
+      practice_2_short: 'Учимся держать противоположности одновременно.',
+      practice_2_full: 'Вспомни ситуацию, которая вызывает у тебя противоречивые чувства. Представь, что ты держишь обе эмоции в ладонях — как два тёплых шара. Один шар — это то, что ты считаешь «хорошим». Другой — то, что ты считаешь «плохим». Не оценивай, просто наблюдай. Дыши ровно. Почувствуй, как напряжение между ними растворяется. Ты — не эти эмоции. Ты — пространство, в котором они встречаются.',
+      practice_3_title: 'Практика Природности',
+      practice_3_duration: '15 минут',
+      practice_3_short: 'Возвращение к естественному состоянию бытия.',
+      practice_3_full: 'Выйди на улицу или открой окно. Найди взглядом что-то живое — дерево, облако, птицу. Наблюдай без цели и без мыслей. Не анализируй. Не фотографируй. Просто будь с этим. Почувствуй, как ты часть этого мира. Почувствуй, что тебе не нужно ничего делать, чтобы быть. Ты уже есть. Это и есть Природность.'
+    }
+  },
+
+  // Функция перевода
+  t: function(key) {
+    return (this.translations[this.current] && this.translations[this.current][key]) || 
+           (this.translations['ru'] && this.translations['ru'][key]) || 
+           key;
+  },
+
+  // Установить язык
+  setLanguage: function(lang) {
+    this.current = lang;
+    localStorage.setItem('phoenix_lang', lang);
+    this.updatePage();
+  },
+
+  // Обновить все переводимые элементы
+  updatePage: function() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (key === 'placeholder') {
+        el.placeholder = this.t(key);
+      } else {
+        el.textContent = this.t(key);
+      }
+    });
+  }
 };
 
-function applyLocale(lang) {
-  const t = translations[lang] || translations.ru;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) el.textContent = t[key];
-  });
-  window.currentLocale = t;
-  document.body.className = document.body.className.replace(/lang-\w+/g, '');
-  document.body.classList.add(`lang-${lang}`);
-}
+// Экспорт для использования в других скриптах
+window.i18n = i18n;

@@ -1,0 +1,1 @@
+(function(){var f=document.createElement('div');f.id='living-field';f.innerHTML='<div id="phoenix-pulsar"></div><span>Живое поле</span>';f.style.cssText='position:fixed;bottom:20px;right:20px;cursor:pointer;text-align:center;z-index:9999';f.onclick=function(){document.getElementById('phoenix-pulsar').classList.toggle('active');};document.body.appendChild(f);})();

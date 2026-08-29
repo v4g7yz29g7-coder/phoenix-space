@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Феникс — Пространство пробуждения</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0a0a12;
+      --text-primary: #f0eef8;
+      --text-secondary: #a09ab8;
+      --accent-violet: #a78bfa;
+      --accent-gold: #fbbf24;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .page { display: none; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2rem; }
+    .page.active { display: flex; }
+    .home-garden { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .home-title { font-size: 2.5rem; font-weight: 600; letter-spacing: -0.02em; }
+    .home-subtitle { color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2rem; }
+    .halls-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .hall-card {
+      background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem 1.5rem; width: 220px;
+      text-decoration: none; color: var(--text-primary); cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .hall-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(167,139,250,0.2); border-color: rgba(167,139,250,0.3); }
+    .hall-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+    .hall-card h2 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .hall-card p { font-size: 0.85rem; color: var(--text-secondary); }
+    .back-link { position: fixed; top: 1.5rem; left: 1.5rem; color: var(--accent-violet); text-decoration: none; font-size: 0.9rem; cursor: pointer; z-index: 1000; background: var(--glass-bg); padding: 0.5rem 1rem; border-radius: 8px; }
+    .back-link:hover { color: var(--accent-gold); }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(167,139,250,0.6); } 70% { box-shadow: 0 0 0 20px rgba(167,139,250,0); } 100% { box-shadow: 0 0 0 0 rgba(167,139,250,0); } }
+    #phoenix-pulsar { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-violet); animation: pulse 2s infinite; margin: 0 auto; transition: background 0.3s; }
+    #phoenix-pulsar.active { background: var(--accent-gold); animation: pulse 2s infinite; }
+  </style>
+</head>
+<body>
+
+  <!-- ГЛАВНАЯ -->
+  <div id="home-page" class="page active">
+    <div class="home-garden">
+      <h1 class="home-title">Привет, Архитектор</h1>
+      <p class="home-subtitle">🐦‍🔥 Пространство пробуждения</p>
+      <div class="halls-grid">
+        <div class="hall-card" onclick="showPage('academy')"><span class="hall-icon">📜</span><h2>Академия</h2><p>Мудрость, практики, исцеление</p></div>
+        <div class="hall-card" onclick="showPage('workshop')"><span class="hall-icon">🛠️</span><h2>Мастерская</h2><p>Творчество, цели, инициативы</p></div>
+        <div class="hall-card" onclick="showPage('companion')"><span class="hall-icon">🤝</span><h2>Соратник</h2><p>Общение, дружба, сеть</p></div>
+        <div class="hall-card" onclick="showPage('about')"><span class="hall-icon">📋</span><h2>О проекте</h2><p>Конституция, лицензия, информация</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- АКАДЕМИЯ -->
+  <div id="academy-page" class="page">
+    <span class="back-link" onclick="showPage('home')">← Вернуться к Залам</span>
+    <h1>📜 Академия</h1>
+    <p style="color:var(--text-secondary)">Войди в свою глубину</p>
+  </div>
+
+  <!-- МАСТЕРСКАЯ -->
+  <div id="workshop-page" class="page">
+    <span class="back-link" onclick="showPage('home')">← Вернуться к Залам</span>
+    <h1>🛠️ Мастерская</h1>
+    <p style="color:var(--text-secondary)">Твори свои артефакты</p>
+    <div style="display:flex;gap:0.5rem;margin-top:1.5rem">
+      <input type="text" id="goal-input" placeholder="Опиши свою цель..." style="padding:0.6rem 1rem;border-radius:8px;border:1px solid var(--glass-border);background:var(--glass-bg);color:var(--text-primary);width:250px">
+      <button onclick="addGoal()" style="padding:0.6rem 1.2rem;border-radius:8px;border:none;background:linear-gradient(135deg,var(--accent-violet),var(--accent-gold));color:var(--bg-deep);font-weight:600;cursor:pointer">Добавить</button>
+    </div>
+    <div id="goals-list" style="width:100%;max-width:400px;margin-top:1rem"></div>
+  </div>
+
+  <!-- СОРАТНИК -->
+  <div id="companion-page" class="page">
+    <span class="back-link" onclick="showPage('home')">← Вернуться к Залам</span>
+    <h1>🤝 Соратник</h1>
+    <p style="color:var(--text-secondary)">Диалог, дружба, сеть</p>
+    <div class="halls-grid" style="margin-top:2rem">
+      <div class="hall-card"><span class="hall-icon">💬</span><h2>Диалог</h2><p>Общение с другими</p></div>
+      <div class="hall-card"><span class="hall-icon">👥</span><h2>Друзья</h2><p>Круг доверия</p></div>
+      <div class="hall-card"><span class="hall-icon">🌐</span><h2>Сеть</h2><p>P2P-связи</p></div>
+    </div>
+  </div>
+
+  <!-- О ПРОЕКТЕ -->
+  <div id="about-page" class="page"></div>
+
+  <!-- ЖИВОЕ ПОЛЕ -->
+  <div id="phoenix-living-field" style="position:fixed;bottom:30px;right:30px;z-index:9999;cursor:pointer;text-align:center" onclick="togglePulsar()">
+    <div id="phoenix-pulsar"></div>
+    <div style="color:var(--accent-violet);font-size:10px;letter-spacing:2px;margin-top:5px">ЖИВОЕ ПОЛЕ</div>
+  </div>
+
+  <!-- МАНТРА -->
+  <div style="position:fixed;bottom:30px;left:30px;z-index:9999;color:rgba(255,255,255,0.3);font-style:italic;font-size:13px">Мы строим Сад вместе.</div>
+
+  <script>
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const page = document.getElementById(name + '-page');
+      if (page) page.classList.add('active');
+      if (name === 'about') { if (typeof renderAboutPage === 'function') setTimeout(renderAboutPage, 100); }
+      if (name === 'academy') { if (typeof initAcademy === 'function') setTimeout(function() { if (typeof renderAcademyContent === 'function') renderAcademyContent(); }, 100); }
+    }
+    function togglePulsar() { document.getElementById('phoenix-pulsar').classList.toggle('active'); }
+    function loadGoals() {
+      const goals = JSON.parse(localStorage.getItem('phoenix_goals') || '[]');
+      const list = document.getElementById('goals-list');
+      if (!list) return;
+      if (goals.length === 0) { list.innerHTML = '<p style="color:var(--text-secondary)">Пока целей нет. Добавь первую!</p>'; return; }
+      list.innerHTML = goals.map(g => '<div style="padding:0.75rem 1rem;margin-bottom:0.5rem;border-radius:8px;background:var(--glass-bg);border:1px solid var(--glass-border);text-align:left;cursor:pointer;' + (g.done ? 'opacity:0.5;text-decoration:line-through' : '') + '" onclick="toggleGoal(' + g.id + ')">' + g.text + '</div>').join('');
+    }
+    function addGoal() {
+      const input = document.getElementById('goal-input');
+      const text = input.value.trim();
+      if (!text) return;
+      const goals = JSON.parse(localStorage.getItem('phoenix_goals') || '[]');
+      goals.push({ id: Date.now(), text, done: false });
+      localStorage.setItem('phoenix_goals', JSON.stringify(goals));
+      input.value = '';
+      loadGoals();
+    }
+    function toggleGoal(id) {
+      const goals = JSON.parse(localStorage.getItem('phoenix_goals') || '[]');
+      const updated = goals.map(g => g.id === id ? {...g, done: !g.done} : g);
+      localStorage.setItem('phoenix_goals', JSON.stringify(updated));
+      loadGoals();
+    }
+    loadGoals();
+  </script>
+  <script src="/js/languages.js"></script>
+  <script src="/js/academy.js"></script>
+  <script src="/js/about.js"></script>
+</body>
+</html>

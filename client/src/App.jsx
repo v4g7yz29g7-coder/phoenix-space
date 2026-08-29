@@ -1,63 +1,72 @@
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import Academy from './modules/Academy';
-import Workshop from './modules/Workshop';
-import Companion from './modules/Companion';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import LivingField from './components/LivingField';
 import Mantra from './components/Mantra';
+import Academy from './modules/Academy';
+import Workshop from './modules/Workshop';
+import Companion from './modules/Companion';
+import './App.css';
 
 function Home() {
   return (
     <div className="home-garden">
       <h1 className="home-title">Привет, Архитектор</h1>
-      <p className="home-subtitle">🐦‍🔥 Пространство пробуждения</p>
+      <p className="home-subtitle">🦅 Пространство пробуждения</p>
       <div className="halls-grid">
-        <Link to="/academy" className="hall-card academy">
+        <Link to="/poznanie" className="hall-card academy">
           <span className="hall-icon">📜</span>
-          <h2>Академия</h2>
-          <p>Войди в свою глубину</p>
+          <h2>Познание</h2>
+          <p>Смыслы и исцеление</p>
         </Link>
         <Link to="/workshop" className="hall-card workshop">
           <span className="hall-icon">🛠️</span>
           <h2>Мастерская</h2>
-          <p>Твори свои артефакты</p>
+          <p>Творчество, цели, инициативы</p>
         </Link>
-        <Link to="/companion" className="hall-card companion">
+        <Link to="/community" className="hall-card companion">
           <span className="hall-icon">🤝</span>
-          <h2>Соратник</h2>
-          <p>Диалог и дружба</p>
+          <h2>Сообщество</h2>
+          <p>Общение, дружба, сеть</p>
         </Link>
       </div>
     </div>
   );
 }
 
-export default function App() {
+function AppRoutes() {
   const location = useLocation();
   const isHome = location.pathname === '/';
 
-  const handleLivingField = (active) => {
-    console.log('Живое Поле:', active ? 'активно' : 'не активно');
-  };
-
   return (
     <div className="app-shell">
-      <LanguageSwitcher />
-      <LivingField onActivate={handleLivingField} />
+      <div className="top-right-group">
+        <LanguageSwitcher />
+        <a href="/profile.html" className="profile-link" title="Профиль">👤</a>
+      </div>
+      <LivingField onActivate={(active) => console.log('Живое Поле:', active)} />
       <Mantra />
-
       {!isHome && (
         <nav className="top-nav">
           <Link to="/" className="back-link">← ВЕРНУТЬСЯ К ЗАЛАМ</Link>
         </nav>
       )}
-
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/academy" element={<Academy />} />
+        <Route path="/poznanie" element={<Academy />} />
         <Route path="/workshop" element={<Workshop />} />
-        <Route path="/companion" element={<Companion />} />
+        <Route path="/community" element={<Companion />} />
       </Routes>
     </div>
   );
 }
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}
+
+// ЯВНЫЙ ЭКСПОРТ ДЛЯ VITE — чтобы компонент не был выброшен
+export { LanguageSwitcher, LivingField, Mantra };

@@ -1,21 +1,16 @@
 {
-  "name": "Феникс: Цифровой Ковчег",
+  "name": "Феникс — Пространство пробуждения",
   "short_name": "Феникс",
+  "description": "Цифровой Ковчег Феникс",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a12",
-  "theme_color": "#ff5500",
-  "description": "Твой Цифровой Ковчег для суверенного общения и творчества.",
+  "theme_color": "#a78bfa",
   "icons": [
     {
-      "src": "/icons/phoenix-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/phoenix-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
     }
   ]
 }

@@ -1,80 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Профиль | Феникс 🐦‍🔥</title>
-  <style>
-    body { background: #0a0a12; color: #e0e0e0; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
-    .container { max-width: 500px; width: 100%; text-align: center; }
-    .back-link { display: inline-block; margin-bottom: 2rem; color: #ffaa66; text-decoration: none; }
-    .avatar { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #ff5500; object-fit: cover; background: #2a2a3e; box-shadow: 0 0 30px rgba(255,80,0,0.4); }
-    .name { font-size: 1.8rem; color: #ffd9b3; margin: 0.5rem 0; }
-    .btn { background: #ff5500; border: none; color: #fff; padding: 0.6rem 2rem; border-radius: 30px; cursor: pointer; font-size: 0.9rem; margin: 0.5rem; }
-    .edit-form { display: none; background: rgba(20,20,30,0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255,100,0,0.4); border-radius: 20px; padding: 1.5rem; margin-top: 1.5rem; }
-    .edit-form input[type="text"] { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,140,0,0.3); border-radius: 12px; padding: 0.7rem; color: #fff; margin-bottom: 0.8rem; }
-    .edit-form input[type="file"] { color: #aa8c7a; margin-bottom: 0.8rem; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-  <div class="container">
+  <div class="profile-container">
     <a href="/" class="back-link">← Вернуться в Сад</a>
-    <div id="profileContent"></div>
+    <div class="profile-avatar" id="avatar-display">👤</div>
+    <div class="profile-name" id="username-display">Архитектор</div>
+    <div class="profile-did">did:phoenix:0x1234...5678</div>
+    <button class="btn-secondary" onclick="document.getElementById('file-input').click()" style="margin-top:-8px">✎ Изменить фото</button>
+    <div class="profile-card"><h3>Статистика</h3><div class="profile-stat"><span class="label">Артефактов</span><span class="value" id="profile-artifacts-count">0</span></div><div class="profile-stat"><span class="label">Целей</span><span class="value" id="profile-goals-count">0</span></div><div class="profile-stat"><span class="label">Друзей</span><span class="value">0</span></div><div class="profile-stat"><span class="label">В Саду с</span><span class="value">2026</span></div></div>
+    <div class="profile-card"><h3>Активность</h3><p style="color:var(--muted);font-size:13px;line-height:1.5">Твой Сад только начинает расти. Создай первый артефакт в Мастерской или изучи Сутры в Академии.</p></div>
+    <button class="btn-primary" onclick="window.location='/'">🐦‍🔥 Вернуться в Сад</button>
+    <button class="btn-secondary" id="logout-btn">Выйти</button>
   </div>
-
+  <input type="file" id="file-input" accept="image/*" style="display:none" onchange="changeAvatar(event)">
   <script>
-    const STORAGE_KEY = 'phoenix_profile';
-    
-    function loadProfile() {
-      let profile = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      const did = JSON.parse(localStorage.getItem('phoenix_did') || '{}');
-      const address = did.address ? did.address.substring(0, 8) + '...' : '';
-      
-      profile = {
-        name: profile.name || 'Архитектор ' + address,
-        avatar: profile.avatar || '/icons/phoenix-192.png'
+    var savedName = localStorage.getItem('phoenix_username') || 'Архитектор';
+    var savedAvatar = localStorage.getItem('phoenix_avatar');
+    document.getElementById('username-display').textContent = savedName;
+    if (savedAvatar) document.getElementById('avatar-display').innerHTML = '<img src="'+savedAvatar+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
+    var artifacts = JSON.parse(localStorage.getItem('phoenix_artifacts')||'[]');
+    var goals = JSON.parse(localStorage.getItem('phoenix_goals')||'[]');
+    document.getElementById('profile-artifacts-count').textContent = artifacts.length;
+    document.getElementById('profile-goals-count').textContent = goals.length;
+    function changeAvatar(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        localStorage.setItem('phoenix_avatar', ev.target.result);
+        document.getElementById('avatar-display').innerHTML = '<img src="'+ev.target.result+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
       };
-      
-      document.getElementById('profileContent').innerHTML = `
-        <img src="${profile.avatar}" class="avatar" id="avatarImg">
-        <div class="name" id="nameDisplay">${profile.name}</div>
-        <button class="btn" onclick="toggleEdit()">✏️ Редактировать</button>
-        <div class="edit-form" id="editForm">
-          <input type="text" id="newName" placeholder="Твоё имя" value="${profile.name}">
-          <input type="file" id="newAvatar" accept="image/*">
-          <button class="btn" onclick="saveProfile()">Сохранить</button>
-        </div>
-      `;
+      reader.readAsDataURL(file);
     }
-    
-    window.toggleEdit = function() {
-      const form = document.getElementById('editForm');
-      form.style.display = form.style.display === 'none' ? 'block' : 'none';
-    };
-    
-    window.saveProfile = function() {
-      const name = document.getElementById('newName').value || 'Архитектор';
-      const file = document.getElementById('newAvatar').files[0];
-      
-      const profile = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      profile.name = name;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
-      
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          profile.avatar = e.target.result;
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
-          document.getElementById('avatarImg').src = e.target.result;
-        };
-        reader.readAsDataURL(file);
+    document.getElementById('username-display').addEventListener('click', function() {
+      var newName = prompt('Введи новое имя:', savedName);
+      if (newName && newName.trim()) {
+        savedName = newName.trim();
+        localStorage.setItem('phoenix_username', savedName);
+        document.getElementById('username-display').textContent = savedName;
       }
-      
-      document.getElementById('nameDisplay').textContent = name;
-      document.getElementById('editForm').style.display = 'none';
-    };
-    
-    loadProfile();
+    });
+    document.getElementById('logout-btn').addEventListener('click', function() {
+      if (confirm('Все локальные данные будут удалены. Продолжить?')) {
+        localStorage.clear();
+        window.location.href = '/';
+      }
+    });
   </script>
 </body>
 </html>

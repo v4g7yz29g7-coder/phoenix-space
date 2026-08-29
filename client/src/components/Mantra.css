@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 2rem;
   left: 2rem;
-  z-index: 100;
+  z-index: 1000;
   font-style: italic;
   color: #a09ab8;
   opacity: 0.5;

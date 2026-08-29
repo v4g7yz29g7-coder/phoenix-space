@@ -1,14 +1,21 @@
 const express = require('express');
+const { authLimiter } = require('../middleware/rateLimiter');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const router = express.Router();
 
 // Секрет для JWT (в реальном проекте – в .env)
-const JWT_SECRET = process.env.JWT_SECRET || 'phoenix-secret-key-change-in-production';
+// Продакшн: секрет обязателен из .env
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error('❌ JWT_SECRET не задан в .env! Продакшн-безопасность нарушена.');
+  console.error('   Сгенерируйте: openssl rand -hex 32 и запишите в .env');
+  process.exit(1);
+}
 
-// Регистрация
-router.post('/register', async (req, res) => {
+// Регистрация (с лимитом попыток)
+router.post('/register', authLimiter, async (req, res) => {
   try {
     const { username, email, password } = req.body;
     if (!username || !email || !password) {
@@ -29,8 +36,8 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Вход
-router.post('/login', async (req, res) => {
+// Вход (с лимитом попыток)
+router.post('/login', authLimiter, async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {

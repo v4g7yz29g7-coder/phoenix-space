@@ -12,16 +12,31 @@ const { checkAccess } = require('./src/middleware/security');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, { cors: { origin: '*', methods: ['GET', 'POST'] } });
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map(s => s.trim())
+  : ['*'];
+
+const io = socketIo(server, { cors: {
+  origin: allowedOrigins,
+  methods: ['GET', 'POST'],
+  credentials: true
+}});
 
 const PORT = process.env.PORT || 3000;
 
 app.set("trust proxy", 1);
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(',').map(s => s.trim())
+    : '*',
+  credentials: true
+}));
 app.use(express.json());
+app.use("/gardener", require("./gardener"));
 app.use(generalLimiter);
 app.use(auditLogger);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => { res.set("Cache-Control", "no-cache, no-store, must-revalidate"); res.set("Pragma", "no-cache"); res.set("Expires", "0"); next(); });
 app.use('/api', require('./src/routes/api'));
 app.use("/api/profile", require("./src/routes/profile"));
 

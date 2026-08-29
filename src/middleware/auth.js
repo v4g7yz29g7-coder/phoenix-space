@@ -1,5 +1,13 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET || 'phoenix-secret-key-change-in-production';
+
+// Продакшн-безопасность: секрет ОБЯЗАТЕЛЕН из .env
+// Без него сервер не запускается — не допускает деплой с дефолтным ключом
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error('❌ JWT_SECRET не задан в .env! Продакшн-безопасность нарушена.');
+  console.error('   Сгенерируйте: openssl rand -hex 32 и запишите в .env');
+  process.exit(1);
+}
 
 module.exports = function(req, res, next) {
   const header = req.headers.authorization;

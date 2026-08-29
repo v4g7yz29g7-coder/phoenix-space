@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "tunnel": "ngrok http 3000"
+    "tunnel": "ngrok http 3000",
+    "build": "vite build",
+    "dev": "vite"
   },
   "dependencies": {
     "@scure/bip32": "^2.2.0",

@@ -1,0 +1,21 @@
+:root { --bg: #08080f; --surface: rgba(255,255,255,0.04); --border: rgba(255,255,255,0.06); --text: #e8e4f0; --muted: #88839a; --violet: #a78bfa; --gold: #fbbf24; --radius: 14px; --font: 'Inter', system-ui, sans-serif; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:100%; overflow-x:hidden; background:var(--bg); }
+body { font-family:var(--font); color:var(--text); min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:1.5rem; }
+.home-garden { width:100%; max-width:400px; margin:0 auto; display:flex; flex-direction:column; gap:2rem; }
+.home-title { font-size:1.75rem; font-weight:500; }
+.home-subtitle { color:var(--muted); font-size:0.95rem; margin-top:-1rem; }
+.halls-grid { display:flex; flex-direction:column; gap:0.75rem; width:100%; }
+.hall-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; width:100%; cursor:pointer; }
+.hall-card h2 { font-size:1rem; font-weight:500; }
+.hall-card p { font-size:0.8rem; color:var(--muted); }
+.page { display:none; min-height:100vh; flex-direction:column; align-items:center; justify-content:center; padding:2rem 1rem; width:100%; }
+.page.active { display:flex; }
+.back-link { position:fixed; top:1rem; left:1rem; color:var(--muted); font-size:0.8rem; cursor:pointer; z-index:100; }
+#lang-switcher { position:fixed; top:16px; right:16px; display:flex; align-items:center; gap:12px; z-index:200; }
+#lang-btn { display:flex; align-items:center; gap:6px; background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:6px 14px; color:var(--text); font-size:13px; cursor:pointer; font-family:var(--font); }
+#lang-dropdown { display:none; position:absolute; top:100%; right:0; margin-top:6px; background:#12121f; border:1px solid var(--border); border-radius:var(--radius); padding:6px; min-width:170px; }
+.lang-option { display:flex; align-items:center; gap:8px; width:100%; padding:10px 12px; border:none; background:transparent; color:var(--muted); font-size:13px; cursor:pointer; border-radius:10px; font-family:var(--font); text-align:left; }
+.lang-option:hover { background:rgba(255,255,255,0.04); color:var(--text); }
+#profile-link { font-size:17px; text-decoration:none; opacity:0.6; }
+#about-link { position:fixed; bottom:20px; left:20px; font-size:11px; color:var(--muted); text-decoration:none; opacity:0.6; z-index:9999; }
