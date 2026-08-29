@@ -1,3 +1,4 @@
 public/uploads/avatars/*
 phoenix.tar.gz
 phoenix_backup.db
+.env
