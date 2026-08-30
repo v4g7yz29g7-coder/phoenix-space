@@ -1,0 +1,44 @@
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={Phoenix.Controller.get_csrf_token()} />
+    <title>Феникс — Сад смыслов</title>
+    <link rel="stylesheet" href={~p"/assets/css/app.css"} />
+    <script defer type="module" src={~p"/assets/js/app.js"}></script>
+  </head>
+  <body>
+    <!-- Верхняя панель -->
+    <div class="topbar">
+      <div class="topbar-main">
+        <a href="/" class="brand">Феникс</a>
+
+        <div class="topbar-right">
+          <!-- Кнопка Войти -->
+          <a href="/login" class="btn-login">Войти</a>
+
+          <!-- Переключатель языка -->
+          <div class="lang-selector">
+            <select name="locale" class="lang-select" onchange="window.location.href='/set_locale/' + this.value">
+              <option value="ru" selected={(@locale || "ru") == "ru"}>🇷🇺 Русский</option>
+              <option value="en" selected={@locale == "en"}>🇬🇧 English</option>
+              <option value="es" selected={@locale == "es"}>🇪🇸 Español</option>
+              <option value="fr" selected={@locale == "fr"}>🇫🇷 Français</option>
+              <option value="de" selected={@locale == "de"}>🇩🇪 Deutsch</option>
+              <option value="zh" selected={@locale == "zh"}>🇨🇳 中文</option>
+              <option value="ar" selected={@locale == "ar"}>🇸🇦 العربية</option>
+              <option value="hi" selected={@locale == "hi"}>🇮🇳 हिन्दी</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Контент -->
+    <main>
+      <%= @inner_content %>
+    </main>
+  </body>
+</html>

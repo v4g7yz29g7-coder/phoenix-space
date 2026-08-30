@@ -1,0 +1,1601 @@
+/* This file is for your main application CSS */
+
+/* ========== 🐦‍🔥 ГЛУБИННОЕ ПАРЕНИЕ САКРАЛЬНЫХ СИМВОЛОВ ========== */
+#sacred-floating-layer {
+  pointer-events: none;
+  user-select: none;
+}
+
+.sacred-floating-symbol {
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+}
+
+/* Медитативное мерцание фона для символов */
+.sacred-floating-symbol img {
+  animation: sacred-glow 3s ease-in-out infinite;
+}
+
+@keyframes sacred-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(167,139,250,0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(167,139,250,0.6))
+            drop-shadow(0 0 40px rgba(251,191,36,0.2));
+  }
+}
+
+/* ========== 🐦‍🔥 ГЛУБИННОЕ ПАРЕНИЕ (анимация) ========== */
+@keyframes sacred-emerge {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(20px);
+        filter: blur(10px) drop-shadow(0 0 20px rgba(255,215,0,0.7)) drop-shadow(0 0 50px rgba(255,215,0,0.35));
+    }
+    40% {
+        opacity: 1;
+        filter: blur(0px) drop-shadow(0 0 20px rgba(255,215,0,0.7)) drop-shadow(0 0 50px rgba(255,215,0,0.35));
+    }
+    80% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: drop-shadow(0 0 20px rgba(255,215,0,0.7)) drop-shadow(0 0 50px rgba(255,215,0,0.35));
+    }
+}
+
+
+/* ============================================================
+   🏛️ АКАДЕМИЯ — Ландшафт Сутр и Практик
+   ============================================================ */
+
+/* --- Основной ландшафт --- */
+.academy-landscape {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0a0e1a 0%, #0d1128 40%, #1a1035 65%, #2d1b4e 100%);
+  color: #e6e0f0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Живой фон: орбы, звёзды, горы --- */
+.landscape-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.landscape-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  animation: orb-float 12s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.7) 0%, transparent 70%);
+  top: -80px;
+  left: -60px;
+}
+
+.orb-2 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.5) 0%, transparent 70%);
+  top: 30%;
+  right: -80px;
+  animation-delay: -4s;
+}
+
+.orb-3 {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
+  top: 55%;
+  left: 30%;
+  animation-delay: -8s;
+}
+
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+.landscape-horizon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(180deg, transparent 0%, rgba(44, 24, 78, 0.5) 60%, rgba(20, 14, 34, 0.8) 100%);
+  z-index: 1;
+}
+
+.landscape-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.mountains-1 {
+  height: 180px;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(76, 52, 120, 0.8) 50%, transparent 52%) 0 0 / 200px 100% repeat-x,
+    linear-gradient(45deg, transparent 48%, rgba(88, 60, 140, 0.7) 50%, transparent 52%) 100px 20px / 180px 100% repeat-x;
+  bottom: 0;
+}
+
+.mountains-2 {
+  height: 120px;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(40, 28, 70, 0.9) 50%, transparent 52%) 50px 0 / 160px 100% repeat-x;
+  bottom: 0;
+  opacity: 0.7;
+}
+
+.landscape-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-image:
+    radial-gradient(1px 1px at 25px 5px, rgba(255,255,255,0.8) 50%, transparent 50%),
+    radial-gradient(1px 1px at 50px 25px, rgba(255,255,255,0.5) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 125px 40px, rgba(255,255,255,0.7) 50%, transparent 50%),
+    radial-gradient(1px 1px at 20px 80px, rgba(167,139,250,0.6) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 100px 100px, rgba(255,255,255,0.4) 50%, transparent 50%),
+    radial-gradient(1px 1px at 180px 60px, rgba(251,191,36,0.5) 50%, transparent 50%),
+    radial-gradient(1px 1px at 220px 20px, rgba(255,255,255,0.6) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 300px 90px, rgba(255,255,255,0.5) 50%, transparent 50%);
+  background-size: 320px 120px;
+  opacity: 0.7;
+  animation: stars-twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes stars-twinkle {
+  from { opacity: 0.5; }
+  to { opacity: 0.9; }
+}
+
+/* --- Шапка Академии --- */
+.academy-header {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 4rem 1.5rem 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.academy-title {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(120deg, #e8dcc8 0%, #c9b8a0 55%, #a88a70 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-wrap: balance;
+}
+
+.academy-subtitle {
+  color: #a09080;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  margin: 0.25rem 0 2rem;
+}
+
+/* --- Табы --- */
+.academy-tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 6;
+}
+
+.academy-tab {
+  background: rgba(20, 18, 34, 0.8);
+  border: 1px solid rgba(255, 150, 60, 0.25);
+  color: #a09080;
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.academy-tab:hover {
+  border-color: rgba(255, 150, 60, 0.5);
+  color: #ffb380;
+  transform: translateY(-2px);
+}
+
+.academy-tab.active {
+  background: rgba(255, 100, 0, 0.2);
+  border-color: rgba(255, 120, 0, 0.6);
+  color: #ffd9b3;
+  box-shadow: 0 0 25px rgba(255, 80, 0, 0.15);
+}
+
+.academy-tab.active::before {
+  content: "✦ ";
+  opacity: 0.7;
+}
+
+/* --- Сетка карточек --- */
+.landscape-grid {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  padding: 1.5rem;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+/* --- Анимированное появление карточек --- */
+.landscape-card {
+  position: relative;
+  background: rgba(18, 16, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: card-emerge 0.6s ease forwards;
+  opacity: 0;
+  animation-delay: var(--delay, 0ms);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  font-family: inherit;
+}
+
+@keyframes card-emerge {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.landscape-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-color, #7C3AED);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+              0 0 30px color-mix(in srgb, var(--card-color, #7C3AED) 25%, transparent);
+  z-index: 3;
+}
+
+/* Свечение под карточкой */
+.card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    color-mix(in srgb, var(--card-color, #7C3AED) 20%, transparent) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.landscape-card:hover .card-glow {
+  opacity: 1;
+}
+
+/* Иконка */
+.card-glyph {
+  font-size: 2rem;
+  font-family: Georgia, serif;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.8rem;
+  filter: drop-shadow(0 2px 4px color-mix(in srgb, currentColor 20%, transparent));
+  transition: transform 0.3s ease;
+}
+
+.landscape-card:hover .card-glyph {
+  transform: none;
+  opacity: 0.85;
+}
+
+/* Заголовок */
+.card-title {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #e6dcc8;
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+/* Длительность */
+.card-duration {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+/* Превью текста */
+.card-preview {
+  font-size: 0.85rem;
+  color: #8a7d96;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  min-height: 0;
+}
+
+/* Кнопка входа */
+.card-enter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 22px;
+  border-radius: 100px;
+  border: 1px solid;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.landscape-card:hover .card-enter {
+  opacity: 1;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--card-color, #7C3AED) 40%, transparent);
+  transform: scale(1.05);
+}
+
+.card-enter span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.landscape-card:hover .card-enter span {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   🏛️ ПОЛНОЭКРАННАЯ ПАЛАТА СУТРЫ (chamber)
+   ============================================================ */
+
+.sutra-chamber {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 6, 16, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: chamber-fade 0.4s ease;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+@keyframes chamber-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sutra-chamber-inner {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
+  background: rgba(16, 14, 28, 0.95);
+  border: 1px solid color-mix(in srgb, var(--chamber-color, #7C3AED) 40%, transparent);
+  border-radius: 28px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  animation: chamber-inner-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 60px color-mix(in srgb, var(--chamber-color, #7C3AED) 20%, transparent);
+  overflow: hidden;
+}
+
+@keyframes chamber-inner-in {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Свечение за карточкой */
+.chamber-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--glow-color, #7C3AED) 25%, transparent) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* Кнопка закрытия */
+.chamber-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: #8a7d96;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  z-index: 2;
+}
+
+.chamber-close:hover {
+  background: rgba(255, 80, 0, 0.2);
+  color: #ffb380;
+  transform: rotate(90deg);
+}
+
+/* Иконка */
+.chamber-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: chamber-icon-glow 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes chamber-icon-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px color-mix(in srgb, currentColor 40%, transparent));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 30px color-mix(in srgb, currentColor 60%, transparent));
+    transform: scale(1.05);
+  }
+}
+
+/* Заголовок */
+.chamber-title {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 500;
+  color: #f0e6d8;
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+}
+
+/* Длительность */
+.chamber-duration {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 4px 16px;
+  border-radius: 100px;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  position: relative;
+  z-index: 1;
+}
+
+/* Текст */
+.chamber-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #b8a8c8;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.02em;
+}
+
+/* Разделительная линия */
+.chamber-text::before {
+  content: "◈";
+  display: block;
+  text-align: center;
+  color: var(--chamber-color, #7C3AED);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+/* --- Кнопка назад --- */
+.academy-back {
+  position: relative;
+  z-index: 6;
+  display: inline-block;
+  margin: 1rem auto 2rem;
+  padding: 10px 24px;
+  border-radius: 100px;
+  background: rgba(20, 18, 34, 0.8);
+  border: 1px solid rgba(255, 150, 60, 0.2);
+  color: #a09080;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.academy-back:hover {
+  border-color: rgba(255, 150, 60, 0.5);
+  color: #ffb380;
+  transform: translateX(-4px);
+}
+
+/* --- Мобильная адаптивность --- */
+@media (max-width: 768px) {
+  .landscape-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .academy-title {
+    font-size: 2.2rem;
+  }
+
+  .academy-header {
+    padding-top: 2rem;
+  }
+
+  .sutra-chamber-inner {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .chamber-icon {
+    font-size: 3.5rem;
+  }
+
+  .chamber-text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .landscape-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .academy-tabs {
+    flex-wrap: nowrap;
+  }
+
+  .academy-tab {
+    flex: 1;
+    white-space: nowrap;
+  }
+}
+
+/* Поддержка color-mix — фолбэк для старых браузеров */
+@supports not (color: color-mix(in srgb, red, blue)) {
+  .landscape-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  }
+  .card-glow {
+    background: rgba(124, 58, 237, 0.08);
+  }
+  .sutra-chamber-inner {
+    border-color: rgba(124, 58, 237, 0.35);
+    box-shadow: 0 0 60px rgba(124, 58, 237, 0.2);
+  }
+  .chamber-glow {
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+  }
+}
+
+/* ========== ✨ ПРЕМИАЛЬНАЯ ПОЛИРОВКА: плавное раскрытие карточек ========== */
+
+/* Раскрытая карточка */
+.landscape-card.expanded {
+  grid-column: 1 / -1;
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  border-color: color-mix(in srgb, var(--card-color, #7C3AED) 50%, transparent);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+              0 0 40px color-mix(in srgb, var(--card-color, #7C3AED) 20%, transparent);
+}
+
+/* Контейнер полного текста с плавным появлением */
+.card-fulltext {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s ease 0.1s;
+  margin: 0;
+}
+
+.landscape-card.expanded .card-fulltext {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Полный текст внутри карточки */
+.card-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #d5c6b5;
+  margin: 1rem auto 0.5rem;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.02em;
+  text-align: center;
+  max-width: 90%;
+  border-top: 1px solid color-mix(in srgb, var(--card-color, #7C3AED) 25%, transparent);
+  padding-top: 1rem;
+}
+
+/* Ссылка "Свернуть" */
+.card-collapse {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.card-collapse:hover {
+  opacity: 1;
+}
+
+/* Убираем превью когда раскрыто */
+.landscape-card.expanded .card-preview {
+  display: none;
+}
+
+/* Плавный вход полного текста построчно */
+.landscape-card.expanded .card-text {
+  animation: text-reveal 0.5s ease 0.15s both;
+}
+
+@keyframes text-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== 🏛️ МУЗЕЙНАЯ ТИШИНА: тонкие линии и декор ========== */
+
+/* Тонкая линия под шапкой — "музейный постамент" */
+.academy-header::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 1px;
+  margin: 1.5rem auto 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, #a88a70 50%, transparent), transparent);
+}
+
+/* Заголовок без пульсации - чистая типографика */
+.academy-title {
+  text-shadow: none;
+}
+
+/* Тонкая рамка карточек - мягче и тише */
+.landscape-card {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.landscape-card:not(.expanded):hover {
+  border-color: color-mix(in srgb, var(--card-color, #7C3AED) 30%, transparent);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Плавное, тихое появление карточек */
+.landscape-card {
+  animation: card-emerge 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Текст в карточке - спокойный, дышащий */
+.card-text {
+  line-height: 1.9;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #d0c4b4;
+}
+
+/* Тонкий акцент на кнопке входа */
+.card-enter {
+  background: transparent !important;
+  border: 1px solid color-mix(in srgb, var(--card-color, #7C3AED) 40%, transparent);
+  color: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.card-enter span {
+  color: color-mix(in srgb, var(--card-color, #7C3AED) 80%, #fff);
+}
+
+/* Убираем стрелки/направления - тише */
+.card-enter span::before {
+  content: "";
+}
+
+/* ============================================================
+   🌿 САД ЗАЛОВ — главная страница
+   ============================================================ */
+
+.home-garden {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 0%, #1a1628 0%, #0c0a16 100%);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Фон */
+.garden-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.garden-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: garden-float 20s ease-in-out infinite;
+}
+
+.orb-a {
+  width: 40vmax;
+  height: 40vmax;
+  left: -10%;
+  top: -10%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 70%);
+}
+
+.orb-b {
+  width: 35vmax;
+  height: 35vmax;
+  right: -5%;
+  top: 30%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.3) 0%, transparent 70%);
+  animation-delay: -8s;
+}
+
+.orb-c {
+  width: 25vmax;
+  height: 25vmax;
+  left: 30%;
+  bottom: -10%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+  animation-delay: -14s;
+}
+
+@keyframes garden-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+.garden-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 50% 70%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.5), transparent);
+  opacity: 0.5;
+}
+
+/* Заголовок */
+.garden-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 5rem 1.5rem 2rem;
+}
+
+.garden-title {
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: 400;
+  color: #e8dcc8;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(120deg, #e8dcc8 0%, #c9b8a0 55%, #a88a70 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.garden-subtitle {
+  color: #a09080;
+  font-style: italic;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  margin: 0.25rem 0 0;
+}
+
+.garden-header::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 1px;
+  margin: 1.5rem auto 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, #a88a70 50%, transparent), transparent);
+}
+
+/* Залы */
+.halls-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.hall-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background: rgba(18, 16, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  text-align: center;
+  min-height: 260px;
+}
+
+.hall-card:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--hall-color, #7C3AED) 40%, transparent);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
+              0 0 30px color-mix(in srgb, var(--hall-color, #7C3AED) 20%, transparent);
+}
+
+/* Свечение */
+.hall-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%,
+    color-mix(in srgb, var(--hall-color, #7C3AED) 15%, transparent) 0%,
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.hall-card:hover .hall-glow {
+  opacity: 1;
+}
+
+/* Иконка */
+.hall-icon {
+  font-size: 2.5rem;
+  color: var(--hall-color, #7C3AED);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+  transition: transform 0.3s ease;
+}
+
+.hall-card:hover .hall-icon {
+  transform: scale(1.1);
+}
+
+/* Заголовок */
+.hall-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #e6dcc8;
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+/* Описание */
+.hall-desc {
+  font-size: 0.95rem;
+  color: #8a7d96;
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Кнопка */
+.hall-enter {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--hall-color, #7C3AED) 70%, #fff);
+  border: 1px solid color-mix(in srgb, var(--hall-color, #7C3AED) 35%, transparent);
+  padding: 8px 24px;
+  border-radius: 100px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.hall-card:hover .hall-enter {
+  opacity: 1;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--hall-color, #7C3AED) 25%, transparent);
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .halls-grid {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem 3rem;
+  }
+  
+  .garden-header {
+    padding: 3rem 1rem 1.5rem;
+  }
+}
+
+/* ============================================================
+   👥 СООБЩЕСТВО — премиальный раздел
+   ============================================================ */
+
+.community-grid {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.community-card {
+  position: relative;
+  background: rgba(18, 16, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.community-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--ccolor, #0EA5E9) 40%, transparent);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35),
+              0 0 25px color-mix(in srgb, var(--ccolor, #0EA5E9) 15%, transparent);
+}
+
+.community-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #e6dcc8;
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.community-text {
+  font-size: 0.95rem;
+  color: #8a7d96;
+  line-height: 1.7;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .community-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+/* Глиф (SVG-иконка) в карточке Сообщества */
+.community-glyph {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.community-glyph img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  stroke: var(--ccolor, #0EA5E9);
+}
+
+.community-card:hover .community-glyph {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   🔝 ВЕРХНЯЯ ПАНЕЛЬ ИНСТРУМЕНТОВ (переключатель языка + вход)
+   ============================================================ */
+
+.top-toolbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 12px 20px;
+  pointer-events: none;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+/* Языковой переключатель */
+.lang-selector {
+  position: relative;
+}
+
+.lang-select {
+  background: rgba(20, 18, 34, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e6e0f0;
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  outline: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  min-width: 140px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23a09080' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.lang-select:hover {
+  border-color: rgba(255, 150, 60, 0.5);
+  box-shadow: 0 0 15px rgba(255, 100, 0, 0.1);
+}
+
+.lang-select:focus {
+  border-color: rgba(255, 150, 60, 0.7);
+  box-shadow: 0 0 20px rgba(255, 100, 0, 0.15);
+}
+
+.lang-select option {
+  background: #141222;
+  color: #e6e0f0;
+}
+
+/* Кнопка "Войти" */
+.btn-login {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(14, 165, 233, 0.5));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.2);
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(124, 58, 237, 0.35);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================================
+   ⬅️ КНОПКА "НАЗАД" ПОД ШАПКОЙ
+   ============================================================ */
+
+.page-nav-top {
+  position: relative;
+  z-index: 6;
+  padding: 6rem 2rem 0;
+  max-width: 1150px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.btn-back-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(20, 18, 34, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #a09080;
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-back-top:hover {
+  border-color: rgba(255, 150, 60, 0.4);
+  color: #ffb380;
+  transform: translateX(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Для главной страницы (c панелью вверху) --- */
+.home-garden .page-nav-top {
+  padding-top: 6.5rem;
+}
+
+/* --- Для страниц Академии и Сообщества --- */
+.academy-landscape .page-nav-top {
+  padding-top: 6.5rem;
+}
+
+/* ============================================================
+   🖼️ САКРАЛЬНЫЕ ИКОНКИ — исправление обрезки
+   ============================================================ */
+
+.community-glyph {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  opacity: 0.75;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.community-glyph img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  overflow: visible;
+  stroke: var(--ccolor, #0EA5E9);
+}
+
+.community-card:hover .community-glyph {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+/* --- Кликабельные карточки сообщества --- */
+.community-card {
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.community-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--ccolor, #0EA5E9) 40%, transparent);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35),
+              0 0 25px color-mix(in srgb, var(--ccolor, #0EA5E9) 15%, transparent);
+}
+
+.community-enter {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: color-mix(in srgb, var(--ccolor, #0EA5E9) 60%, #fff);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.community-card:hover .community-enter {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   📱 АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .top-toolbar {
+    padding: 10px 12px;
+  }
+
+  .lang-select {
+    min-width: 120px;
+    font-size: 12px;
+    padding: 6px 10px;
+    padding-right: 28px;
+  }
+
+  .btn-login {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .page-nav-top {
+    padding: 5rem 1rem 0;
+  }
+}
+
+/* ============================================================
+   📄 ДЕТАЛЬНАЯ СТРАНИЦА СООБЩЕСТВА
+   ============================================================ */
+
+.community-glyph-detail {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.5rem;
+}
+
+.detail-content {
+  position: relative;
+  z-index: 5;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.detail-card {
+  background: rgba(18, 16, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 3rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.detail-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #c5b8a8;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .detail-card {
+    padding: 1.5rem;
+  }
+
+  .detail-text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+/* ============================================================
+   🔍 БОЛЬШАЯ СТРОКА ПОИСКА
+   ============================================================ */
+
+.search-hero {
+  position: relative;
+  z-index: 5;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background: rgba(20, 18, 34, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 56px;
+  padding: 6px 6px 6px 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 rgba(124, 58, 237, 0);
+}
+
+.search-form:focus-within {
+  border-color: rgba(124, 58, 237, 0.6);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4),
+              0 0 40px rgba(124, 58, 237, 0.15);
+  transform: translateY(-2px);
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e6e0f0;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  padding: 16px 8px;
+}
+
+.search-input::placeholder {
+  color: #8a7d96;
+  font-style: italic;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #7C3AED, #0EA5E9);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+  flex-shrink: 0;
+}
+
+.search-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 30px rgba(124, 58, 237, 0.5);
+}
+
+.search-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* --- Результаты поиска --- */
+.search-results {
+  margin-top: 1rem;
+  background: rgba(20, 18, 34, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: results-emerge 0.3s ease;
+}
+
+@keyframes results-emerge {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.search-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.search-results-count {
+  font-size: 0.8rem;
+  color: #8a7d96;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.search-clear {
+  background: none;
+  border: none;
+  color: #a09080;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.search-clear:hover {
+  color: #ffb380;
+  background: rgba(255, 100, 0, 0.1);
+}
+
+.search-result-item {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover {
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-left {
+  flex-shrink: 0;
+}
+
+.search-result-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+  white-space: nowrap;
+}
+
+.search-result-badge.badge-local {
+  background: rgba(124, 58, 237, 0.15);
+  color: #a78bfa;
+}
+
+.search-result-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-result-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #e6dcc8;
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+.search-result-snippet {
+  font-size: 0.85rem;
+  color: #8a7d96;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .search-hero {
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .search-input {
+    font-size: 1.1rem;
+    padding: 12px 6px;
+  }
+
+  .search-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .search-form {
+    padding-left: 16px;
+  }
+
+  .search-result-item {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+}
+
+/* Исправление мобильной версии и воздуха */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+}
+
+.container {
+    max-width: 100%;
+    padding: 0 20px;
+}
+
+.card {
+    padding: 24px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+}

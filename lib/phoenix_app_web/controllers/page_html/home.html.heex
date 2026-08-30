@@ -1,0 +1,36 @@
+<div id="home-page" class="home-garden active">
+  <!-- Живой фон -->
+  <div class="garden-bg">
+    <div class="garden-orb orb-a"></div>
+    <div class="garden-orb orb-b"></div>
+    <div class="garden-orb orb-c"></div>
+    <div class="garden-stars"></div>
+  </div>
+
+  <!-- Заголовок -->
+  <div class="garden-header">
+    <h1 class="garden-title"><%= gettext("Место для честных мыслей") %></h1>
+    <p class="garden-subtitle"><%= gettext("Практики, знания и общение без лишнего шума") %></p>
+  </div>
+
+  <!-- Залы -->
+  <div class="halls-grid">
+    <!-- Зал «Учение» -->
+    <a href="/poznanie" class="hall-card" style="--hall-color: #7C3AED">
+      <div class="hall-glow"></div>
+      <div class="hall-icon">◉</div>
+      <h2 class="hall-title"><%= gettext("Учение") %></h2>
+      <p class="hall-desc"><%= gettext("Войди в глубину — каждый Смысл открывает дверь") %></p>
+      <span class="hall-enter">Войти</span>
+    </a>
+
+    <!-- Зал «Сообщество» -->
+    <a href="/soobshestvo" class="hall-card" style="--hall-color: #0EA5E9">
+      <div class="hall-glow"></div>
+      <div class="hall-icon">◎</div>
+      <h2 class="hall-title"><%= gettext("Сообщество") %></h2>
+      <p class="hall-desc"><%= gettext("Общий круг — совместное восхождение") %></p>
+      <span class="hall-enter">Войти</span>
+    </a>
+  </div>
+</div>

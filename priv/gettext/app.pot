@@ -1,0 +1,65 @@
+## This file is a PO Template file.
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're located here.
+
+msgid ""
+msgstr ""
+"Language: \n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Изумрудное Сердце"
+msgstr ""
+
+msgid "Сад смыслов — путь к глубине"
+msgstr ""
+
+msgid "Познание"
+msgstr ""
+
+msgid "Сообщество"
+msgstr ""
+
+msgid "Войти"
+msgstr ""
+
+msgid "Войди в глубину — каждый Смысл открывает дверь"
+msgstr ""
+
+msgid "Общий круг — совместное восхождение"
+msgstr ""
+
+msgid "Вернуться к залам"
+msgstr ""
+
+msgid "Смыслы"
+msgstr ""
+
+msgid "Практики"
+msgstr ""
+
+msgid "Читать"
+msgstr ""
+
+msgid "Свернуть"
+msgstr ""
+
+msgid "Общий круг"
+msgstr ""
+
+msgid "Путь вместе"
+msgstr ""
+
+msgid "Живой диалог"
+msgstr ""
+
+msgid "Пространство соединения душ, где каждый смысл обогащается в диалоге с другими."
+msgstr ""
+
+msgid "Совместная практика и взаимная поддержка на пути к постижению глубины."
+msgstr ""
+
+msgid "Пространство открытого обмена — где слова становятся мостами между сердцами."
+msgstr ""
+
+msgid "Назад"
+msgstr ""

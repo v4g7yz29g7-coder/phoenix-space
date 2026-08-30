@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Изумрудное Сердце"
+msgstr "Emerald Heart"
+
+msgid "Сад смыслов — путь к глубине"
+msgstr "Garden of Meanings — Path to Depth"
+
+msgid "Познание"
+msgstr "Cognition"
+
+msgid "Сообщество"
+msgstr "Community"
+
+msgid "Войти"
+msgstr "Sign In"
+
+msgid "Войди в глубину — каждый Смысл открывает дверь"
+msgstr "Enter the depth — every Meaning opens a door"
+
+msgid "Общий круг — совместное восхождение"
+msgstr "Shared circle — collective ascent"
+
+msgid "Вернуться к залам"
+msgstr "Back to Halls"
+
+msgid "Смыслы"
+msgstr "Meanings"
+
+msgid "Практики"
+msgstr "Practices"
+
+msgid "Читать"
+msgstr "Read"
+
+msgid "Свернуть"
+msgstr "Collapse"
+
+msgid "Общий круг"
+msgstr "Common Circle"
+
+msgid "Путь вместе"
+msgstr "Path Together"
+
+msgid "Живой диалог"
+msgstr "Living Dialogue"
+
+msgid "Пространство соединения душ, где каждый смысл обогащается в диалоге с другими."
+msgstr "A space of soul connection, where every meaning is enriched in dialogue with others."
+
+msgid "Совместная практика и взаимная поддержка на пути к постижению глубины."
+msgstr "Shared practice and mutual support on the path to understanding depth."
+
+msgid "Пространство открытого обмена — где слова становятся мостами между сердцами."
+msgstr "A space of open exchange — where words become bridges between hearts."
+
+msgid "Назад"
+msgstr "Back"
+
+msgid "Страница не найдена"
+msgstr "Page not found"
+
+msgid "Поиск по смыслу..."
+msgstr "Search by meaning..."
+
+msgid "Найдено"
+msgstr "Found"
+
+msgid "результатов"
+msgstr "results"
+
+msgid "Ничего не найдено"
+msgstr "Nothing found"
+
+msgid "Феникс"
+msgstr "Phoenix"
+
+msgid "Интернет"
+msgstr "Internet"
+

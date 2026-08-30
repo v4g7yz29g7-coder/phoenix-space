@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"Language: de\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Изумрудное Сердце"
+msgstr "Smaragdherz"
+
+msgid "Сад смыслов — путь к глубине"
+msgstr "Garten der Bedeutungen — Weg zur Tiefe"
+
+msgid "Познание"
+msgstr "Erkenntnis"
+
+msgid "Сообщество"
+msgstr "Gemeinschaft"
+
+msgid "Войти"
+msgstr "Anmelden"
+
+msgid "Войди в глубину — каждый Смысл открывает дверь"
+msgstr "Tritt in die Tiefe ein — jede Bedeutung öffnet eine Tür"
+
+msgid "Общий круг — совместное восхождение"
+msgstr "Gemeinsamer Kreis — gemeinsamer Aufstieg"
+
+msgid "Вернуться к залам"
+msgstr "Zurück zu den Sälen"
+
+msgid "Смыслы"
+msgstr "Bedeutungen"
+
+msgid "Практики"
+msgstr "Praktiken"
+
+msgid "Читать"
+msgstr "Lesen"
+
+msgid "Свернуть"
+msgstr "Einklappen"
+
+msgid "Общий круг"
+msgstr "Gemeinsamer Kreis"
+
+msgid "Путь вместе"
+msgstr "Weg Zusammen"
+
+msgid "Живой диалог"
+msgstr "Lebendiger Dialog"
+
+msgid "Пространство соединения душ, где каждый смысл обогащается в диалоге с другими."
+msgstr "Ein Raum der Seelenverbindung, wo jede Bedeutung im Dialog mit anderen bereichert wird."
+
+msgid "Совместная практика и взаимная поддержка на пути к постижению глубины."
+msgstr "Gemeinsame Praxis und gegenseitige Unterstützung auf dem Weg zur Tiefe."
+
+msgid "Пространство открытого обмена — где слова становятся мостами между сердцами."
+msgstr "Ein Raum des offenen Austauschs — wo Worte zu Brücken zwischen Herzen werden."
+
+msgid "Назад"
+msgstr "Zurück"
+
+msgid "Страница не найдена"
+msgstr "Seite nicht gefunden"
+
+msgid "Поиск по смыслу..."
+msgstr "Suche nach Bedeutung..."
+
+msgid "Найдено"
+msgstr "Gefunden"
+
+msgid "результатов"
+msgstr "Ergebnisse"
+
+msgid "Ничего не найдено"
+msgstr "Nichts gefunden"
+
+msgid "Феникс"
+msgstr "Phönix"
+
+msgid "Интернет"
+msgstr "Internet"
+

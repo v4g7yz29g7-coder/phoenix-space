@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  phoenix_app:
+    build: .
+    container_name: phoenix_app
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      - SECRET_KEY_BASE=N8nyikV8tuA2dZhEmGQG4G2i8Q7r1pVJGo/WIIFD9Da+w3UkSQwS6F9QxB5DhxVe
+      - PHX_HOST=phoenixsearch.ru
+      - PORT=4000
+      - PHX_SERVER=true
+      - DATABASE_PATH=/data/phoenix_app_prod.db
+    volumes:
+      - phoenix_data:/data
+
+volumes:
+  phoenix_data:
