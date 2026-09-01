@@ -17,8 +17,7 @@ COPY lib ./lib
 COPY priv ./priv
 
 # Устанавливаем hex и rebar
-RUN mix local.hex --force && \
-    mix local.rebar --force && \
+RUN mix archive.install github hexpm/hex branch latest --force && \
     mix deps.get --only prod && \
     mix deps.compile
 

@@ -9,6 +9,9 @@ defmodule PhoenixApp.Application do
       PhoenixApp.Repo,
       {DNSCluster, query: Application.get_env(:phoenix_app, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: PhoenixApp.PubSub},
+      PhoenixApp.Memory.MemoryStore,
+      PhoenixApp.Memory.AgentManager,
+      PhoenixApp.Agents.Scout,
       PhoenixAppWeb.Endpoint
     ]
 
