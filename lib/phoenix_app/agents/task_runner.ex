@@ -2,8 +2,8 @@ defmodule PhoenixApp.Agents.TaskRunner do
   @moduledoc """
   Автономный исполнитель задач.
 
-  Читает задачи из файла (по одной на строку) и выполняет их через Coder.
-  Результаты сохраняются в память (MemoryStub).
+  Читает задачи из файла и для каждой вызывает bash-агента coder.sh,
+  который обращается к DeepSeek и сохраняет результат.
   """
 
   alias PhoenixApp.Agents.MemoryStub, as: Memory
@@ -31,10 +31,12 @@ defmodule PhoenixApp.Agents.TaskRunner do
     IO.puts("✓ Завершено\n")
   end
 
-  # Заглушка: здесь будет вызов DeepSeek через HTTP или shell-агента
   defp call_coder(task) do
-    # В будущем: вызов ~/agents/agents/coder.sh или прямого API
-    "Черновик для: #{task}"
+    # Вызываем bash-агента coder.sh
+    case System.cmd("bash", [Path.expand("~/agents/agents/coder.sh"), task], stderr_to_stdout: true) do
+      {output, 0} -> String.trim(output)
+      {output, _} -> "Ошибка: " <> String.trim(output)
+    end
   end
 
   defp read_tasks do
