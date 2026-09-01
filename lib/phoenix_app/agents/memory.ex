@@ -1,14 +1,9 @@
 defmodule PhoenixApp.Agents.Memory do
   use Ecto.Schema
   import Ecto.Query
+  import Ecto.Changeset
 
   alias PhoenixApp.Repo
-
-  @typedoc "Имя агента: :scout, :coder, :guardian, :reporter"
-  @type agent_name :: atom() | String.t()
-
-  @typedoc "Тип памяти: :short_term, :long_term, :global"
-  @type memory_type :: atom() | String.t()
 
   schema "agents_memory" do
     field :agent_name, :string
@@ -16,32 +11,28 @@ defmodule PhoenixApp.Agents.Memory do
     field :content, :string
     field :metadata, :map, default: %{}
     field :expires_at, :utc_datetime
+    field :context_type, :string
+    field :context_data, :map, default: %{}
 
     timestamps()
   end
 
-  @doc "Создать запись в памяти"
-  def remember(agent_name, memory_type, content, metadata \\ %{}, expires_at \\ nil)
-      when is_binary(content) do
-    agent_name = to_string(agent_name)
-    memory_type = to_string(memory_type)
+  def changeset(memory, attrs) do
+    memory
+    |> cast(attrs, [:agent_name, :memory_type, :content, :metadata, :expires_at, :context_type, :context_data])
+    |> validate_required([:agent_name, :memory_type, :content])
+  end
 
+  # Универсальное хранилище фактов и задач
+  def remember(agent_name, memory_type, content, metadata \\ %{}, expires_at \\ nil) do
     %__MODULE__{}
-    |> changeset(%{
-      agent_name: agent_name,
-      memory_type: memory_type,
-      content: content,
-      metadata: metadata,
-      expires_at: expires_at
-    })
+    |> changeset(%{agent_name: to_string(agent_name), memory_type: to_string(memory_type), content: content, metadata: metadata, expires_at: expires_at})
     |> Repo.insert()
   end
 
-  @doc "Получить последние неистёкшие записи для агента"
   def recall(agent_name, memory_type, limit \\ 20) do
     agent_name = to_string(agent_name)
     memory_type = to_string(memory_type)
-
     now = DateTime.utc_now()
 
     from(m in __MODULE__,
@@ -53,15 +44,13 @@ defmodule PhoenixApp.Agents.Memory do
     |> Repo.all()
   end
 
-  @doc "Удалить запись по id"
   def forget(id) when is_integer(id) do
     case Repo.get(__MODULE__, id) do
       nil -> {:error, :not_found}
-      record -> Repo.delete(record)
+      rec -> Repo.delete(rec)
     end
   end
 
-  @doc "Удалить все истёкшие записи"
   def cleanup_expired do
     now = DateTime.utc_now()
 
@@ -69,9 +58,32 @@ defmodule PhoenixApp.Agents.Memory do
     |> Repo.delete_all()
   end
 
-  def changeset(memory, attrs) do
-    memory
-    |> Ecto.Changeset.cast(attrs, [:agent_name, :memory_type, :content, :metadata, :expires_at])
-    |> Ecto.Changeset.validate_required([:agent_name, :memory_type, :content])
+  # Контекст для агентов: store_context/3, get_context/1
+  def store_context(agent_name, context_type, context_data) do
+    %__MODULE__{}
+    |> changeset(%{
+      agent_name: to_string(agent_name),
+      memory_type: "context",
+      content: "контекст",
+      metadata: %{},
+      context_type: to_string(context_type),
+      context_data: context_data
+    })
+    |> Repo.insert()
+  end
+
+  def get_context(agent_name) do
+    agent_name = to_string(agent_name)
+
+    from(m in __MODULE__,
+      where: m.agent_name == ^agent_name and m.memory_type == "context",
+      order_by: [desc: m.inserted_at],
+      limit: 1
+    )
+    |> Repo.one()
+    |> case do
+      nil -> {:error, :not_found}
+      rec -> {:ok, rec}
+    end
   end
 end
