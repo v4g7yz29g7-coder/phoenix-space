@@ -1,29 +1,20 @@
-
 defmodule PhoenixApp.Agents.DraftGenerator do
   @moduledoc """
-  Генерирует черновик на основе темы и плана шагов.
+  Генерация черновика и сохранение в память.
   """
 
-  @doc """
-  Генерирует черновик.
+  alias PhoenixApp.Agents.MemoryStub, as: Memory
 
-  ## Параметры
-
-    - topic: строка с темой
-    - plan: список строк с шагами
-
-  ## Возвращает
-
-    - `{:ok, draft_string}` - кортеж с успешным результатом
-
-  ## Примеры
-
-      iex> PhoenixApp.Agents.DraftGenerator.generate("Написание статьи", ["Выбрать тему", "Составить план", "Написать текст"])
-      {:ok, "# Написание статьи\n\n1. Выбрать тему\n2. Составить план\n3. Написать текст"}
-  """
-  @spec generate(String.t(), [String.t()]) :: {:ok, String.t()}
   def generate(topic, plan) when is_binary(topic) and is_list(plan) do
     draft = build_draft(topic, plan)
+
+    Memory.remember(
+      "draft_generator",
+      "short_term",
+      "Черновик для темы: #{topic}",
+      %{draft: draft, topic: topic}
+    )
+
     {:ok, draft}
   end
 
@@ -37,4 +28,3 @@ defmodule PhoenixApp.Agents.DraftGenerator do
     header <> steps
   end
 end
-

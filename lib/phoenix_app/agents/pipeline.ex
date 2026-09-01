@@ -1,25 +1,21 @@
-
 defmodule PhoenixApp.Agents.Pipeline do
   @moduledoc """
-  Модуль для запуска конвейера агентов.
+  Запуск конвейера: план -> сохранение в память.
   """
 
-  @doc """
-  Запускает конвейер: вызывает планировщик и возвращает план.
+  alias PhoenixApp.Agents.Planner
+  alias PhoenixApp.Agents.MemoryStub, as: Memory
 
-  ## Параметры
-
-    - topic: тема для планирования
-    - context: контекст для планирования
-
-  ## Возвращает
-
-    - `{:ok, plan}` при успешном планировании
-  """
-  @spec run(any(), any()) :: {:ok, any()}
   def run(topic, context) do
-    plan = PhoenixApp.Agents.Planner.plan(topic, context)
+    plan = Planner.plan(topic, context)
+
+    Memory.remember(
+      "pipeline",
+      "short_term",
+      "План для темы: #{topic}",
+      %{plan: plan, topic: topic}
+    )
+
     {:ok, plan}
   end
 end
-
