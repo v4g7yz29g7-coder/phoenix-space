@@ -1,0 +1,53 @@
+<div class="academy-landscape" data-entered={@entered}>
+  <!-- Живой фоновый ландшафт -->
+  <div class="landscape-bg">
+    <div class="landscape-orb orb-1"></div>
+    <div class="landscape-orb orb-2"></div>
+    <div class="landscape-orb orb-3"></div>
+    <div class="landscape-horizon"></div>
+    <div class="landscape-mountains mountains-1"></div>
+    <div class="landscape-mountains mountains-2"></div>
+    <div class="landscape-stars" id="stars"></div>
+  </div>
+
+  <!-- Кнопка "Назад" под шапкой -->
+  <div class="page-nav-top">
+    <a href="/" class="btn-back-top">← <%= gettext("Назад") %></a>
+  </div>
+
+  <!-- Панель навигации -->
+  <div class="academy-header">
+    <h1 class="academy-title"><%= gettext("Сообщество") %></h1>
+    <p class="academy-subtitle"><%= gettext("Общий круг — совместное восхождение") %></p>
+  </div>
+
+  <!-- Контент: кликабельные карточки -->
+  <div class="community-grid">
+    <a href="/soobshestvo/common-circle" class="community-card">
+      <div class="community-glyph">
+        <img src={~p"/assets/shapes/flower-of-life.svg"} alt="Цветок жизни" />
+      </div>
+      <h3 class="community-title"><%= gettext("Общий круг") %></h3>
+      <p class="community-text"><%= gettext("Пространство соединения душ, где каждый смысл обогащается в диалоге с другими.") %></p>
+      <span class="community-enter">→</span>
+    </a>
+    <a href="/soobshestvo/path-together" class="community-card">
+      <div class="community-glyph">
+        <img src={~p"/assets/shapes/pyramid.svg"} alt="Пирамида" />
+      </div>
+      <h3 class="community-title"><%= gettext("Путь вместе") %></h3>
+      <p class="community-text"><%= gettext("Совместная практика и взаимная поддержка на пути к постижению глубины.") %></p>
+      <span class="community-enter">→</span>
+    </a>
+    <a href="/soobshestvo/living-dialogue" class="community-card">
+      <div class="community-glyph">
+        <img src={~p"/assets/shapes/ankh.svg"} alt="Анх" />
+      </div>
+      <h3 class="community-title"><%= gettext("Живой диалог") %></h3>
+      <p class="community-text"><%= gettext("Пространство открытого обмена — где слова становятся мостами между сердцами.") %></p>
+      <span class="community-enter">→</span>
+    </a>
+  </div>
+
+  <a href="/" class="academy-back">← <%= gettext("Вернуться к залам") %></a>
+</div>

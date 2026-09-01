@@ -1,0 +1,72 @@
+<div class="academy-landscape" data-entered={@entered}>
+  <!-- Живой фоновый ландшафт -->
+  <div class="landscape-bg">
+    <div class="landscape-orb orb-1"></div>
+    <div class="landscape-orb orb-2"></div>
+    <div class="landscape-orb orb-3"></div>
+    <div class="landscape-horizon"></div>
+    <div class="landscape-mountains mountains-1"></div>
+    <div class="landscape-mountains mountains-2"></div>
+    <div class="landscape-stars" id="stars"></div>
+  </div>
+
+  <!-- Кнопка "Назад" под шапкой -->
+  <div class="page-nav-top">
+    <a href="/" class="btn-back-top">← <%= gettext("Назад") %></a>
+  </div>
+
+  <!-- Панель навигации -->
+  <div class="academy-header">
+    <h1 class="academy-title"><%= gettext("Познание") %></h1>
+    <p class="academy-subtitle"><%= gettext("Войди в глубину — каждый Смысл открывает дверь") %></p>
+
+    <div class="academy-tabs">
+      <button
+        class={"academy-tab #{@active_tab == "sutra" && "active"}"}
+        phx-click="select_tab"
+        phx-value-tab="sutra"
+      ><%= gettext("Смыслы") %></button>
+      <button
+        class={"academy-tab #{@active_tab == "practice" && "active"}"}
+        phx-click="select_tab"
+        phx-value-tab="practice"
+      ><%= gettext("Практики") %></button>
+    </div>
+  </div>
+
+  <!-- Сетка карточек -->
+  <div class="landscape-grid">
+    <%= for {item, index} <- Enum.with_index(@items) do %>
+      <% expanded = @expanded_id == to_string(item.id) %>
+      <% preview = String.split(item.text, ". ") |> Enum.at(0) %>
+      <button
+        class={"landscape-card #{expanded && "expanded"}"}
+        style={"--card-color: #{item.color}; --delay: #{index * 80}ms"}
+        phx-click="toggle_expand"
+        phx-value-id={item.id}
+      >
+        <div class="card-glow"></div>
+        <div class="card-glyph" style={"color: #{item.color}"}>❝</div>
+        <h3 class="card-title"><%= item.title %></h3>
+        <%= if item.duration do %>
+          <span class="card-duration" style={"background: #{item.color}22; color: #{item.color}"}><%= item.duration %></span>
+        <% end %>
+        <%= if expanded do %>
+          <div class="card-fulltext">
+            <p class="card-text">
+              <%= item.text %>
+            </p>
+            <span class="card-collapse" style={"color: #{item.color}"}><%= gettext("Свернуть") %></span>
+          </div>
+        <% else %>
+          <p class="card-preview"><%= preview %>.</p>
+        <% end %>
+        <div class="card-enter" style={"background: #{item.color}; border-color: #{item.color}"}>
+          <span><%= if expanded, do: gettext("Свернуть"), else: gettext("Читать") %></span>
+        </div>
+      </button>
+    <% end %>
+  </div>
+
+  <a href="/" class="academy-back">← <%= gettext("Вернуться к залам") %></a>
+</div>

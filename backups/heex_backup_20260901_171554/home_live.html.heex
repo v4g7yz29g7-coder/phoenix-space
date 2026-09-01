@@ -1,0 +1,85 @@
+<div id="home-page" class="home-garden active">
+  <!-- Живой фон -->
+  <div class="garden-bg">
+    <div class="garden-orb orb-a"></div>
+    <div class="garden-orb orb-b"></div>
+    <div class="garden-orb orb-c"></div>
+    <div class="garden-stars"></div>
+  </div>
+
+  <!-- Заголовок -->
+  <div class="garden-header">
+    <h1 class="garden-title"><%= gettext("Феникс") %></h1>
+    <p class="garden-subtitle"><%= gettext("Сад смыслов — путь к глубине") %></p>
+  </div>
+
+  <!-- БОЛЬШАЯ СТРОКА ПОИСКА -->
+  <div class="search-hero">
+    <form phx-submit="search" class="search-form">
+      <input
+        type="text"
+        name="query"
+        class="search-input"
+        placeholder={gettext("Поиск по смыслу...")}
+        value={@query}
+        autocomplete="off"
+      />
+      <button type="submit" class="search-btn" aria-label="Поиск">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+      </button>
+    </form>
+
+    <%= if @searched do %>
+      <div class="search-results">
+        <div class="search-results-header">
+          <span class="search-results-count">
+            <%= if @results == [] do %>
+              <%= gettext("Ничего не найдено") %>
+            <% else %>
+              <%= gettext("Найдено") %> <%= length(@results) %> <%= gettext("результатов") %>
+            <% end %>
+          </span>
+          <button phx-click="clear_search" class="search-clear">✕</button>
+        </div>
+
+        <%= for result <- @results do %>
+          <a href={result.url} class="search-result-item">
+            <div class="search-result-left">
+              <span class={"search-result-badge " <> if_else(result.source == :local, "badge-local", "")}>
+                <%= if result.source == :local, do: gettext("Феникс"), else: gettext("Интернет") %>
+              </span>
+            </div>
+            <div class="search-result-main">
+              <h4 class="search-result-title"><%= result.title %></h4>
+              <p class="search-result-snippet"><%= result.snippet %></p>
+            </div>
+          </a>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Залы -->
+  <div class="halls-grid">
+    <!-- Зал «Познание» -->
+    <a href="/poznanie" class="hall-card" style="--hall-color: #7C3AED">
+      <div class="hall-glow"></div>
+      <div class="hall-icon">◉</div>
+      <h2 class="hall-title"><%= gettext("Познание") %></h2>
+      <p class="hall-desc"><%= gettext("Войди в глубину — каждый Смысл открывает дверь") %></p>
+      <span class="hall-enter">Войти</span>
+    </a>
+
+    <!-- Зал «Сообщество» -->
+    <a href="/soobshestvo" class="hall-card" style="--hall-color: #0EA5E9">
+      <div class="hall-glow"></div>
+      <div class="hall-icon">◎</div>
+      <h2 class="hall-title"><%= gettext("Сообщество") %></h2>
+      <p class="hall-desc"><%= gettext("Общий круг — совместное восхождение") %></p>
+      <span class="hall-enter">Войти</span>
+    </a>
+  </div>
+</div>
