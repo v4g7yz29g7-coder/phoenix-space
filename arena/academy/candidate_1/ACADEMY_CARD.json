@@ -1,0 +1,7 @@
+{
+  "agentId": "agent_16",
+  "ts": "2026-09-16T05:20:58.488Z",
+  "candidate": "candidate_1",
+  "reason": "fitness below threshold",
+  "status": "in_academy"
+}

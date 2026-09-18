@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Феникс — Пространство пробуждения</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div id="home-page" class="page active" data-route="home">
+    <div class="home-garden">
+      <h1 class="home-title">Привет, Архитектор</h1>
+      <p class="home-subtitle">🐦‍🔥 Пространство пробуждения</p>
+      <div class="halls-grid" id="halls-container">
+        <!-- Карточки отрисованы сразу, JS добавляет только логику -->
+        <div class="hall-card" onclick="showPage('academy')"><h2>Академия</h2><p>Мудрость, практики, исцеление</p></div>
+        <div class="hall-card" onclick="showPage('workshop')"><h2>Мастерская</h2><p>Творчество, цели, инициативы</p></div>
+        <div class="hall-card" onclick="showPage('companion')"><h2>Соратник</h2><p>Общение, дружба, сеть</p></div>
+      </div>
+    </div>
+  </div>
+  <div id="academy-page" class="page" data-route="poznanie"><span class="back-link" onclick="showPage('home')">← Назад</span><h1>📜 Академия</h1><p class="page-sub">Войди в свою глубину</p><div id="academy-content" class="content-box"></div></div>
+  <div id="workshop-page" class="page" data-route="tvorenie"><span class="back-link" onclick="showPage('home')">← Назад</span><h1>🛠️ Мастерская</h1><p class="page-sub">Твори свои артефакты</p><div id="workshop-content" class="content-box"></div></div>
+  <div id="companion-page" class="page" data-route="soobschestvo"><span class="back-link" onclick="showPage('home')">← Назад</span><h1>🤝 Соратник</h1><p class="page-sub">Диалог, дружба, сеть</p><div id="companion-content" class="content-box"></div></div>
+  <div id="about-page" class="page"><span class="back-link" onclick="showPage('home')">← Назад</span><h1>🐦‍🔥 О проекте</h1><div id="about-content" class="content-box"></div></div>
+  <a href="#" id="about-link" onclick="showPage('about');return false">🐦‍🔥 О проекте</a>
+  <div id="lang-switcher"><div style="position:relative"><button id="lang-btn" onclick="toggleLangDropdown(event)"></button><div id="lang-dropdown"></div></div><a href="/profile.html" id="profile-link" title="Профиль">👤</a></div>
+  <script src="/js/living-field.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/academy.js"></script>
+  <script src="/js/workshop.js"></script>
+  <script src="/js/companion.js"></script>
+  <script src="/js/about.js"></script>
+</body>
+</html>

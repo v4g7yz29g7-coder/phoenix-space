@@ -1,0 +1,108 @@
+{
+  "version": "1.0",
+  "name": "AI-1 RACE CONTROL",
+  "created_at": "2026-09-13",
+  "doctrine": "F1 Race Control — следим за порядком, подгоняем отстающих, собираем базу знаний",
+
+  "team": {
+    "race_director": {
+      "id": "agent_30_race_director",
+      "name": "Race Director",
+      "responsibilities": [
+        "Устанавливает регламент гонок",
+        "Принимает финальные решения",
+        "Управляет флагами (зелёный/жёлтый/красный)",
+        "Собирает базу знаний"
+      ]
+    },
+    "stewards": {
+      "count": 4,
+      "names": ["Steward 1", "Steward 2", "Steward 3", "Steward 4"],
+      "responsibilities": [
+        "Судит инциденты",
+        "Даёт штрафы (5 сек, 10 сек, обнуление)",
+        "Рассматривает апелляции",
+        "Ведёт протоколы нарушений"
+      ]
+    },
+    "timing_officer": {
+      "id": "agent_13_timing",
+      "name": "Timing Officer",
+      "responsibilities": [
+        "Следит за временем каждой задачи",
+        "Фиксирует stuck > 1 час",
+        "Уведомляет Race Director",
+        "Ведёт статистику"
+      ]
+    },
+    "flag_marshals": {
+      "count": 3,
+      "names": ["Marshal 1", "Marshal 2", "Marshal 3"],
+      "responsibilities": [
+        "Поднимают флаги (🟢 🟡 🔴 🏁)",
+        "Подгоняют отстающих",
+        "Обнуляют зависших (restart)",
+        "Докладывают Stewards"
+      ]
+    },
+    "technical_delegate": {
+      "id": "agent_28_technical_delegate",
+      "name": "Technical Delegate",
+      "responsibilities": [
+        "Аудит качества каждой задачи",
+        "Проверка research-файлов",
+        "tsc --noEmit проверки",
+        "Доклад Race Director"
+      ]
+    },
+    "knowledge_curator": {
+      "id": "agent_35_curator",
+      "name": "Knowledge Curator",
+      "responsibilities": [
+        "Собирает все решённые кейсы в единую базу",
+        "Классифицирует задачи по типу",
+        "Делает выжимку (TL;DR)",
+        "Готовит датасет для обучения"
+      ]
+    }
+  },
+
+  "protocols": {
+    "green_flag": {
+      "name": "🟢 GREEN — гонка идёт",
+      "trigger": "все агенты работают",
+      "action": "нормальный режим"
+    },
+    "yellow_flag": {
+      "name": "🟡 YELLOW — осторожно",
+      "trigger": "агент stuck > 30 мин",
+      "action": "перераспределить задачу, подсказать"
+    },
+    "red_flag": {
+      "name": "🔴 RED — стоп",
+      "trigger": "агент завис > 1 час",
+      "action": "обнулить (restart), переключить на простую задачу"
+    },
+    "checkered": {
+      "name": "🏁 FINISH — задача решена",
+      "trigger": "задача completed",
+      "action": "записать в базу знаний, выдать следующую"
+    },
+    "black_flag": {
+      "name": "⚫ BLACK — дисквалификация",
+      "trigger": "агент выдаёт фальшивые completed",
+      "action": "отправить на обучение, не давать сложные задачи"
+    }
+  },
+
+  "knowledge_base": {
+    "path": "memory/knowledge_base.json",
+    "structure": {
+      "solved_cases": [],
+      "failed_cases": [],
+      "patterns": [],
+      "lessons": []
+    },
+    "curator_interval_min": 30
+  }
+}

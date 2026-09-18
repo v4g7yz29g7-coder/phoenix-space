@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Пульсар — Architect Dashboard</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --panel-2: #1c2129;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+    --yellow: #d29922;
+    --radius: 10px;
+    --shadow: 0 8px 24px rgba(0, 0, 0, .45);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: radial-gradient(1200px 600px at 20% -10%, #132033 0%, var(--bg) 55%);
+    color: var(--text);
+    font: 14px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+  }
+
+  header.pulse {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 26px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13, 17, 23, .82);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  header.pulse .logo {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--accent), var(--green), var(--accent));
+    box-shadow: 0 0 16px rgba(88, 166, 255, .55);
+    animation: spin 6s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  header.pulse h1 { font-size: 18px; margin: 0; letter-spacing: .4px; }
+  header.pulse .sub { color: var(--muted); font-size: 12px; }
+
+  header.pulse .spacer { flex: 1; }
+
+  button, .btn {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--text);
+    padding: 7px 13px;
+    border-radius: 8px;
+    transition: .15s ease;
+  }
+  button:hover { border-color: var(--accent); transform: translateY(-1px); }
+  button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+  .btn-approve { background: rgba(63,185,80,.14); border-color: rgba(63,185,80,.5); color: var(--green); }
+  .btn-reject  { background: rgba(248,81,73,.14); border-color: rgba(248,81,73,.5); color: var(--red); }
+
+  main { max-width: 1120px; margin: 0 auto; padding: 24px 20px 80px; }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .metric {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+  }
+  .metric .value { font-size: 26px; font-weight: 700; }
+  .metric .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .6px; }
+  .metric.green .value { color: var(--green); }
+  .metric.red .value { color: var(--red); }
+  .metric.yellow .value { color: var(--yellow); }
+  .metric.accent .value { color: var(--accent); }
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .tabs { display: flex; gap: 6px; }
+  .tab {
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .tab.active { color: var(--text); background: var(--panel-2); border-color: var(--accent); }
+
+  .search {
+    flex: 1;
+    min-width: 180px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 8px 12px;
+  }
+
+  .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--muted);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+    animation: fade .25s ease;
+  }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; } }
+
+  .card.status-pending  { border-left-color: var(--yellow); }
+  .card.status-approved { border-left-color: var(--green); }
+  .card.status-rejected { border-left-color: var(--red); }
+
+  .card-head { display: flex; align-items: flex-start; gap: 12px; }
+  .card-head h3 { margin: 0 0 4px; font-size: 15px; }
+  .card-head .meta { color: var(--muted); font-size: 12px; }
+
+  .badge {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .badge.pending  { color: var(--yellow); border-color: rgba(210,153,34,.5); }
+  .badge.approved { color: var(--green); border-color: rgba(63,185,80,.5); }
+  .badge.rejected { color: var(--red); border-color: rgba(248,81,73,.5); }
+
+  .score {
+    margin-left: auto;
+    text-align: center;
+    min-width: 56px;
+  }
+  .score .n { font-size: 20px; font-weight: 700; }
+  .score .l { font-size: 10px; color: var(--muted); text-transform: uppercase; }
+
+  .rationale { color: var(--muted); margin: 10px 0 0; font-size: 13px; }
+
+  .impact { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .impact span { font-size: 11px; color: var(--muted); background: var(--panel-2); border: 1px solid var(--border); padding: 2px 8px; border-radius: 6px; }
+
+  .actions { display: flex; gap: 8px; margin-top: 14px; }
+
+  .empty { text-align: center; color: var(--muted); padding: 60px 20px; }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 18px;
+    box-shadow: var(--shadow);
+    transition: transform .3s ease;
+    z-index: 60;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  .modal-back {
+    position: fixed; inset: 0;
+    background: rgba(1, 4, 9, .72);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+  .modal-back.open { display: flex; }
+  .modal {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    width: min(440px, 92vw);
+    box-shadow: var(--shadow);
+  }
+  .modal h2 { margin: 0 0 6px; font-size: 16px; }
+  .modal p { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+  .modal textarea {
+    width: 100%;
+    min-height: 90px;
+    resize: vertical;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 10px;
+    font: inherit;
+  }
+  .modal .actions { justify-content: flex-end; }
+
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px; }
+  code { background: var(--panel-2); padding: 1px 6px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<header class="pulse">
+  <div class="logo" aria-hidden="true"></div>
+  <div>
+    <h1>Пульсар</h1>
+    <div class="sub">Architect Dashboard · предложения, ревью, метрики</div>
+  </div>
+  <div class="spacer"></div>
+  <button id="btn-refresh" title="Перечитать источник">⟳ Обновить</button>
+</header>
+
+<main>
+  <section class="metrics" id="metrics" aria-label="Метрики">
+    <div class="metric accent"><div class="value" id="m-total">0</div><div class="label">Всего</div></div>
+    <div class="metric yellow"><div class="value" id="m-pending">0</div><div class="label">Ожидают</div></div>
+    <div class="metric green"><div class="value" id="m-approved">0</div><div class="label">Одобрено</div></div>
+    <div class="metric red"><div class="value" id="m-rejected">0</div><div class="label">Отклонено</div></div>
+    <div class="metric"><div class="value" id="m-score">0.0</div><div class="label">Средний скор</div></div>
+  </section>
+
+  <div class="toolbar">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-filter="all">Все</button>
+      <button class="tab" data-filter="pending">Ожидают</button>
+      <button class="tab" data-filter="approved">Одобрено</button>
+      <button class="tab" data-filter="rejected">Отклонено</button>
+    </div>
+    <input class="search" id="search" type="search" placeholder="Поиск по названию, категории, обоснованию…" />
+    <span class="badge" id="source-badge">source: —</span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>Нет предложений по текущему фильтру.</div>
+</main>
+
+<footer>
+  Пульсар · данные: <code>memory/architect_proposals.json</code> или DEMO.
+  Решения сохраняются в <code>localStorage</code>.
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="modal-back" id="modal-back">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <h2 id="modal-title">Отклонить предложение</h2>
+    <p id="modal-sub">Укажите причину — она попадёт в журнал ревью.</p>
+    <textarea id="reject-reason" placeholder="Например: дублирует существующий модуль, недостаточно обоснования…"></textarea>
+    <div class="actions">
+      <button id="modal-cancel">Отмена</button>
+      <button class="btn-reject" id="modal-confirm">Отклонить</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/**
+ * ArchitectDashboard — UI Пульсара для ревью предложений Архитектора.
+ * API: init(), load(), render(), approve(id), reject(id, reason), metrics().
+ */
+(function () {
+  'use strict';
+
+  var STORAGE_KEY = 'pulsar.architect.decisions.v1';
+  var SOURCE_URL = 'memory/architect_proposals.json';
+
+  var DEMO = [
+    { id: 'p-001', title: 'Вынести ядро в event-bus', category: 'architecture', score: 8.4,
+      rationale: 'Развязывает модули, снижает связность и позволит независимо масштабировать воркеров.',
+      impact: ['refactor', 'scalability'], ts: '2024-06-02T09:12:00Z', status: 'pending' },
+    { id: 'p-002', title: 'Кэш ДНК архитектора', category: 'performance', score: 7.1,
+      rationale: 'Парсинг ДНК выполняется на каждый запуск — кэш уберёт лишние чтения с диска.',
+      impact: ['perf', 'io'], ts: '2024-06-02T10:40:00Z', status: 'pending' },
+    { id: 'p-003', title: 'Схема версионирования proposals', category: 'data', score: 9.0,
+      rationale: 'SCHEMA_VERSION уже есть, нужно мигрировать старые записи и добавить валидатор.',
+      impact: ['data', 'migration'], ts: '2024-06-03T08:05:00Z', status: 'approved' },
+    { id: 'p-004', title: 'Убрать синхронный лог', category: 'reliability', score: 5.2,
+      rationale: 'appendFileSync блокирует event-loop на больших объёмах. Спорно для текущих нагрузок.',
+      impact: ['reliability'], ts: '2024-06-03T12:30:00Z', status: 'rejected',
+      reason: 'Низкий приоритет, нагрузка не подтверждена метриками.' },
+    { id: 'p-005', title: 'Метрики в Prometheus', category: 'observability', score: 8.1,
+      rationale: 'Экспорт пульса Пульсара в /metrics упростит алертинг по скору предложений.',
+      impact: ['observability'], ts: '2024-06-04T07:15:00Z', status: 'pending' },
+    { id: 'p-006', title: 'Разделить approve/reject право', category: 'security', score: 7.7,
+      rationale: 'Ревью должен подтверждать отдельный актор — добавь роли и аудит-трейл.',
+      impact: ['security', 'audit'], ts: '2024-06-04T15:00:00Z', status: 'pending' }
+  ];
+
+  var state = {
+    proposals: [],
+    filter: 'all',
+    query: '',
+    source: 'demo',
+    pendingRejectId: null
+  };
+
+  var el = {};
+
+  function $(id) { return document.getElementById(id); }
+
+  function readDecisions() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    catch (e) { return {}; }
+  }
+
+  function saveDecision(id, decision) {
+    var all = readDecisions();
+    all[id] = decision;
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(all)); } catch (e) {}
+  }
+
+  function applyDecisions(list) {
+    var decisions = readDecisions();
+    return list.map(function (p) {
+      var d = decisions[p.id];
+      if (d) { p.status = d.status; if (d.reason) p.reason = d.reason; }
+      return p;
+    });
+  }
+
+  function toast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { el.toast.classList.remove('show'); }, 2200);
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function metrics() {
+    var m = { total: state.proposals.length, pending: 0, approved: 0, rejected: 0, avg: 0 };
+    var sum = 0;
+    state.proposals.forEach(function (p) {
+      if (p.status === 'approved') m.approved++;
+      else if (p.status === 'rejected') m.rejected++;
+      else m.pending++;
+      sum += Number(p.score) || 0;
+    });
+    m.avg = m.total ? (sum / m.total) : 0;
+    return m;
+  }
+
+  function renderMetrics() {
+    var m = metrics();
+    el.mTotal.textContent = m.total;
+    el.mPending.textContent = m.pending;
+    el.mApproved.textContent = m.approved;
+    el.mRejected.textContent = m.rejected;
+    el.mScore.textContent = m.avg.toFixed(1);
+  }
+
+  function filtered() {
+    var q = state.query.trim().toLowerCase();
+    return state.proposals.filter(function (p) {
+      if (state.filter !== 'all' && p.status !== state.filter) return false;
+      if (!q) return true;
+      return (p.title + ' ' + p.category + ' ' + (p.rationale || '')).toLowerCase().indexOf(q) >= 0;
+    });
+  }
+
+  function cardHtml(p) {
+    var tags = (p.impact || []).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
+    return '' +
+      '<article class="card status-' + esc(p.status) + '" data-id="' + esc(p.id) + '">' +
+        '<div class="card-head">' +
+          '<div>' +
+            '<h3>' + esc(p.title) + '</h3>' +
+            '<div class="meta">' + esc(p.id) + ' · ' + esc(p.category) + ' · ' + esc(p.ts) + '</div>' +
+          '</div>' +
+          '<div class="score"><div class="n">' + (Number(p.score) || 0).toFixed(1) + '</div><div class="l">score</div></div>' +
+        '</div>' +
+        '<p class="rationale">' + esc(p.rationale) + '</p>' +
+        (tags ? '<div class="impact">' + tags + '</div>' : '') +
+        (p.reason ? '<p class="rationale">↳ причина: ' + esc(p.reason) + '</p>' : '') +
+        '<div class="actions">' +
+          '<span class="badge ' + esc(p.status) + '">' + esc(p.status) + '</span>' +
+          '<button class="btn-approve" data-act="approve" ' + (p.status === 'approved' ? 'disabled' : '') + '>✔ Approve</button>' +
+          '<button class="btn-reject" data-act="reject" ' + (p.status === 'rejected' ? 'disabled' : '') + '>✖ Reject</button>' +
+        '</div>' +
+      '</article>';
+  }
+
+  function render() {
+    renderMetrics();
+    var list = filtered();
+    el.grid.innerHTML = list.map(cardHtml).join('');
+    el.empty.hidden = list.length !== 0;
+    el.sourceBadge.textContent = 'source: ' + state.source;
+  }
+
+  function find(id) {
+    for (var i = 0; i < state.proposals.length; i++) {
+      if (state.proposals[i].id === id) return state.proposals[i];
+    }
+    return null;
+  }
+
+  function approve(id) {
+    var p = find(id);
+    if (!p) return false;
+    p.status = 'approved';
+    delete p.reason;
+    saveDecision(id, { status: 'approved', ts: new Date().toISOString() });
+    render();
+    toast('Одобрено: ' + p.title);
+    return true;
+  }
+
+  function reject(id, reason) {
+    var p = find(id);
+    if (!p) return false;
+    p.status = 'rejected';
+    p.reason = reason || 'Без указания причины';
+    saveDecision(id, { status: 'rejected', reason: p.reason, ts: new Date().toISOString() });
+    render();
+    toast('Отклонено: ' + p.title);
+    return true;
+  }
+
+  function openReject(id) {
+    state.pendingRejectId = id;
+    var p = find(id);
+    el.modalSub.textContent = p ? ('Предложение: ' + p.title) : '';
+    el.rejectReason.value = '';
+    el.modalBack.classList.add('open');
+    el.rejectReason.focus();
+  }
+
+  function closeReject() {
+    state.pendingRejectId = null;
+    el.modalBack.classList.remove('open');
+  }
+
+  function load() {
+    return fetch(SOURCE_URL, { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function (data) {
+        var list = Array.isArray(data) ? data : (data.proposals || []);
+        if (!list.length) throw new Error('empty');
+        state.proposals = applyDecisions(list);
+        state.source = 'file';
+        render();
+        return state.proposals;
+      })
+      .catch(function () {
+        state.proposals = applyDecisions(DEMO.map(function (p) { return Object.assign({}, p); }));
+        state.source = 'demo';
+        render();
+        return state.proposals;
+      });
+  }
+
+  function bind() {
+    el.btnRefresh.addEventListener('click', function () { load(); toast('Обновлено'); });
+    el.search.addEventListener('input', function (e) { state.query = e.target.value; render(); });
+    el.tabs.addEventListener('click', function (e) {
+      var t = e.target.closest('.tab');
+      if (!t) return;
+      state.filter = t.getAttribute('data-filter');
+      Array.prototype.forEach.call(el.tabs.querySelectorAll('.tab'), function (b) {
+        b.classList.toggle('active', b === t);
+      });
+      render();
+    });
+    el.grid.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-act]');
+      if (!btn) return;
+      var id = btn.closest('.card').getAttribute('data-id');
+      if (btn.getAttribute('data-act') === 'approve') approve(id);
+      else openReject(id);
+    });
+    el.modalCancel.addEventListener('click', closeReject);
+    el.modalBack.addEventListener('click', function (e) { if (e.target === el.modalBack) closeReject(); });
+    el.modalConfirm.addEventListener('click', function () {
+      if (state.pendingRejectId) reject(state.pendingRejectId, el.rejectReason.value.trim());
+      closeReject();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeReject(); });
+  }
+
+  function init() {
+    el = {
+      grid: $('grid'), empty: $('empty'), toast: $('toast'),
+      tabs: $('tabs'), search: $('search'), sourceBadge: $('source-badge'),
+      btnRefresh: $('btn-refresh'),
+      mTotal: $('m-total'), mPending: $('m-pending'), mApproved: $('m-approved'),
+      mRejected: $('m-rejected'), mScore: $('m-score'),
+      modalBack: $('modal-back'), modalSub: $('modal-sub'), rejectReason: $('reject-reason'),
+      modalCancel: $('modal-cancel'), modalConfirm: $('modal-confirm')
+    };
+    bind();
+    render();
+    load();
+  }
+
+  window.ArchitectDashboard = {
+    init: init, load: load, render: render, metrics: metrics,
+    approve: approve, reject: reject, openReject: openReject, closeReject: closeReject,
+    state: state
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Пульсар — Architect Dashboard</title>
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --panel: #131a2b;
+    --panel-2: #1a2338;
+    --border: #26304a;
+    --text: #e6ebf5;
+    --muted: #8b97b4;
+    --accent: #4f8cff;
+    --accent-2: #9b5cff;
+    --ok: #2ecc71;
+    --warn: #f1c40f;
+    --bad: #e74c3c;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, #16203a 0%, var(--bg) 55%);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .logo {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+    animation: spin 6s linear infinite;
+    box-shadow: 0 0 24px rgba(79,140,255,.6);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  h1 { font-size: 22px; font-weight: 650; letter-spacing: .3px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .status-dot {
+    display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--ok); box-shadow: 0 0 10px var(--ok); margin-right: 6px;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  .head-actions { display: flex; gap: 10px; align-items: center; }
+
+  /* ---------- Metrics ---------- */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .card {
+    background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow); }
+  .metric-label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .6px; }
+  .metric-value { font-size: 32px; font-weight: 700; margin-top: 8px; }
+  .metric-delta { font-size: 12px; margin-top: 6px; }
+  .up { color: var(--ok); }
+  .down { color: var(--bad); }
+
+  /* ---------- Tabs ---------- */
+  .tabs {
+    display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .tab {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .tab:hover { color: var(--text); border-color: var(--accent); }
+  .tab.active {
+    color: #fff;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-color: transparent;
+  }
+  .tab .n {
+    background: rgba(255,255,255,.18);
+    border-radius: 999px;
+    padding: 1px 7px;
+    margin-left: 6px;
+    font-size: 11px;
+  }
+
+  /* ---------- Layout ---------- */
+  .layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .panel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,.02);
+  }
+  .panel-head h2 { font-size: 15px; font-weight: 600; }
+  .badge {
+    font-size: 11px; padding: 3px 9px; border-radius: 999px;
+    background: rgba(79,140,255,.18); color: var(--accent); border: 1px solid rgba(79,140,255,.35);
+  }
+
+  /* ---------- Proposals ---------- */
+  .proposal {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 10px;
+    animation: fade .25s ease;
+  }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .proposal:last-child { border-bottom: none; }
+  .proposal .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .proposal h3 { font-size: 14px; font-weight: 600; }
+  .proposal .meta { color: var(--muted); font-size: 12px; margin-top: 3px; font-family: ui-monospace, monospace; }
+  .risk {
+    font-size: 11px; padding: 3px 9px; border-radius: 6px; font-weight: 600;
+    white-space: nowrap; border: 1px solid transparent;
+  }
+  .risk.low { background: rgba(46,204,113,.15); color: var(--ok); border-color: rgba(46,204,113,.35); }
+  .risk.medium { background: rgba(241,196,15,.15); color: var(--warn); border-color: rgba(241,196,15,.35); }
+  .risk.high { background: rgba(231,76,60,.15); color: var(--bad); border-color: rgba(231,76,60,.35); }
+  .reasoning { color: #b6c0d8; font-size: 13px; line-height: 1.5; }
+  .actions { display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap; }
+  .status-pill {
+    align-self: flex-start; font-size: 12px; font-weight: 600;
+    padding: 4px 12px; border-radius: 8px;
+  }
+  .status-pill.approved { background: rgba(46,204,113,.15); color: var(--ok); }
+  .status-pill.rejected { background: rgba(231,76,60,.15); color: var(--bad); }
+
+  /* ---------- Buttons ---------- */
+  button {
+    font-family: inherit; font-size: 13px; font-weight: 600;
+    padding: 8px 16px; border-radius: 8px; border: 1px solid transparent;
+    cursor: pointer; transition: all .15s ease;
+  }
+  .btn-approve { background: rgba(46,204,113,.16); color: var(--ok); border-color: rgba(46,204,113,.4); }
+  .btn-approve:hover { background: rgba(46,204,113,.3); }
+  .btn-reject { background: rgba(231,76,60,.14); color: var(--bad); border-color: rgba(231,76,60,.4); }
+  .btn-reject:hover { background: rgba(231,76,60,.28); }
+  .btn-ghost { background: transparent; color: var(--muted); border-color: var(--border); }
+  .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
+
+  /* ---------- Log ---------- */
+  .log { padding: 14px 20px; font-size: 12px; font-family: ui-monospace, monospace; max-height: 520px; overflow: auto; }
+  .log .line { padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,.05); color: #9fb0cf; }
+  .log .line:last-child { border-bottom: none; }
+  .log .t { color: var(--muted); margin-right: 8px; }
+  .approved { color: var(--ok); }
+  .rejected { color: var(--bad); }
+
+  /* ---------- Bar ---------- */
+  .bar { height: 8px; border-radius: 4px; background: var(--border); overflow: hidden; margin-top: 12px; }
+  .bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .4s ease; }
+
+  /* ---------- Modal ---------- */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(5,8,16,.7);
+    display: none; align-items: center; justify-content: center; z-index: 50;
+    backdrop-filter: blur(3px);
+  }
+  .overlay.open { display: flex; }
+  .modal {
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    width: min(680px, 92vw); padding: 24px; box-shadow: var(--shadow);
+  }
+  .modal h2 { font-size: 16px; margin-bottom: 12px; }
+  .modal pre {
+    background: #0a0e18; border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px; font-size: 12px; overflow: auto; max-height: 320px; color: #9fb0cf;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .modal .actions { justify-content: flex-end; }
+
+  /* ---------- Toast ---------- */
+  #toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+    padding: 12px 20px; border-radius: 10px; font-size: 13px; font-weight: 600;
+    box-shadow: var(--shadow); transition: transform .3s ease; z-index: 60;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+  #toast.ok { border-color: rgba(46,204,113,.6); }
+  #toast.bad { border-color: rgba(231,76,60,.6); }
+
+  footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: 12px; }
+  .empty { padding: 40px 20px; text-align: center; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <h1>Пульсар · Architect Dashboard</h1>
+        <div class="subtitle"><span class="status-dot"></span>система активна · <span id="clock">--:--:--</span></div>
+      </div>
+    </div>
+    <div class="head-actions">
+      <span class="badge" id="source">источник: mock</span>
+      <button class="btn-ghost" onclick="resetAll()">Сбросить</button>
+      <button class="btn-ghost" onclick="refresh()">Обновить</button>
+    </div>
+  </header>
+
+  <section class="metrics" id="metrics"></section>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="layout">
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Предложения Архитектора</h2>
+        <span class="badge" id="proposalCount">0 pending</span>
+      </div>
+      <div id="proposals"></div>
+    </section>
+
+    <aside class="panel">
+      <div class="panel-head">
+        <h2>Журнал решений</h2>
+        <span class="badge">live</span>
+      </div>
+      <div class="log" id="log"></div>
+    </aside>
+  </div>
+
+  <footer>Пульсар · эволюция промптов · сгенерировано автоматически</footer>
+
+  <!-- Diff modal -->
+  <div class="overlay" id="overlay" onclick="if(event.target===this) closeDiff()">
+    <div class="modal">
+      <h2 id="diffTitle">Diff</h2>
+      <pre id="diffBody"></pre>
+      <div class="actions">
+        <button class="btn-ghost" onclick="closeDiff()">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+<script>
+  "use strict";
+
+  /* ==================================================================
+   * Пульсар — панель управления предложениями LLM-Архитектора.
+   * Показывает патчи промптов, позволяет одобрять/отклонять их
+   * и ведёт живые метрики принятия решений.
+   * ================================================================== */
+
+  const API = "/api/proposals";          // эндпоинт бэкенда (если доступен)
+  const STORE = "pulsar.dashboard.v1";   // ключ localStorage
+
+  /* ---------------- Seed-данные (мок) ---------------- */
+  const SEED = [
+    {
+      id: "p-001",
+      action: "patch",
+      target: "prompts/architect_dna_v3.md",
+      title: "Усилить секцию RESPONSE-анализа",
+      reasoning: "Агент игнорирует вторую половину диалога. Добавлена проверка пар REQUEST/RESPONSE при формировании ДНК.",
+      risk: "low",
+      status: "pending",
+      agent: "architect",
+      ts: "2024-06-02T10:14:00Z"
+    },
+    {
+      id: "p-002",
+      action: "add",
+      target: "corpus/architect/dialogues/",
+      title: "Индексировать новые диалоги",
+      reasoning: "Найдено 42 необработанных диалога. Предложена пакетная загрузка через builder.",
+      risk: "medium",
+      status: "pending",
+      agent: "architect",
+      ts: "2024-06-02T10:22:00Z"
+    },
+    {
+      id: "p-003",
+      action: "patch",
+      target: "evolution/dna_architect.js",
+      title: "Изменение сигнатуры proposeChanges",
+      reasoning: "Добавлено поле reasoning в возвращаемый объект для трассируемости решений.",
+      risk: "high",
+      status: "pending",
+      agent: "architect",
+      ts: "2024-06-02T11:03:00Z"
+    },
+    {
+      id: "p-004",
+      action: "refactor",
+      target: "prompts/architect_dna.md",
+      title: "Удалить дублирующиеся правила",
+      reasoning: "Секции REQUEST и RESPONSE содержат повторяющиеся инструкции — объединены в одну.",
+      risk: "low",
+      status: "pending",
+      agent: "architect",
+      ts: "2024-06-02T11:40:00Z"
+    },
+    {
+      id: "p-005",
+      action: "patch",
+      target: "evolution/rollback.js",
+      title: "Добавить авто-откат при регрессии",
+      reasoning: "Если score агента падает более чем на 5% — промпт откатывается к предыдущей ДНК.",
+      risk: "high",
+      status: "pending",
+      agent: "architect",
+      ts: "2024-06-02T12:05:00Z"
+    }
+  ];
+
+  /* ---------------- Состояние ---------------- */
+  let proposals = [];
+  let decisions = [];
+  let filter = "pending";
+  let source = "mock";
+
+  const metrics = {
+    pending: 0,
+    approved: 0,
+    rejected: 0,
+    total: 0,
+    approvalRate: 0,
+    avgRisk: 0
+  };
+
+  const RISK_SCORE = { low: 1, medium: 2, high: 3 };
+
+  /* ---------------- Загрузка / сохранение ---------------- */
+  function loadLocal() {
+    try {
+      const raw = localStorage.getItem(STORE);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed.proposals) && parsed.proposals.length) {
+        proposals = parsed.proposals;
+        decisions = Array.isArray(parsed.decisions) ? parsed.decisions : [];
+        return true;
+      }
+    } catch (e) { /* ignore corrupt store */ }
+    return null;
+  }
+
+  function persist() {
+    try {
+      localStorage.setItem(STORE, JSON.stringify({
+        proposals,
+        decisions,
+        savedAt: new Date().toISOString()
+      }));
+    } catch (e) { /* storage may be unavailable */ }
+  }
+
+  async function fetchRemote() {
+    try {
+      const res = await fetch(API, { headers: { accept: "application/json" } });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      const list = Array.isArray(data) ? data : (data.proposals || []);
+      if (list.length) {
+        proposals = list.map(normalize);
+        source = "api";
+        return true;
+      }
+    } catch (e) {
+      source = "mock";
+    }
+    return false;
+  }
+
+  function normalize(p) {
+    return {
+      id: p.id || ("p-" + Math.random().toString(36).slice(2, 8)),
+      action: p.action || "patch",
+      target: p.target || "unknown",
+      title: p.title || "Без названия",
+      reasoning: p.reasoning || "",
+      risk: RISK_SCORE[p.risk] ? p.risk : "medium",
+      status: p.status || "pending",
+      agent: p.agent || "architect",
+      ts: p.ts || new Date().toISOString()
+    };
+  }
+
+  /* ---------------- Метрики ---------------- */
+  function recalc() {
+    metrics.approved = proposals.filter(p => p.status === "approved").length;
+    metrics.rejected = proposals.filter(p => p.status === "rejected").length;
+    metrics.pending = proposals.filter(p => p.status === "pending").length;
+    metrics.total = proposals.length;
+
+    const decided = metrics.approved + metrics.rejected;
+    metrics.approvalRate = decided ? Math.round((metrics.approved / decided) * 100) : 0;
+
+    const risks = proposals.map(p => RISK_SCORE[p.risk] || 2);
+    metrics.avgRisk = risks.length
+      ? (risks.reduce((a, b) => a + b, 0) / risks.length).toFixed(2)
+      : "0.00";
+  }
+
+  function renderMetrics() {
+    recalc();
+    const el = document.getElementById("metrics");
+    const cards = [
+      { label: "Ожидают решения", value: metrics.pending, delta: "pending", cls: "" },
+      { label: "Одобрено", value: metrics.approved, delta: "approved", cls: "up" },
+      { label: "Отклонено", value: metrics.rejected, delta: "rejected", cls: "down" },
+      { label: "Уровень одобрения", value: metrics.approvalRate + "%", delta: `${metrics.approved}/${metrics.approved + metrics.rejected} решений`, cls: metrics.approvalRate >= 50 ? "up" : "down" },
+      { label: "Средний риск", value: metrics.avgRisk, delta: "по всем предложениям", cls: "" },
+      {
+        label: "Всего предложений", value: metrics.total, delta: "в системе",
+        bar: metrics.total ? Math.round((metrics.approved + metrics.rejected) / metrics.total * 100) : 0
+      }
+    ];
+
+    el.innerHTML = cards.map(c => `
+      <div class="card">
+        <div class="metric-label">${c.label}</div>
+        <div class="metric-value">${c.value}</div>
+        <div class="metric-delta ${c.cls}">${c.delta}</div>
+        ${typeof c.bar === "number" ? `<div class="bar"><span style="width:${c.bar}%"></span></div>` : ""}
+      </div>
+    `).join("");
+  }
+
+  /* ---------------- Табы ---------------- */
+  function renderTabs() {
+    recalc();
+    const tabs = [
+      { key: "pending", name: "Ожидают", n: metrics.pending },
+      { key: "approved", name: "Одобрены", n: metrics.approved },
+      { key: "rejected", name: "Отклонены", n: metrics.rejected },
+      { key: "all", name: "Все", n: metrics.total }
+    ];
+    document.getElementById("tabs").innerHTML = tabs.map(t => `
+      <button class="tab ${filter === t.key ? "active" : ""}" onclick="setFilter('${t.key}')">
+        ${t.name}<span class="n">${t.n}</span>
+      </button>
+    `).join("");
+  }
+
+  function setFilter(key) {
+    filter = key;
+    renderTabs();
+    renderProposals();
+  }
+
+  /* ---------------- Предложения ---------------- */
+  function visible() {
+    return filter === "all" ? proposals : proposals.filter(p => p.status === filter);
+  }
+
+  function renderProposals() {
+    const el = document.getElementById("proposals");
+    const list = visible();
+
+    recalc();
+    document.getElementById("proposalCount").textContent = metrics.pending + " pending";
+
+    if (!list.length) {
+      el.innerHTML = '<div class="empty">Нет предложений в этой категории ✓</div>';
+      return;
+    }
+
+    el.innerHTML = list.map(p => {
+      const decided = p.status !== "pending";
+      const statusPill = decided
+        ? `<div class="status-pill ${p.status}">${p.status === "approved" ? "✓ Одобрено" : "✗ Отклонено"}</div>`
+        : `<div class="actions">
+             <button class="btn-approve" onclick="decide('${p.id}','approved')">Одобрить</button>
+             <button class="btn-reject" onclick="decide('${p.id}','rejected')">Отклонить</button>
+             <button class="btn-ghost" onclick="showDiff('${p.id}')">Diff</button>
+           </div>`;
+
+      return `
+        <div class="proposal" id="row-${p.id}">
+          <div class="top">
+            <div>
+              <h3>${escapeHtml(p.title)}</h3>
+              <div class="meta">${p.action.toUpperCase()} · ${escapeHtml(p.target)} · ${escapeHtml(p.agent)}</div>
+            </div>
+            <span class="risk ${p.risk}">риск: ${p.risk}</span>
+          </div>
+          <div class="reasoning">${escapeHtml(p.reasoning)}</div>
+          ${statusPill}
+        </div>
+      `;
+    }).join("");
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  /* ---------------- Решения ---------------- */
+  function decide(id, verdict) {
+    const p = proposals.find(x => x.id === id);
+    if (!p || p.status !== "pending") return;
+
+    p.status = verdict;
+    p.decidedAt = new Date().toISOString();
+    decisions.unshift({ id: p.id, target: p.target, verdict, ts: new Date().toISOString() });
+
+    persist();
+    renderMetrics();
+    renderTabs();
+    renderProposals();
+    renderLog();
+    toast(verdict === "approved" ? "✓ Одобрено: " + p.title : "✗ Отклонено: " + p.title, verdict === "approved" ? "ok" : "bad");
+  }
+
+  /* ---------------- Журнал ---------------- */
+  function renderLog() {
+    const el = document.getElementById("log");
+    if (!decisions.length) {
+      el.innerHTML = '<div class="line"><span class="t">--:--</span>ожидание решений…</div>';
+      return;
+    }
+    el.innerHTML = decisions.map(d => {
+      const t = new Date(d.ts).toLocaleTimeString();
+      const ico = d.verdict === "approved" ? "✓" : "✗";
+      return `
+        <div class="line">
+          <span class="t">${t}</span>
+          <span class="${d.verdict}">${ico} ${d.verdict}</span>
+          · ${escapeHtml(d.target)}
+        </div>
+      `;
+    }).join("");
+  }
+
+  /* ---------------- Diff-модалка ---------------- */
+  function showDiff(id) {
+    const p = proposals.find(x => x.id === id);
+    if (!p) return;
+    document.getElementById("diffTitle").textContent = "Diff · " + p.target;
+    const diff =
+      "--- a/" + p.target + "\n" +
+      "+++ b/" + p.target + "\n" +
+      "@@ предложение Архитектора @@\n" +
+      "- " + p.reasoning + "\n" +
+      "+ [Пульсар] применить предложение " + p.id + " (риск: " + p.risk + ")";
+    document.getElementById("diffBody").textContent = diff;
+    document.getElementById("overlay").classList.add("open");
+  }
+
+  function closeDiff() {
+    document.getElementById("overlay").classList.remove("open");
+  }
+
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeDiff(); });
+
+  /* ---------------- Toast ---------------- */
+  let toastTimer = null;
+  function toast(msg, kind) {
+    const el = document.getElementById("toast");
+    el.textContent = msg;
+    el.className = "show " + (kind || "");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.className = ""; }, 2600);
+  }
+
+  /* ---------------- Сброс ---------------- */
+  function resetAll() {
+    proposals = SEED.map(normalize);
+    decisions = [];
+    filter = "pending";
+    persist();
+    refresh();
+    toast("Состояние сброшено");
+  }
+
+  /* ---------------- Часы / обновление ---------------- */
+  function tick() {
+    document.getElementById("clock").textContent = new Date().toLocaleTimeString();
+  }
+
+  function refresh() {
+    renderMetrics();
+    renderTabs();
+    renderProposals();
+    renderLog();
+  }
+
+  /* ---------------- Инициализация ---------------- */
+  async function init() {
+    const hadLocal = loadLocal();
+    if (!hadLocal) {
+      await fetchRemote();
+      if (!proposals.length) {
+        proposals = SEED.map(normalize);
+        source = "mock";
+      }
+    }
+    document.getElementById("source").textContent = "источник: " + source;
+    setInterval(tick, 1000);
+    tick();
+    refresh();
+  }
+
+  init();
+</script>
+</body>
+</html>

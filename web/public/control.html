@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORMULA I1 · Mission Control</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'JetBrains Mono', monospace; background: #0a0e1a; color: #e0e6f0; padding: 20px; min-height: 100vh; font-size: 14px; }
+h1 { font-size: 1.4em; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #4dd0ff, #a855f7, #ff7eb6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.panel { background: rgba(20,26,45,0.7); border-radius: 12px; padding: 18px; border-left: 3px solid #4dd0ff; }
+.panel.warn { border-left-color: #ffd700; }
+.panel.err { border-left-color: #ff5c5c; }
+.panel.ok { border-left-color: #6eff8b; }
+.panel-title { font-size: 0.75em; font-weight: 700; color: #7a8baa; margin-bottom: 12px; letter-spacing: 1.5px; }
+.big { font-size: 3em; font-weight: 900; background: linear-gradient(180deg, #4dd0ff, #a855f7);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+.row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.85em; border-bottom: 1px solid rgba(122,139,170,0.1); }
+.log { background: #050810; border-radius: 8px; padding: 12px; font-size: 0.8em; height: 400px; overflow-y: auto; grid-column: 1 / -1; }
+.log-line { padding: 3px 0; color: #4dd0ff; border-bottom: 1px solid rgba(77,208,255,0.05); }
+.error { color: #ff5c5c; padding: 20px; }
+</style>
+</head>
+<body>
+<h1>🛰️ FORMULA I1 · MISSION CONTROL</h1>
+<div class="grid">
+  <div class="panel ok"><div class="panel-title">ВЫПОЛНЕНО</div><div class="big" id="done">0</div></div>
+  <div class="panel warn"><div class="panel-title">В РАБОТЕ</div><div class="big" id="active">0</div></div>
+  <div class="panel err"><div class="panel-title">ПРОВАЛЕНО</div><div class="big" id="failed">0</div></div>
+  <div class="panel log">
+    <div class="panel-title">📡 LIVE FEED</div>
+    <div id="log"></div>
+  </div>
+</div>
+
+<script>
+async function load() {
+  try {
+    const [roadmapRes, boardRes] = await Promise.all([
+      fetch('/api/roadmap'),
+      fetch('/api/board').catch(() => ({ json: () => ({}) })),
+    ]);
+    const roadmap = await roadmapRes.json();
+    const board = await boardRes.json();
+
+    const allTasks = (roadmap.stages || []).flatMap(s => s.tasks || []);
+    document.getElementById('done').textContent = allTasks.filter(t => t.status === 'completed').length;
+    document.getElementById('active').textContent = allTasks.filter(t => t.status === 'in_progress').length;
+    document.getElementById('failed').textContent = allTasks.filter(t => t.status === 'failed').length;
+
+    const notes = (board.notes || []).slice(-30).reverse();
+    const logEl = document.getElementById('log');
+    if (notes.length === 0) {
+      logEl.innerHTML = '<div style="color:#4a5570">Ожидание событий... Задачи выполняются агентами.</div>';
+    } else {
+      logEl.innerHTML = notes.map(n =>
+        '<div class="log-line">[' + new Date(n.ts).toLocaleTimeString() + '] ' + (n.text || '') + '</div>'
+      ).join('');
+    }
+  } catch (e) {
+    document.getElementById('log').innerHTML = '<div class="error">Ошибка: ' + e.message + '</div>';
+    console.error(e);
+  }
+}
+
+load();
+setInterval(load, 5000);
+</script>
+</body>
+</html>

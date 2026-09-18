@@ -1,0 +1,30 @@
+document.addEventListener('DOMContentLoaded', function() {
+  const fileInput = document.querySelector('input[type="file"]');
+  const previewGrid = document.querySelector('.preview-grid') || document.createElement('div');
+  const generateBtn = document.querySelector('button');
+
+  if (fileInput) {
+    fileInput.addEventListener('change', function(e) {
+      const files = Array.from(e.target.files);
+      previewGrid.innerHTML = '';
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          const img = document.createElement('img');
+          img.src = ev.target.result;
+          img.style.width = '100px';
+          img.style.height = '100px';
+          img.style.objectFit = 'cover';
+          img.style.margin = '5px';
+          previewGrid.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+  }
+  if (generateBtn) {
+    generateBtn.addEventListener('click', function() {
+      alert('Коллаж сгенерирован (прототип)');
+    });
+  }
+});

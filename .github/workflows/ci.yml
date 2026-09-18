@@ -1,0 +1,297 @@
+# =============================================================================
+# Phoenix Academy :: Continuous Integration
+# -----------------------------------------------------------------------------
+# Pipeline stages (each stage gates the next):
+#
+#   1. lint         - actionlint on every workflow + node --check on every .js
+#                     file + JSON config validation. No dependencies needed.
+#   2. test         - unit / integration suite across supported Node.js versions.
+#   3. e2e          - end-to-end smoke tests against a freshly booted server.
+#   4. security     - npm audit + Trivy filesystem vulnerability scan.
+#   5. release-gate - single aggregated required check for branch protection.
+#
+# The pipeline is defensive: optional artifacts (package-lock.json,
+# requirements.txt, Dockerfile) are detected before use so CI never fails for
+# a reason that is not a genuine defect in the code under test.
+# =============================================================================
+
+name: CI
+
+# Trigger the pipeline on the main branches, on pull requests and weekly.
+"on":
+  push:
+    branches:
+      - main
+      - master
+      - develop
+    paths-ignore:
+      - "docs/**"
+      - "**.md"
+      - "LICENSE"
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+  schedule:
+    # Weekly dependency / security sweep every Monday at 03:00 UTC.
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      node_version:
+        description: "Node.js version to run the primary job with"
+        required: false
+        default: "20"
+        type: string
+      debug:
+        description: "Enable verbose debug logging"
+        required: false
+        default: false
+        type: boolean
+
+# Least-privilege token for the whole workflow.
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+# Cancel superseded runs on the same ref to conserve CI minutes.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "20"
+  CI: "true"
+  FORCE_COLOR: "1"
+  NPM_CONFIG_LOGLEVEL: "warn"
+  NPM_CONFIG_FUND: "false"
+  NPM_CONFIG_AUDIT: "false"
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Lint & static analysis.
+  # ---------------------------------------------------------------------------
+  lint:
+    name: Lint & Static Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run actionlint
+        uses: docker://rhysd/actionlint:1.7.1
+        with:
+          args: -color
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ github.event.inputs.node_version || env.NODE_VERSION }}
+
+      - name: Check JavaScript syntax
+        run: |
+          set -euo pipefail
+          failed=0
+          while IFS= read -r -d '' file; do
+            if ! node --check "$file" 2>/dev/null; then
+              echo "::error file=$file::JavaScript syntax error"
+              failed=1
+            fi
+          done < <(find . -name '*.js' \
+                    -not -path './node_modules/*' \
+                    -not -path './.git/*' \
+                    -not -path './.rag_index/*' \
+                    -print0)
+          exit $failed
+
+      - name: Validate JSON config files
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' file; do
+            node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "$file" \
+              || { echo "::error file=$file::Invalid JSON"; exit 1; }
+          done < <(find . -name '*.json' \
+                    -not -path './node_modules/*' \
+                    -not -path './.git/*' \
+                    -not -path './package-lock.json' \
+                    -not -path './.rag_index/*' \
+                    -print0)
+          echo "All JSON files valid."
+
+  # ---------------------------------------------------------------------------
+  # Unit / integration suite across supported Node.js versions and platforms.
+  # ---------------------------------------------------------------------------
+  test:
+    name: Test (Node ${{ matrix.node-version }} / ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    needs: lint
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+        node-version:
+          - "18"
+          - "20"
+          - "22"
+        include:
+          - os: macos-latest
+            node-version: "20"
+          - os: windows-latest
+            node-version: "20"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Run runner self-test
+        run: node tests/runner.self.test.js
+
+      - name: Run unit tests
+        run: node tests/runner.js tests/unit.js
+
+      - name: Run integration tests
+        run: node tests/runner.js tests/integration.js
+
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs-${{ matrix.os }}-${{ matrix.node-version }}
+          path: |
+            *.log
+            tests/**/*.log
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # End-to-end smoke tests: boot the server, hit it, then shut it down.
+  # ---------------------------------------------------------------------------
+  e2e:
+    name: E2E Smoke Tests (Node ${{ env.NODE_VERSION }})
+    runs-on: ubuntu-latest
+    needs: test
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Run end-to-end tests
+        run: node tests/runner.js tests/e2e.js
+
+      - name: Upload e2e logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-logs
+          path: tests/**/*.log
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # Dependency / supply-chain security scanning.
+  # ---------------------------------------------------------------------------
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: lint
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: npm audit
+        continue-on-error: true
+        run: npm audit --audit-level=high || true
+
+      - name: Run Trivy filesystem scan
+        uses: aquasecurity/trivy-action@0.28.0
+        continue-on-error: true
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          format: sarif
+          output: trivy-results.sarif
+
+      - name: Upload Trivy SARIF
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-results
+          path: trivy-results.sarif
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # Aggregated required check for branch protection.
+  # ---------------------------------------------------------------------------
+  release-gate:
+    name: Release Gate
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+      - test
+      - e2e
+      - security
+    if: always()
+    steps:
+      - name: Verify all required jobs passed
+        run: |
+          echo "lint:     ${{ needs.lint.result }}"
+          echo "test:     ${{ needs.test.result }}"
+          echo "e2e:      ${{ needs.e2e.result }}"
+          echo "security: ${{ needs.security.result }}"
+          if [ "${{ needs.lint.result }}" != "success" ] \
+             || [ "${{ needs.test.result }}" != "success" ] \
+             || [ "${{ needs.e2e.result }}" != "success" ]; then
+            echo "::error::One or more required jobs failed."
+            exit 1
+          fi
+          echo "All required jobs passed."

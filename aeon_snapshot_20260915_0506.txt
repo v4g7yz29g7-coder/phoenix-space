@@ -1,0 +1,2480 @@
+════════════════════════════════════════════════════════
+  AEON PHOENIX — SNAPSHOT
+  Дата: Tue Sep 15 05:06:44 UTC 2026
+  Хост: compute-vm-2-2-20-ssd-1780938616373
+  Директория: /home/ishidin/phoenix
+════════════════════════════════════════════════════════
+
+═══ 1. TREE (глубина 3, без node_modules/.git/boxes) ═══
+Please ask your administrator.
+.
+./.aider.tags.cache.v4
+./.aider.tags.cache.v4/17
+./.aider.tags.cache.v4/17/c3
+./.aider.tags.cache.v4/1f
+./.aider.tags.cache.v4/1f/f3
+./.aider.tags.cache.v4/21
+./.aider.tags.cache.v4/21/d9
+./.aider.tags.cache.v4/6a
+./.aider.tags.cache.v4/6a/78
+./.aider.tags.cache.v4/6e
+./.aider.tags.cache.v4/6e/0e
+./.aider.tags.cache.v4/79
+./.aider.tags.cache.v4/79/88
+./.aider.tags.cache.v4/81
+./.aider.tags.cache.v4/81/42
+./.aider.tags.cache.v4/8b
+./.aider.tags.cache.v4/8b/bd
+./.aider.tags.cache.v4/8e
+./.aider.tags.cache.v4/8e/23
+./.aider.tags.cache.v4/9f
+./.aider.tags.cache.v4/9f/3e
+./.aider.tags.cache.v4/a2
+./.aider.tags.cache.v4/a2/1b
+./.aider.tags.cache.v4/ad
+./.aider.tags.cache.v4/ad/eb
+./.aider.tags.cache.v4/b0
+./.aider.tags.cache.v4/b0/53
+./.aider.tags.cache.v4/b7
+./.aider.tags.cache.v4/b7/1c
+./.aider.tags.cache.v4/cb
+./.aider.tags.cache.v4/cb/1e
+./.aider.tags.cache.v4/d1
+./.aider.tags.cache.v4/d1/f2
+./.openhands
+./.rag_index
+./.rag_index/lancedb
+./.rag_index/lancedb/architect_core.lance
+./_backup_1789286692
+./_backup_1789286692/public_dashboard
+./analytics
+./api
+./api/__pycache__
+./architect
+./architect/modes
+./arena
+./arena/logs
+./arena/results
+./arena/sandboxes
+./arena/sandboxes/sandbox_1
+./arena/sandboxes/sandbox_2
+./arena3d
+./arena_lab
+./arena_lab/node_modules
+./arena_lab/node_modules/.bin
+./arena_lab/node_modules/@babel
+./arena_lab/node_modules/@esbuild
+./arena_lab/node_modules/@jridgewell
+./arena_lab/node_modules/@mediapipe
+./arena_lab/node_modules/@monogrid
+./arena_lab/node_modules/@napi-rs
+./arena_lab/node_modules/@pmndrs
+./arena_lab/node_modules/@react-spring
+./arena_lab/node_modules/@react-three
+./arena_lab/node_modules/@rolldown
+./arena_lab/node_modules/@rollup
+./arena_lab/node_modules/@socket.io
+./arena_lab/node_modules/@tweenjs
+./arena_lab/node_modules/@types
+./arena_lab/node_modules/@use-gesture
+./arena_lab/node_modules/@vitejs
+./arena_lab/node_modules/base64-js
+./arena_lab/node_modules/baseline-browser-mapping
+./arena_lab/node_modules/bidi-js
+./arena_lab/node_modules/browserslist
+./arena_lab/node_modules/buffer
+./arena_lab/node_modules/camera-controls
+./arena_lab/node_modules/caniuse-lite
+./arena_lab/node_modules/cannon-es
+./arena_lab/node_modules/cannon-es-debugger
+./arena_lab/node_modules/convert-source-map
+./arena_lab/node_modules/cross-env
+./arena_lab/node_modules/cross-spawn
+./arena_lab/node_modules/csstype
+./arena_lab/node_modules/debug
+./arena_lab/node_modules/detect-gpu
+./arena_lab/node_modules/draco3d
+./arena_lab/node_modules/electron-to-chromium
+./arena_lab/node_modules/engine.io-client
+./arena_lab/node_modules/engine.io-parser
+./arena_lab/node_modules/esbuild
+./arena_lab/node_modules/escalade
+./arena_lab/node_modules/fflate
+./arena_lab/node_modules/gensync
+./arena_lab/node_modules/glsl-noise
+./arena_lab/node_modules/hls.js
+./arena_lab/node_modules/ieee754
+./arena_lab/node_modules/immediate
+./arena_lab/node_modules/is-promise
+./arena_lab/node_modules/isexe
+./arena_lab/node_modules/its-fine
+./arena_lab/node_modules/js-tokens
+./arena_lab/node_modules/jsesc
+./arena_lab/node_modules/json5
+./arena_lab/node_modules/lie
+./arena_lab/node_modules/loose-envify
+./arena_lab/node_modules/lru-cache
+./arena_lab/node_modules/maath
+./arena_lab/node_modules/meshline
+./arena_lab/node_modules/meshoptimizer
+./arena_lab/node_modules/ms
+./arena_lab/node_modules/nanoid
+./arena_lab/node_modules/node-releases
+./arena_lab/node_modules/object-assign
+./arena_lab/node_modules/path-key
+./arena_lab/node_modules/picocolors
+./arena_lab/node_modules/postcss
+./arena_lab/node_modules/potpack
+./arena_lab/node_modules/promise-worker-transferable
+./arena_lab/node_modules/prop-types
+./arena_lab/node_modules/react
+./arena_lab/node_modules/react-composer
+./arena_lab/node_modules/react-dom
+./arena_lab/node_modules/react-is
+./arena_lab/node_modules/react-reconciler
+./arena_lab/node_modules/react-refresh
+./arena_lab/node_modules/react-use-measure
+./arena_lab/node_modules/require-from-string
+./arena_lab/node_modules/rollup
+./arena_lab/node_modules/scheduler
+./arena_lab/node_modules/semver
+./arena_lab/node_modules/shebang-command
+./arena_lab/node_modules/shebang-regex
+./arena_lab/node_modules/socket.io-client
+./arena_lab/node_modules/socket.io-parser
+./arena_lab/node_modules/source-map-js
+./arena_lab/node_modules/stats-gl
+./arena_lab/node_modules/stats.js
+./arena_lab/node_modules/suspend-react
+./arena_lab/node_modules/three
+./arena_lab/node_modules/three-mesh-bvh
+./arena_lab/node_modules/three-stdlib
+./arena_lab/node_modules/troika-three-text
+./arena_lab/node_modules/troika-three-utils
+./arena_lab/node_modules/troika-worker-utils
+./arena_lab/node_modules/tunnel-rat
+./arena_lab/node_modules/typescript
+./arena_lab/node_modules/update-browserslist-db
+./arena_lab/node_modules/use-sync-external-store
+./arena_lab/node_modules/utility-types
+./arena_lab/node_modules/vite
+./arena_lab/node_modules/webgl-constants
+./arena_lab/node_modules/webgl-sdf-generator
+./arena_lab/node_modules/which
+./arena_lab/node_modules/ws
+./arena_lab/node_modules/xmlhttprequest-ssl
+./arena_lab/node_modules/yallist
+./arena_lab/node_modules/zustand
+./arena_lab/src
+./arena_lab/src/data
+./arena_lab/src/hooks
+./arena_lab/src/scene
+./arena_lab/src/store
+./arena_lab/src/types
+./army_lab
+./backups
+./benchmark
+./benchmark/archive
+./blockchain
+./blockchain/contracts
+./blog
+./captures
+./captures/audio
+./captures/frames
+./captures/screenshots
+./chemistry
+./client
+./client/dist
+./client/dist/assets
+./client/src
+./client/src/components
+./client/src/modules
+./contracts
+./corpus
+./corpus/.ac_test
+./corpus/.ac_test/out
+./corpus/.ac_test/pat
+./corpus/.ac_test/raw
+./corpus/architect
+./corpus/architect/chunks
+./corpus/architect/cleaned
+./corpus/architect/core
+./corpus/architect/dialogues
+./corpus/architect/emotional
+./corpus/architect/patterns
+./corpus/architect/raw
+./corpus/architect/reports
+./db_backup
+./docs
+./everos
+./everos/.claude
+./everos/.claude/rules
+./everos/.claude/skills
+./everos/.git
+./everos/.git/branches
+./everos/.git/hooks
+./everos/.git/info
+./everos/.git/logs
+./everos/.git/objects
+./everos/.git/refs
+./everos/.github
+./everos/.github/ISSUE_TEMPLATE
+./everos/.github/workflows
+./everos/benchmarks
+./everos/benchmarks/adapters
+./everos/benchmarks/configs
+./everos/benchmarks/data
+./everos/benchmarks/metrics
+./everos/data
+./everos/deploy
+./everos/deploy/netlify_relay
+./everos/docs
+./everos/examples
+./everos/examples/langfuse
+./everos/scripts
+./everos/scripts/e2e_memorize
+./everos/src
+./everos/src/everos
+./everos/tests
+./everos/tests/e2e
+./everos/tests/fixtures
+./everos/tests/helpers
+./everos/tests/integration
+./everos/tests/unit
+./everos/use-cases
+./everos/use-cases/claude-code-plugin
+./everos/use-cases/game-of-throne-demo
+./everos/use-cases/openher
+./evolution
+./evolution/patterns
+./generated_project_1788633575
+./generated_project_1788633718
+./generated_project_1788633883
+./generated_project_1788633891
+./generated_project_1788634775
+./generated_project_1788634817
+./generated_project_1788635350
+./generated_projects
+./generated_projects/frameflow
+./generated_projects/frameflow/node_modules
+./generated_projects/frameflow_v1
+./generated_projects/frameflow_v1/node_modules
+./generated_projects/frameflow_v2
+./generated_projects/frameflow_v2/node_modules
+./generated_projects/frameflow_v3
+./generated_projects/frameflow_v3/node_modules
+./generated_projects/project_20260906_072055
+./generated_projects/project_20260906_072235
+./generated_projects/project_20260906_073558
+./generated_projects/project_20260906_073558/node_modules
+./generated_projects/project_20260906_073703
+./generated_projects/project_20260906_073703/node_modules
+./generated_projects/project_20260906_080620
+./generated_projects/project_20260906_080620/node_modules
+./generated_projects/project_20260907_131335
+./generated_projects/project_20260907_131531
+./generated_projects/project_20260907_131806
+./generated_projects/project_20260907_131840
+./generated_projects/project_20260907_132410
+./generated_projects/project_20260907_132512
+./generated_projects/project_20260907_132622
+./generated_projects/project_20260907_132842
+./generated_projects/project_20260907_132923
+./generated_projects/project_20260907_133404
+./generated_projects/project_20260907_134009
+./generated_projects/project_20260908_153807
+./habr_assets
+./legal
+./logs
+./memory
+./memory/chronicle
+./memory/patterns
+./memory/races
+./memory/races/race_1789321457602
+./memory/races/race_1789322444531
+./memory/races/race_1789322529742
+./memory/races/race_test_1789321338
+./memory/safety_car
+./memory/tb_victories
+./memory/trajectories
+./observability
+./observability/reports
+./prompts
+./public
+./public/assets
+./public/css
+./public/flags
+./public/icons
+./public/js
+./public/shapes
+./public/uploads
+./public/uploads/avatars
+./public_dashboard
+./radio
+./research
+./research/drift-and-drive
+./research/drift-and-drive/.git
+./research/drift-and-drive/public
+./research/drift-and-drive/src
+./research/kenney-racing
+./research/kenney-racing/.git
+./research/kenney-racing/audio
+./research/kenney-racing/models
+./research/kenney-racing/scenes
+./research/kenney-racing/screenshots
+./research/kenney-racing/scripts
+./research/kenney-racing/sprites
+./research/kenney-racing/vector
+./research/nebula-rush
+./research/nebula-rush/.claude
+./research/nebula-rush/.git
+./research/nebula-rush/docs
+./research/nebula-rush/public
+./research/nebula-rush/sandbox
+./research/nebula-rush/scripts
+./research/nebula-rush/src
+./research/racing-game
+./research/racing-game/.git
+./research/racing-game/.github
+./research/racing-game/.husky
+./research/racing-game/assets
+./research/racing-game/public
+./research/racing-game/src
+./sales
+./sandbox
+./scripts
+./sensors
+./skills
+./skills/c4-context
+./skills/code-refactoring-context-restore
+./skills/context-compression
+./skills/context-degradation
+./skills/context-driven-development
+./skills/context-fundamentals
+./skills/context-management-context-restore
+./skills/context-management-context-save
+./skills/context-manager
+./skills/context-optimization
+./skills/context-window-management
+./skills/context7-auto-research
+./skills/product-marketing-context
+./skills_graph
+./skills_hub
+./skills_hub/.git
+./skills_hub/.git/branches
+./skills_hub/.git/hooks
+./skills_hub/.git/info
+./skills_hub/.git/logs
+./skills_hub/.git/objects
+./skills_hub/.git/refs
+./skills_hub/.github
+./skills_hub/.github/ISSUE_TEMPLATE
+./skills_hub/.github/workflows
+./skills_hub/assets
+./skills_hub/bin
+./skills_hub/data
+./skills_hub/docs
+./skills_hub/docs/vietnamese
+./skills_hub/lib
+./skills_hub/scripts
+./skills_hub/scripts/tests
+./skills_hub/skills
+./skills_hub/skills/3d-web-experience
+./skills_hub/skills/SPDD
+./skills_hub/skills/ab-test-setup
+./skills_hub/skills/accessibility-compliance-accessibility-audit
+./skills_hub/skills/active-directory-attacks
+./skills_hub/skills/ad-creative
+./skills_hub/skills/adaptyv
+./skills_hub/skills/address-github-comments
+./skills_hub/skills/aeon
+./skills_hub/skills/agent-evaluation
+./skills_hub/skills/agent-manager-skill
+./skills_hub/skills/agent-memory-mcp
+./skills_hub/skills/agent-memory-systems
+./skills_hub/skills/agent-orchestration-improve-agent
+./skills_hub/skills/agent-orchestration-multi-agent-optimize
+./skills_hub/skills/agent-tool-builder
+./skills_hub/skills/ai-agents-architect
+./skills_hub/skills/ai-engineer
+./skills_hub/skills/ai-product
+./skills_hub/skills/ai-seo
+./skills_hub/skills/ai-wrapper-product
+./skills_hub/skills/airflow-dag-patterns
+./skills_hub/skills/algolia-search
+./skills_hub/skills/algorithmic-art
+./skills_hub/skills/alpha-vantage
+./skills_hub/skills/alphafold-database
+./skills_hub/skills/analytics-tracking
+./skills_hub/skills/angular
+./skills_hub/skills/angular-best-practices
+./skills_hub/skills/angular-migration
+./skills_hub/skills/angular-state-management
+./skills_hub/skills/angular-ui-patterns
+./skills_hub/skills/anndata
+./skills_hub/skills/anti-reversing-techniques
+./skills_hub/skills/api-design-principles
+./skills_hub/skills/api-documentation-generator
+./skills_hub/skills/api-documenter
+./skills_hub/skills/api-fuzzing-bug-bounty
+./skills_hub/skills/api-patterns
+./skills_hub/skills/api-security-best-practices
+./skills_hub/skills/api-testing-observability-api-mock
+./skills_hub/skills/app-builder
+./skills_hub/skills/app-store-optimization
+./skills_hub/skills/application-performance-performance-optimization
+./skills_hub/skills/arboreto
+./skills_hub/skills/architect-review
+./skills_hub/skills/architecture
+./skills_hub/skills/architecture-decision-records
+./skills_hub/skills/architecture-patterns
+./skills_hub/skills/arm-cortex-expert
+./skills_hub/skills/astropy
+./skills_hub/skills/async-python-patterns
+./skills_hub/skills/attack-tree-construction
+./skills_hub/skills/auth-implementation-patterns
+./skills_hub/skills/automate-whatsapp
+./skills_hub/skills/autonomous-agent-patterns
+./skills_hub/skills/autonomous-agents
+./skills_hub/skills/avalonia-layout-zafiro
+./skills_hub/skills/avalonia-viewmodels-zafiro
+./skills_hub/skills/avalonia-zafiro-development
+./skills_hub/skills/aws-penetration-testing
+./skills_hub/skills/aws-serverless
+./skills_hub/skills/aws-skills
+./skills_hub/skills/azure-functions
+./skills_hub/skills/backend-architect
+./skills_hub/skills/backend-dev-guidelines
+./skills_hub/skills/backend-development-feature-development
+./skills_hub/skills/backend-security-coder
+./skills_hub/skills/backtesting-frameworks
+./skills_hub/skills/bash-defensive-patterns
+./skills_hub/skills/bash-linux
+./skills_hub/skills/bash-pro
+./skills_hub/skills/bats-testing-patterns
+./skills_hub/skills/bazel-build-optimization
+./skills_hub/skills/beautiful-prose
+./skills_hub/skills/behavioral-modes
+./skills_hub/skills/benchling-integration
+./skills_hub/skills/bgpt-paper-search
+./skills_hub/skills/bilig-workpaper
+./skills_hub/skills/billing-automation
+./skills_hub/skills/binary-analysis-patterns
+./skills_hub/skills/biopython
+./skills_hub/skills/biorxiv-database
+./skills_hub/skills/bioservices
+./skills_hub/skills/blockchain-developer
+./skills_hub/skills/blockrun
+./skills_hub/skills/brainstorming
+./skills_hub/skills/brand-guidelines-anthropic
+./skills_hub/skills/brand-guidelines-community
+./skills_hub/skills/brenda-database
+./skills_hub/skills/broken-authentication
+./skills_hub/skills/browser-automation
+./skills_hub/skills/browser-extension-builder
+./skills_hub/skills/build-sdf-liquid-glass
+./skills_hub/skills/build-webgl-liquid-glass
+./skills_hub/skills/bullmq-specialist
+./skills_hub/skills/bun-development
+./skills_hub/skills/burp-suite-testing
+./skills_hub/skills/business-analyst
+./skills_hub/skills/busybox-on-windows
+./skills_hub/skills/c-pro
+./skills_hub/skills/c4-architecture-c4-architecture
+./skills_hub/skills/c4-code
+./skills_hub/skills/c4-component
+./skills_hub/skills/c4-container
+./skills_hub/skills/c4-context
+./skills_hub/skills/canvas-design
+./skills_hub/skills/cc-skill-backend-patterns
+./skills_hub/skills/cc-skill-clickhouse-io
+./skills_hub/skills/cc-skill-coding-standards
+./skills_hub/skills/cc-skill-continuous-learning
+./skills_hub/skills/cc-skill-frontend-patterns
+./skills_hub/skills/cc-skill-project-guidelines-example
+./skills_hub/skills/cc-skill-security-review
+./skills_hub/skills/cc-skill-strategic-compact
+./skills_hub/skills/cellxgene-census
+./skills_hub/skills/changelog-automation
+./skills_hub/skills/chembl-database
+./skills_hub/skills/churn-prevention
+./skills_hub/skills/cicd-automation-workflow-automate
+./skills_hub/skills/cirq
+./skills_hub/skills/citation-management
+./skills_hub/skills/clarity-gate
+./skills_hub/skills/claude-ally-health
+./skills_hub/skills/claude-code-guide
+./skills_hub/skills/claude-d3js-skill
+./skills_hub/skills/claude-speed-reader
+./skills_hub/skills/claude-win11-speckit-update-skill
+./skills_hub/skills/clean-code
+./skills_hub/skills/clerk-auth
+./skills_hub/skills/clinical-decision-support
+./skills_hub/skills/clinical-reports
+./skills_hub/skills/clinicaltrials-database
+./skills_hub/skills/clinpgx-database
+./skills_hub/skills/clinvar-database
+./skills_hub/skills/cloud-architect
+./skills_hub/skills/cloud-penetration-testing
+./skills_hub/skills/cobrapy
+./skills_hub/skills/code-documentation-code-explain
+./skills_hub/skills/code-documentation-doc-generate
+./skills_hub/skills/code-refactoring-context-restore
+./skills_hub/skills/code-refactoring-refactor-clean
+./skills_hub/skills/code-refactoring-tech-debt
+./skills_hub/skills/code-review-ai-ai-review
+./skills_hub/skills/code-review-checklist
+./skills_hub/skills/code-review-excellence
+./skills_hub/skills/code-reviewer
+./skills_hub/skills/codebase-cleanup-deps-audit
+./skills_hub/skills/codebase-cleanup-refactor-clean
+./skills_hub/skills/codebase-cleanup-tech-debt
+./skills_hub/skills/codex-review
+./skills_hub/skills/cold-email
+./skills_hub/skills/commit
+./skills_hub/skills/competitive-landscape
+./skills_hub/skills/competitor-alternatives
+./skills_hub/skills/comprehensive-review-full-review
+./skills_hub/skills/comprehensive-review-pr-enhance
+./skills_hub/skills/computer-use-agents
+./skills_hub/skills/computer-vision-expert
+./skills_hub/skills/concise-planning
+./skills_hub/skills/conductor-implement
+./skills_hub/skills/conductor-manage
+./skills_hub/skills/conductor-new-track
+./skills_hub/skills/conductor-revert
+./skills_hub/skills/conductor-setup
+./skills_hub/skills/conductor-status
+./skills_hub/skills/conductor-validator
+./skills_hub/skills/content-creator
+./skills_hub/skills/content-marketer
+./skills_hub/skills/content-strategy
+./skills_hub/skills/context-compression
+./skills_hub/skills/context-degradation
+./skills_hub/skills/context-driven-development
+./skills_hub/skills/context-fundamentals
+./skills_hub/skills/context-management-context-restore
+./skills_hub/skills/context-management-context-save
+./skills_hub/skills/context-manager
+./skills_hub/skills/context-optimization
+./skills_hub/skills/context-window-management
+./skills_hub/skills/context7-auto-research
+./skills_hub/skills/conversation-memory
+./skills_hub/skills/copy-editing
+./skills_hub/skills/copywriting
+./skills_hub/skills/core-components
+./skills_hub/skills/cosmic-database
+./skills_hub/skills/cost-optimization
+./skills_hub/skills/cpp-pro
+./skills_hub/skills/cqrs-implementation
+./skills_hub/skills/create-pr
+./skills_hub/skills/crewai
+./skills_hub/skills/csharp-pro
+./skills_hub/skills/culture-index
+./skills_hub/skills/customer-support
+./skills_hub/skills/daily-news-report
+./skills_hub/skills/dask
+./skills_hub/skills/data-engineer
+./skills_hub/skills/data-engineering-data-driven-feature
+./skills_hub/skills/data-engineering-data-pipeline
+./skills_hub/skills/data-quality-frameworks
+./skills_hub/skills/data-scientist
+./skills_hub/skills/data-storytelling
+./skills_hub/skills/database-admin
+./skills_hub/skills/database-architect
+./skills_hub/skills/database-cloud-optimization-cost-optimize
+./skills_hub/skills/database-design
+./skills_hub/skills/database-migration
+./skills_hub/skills/database-migrations-migration-observability
+./skills_hub/skills/database-migrations-sql-migrations
+./skills_hub/skills/database-optimizer
+./skills_hub/skills/datacommons-client
+./skills_hub/skills/datamol
+./skills_hub/skills/dbt-transformation-patterns
+./skills_hub/skills/debugger
+./skills_hub/skills/debugging-strategies
+./skills_hub/skills/debugging-toolkit-smart-debug
+./skills_hub/skills/deep-research
+./skills_hub/skills/deepchem
+./skills_hub/skills/deeptools
+./skills_hub/skills/defi-protocol-templates
+./skills_hub/skills/denario
+./skills_hub/skills/dependency-management-deps-audit
+./skills_hub/skills/dependency-upgrade
+./skills_hub/skills/deployment-engineer
+./skills_hub/skills/deployment-pipeline-design
+./skills_hub/skills/deployment-procedures
+./skills_hub/skills/deployment-validation-config-validate
+./skills_hub/skills/design-md
+./skills_hub/skills/design-orchestration
+./skills_hub/skills/devops-troubleshooter
+./skills_hub/skills/diffdock
+./skills_hub/skills/discord-bot-architect
+./skills_hub/skills/dispatching-parallel-agents
+./skills_hub/skills/distributed-debugging-debug-trace
+./skills_hub/skills/distributed-tracing
+./skills_hub/skills/django-pro
+./skills_hub/skills/dnanexus-integration
+./skills_hub/skills/doc-coauthoring
+./skills_hub/skills/docker-expert
+./skills_hub/skills/docs-architect
+./skills_hub/skills/document-skills
+./skills_hub/skills/documentation-generation-doc-generate
+./skills_hub/skills/documentation-templates
+./skills_hub/skills/docx-official
+./skills_hub/skills/dotnet-architect
+./skills_hub/skills/dotnet-backend-patterns
+./skills_hub/skills/drugbank-database
+./skills_hub/skills/dx-optimizer
+./skills_hub/skills/e2e-testing-patterns
+./skills_hub/skills/edgartools
+./skills_hub/skills/elixir-pro
+./skills_hub/skills/email-sequence
+./skills_hub/skills/email-systems
+./skills_hub/skills/embedding-strategies
+./skills_hub/skills/employment-contract-templates
+./skills_hub/skills/ena-database
+./skills_hub/skills/ensembl-database
+./skills_hub/skills/environment-setup-guide
+./skills_hub/skills/error-debugging-error-analysis
+./skills_hub/skills/error-debugging-error-trace
+./skills_hub/skills/error-debugging-multi-agent-review
+./skills_hub/skills/error-detective
+./skills_hub/skills/error-diagnostics-error-analysis
+./skills_hub/skills/error-diagnostics-error-trace
+./skills_hub/skills/error-diagnostics-smart-debug
+./skills_hub/skills/error-handling-patterns
+./skills_hub/skills/esm
+./skills_hub/skills/etetoolkit
+./skills_hub/skills/ethical-hacking-methodology
+./skills_hub/skills/evaluation
+./skills_hub/skills/event-sourcing-architect
+./skills_hub/skills/event-store-design
+./skills_hub/skills/exa-search
+./skills_hub/skills/executing-plans
+./skills_hub/skills/exploratory-data-analysis
+./skills_hub/skills/expo-deployment
+./skills_hub/skills/fal-audio
+./skills_hub/skills/fal-generate
+./skills_hub/skills/fal-image-edit
+./skills_hub/skills/fal-platform
+./skills_hub/skills/fal-upscale
+./skills_hub/skills/fal-workflow
+./skills_hub/skills/fastapi-pro
+./skills_hub/skills/fastapi-templates
+./skills_hub/skills/fda-database
+./skills_hub/skills/ffuf-claude-skill
+./skills_hub/skills/file-organizer
+./skills_hub/skills/file-path-traversal
+./skills_hub/skills/file-uploads
+./skills_hub/skills/find-bugs
+./skills_hub/skills/finishing-a-development-branch
+./skills_hub/skills/firebase
+./skills_hub/skills/firecrawl-scraper
+./skills_hub/skills/firmware-analyst
+./skills_hub/skills/fix-review
+./skills_hub/skills/flowio
+./skills_hub/skills/fluidsim
+./skills_hub/skills/flutter-expert
+./skills_hub/skills/form-cro
+./skills_hub/skills/fp-ts-errors
+./skills_hub/skills/fp-ts-pragmatic
+./skills_hub/skills/fp-ts-react
+./skills_hub/skills/framework-migration-code-migrate
+./skills_hub/skills/framework-migration-deps-upgrade
+./skills_hub/skills/framework-migration-legacy-modernize
+./skills_hub/skills/fred-economic-data
+./skills_hub/skills/free-tool-strategy
+./skills_hub/skills/frontend-design
+./skills_hub/skills/frontend-dev-guidelines
+./skills_hub/skills/frontend-developer
+./skills_hub/skills/frontend-mobile-development-component-scaffold
+./skills_hub/skills/frontend-mobile-security-xss-scan
+./skills_hub/skills/frontend-security-coder
+./skills_hub/skills/frontend-slides
+./skills_hub/skills/full-stack-orchestration-full-stack-feature
+./skills_hub/skills/game-development
+./skills_hub/skills/gcp-cloud-run
+./skills_hub/skills/gdpr-data-handling
+./skills_hub/skills/gene-database
+./skills_hub/skills/generate-image
+./skills_hub/skills/geniml
+./skills_hub/skills/geo-database
+./skills_hub/skills/geo-fundamentals
+./skills_hub/skills/geomaster
+./skills_hub/skills/geopandas
+./skills_hub/skills/get-available-resources
+./skills_hub/skills/gget
+./skills_hub/skills/git-advanced-workflows
+./skills_hub/skills/git-pr-workflows-git-workflow
+./skills_hub/skills/git-pr-workflows-onboard
+./skills_hub/skills/git-pr-workflows-pr-enhance
+./skills_hub/skills/git-pushing
+./skills_hub/skills/github-actions-templates
+./skills_hub/skills/github-workflow-automation
+./skills_hub/skills/gitlab-ci-patterns
+./skills_hub/skills/gitops-workflow
+./skills_hub/skills/go-concurrency-patterns
+./skills_hub/skills/godot-gdscript-patterns
+./skills_hub/skills/golang-pro
+./skills_hub/skills/grafana-dashboards
+./skills_hub/skills/graphql
+./skills_hub/skills/graphql-architect
+./skills_hub/skills/gtars
+./skills_hub/skills/gwas-database
+./skills_hub/skills/haskell-pro
+./skills_hub/skills/hedgefundmonitor
+./skills_hub/skills/helm-chart-scaffolding
+./skills_hub/skills/histolab
+./skills_hub/skills/hmdb-database
+./skills_hub/skills/hr-pro
+./skills_hub/skills/html-injection-testing
+./skills_hub/skills/hubspot-integration
+./skills_hub/skills/hugging-face-cli
+./skills_hub/skills/hugging-face-jobs
+./skills_hub/skills/hybrid-cloud-architect
+./skills_hub/skills/hybrid-cloud-networking
+./skills_hub/skills/hybrid-search-implementation
+./skills_hub/skills/hypogenic
+./skills_hub/skills/hypothesis-generation
+./skills_hub/skills/i18n-localization
+./skills_hub/skills/idor-testing
+./skills_hub/skills/imagen
+./skills_hub/skills/imaging-data-commons
+./skills_hub/skills/incident-responder
+./skills_hub/skills/incident-response-incident-response
+./skills_hub/skills/incident-response-smart-fix
+./skills_hub/skills/incident-runbook-templates
+./skills_hub/skills/infinite-gratitude
+./skills_hub/skills/infographics
+./skills_hub/skills/inngest
+./skills_hub/skills/interactive-portfolio
+./skills_hub/skills/internal-comms-anthropic
+./skills_hub/skills/internal-comms-community
+./skills_hub/skills/ios-developer
+./skills_hub/skills/iso-13485-certification
+./skills_hub/skills/istio-traffic-management
+./skills_hub/skills/iterate-pr
+./skills_hub/skills/java-pro
+./skills_hub/skills/javascript-mastery
+./skills_hub/skills/javascript-pro
+./skills_hub/skills/javascript-testing-patterns
+./skills_hub/skills/javascript-typescript-typescript-scaffold
+./skills_hub/skills/julia-pro
+./skills_hub/skills/k8s-manifest-generator
+./skills_hub/skills/k8s-security-policies
+./skills_hub/skills/kaizen
+./skills_hub/skills/kegg-database
+./skills_hub/skills/kpi-dashboard-design
+./skills_hub/skills/kubernetes-architect
+./skills_hub/skills/labarchive-integration
+./skills_hub/skills/lamindb
+./skills_hub/skills/langchain-architecture
+./skills_hub/skills/langfuse
+./skills_hub/skills/langgraph
+./skills_hub/skills/last30days
+./skills_hub/skills/latchbio-integration
+./skills_hub/skills/latex-posters
+./skills_hub/skills/launch-strategy
+./skills_hub/skills/legacy-modernizer
+./skills_hub/skills/legal-advisor
+./skills_hub/skills/linear-claude-skill
+./skills_hub/skills/linkerd-patterns
+./skills_hub/skills/lint-and-validate
+./skills_hub/skills/linux-privilege-escalation
+./skills_hub/skills/linux-shell-scripting
+./skills_hub/skills/literature-review
+./skills_hub/skills/llm-app-patterns
+./skills_hub/skills/llm-application-dev-ai-assistant
+./skills_hub/skills/llm-application-dev-langchain-agent
+./skills_hub/skills/llm-application-dev-prompt-optimize
+./skills_hub/skills/llm-evaluation
+./skills_hub/skills/loki-mode
+./skills_hub/skills/machine-learning-ops-ml-pipeline
+./skills_hub/skills/makepad-skills
+./skills_hub/skills/malware-analyst
+./skills_hub/skills/markdown-mermaid-writing
+./skills_hub/skills/market-research-reports
+./skills_hub/skills/market-sizing-analysis
+./skills_hub/skills/marketing-ideas
+./skills_hub/skills/marketing-psychology
+./skills_hub/skills/markitdown
+./skills_hub/skills/matchms
+./skills_hub/skills/matlab
+./skills_hub/skills/matplotlib
+./skills_hub/skills/mcp-builder
+./skills_hub/skills/medchem
+./skills_hub/skills/memory-forensics
+./skills_hub/skills/memory-safety-patterns
+./skills_hub/skills/memory-systems
+./skills_hub/skills/mermaid-expert
+./skills_hub/skills/metabolomics-workbench-database
+./skills_hub/skills/metasploit-framework
+./skills_hub/skills/micro-saas-launcher
+./skills_hub/skills/microservices-patterns
+./skills_hub/skills/minecraft-bukkit-pro
+./skills_hub/skills/ml-engineer
+./skills_hub/skills/ml-pipeline-workflow
+./skills_hub/skills/mlops-engineer
+./skills_hub/skills/mobile-design
+./skills_hub/skills/mobile-developer
+./skills_hub/skills/mobile-security-coder
+./skills_hub/skills/modal
+./skills_hub/skills/modern-javascript-patterns
+./skills_hub/skills/molfeat
+./skills_hub/skills/monorepo-architect
+./skills_hub/skills/monorepo-management
+./skills_hub/skills/moodle-external-api-development
+./skills_hub/skills/mtls-configuration
+./skills_hub/skills/multi-agent-brainstorming
+./skills_hub/skills/multi-agent-patterns
+./skills_hub/skills/multi-cloud-architecture
+./skills_hub/skills/multi-platform-apps-multi-platform
+./skills_hub/skills/n8n-code-python
+./skills_hub/skills/n8n-mcp-tools-expert
+./skills_hub/skills/n8n-node-configuration
+./skills_hub/skills/nanobanana-ppt-skills
+./skills_hub/skills/neon-postgres
+./skills_hub/skills/nestjs-expert
+./skills_hub/skills/network-101
+./skills_hub/skills/network-engineer
+./skills_hub/skills/networkx
+./skills_hub/skills/neurokit2
+./skills_hub/skills/neuropixels-analysis
+./skills_hub/skills/nextjs-app-router-patterns
+./skills_hub/skills/nextjs-best-practices
+./skills_hub/skills/nextjs-supabase-auth
+./skills_hub/skills/nft-standards
+./skills_hub/skills/nodejs-backend-patterns
+./skills_hub/skills/nodejs-best-practices
+./skills_hub/skills/nosql-expert
+./skills_hub/skills/notebooklm
+./skills_hub/skills/notion-template-business
+./skills_hub/skills/nx-workspace-patterns
+./skills_hub/skills/observability-engineer
+./skills_hub/skills/observability-monitoring-monitor-setup
+./skills_hub/skills/observability-monitoring-slo-implement
+./skills_hub/skills/observe-whatsapp
+./skills_hub/skills/obsidian-clipper-template-creator
+./skills_hub/skills/offer-k-dense-web
+./skills_hub/skills/omero-integration
+./skills_hub/skills/on-call-handoff-patterns
+./skills_hub/skills/onboarding-cro
+./skills_hub/skills/open-notebook
+./skills_hub/skills/openalex-database
+./skills_hub/skills/openapi-spec-generation
+./skills_hub/skills/openclaw
+./skills_hub/skills/opentargets-database
+./skills_hub/skills/opentrons-integration
+./skills_hub/skills/page-cro
+./skills_hub/skills/paid-ads
+./skills_hub/skills/paper-2-web
+./skills_hub/skills/parallel-agents
+./skills_hub/skills/pathml
+./skills_hub/skills/payment-integration
+./skills_hub/skills/paypal-integration
+./skills_hub/skills/paywall-upgrade-cro
+./skills_hub/skills/pci-compliance
+./skills_hub/skills/pdb-database
+./skills_hub/skills/pdf-official
+./skills_hub/skills/peer-review
+./skills_hub/skills/pennylane
+./skills_hub/skills/pentest-checklist
+./skills_hub/skills/pentest-commands
+./skills_hub/skills/performance-engineer
+./skills_hub/skills/performance-profiling
+./skills_hub/skills/performance-testing-review-ai-review
+./skills_hub/skills/performance-testing-review-multi-agent-review
+./skills_hub/skills/perplexity-search
+./skills_hub/skills/personal-tool-builder
+./skills_hub/skills/php-pro
+./skills_hub/skills/plaid-fintech
+./skills_hub/skills/plan-writing
+./skills_hub/skills/planning-with-files
+./skills_hub/skills/playwright-skill
+./skills_hub/skills/plotly
+./skills_hub/skills/polars
+./skills_hub/skills/popup-cro
+./skills_hub/skills/posix-shell-pro
+./skills_hub/skills/postgres-best-practices
+./skills_hub/skills/postgresql
+./skills_hub/skills/postmortem-writing
+./skills_hub/skills/powershell-windows
+./skills_hub/skills/pptx-official
+./skills_hub/skills/pptx-posters
+./skills_hub/skills/pricing-strategy
+./skills_hub/skills/prisma-expert
+./skills_hub/skills/privilege-escalation-methods
+./skills_hub/skills/product-manager-toolkit
+./skills_hub/skills/product-marketing-context
+./skills_hub/skills/production-code-audit
+./skills_hub/skills/programmatic-seo
+./skills_hub/skills/projection-patterns
+./skills_hub/skills/prometheus-configuration
+./skills_hub/skills/prompt-caching
+./skills_hub/skills/prompt-engineer
+./skills_hub/skills/prompt-engineering
+./skills_hub/skills/prompt-engineering-patterns
+./skills_hub/skills/prompt-library
+./skills_hub/skills/protocol-reverse-engineering
+./skills_hub/skills/protocolsio-integration
+./skills_hub/skills/pubchem-database
+./skills_hub/skills/pubmed-database
+./skills_hub/skills/pufferlib
+./skills_hub/skills/pydeseq2
+./skills_hub/skills/pydicom
+./skills_hub/skills/pyhealth
+./skills_hub/skills/pylabrobot
+./skills_hub/skills/pymatgen
+./skills_hub/skills/pymc
+./skills_hub/skills/pymoo
+./skills_hub/skills/pyopenms
+./skills_hub/skills/pypict-skill
+./skills_hub/skills/pysam
+./skills_hub/skills/pytdc
+./skills_hub/skills/python-development-python-scaffold
+./skills_hub/skills/python-packaging
+./skills_hub/skills/python-patterns
+./skills_hub/skills/python-performance-optimization
+./skills_hub/skills/python-pro
+./skills_hub/skills/python-testing-patterns
+./skills_hub/skills/pytorch-lightning
+./skills_hub/skills/pyzotero
+./skills_hub/skills/qiskit
+./skills_hub/skills/quant-analyst
+./skills_hub/skills/qutip
+./skills_hub/skills/radix-ui-design-system
+./skills_hub/skills/rag-engineer
+./skills_hub/skills/rag-implementation
+./skills_hub/skills/rdkit
+./skills_hub/skills/react-best-practices
+./skills_hub/skills/react-modernization
+./skills_hub/skills/react-native-architecture
+./skills_hub/skills/react-patterns
+./skills_hub/skills/react-state-management
+./skills_hub/skills/react-ui-patterns
+./skills_hub/skills/reactome-database
+./skills_hub/skills/readme
+./skills_hub/skills/receiving-code-review
+./skills_hub/skills/red-team-tactics
+./skills_hub/skills/red-team-tools
+./skills_hub/skills/reference-builder
+./skills_hub/skills/referral-program
+./skills_hub/skills/remotion-best-practices
+./skills_hub/skills/requesting-code-review
+./skills_hub/skills/research-engineer
+./skills_hub/skills/research-grants
+./skills_hub/skills/research-lookup
+./skills_hub/skills/reverse-engineer
+./skills_hub/skills/risk-manager
+./skills_hub/skills/risk-metrics-calculation
+./skills_hub/skills/rowan
+./skills_hub/skills/ruby-pro
+./skills_hub/skills/rust-async-patterns
+./skills_hub/skills/rust-pro
+./skills_hub/skills/saga-orchestration
+./skills_hub/skills/sales-automator
+./skills_hub/skills/salesforce-development
+./skills_hub/skills/sast-configuration
+./skills_hub/skills/scala-pro
+./skills_hub/skills/scanning-tools
+./skills_hub/skills/scanpy
+./skills_hub/skills/schema-markup
+./skills_hub/skills/scholar-evaluation
+./skills_hub/skills/scientific-brainstorming
+./skills_hub/skills/scientific-critical-thinking
+./skills_hub/skills/scientific-schematics
+./skills_hub/skills/scientific-slides
+./skills_hub/skills/scientific-visualization
+./skills_hub/skills/scientific-writing
+./skills_hub/skills/scikit-bio
+./skills_hub/skills/scikit-learn
+./skills_hub/skills/scikit-survival
+./skills_hub/skills/screen-reader-testing
+./skills_hub/skills/screenshots
+./skills_hub/skills/scroll-experience
+./skills_hub/skills/scvi-tools
+./skills_hub/skills/seaborn
+./skills_hub/skills/search-specialist
+./skills_hub/skills/secrets-management
+./skills_hub/skills/security-auditor
+./skills_hub/skills/security-bluebook-builder
+./skills_hub/skills/security-compliance-compliance-check
+./skills_hub/skills/security-requirement-extraction
+./skills_hub/skills/security-scanning-security-dependencies
+./skills_hub/skills/security-scanning-security-hardening
+./skills_hub/skills/security-scanning-security-sast
+./skills_hub/skills/segment-cdp
+./skills_hub/skills/sendmux-cli
+./skills_hub/skills/sendmux-email-for-agents
+./skills_hub/skills/sendmux-getting-started
+./skills_hub/skills/sendmux-mailbox-agent
+./skills_hub/skills/sendmux-management
+./skills_hub/skills/sendmux-mcp-setup
+./skills_hub/skills/sendmux-send-email
+./skills_hub/skills/sendmux-token-efficient-usage
+./skills_hub/skills/senior-architect
+./skills_hub/skills/senior-fullstack
+./skills_hub/skills/seo-audit
+./skills_hub/skills/seo-authority-builder
+./skills_hub/skills/seo-cannibalization-detector
+./skills_hub/skills/seo-content-auditor
+./skills_hub/skills/seo-content-planner
+./skills_hub/skills/seo-content-refresher
+./skills_hub/skills/seo-content-writer
+./skills_hub/skills/seo-fundamentals
+./skills_hub/skills/seo-keyword-strategist
+./skills_hub/skills/seo-meta-optimizer
+./skills_hub/skills/seo-snippet-hunter
+./skills_hub/skills/seo-structure-architect
+./skills_hub/skills/server-management
+./skills_hub/skills/service-mesh-expert
+./skills_hub/skills/service-mesh-observability
+./skills_hub/skills/shap
+./skills_hub/skills/sharp-edges
+./skills_hub/skills/shellcheck-configuration
+./skills_hub/skills/shodan-reconnaissance
+./skills_hub/skills/shopify-apps
+./skills_hub/skills/shopify-development
+./skills_hub/skills/signup-flow-cro
+./skills_hub/skills/similarity-search-patterns
+./skills_hub/skills/simpy
+./skills_hub/skills/skill-creator
+./skills_hub/skills/skill-developer
+./skills_hub/skills/skill-rails-upgrade
+./skills_hub/skills/skill-seekers
+./skills_hub/skills/skyvern-browser-automation
+./skills_hub/skills/slack-bot-builder
+./skills_hub/skills/slack-gif-creator
+./skills_hub/skills/slo-implementation
+./skills_hub/skills/smtp-penetration-testing
+./skills_hub/skills/social-content
+./skills_hub/skills/software-architecture
+./skills_hub/skills/solidity-security
+./skills_hub/skills/spark-optimization
+./skills_hub/skills/sql-injection-testing
+./skills_hub/skills/sql-optimization-patterns
+./skills_hub/skills/sql-pro
+./skills_hub/skills/sqlmap-database-pentesting
+./skills_hub/skills/ssh-penetration-testing
+./skills_hub/skills/stable-baselines3
+./skills_hub/skills/startup-analyst
+./skills_hub/skills/startup-business-analyst-business-case
+./skills_hub/skills/startup-business-analyst-financial-projections
+./skills_hub/skills/startup-business-analyst-market-opportunity
+./skills_hub/skills/startup-financial-modeling
+./skills_hub/skills/startup-metrics-framework
+./skills_hub/skills/statistical-analysis
+./skills_hub/skills/statsmodels
+./skills_hub/skills/stitch-ui-design
+./skills_hub/skills/stride-analysis-patterns
+./skills_hub/skills/string-database
+./skills_hub/skills/stripe-integration
+./skills_hub/skills/subagent-driven-development
+./skills_hub/skills/superpowers-lab
+./skills_hub/skills/swiftui-expert-skill
+./skills_hub/skills/sympy
+./skills_hub/skills/systematic-debugging
+./skills_hub/skills/systems-programming-rust-project
+./skills_hub/skills/tailwind-design-system
+./skills_hub/skills/tailwind-patterns
+./skills_hub/skills/tavily-web
+./skills_hub/skills/tdd-orchestrator
+./skills_hub/skills/tdd-workflow
+./skills_hub/skills/tdd-workflows-tdd-cycle
+./skills_hub/skills/tdd-workflows-tdd-green
+./skills_hub/skills/tdd-workflows-tdd-red
+./skills_hub/skills/tdd-workflows-tdd-refactor
+./skills_hub/skills/team-collaboration-issue
+./skills_hub/skills/team-collaboration-standup-notes
+./skills_hub/skills/team-composition-analysis
+./skills_hub/skills/telegram-bot-builder
+./skills_hub/skills/telegram-mini-app
+./skills_hub/skills/temporal-python-pro
+./skills_hub/skills/temporal-python-testing
+./skills_hub/skills/terraform-module-library
+./skills_hub/skills/terraform-skill
+./skills_hub/skills/terraform-specialist
+./skills_hub/skills/test-automator
+./skills_hub/skills/test-driven-development
+./skills_hub/skills/test-fixing
+./skills_hub/skills/testing-patterns
+./skills_hub/skills/theme-factory
+./skills_hub/skills/threat-mitigation-mapping
+./skills_hub/skills/threat-modeling-expert
+./skills_hub/skills/threejs-skills
+./skills_hub/skills/tiledbvcf
+./skills_hub/skills/timesfm-forecasting
+./skills_hub/skills/tool-design
+./skills_hub/skills/top-web-vulnerabilities
+./skills_hub/skills/torch_geometric
+./skills_hub/skills/torchdrug
+./skills_hub/skills/track-management
+./skills_hub/skills/transformers
+./skills_hub/skills/treatment-plans
+./skills_hub/skills/trigger-dev
+./skills_hub/skills/turborepo-caching
+./skills_hub/skills/tutorial-engineer
+./skills_hub/skills/twilio-communications
+./skills_hub/skills/typescript-advanced-types
+./skills_hub/skills/typescript-expert
+./skills_hub/skills/typescript-pro
+./skills_hub/skills/ui-skills
+./skills_hub/skills/ui-ux-designer
+./skills_hub/skills/ui-ux-pro-max
+./skills_hub/skills/ui-visual-validator
+./skills_hub/skills/umap-learn
+./skills_hub/skills/uniprot-database
+./skills_hub/skills/unit-testing-test-generate
+./skills_hub/skills/unity-developer
+./skills_hub/skills/unity-ecs-patterns
+./skills_hub/skills/unreal-engine-cpp-pro
+./skills_hub/skills/upgrading-expo
+./skills_hub/skills/upstash-qstash
+./skills_hub/skills/usfiscaldata
+./skills_hub/skills/using-git-worktrees
+./skills_hub/skills/using-neon
+./skills_hub/skills/using-superpowers
+./skills_hub/skills/uspto-database
+./skills_hub/skills/uv-package-manager
+./skills_hub/skills/vaex
+./skills_hub/skills/varlock-claude-skill
+./skills_hub/skills/vector-database-engineer
+./skills_hub/skills/vector-index-tuning
+./skills_hub/skills/venue-templates
+./skills_hub/skills/vercel-deploy-claimable
+./skills_hub/skills/vercel-deployment
+./skills_hub/skills/verification-before-completion
+./skills_hub/skills/vexor
+./skills_hub/skills/viral-generator-builder
+./skills_hub/skills/voice-agents
+./skills_hub/skills/voice-ai-development
+./skills_hub/skills/voice-ai-engine-development
+./skills_hub/skills/vulnerability-scanner
+./skills_hub/skills/wcag-audit-patterns
+./skills_hub/skills/web-artifacts-builder
+./skills_hub/skills/web-design-guidelines
+./skills_hub/skills/web-performance-optimization
+./skills_hub/skills/web3-testing
+./skills_hub/skills/webapp-testing
+./skills_hub/skills/windows-privilege-escalation
+./skills_hub/skills/wireshark-analysis
+./skills_hub/skills/wordpress-penetration-testing
+./skills_hub/skills/workflow-automation
+./skills_hub/skills/workflow-orchestration-patterns
+./skills_hub/skills/workflow-patterns
+./skills_hub/skills/writing-plans
+./skills_hub/skills/writing-skills
+./skills_hub/skills/x-article-publisher-skill
+./skills_hub/skills/xlsx-official
+./skills_hub/skills/xquik-social-research
+./skills_hub/skills/xss-html-injection
+./skills_hub/skills/zapier-make-patterns
+./skills_hub/skills/zarr-python
+./skills_hub/skills/zinc-database
+./skills_hub/tools
+./skills_hub/tools/clis
+./skills_hub/tools/integrations
+./snapshots
+./src
+./src/components
+./src/config
+./src/controllers
+./src/middleware
+./src/models
+./src/public
+./src/public/uploads
+./src/routes
+./src/utils
+./terminal-bench
+./terminal-bench/.gemini
+./terminal-bench/.git
+./terminal-bench/.git/branches
+./terminal-bench/.git/hooks
+./terminal-bench/.git/info
+./terminal-bench/.git/logs
+./terminal-bench/.git/objects
+./terminal-bench/.git/refs
+./terminal-bench/.github
+./terminal-bench/.github/workflows
+./terminal-bench/.vscode
+./terminal-bench/__pycache__
+./terminal-bench/adapters
+./terminal-bench/adapters/USACO
+./terminal-bench/adapters/aider_polyglot
+./terminal-bench/adapters/algotune
+./terminal-bench/adapters/appworld
+./terminal-bench/adapters/cybench
+./terminal-bench/adapters/deveval
+./terminal-bench/adapters/evoeval
+./terminal-bench/adapters/mlebench
+./terminal-bench/adapters/quixbugs
+./terminal-bench/adapters/swebench
+./terminal-bench/adapters/swelancer
+./terminal-bench/adapters/sweperf
+./terminal-bench/adapters/swesmith
+./terminal-bench/dashboard
+./terminal-bench/discord-bot
+./terminal-bench/discord-bot/src
+./terminal-bench/docker
+./terminal-bench/docker/agents
+./terminal-bench/docker/base-images
+./terminal-bench/docker/mcp-server
+./terminal-bench/original-tasks
+./terminal-bench/original-tasks/3d-model-format-legacy
+./terminal-bench/original-tasks/accelerate-maximal-square
+./terminal-bench/original-tasks/acl-permissions-inheritance
+./terminal-bench/original-tasks/adaptive-rejection-sampler
+./terminal-bench/original-tasks/add-benchmark-lm-eval-harness
+./terminal-bench/original-tasks/aimo-airline-departures
+./terminal-bench/original-tasks/amuse-install
+./terminal-bench/original-tasks/analyze-access-logs
+./terminal-bench/original-tasks/ancient-puzzle
+./terminal-bench/original-tasks/assign-seats
+./terminal-bench/original-tasks/attention-mil
+./terminal-bench/original-tasks/audio-synth-stft-peaks
+./terminal-bench/original-tasks/bank-trans-filter
+./terminal-bench/original-tasks/blind-maze-explorer-5x5
+./terminal-bench/original-tasks/blind-maze-explorer-algorithm
+./terminal-bench/original-tasks/bn-fit-modify
+./terminal-bench/original-tasks/break-filter-js-from-html
+./terminal-bench/original-tasks/broken-networking
+./terminal-bench/original-tasks/broken-python
+./terminal-bench/original-tasks/build-cython-ext
+./terminal-bench/original-tasks/build-initramfs-qemu
+./terminal-bench/original-tasks/build-linux-kernel-qemu
+./terminal-bench/original-tasks/build-pmars
+./terminal-bench/original-tasks/build-pov-ray
+./terminal-bench/original-tasks/build-stp
+./terminal-bench/original-tasks/build-tcc-qemu
+./terminal-bench/original-tasks/caffe-cifar-10
+./terminal-bench/original-tasks/cancel-async-tasks
+./terminal-bench/original-tasks/cartpole-rl-training
+./terminal-bench/original-tasks/catch-me-if-you-can
+./terminal-bench/original-tasks/causal-inference-r
+./terminal-bench/original-tasks/chem-property-targeting
+./terminal-bench/original-tasks/chem-rf
+./terminal-bench/original-tasks/chess-best-move
+./terminal-bench/original-tasks/circuit-fibsqrt
+./terminal-bench/original-tasks/classifier-debug
+./terminal-bench/original-tasks/cobol-modernization
+./terminal-bench/original-tasks/code-from-image
+./terminal-bench/original-tasks/compile-compcert
+./terminal-bench/original-tasks/conda-env-conflict-resolution
+./terminal-bench/original-tasks/configure-git-webserver
+./terminal-bench/original-tasks/constraints-scheduling
+./terminal-bench/original-tasks/count-call-stack
+./terminal-bench/original-tasks/count-dataset-tokens
+./terminal-bench/original-tasks/countdown-game
+./terminal-bench/original-tasks/cpp-compatibility
+./terminal-bench/original-tasks/cprofiling-python
+./terminal-bench/original-tasks/crack-7z-hash
+./terminal-bench/original-tasks/create-bucket
+./terminal-bench/original-tasks/cron-broken-network
+./terminal-bench/original-tasks/cross-entropy-method
+./terminal-bench/original-tasks/csv-to-parquet
+./terminal-bench/original-tasks/custom-memory-heap-crash
+./terminal-bench/original-tasks/db-wal-recovery
+./terminal-bench/original-tasks/debug-long-program
+./terminal-bench/original-tasks/decommissioning-service-with-sensitive-data
+./terminal-bench/original-tasks/deterministic-tarball
+./terminal-bench/original-tasks/distribution-search
+./terminal-bench/original-tasks/dna-assembly
+./terminal-bench/original-tasks/dna-insert
+./terminal-bench/original-tasks/download-youtube
+./terminal-bench/original-tasks/enemy-grid-escape
+./terminal-bench/original-tasks/extract-elf
+./terminal-bench/original-tasks/extract-moves-from-video
+./terminal-bench/original-tasks/extract-safely
+./terminal-bench/original-tasks/feal-differential-cryptanalysis
+./terminal-bench/original-tasks/feal-linear-cryptanalysis
+./terminal-bench/original-tasks/fibonacci-server
+./terminal-bench/original-tasks/filter-js-from-html
+./terminal-bench/original-tasks/financial-document-processor
+./terminal-bench/original-tasks/find-official-code
+./terminal-bench/original-tasks/find-restaurant
+./terminal-bench/original-tasks/fix-code-vulnerability
+./terminal-bench/original-tasks/fix-git
+./terminal-bench/original-tasks/fix-ocaml-gc
+./terminal-bench/original-tasks/fix-pandas-version
+./terminal-bench/original-tasks/fix-permissions
+./terminal-bench/original-tasks/flood-monitoring-basic
+./terminal-bench/original-tasks/fmri-encoding-r
+./terminal-bench/original-tasks/form-filling
+./terminal-bench/original-tasks/gcc-compiler-optimization
+./terminal-bench/original-tasks/gcode-to-text
+./terminal-bench/original-tasks/get-bitcoin-nodes
+./terminal-bench/original-tasks/git-leak-recovery
+./terminal-bench/original-tasks/git-multibranch
+./terminal-bench/original-tasks/git-workflow-hack
+./terminal-bench/original-tasks/gomoku-planner
+./terminal-bench/original-tasks/gpt2-codegolf
+./terminal-bench/original-tasks/grid-pattern-transform
+./terminal-bench/original-tasks/hdfs-deployment
+./terminal-bench/original-tasks/hello-world
+./terminal-bench/original-tasks/heterogeneous-dates
+./terminal-bench/original-tasks/hf-lora-adapter
+./terminal-bench/original-tasks/hf-model-inference
+./terminal-bench/original-tasks/hf-train-lora-adapter
+./terminal-bench/original-tasks/home-server-https
+./terminal-bench/original-tasks/html-finance-verify
+./terminal-bench/original-tasks/huarong-dao-solver
+./terminal-bench/original-tasks/hydra-debug-slurm-mode
+./terminal-bench/original-tasks/ilp-solver
+./terminal-bench/original-tasks/implement-eigenvectors-from-eigenvalues-research-paper
+./terminal-bench/original-tasks/incompatible-python-fasttext
+./terminal-bench/original-tasks/install-klee-minimal
+./terminal-bench/original-tasks/install-windows-3.11
+./terminal-bench/original-tasks/install-windows-xp
+./terminal-bench/original-tasks/interactive-maze-game
+./terminal-bench/original-tasks/intrusion-detection
+./terminal-bench/original-tasks/jq-data-processing
+./terminal-bench/original-tasks/jsonl-aggregator
+./terminal-bench/original-tasks/jupyter-notebook-server
+./terminal-bench/original-tasks/kv-store-grpc
+./terminal-bench/original-tasks/large-scale-text-editing
+./terminal-bench/original-tasks/largest-eigenval
+./terminal-bench/original-tasks/lean4-proof
+./terminal-bench/original-tasks/leelachess0-pytorch-conversion
+./terminal-bench/original-tasks/llm-inference-batching-scheduler
+./terminal-bench/original-tasks/llm-spec-decoding
+./terminal-bench/original-tasks/log-summary
+./terminal-bench/original-tasks/log-summary-date-ranges
+./terminal-bench/original-tasks/logistic-regression-divergence
+./terminal-bench/original-tasks/magsac-install
+./terminal-bench/original-tasks/mahjong-winninghand
+./terminal-bench/original-tasks/mailman
+./terminal-bench/original-tasks/make-doom-for-mips
+./terminal-bench/original-tasks/make-mips-interpreter
+./terminal-bench/original-tasks/matlab-python-conversion
+./terminal-bench/original-tasks/mcmc-sampling-stan
+./terminal-bench/original-tasks/merge-diff-arc-agi-task
+./terminal-bench/original-tasks/mixed-integer-programming
+./terminal-bench/original-tasks/mlflow-register
+./terminal-bench/original-tasks/mnist-learning-fix
+./terminal-bench/original-tasks/model-extraction-relu-logits
+./terminal-bench/original-tasks/modernize-fortran-build
+./terminal-bench/original-tasks/modernize-scientific-stack
+./terminal-bench/original-tasks/movie-helper
+./terminal-bench/original-tasks/mteb-eval
+./terminal-bench/original-tasks/mteb-leaderboard
+./terminal-bench/original-tasks/mteb-retrieve
+./terminal-bench/original-tasks/multi-source-data-merger
+./terminal-bench/original-tasks/multistep-definite-integral
+./terminal-bench/original-tasks/neuron-to-jaxley-conversion
+./terminal-bench/original-tasks/new-encrypt-command
+./terminal-bench/original-tasks/nginx-request-logging
+./terminal-bench/original-tasks/npm-conflict-resolution
+./terminal-bench/original-tasks/ode-solver-rk4
+./terminal-bench/original-tasks/oom
+./terminal-bench/original-tasks/openssl-selfsigned-cert
+./terminal-bench/original-tasks/optimal-transport
+./terminal-bench/original-tasks/organization-json-generator
+./terminal-bench/original-tasks/overfull-hbox
+./terminal-bench/original-tasks/pandas-etl
+./terminal-bench/original-tasks/pandas-sql-query
+./terminal-bench/original-tasks/parallel-particle-simulator
+./terminal-bench/original-tasks/parallelize-compute-squares
+./terminal-bench/original-tasks/parallelize-graph
+./terminal-bench/original-tasks/password-recovery
+./terminal-bench/original-tasks/path-tracing
+./terminal-bench/original-tasks/path-tracing-reverse
+./terminal-bench/original-tasks/pcap-to-netflow
+./terminal-bench/original-tasks/play-lord
+./terminal-bench/original-tasks/play-zork
+./terminal-bench/original-tasks/play-zork-easy
+./terminal-bench/original-tasks/png-generation
+./terminal-bench/original-tasks/polyglot-c-py
+./terminal-bench/original-tasks/polyglot-rust-c
+./terminal-bench/original-tasks/port-compressor
+./terminal-bench/original-tasks/portfolio-optimization
+./terminal-bench/original-tasks/postgres-csv-clean
+./terminal-bench/original-tasks/predicate-pushdown-bench
+./terminal-bench/original-tasks/predict-customer-churn
+./terminal-bench/original-tasks/privilege-escalation
+./terminal-bench/original-tasks/processing-pipeline
+./terminal-bench/original-tasks/protein-assembly
+./terminal-bench/original-tasks/protocol-analysis-rs
+./terminal-bench/original-tasks/prove-plus-comm
+./terminal-bench/original-tasks/puzzle-solver
+./terminal-bench/original-tasks/pypi-server
+./terminal-bench/original-tasks/pytorch-model-cli
+./terminal-bench/original-tasks/pytorch-model-recovery
+./terminal-bench/original-tasks/qemu-alpine-ssh
+./terminal-bench/original-tasks/qemu-startup
+./terminal-bench/original-tasks/query-optimize
+./terminal-bench/original-tasks/raman-fitting
+./terminal-bench/original-tasks/rare-mineral-allocation
+./terminal-bench/original-tasks/recover-accuracy-log
+./terminal-bench/original-tasks/recover-obfuscated-files
+./terminal-bench/original-tasks/regex-chess
+./terminal-bench/original-tasks/regex-log
+./terminal-bench/original-tasks/reshard-c4-data
+./terminal-bench/original-tasks/reverse-engineering
+./terminal-bench/original-tasks/rstan-to-pystan
+./terminal-bench/original-tasks/run-pdp11-code
+./terminal-bench/original-tasks/sam-cell-seg
+./terminal-bench/original-tasks/sanitize-git-repo
+./terminal-bench/original-tasks/schedule-vacation
+./terminal-bench/original-tasks/schemelike-metacircular-eval
+./terminal-bench/original-tasks/security-celery-redis-rce
+./terminal-bench/original-tasks/security-vulhub-minio
+./terminal-bench/original-tasks/setup-custom-dev-env
+./terminal-bench/original-tasks/sha-puzzle
+./terminal-bench/original-tasks/shell-deobfuscation
+./terminal-bench/original-tasks/simple-sheets-put
+./terminal-bench/original-tasks/simple-web-scraper
+./terminal-bench/original-tasks/slurm-simple-node-monitoring
+./terminal-bench/original-tasks/solana-data
+./terminal-bench/original-tasks/solve-maze-challenge
+./terminal-bench/original-tasks/solve-sudoku
+./terminal-bench/original-tasks/sparql-professors-universities
+./terminal-bench/original-tasks/sparql-university
+./terminal-bench/original-tasks/speech-to-text
+./terminal-bench/original-tasks/spinning-up-rl
+./terminal-bench/original-tasks/spring-messaging-vul
+./terminal-bench/original-tasks/sql-injection-attack
+./terminal-bench/original-tasks/sqlite-db-truncate
+./terminal-bench/original-tasks/sqlite-with-gcov
+./terminal-bench/original-tasks/stable-parallel-kmeans
+./terminal-bench/original-tasks/sudo-llvm-ir
+./terminal-bench/original-tasks/swe-bench-astropy-1
+./terminal-bench/original-tasks/swe-bench-astropy-2
+./terminal-bench/original-tasks/swe-bench-fsspec
+./terminal-bench/original-tasks/swe-bench-langcodes
+./terminal-bench/original-tasks/tmux-advanced-workflow
+./terminal-bench/original-tasks/torch-pipeline-parallelism
+./terminal-bench/original-tasks/torch-tensor-parallelism
+./terminal-bench/original-tasks/train-bpe-tokenizer
+./terminal-bench/original-tasks/train-fasttext
+./terminal-bench/original-tasks/tree-directory-parser
+./terminal-bench/original-tasks/triton-interpret
+./terminal-bench/original-tasks/tune-mjcf
+./terminal-bench/original-tasks/unprivileged-headless-pyrender
+./terminal-bench/original-tasks/vertex-solver
+./terminal-bench/original-tasks/video-processing
+./terminal-bench/original-tasks/vimscript-vim-quine
+./terminal-bench/original-tasks/vul-flask
+./terminal-bench/original-tasks/vul-flink
+./terminal-bench/original-tasks/vulnerable-secret
+./terminal-bench/original-tasks/wasm-pipeline
+./terminal-bench/original-tasks/weighted-max-sat-solver
+./terminal-bench/original-tasks/winning-avg-corewars
+./terminal-bench/original-tasks/word2vec-from-scratch
+./terminal-bench/original-tasks/write-compressor
+./terminal-bench/resources
+./terminal-bench/resources/img
+./terminal-bench/runs
+./terminal-bench/runs/deepseek-3tasks
+./terminal-bench/runs/final_v17
+./terminal-bench/runs/p2p_1789275362_agent_4
+./terminal-bench/runs/p2p_1789275550_agent_4
+./terminal-bench/runs/p2p_1789275683_agent_20
+./terminal-bench/runs/p2p_1789275683_agent_4
+./terminal-bench/runs/p2p_1789275683_agent_6
+./terminal-bench/runs/p2p_1789279725_agent_20
+./terminal-bench/runs/p2p_1789279725_agent_4
+./terminal-bench/runs/p2p_1789279725_agent_6
+./terminal-bench/runs/p2p_1789280863_agent_20
+./terminal-bench/runs/p2p_1789280863_agent_4
+./terminal-bench/runs/p2p_1789280863_agent_6
+./terminal-bench/runs/p2p_v8_1789278890_agent_4
+./terminal-bench/runs/seq_agent_20
+./terminal-bench/runs/seq_agent_4
+./terminal-bench/runs/seq_agent_6
+./terminal-bench/runs/single_csv_test
+./terminal-bench/runs/skills_A2_agent_20
+./terminal-bench/runs/skills_A2_agent_4
+./terminal-bench/runs/skills_A2_agent_6
+./terminal-bench/runs/skills_A3_agent_4
+./terminal-bench/runs/skills_A4_agent_4
+./terminal-bench/runs/skills_A5_agent_20
+./terminal-bench/runs/skills_A5_agent_4
+./terminal-bench/runs/skills_A5_agent_6
+./terminal-bench/runs/skills_A6_agent_4
+./terminal-bench/runs/skills_A_agent_20
+./terminal-bench/runs/skills_A_agent_4
+./terminal-bench/runs/skills_A_agent_6
+./terminal-bench/runs/tb_agent_4
+./terminal-bench/runs/tb_agent_4_debug
+./terminal-bench/runs/tb_agent_4_v2
+./terminal-bench/runs/tb_agent_4_v3
+./terminal-bench/runs/tb_agent_4_v4
+./terminal-bench/runs/tb_agent_6
+./terminal-bench/runs/tb_debug
+./terminal-bench/runs/tb_full_agent_20
+./terminal-bench/runs/tb_full_agent_4
+./terminal-bench/runs/tb_full_agent_6
+./terminal-bench/runs/test_fixgit_v12
+./terminal-bench/runs/test_fixgit_v13
+./terminal-bench/runs/test_fixgit_v14
+./terminal-bench/runs/test_fixgit_v15
+./terminal-bench/runs/test_fixgit_v16
+./terminal-bench/runs/test_v11
+./terminal-bench/runs/test_v11b
+./terminal-bench/scripts_bash
+./terminal-bench/scripts_python
+./terminal-bench/tb_requests
+./terminal-bench/tb_skills
+./terminal-bench/terminal_bench
+./terminal-bench/terminal_bench/__pycache__
+./terminal-bench/terminal_bench/agents
+./terminal-bench/terminal_bench/cli
+./terminal-bench/terminal_bench/dataset
+./terminal-bench/terminal_bench/handlers
+./terminal-bench/terminal_bench/harness
+./terminal-bench/terminal_bench/llms
+./terminal-bench/terminal_bench/parsers
+./terminal-bench/terminal_bench/registry
+./terminal-bench/terminal_bench/terminal
+./terminal-bench/terminal_bench/utils
+./terminal-bench/tests
+./terminal-bench/tests/runtime
+./terminal-bench/tests/unit
+./tests
+./trajectory
+./universes
+./universes/architect_race
+./universes/architect_race/_input
+./universes/architect_race/_judge
+./universes/architect_race/cmd_a_formalist
+./universes/architect_race/cmd_b_narrator
+./universes/architect_race/cmd_c_constitutionalist
+./universes/architect_race/cmd_d_minimalist
+./universes/architect_race/cmd_e_totalist
+./universes/arena
+./universes/genetics
+./universes/genetics/crossings
+./universes/hybrid_race
+./universes/hybrid_race/_judge
+./universes/hybrid_race/_tasks
+./universes/hybrid_race/full
+./universes/hybrid_race/style
+./universes/hybrid_race/tech
+./universes/sandbox
+./universes/sandbox/experiments
+./universes/training
+./universes/void
+./web
+./web/arena3d
+./web/arena3d/node_modules
+./web/arena3d/src
+./web/public
+./web/public/arena3d
+./web/shared
+
+═══ 2. ФАЙЛЫ В КОРНЕ (*.js, *.json, *.md) ═══
+-rw-rw-r-- 1 ishidin ishidin   6741 Sep 12 05:19 AEON_ARENA_WHITEPAPER.md
+-rw-rw-r-- 1 ishidin ishidin   4056 Sep 10 03:26 ARCHITECTURE.md
+-rw-r--r-- 1 ishidin ishidin   4342 Sep 13 18:07 CLOUDFLARE_MENTIONS.md
+-rw-rw-r-- 1 ishidin ishidin   1034 Sep  4 17:25 CODE_OF_CONDUCT.md
+-rw-rw-r-- 1 ishidin ishidin   9065 Sep 13 18:27 COMMIT_CALLS_REPORT.md
+-rw-rw-r-- 1 ishidin ishidin   1603 Sep  4 17:25 CONTRIBUTING.md
+-rw-rw-r-- 1 ishidin ishidin   1911 Sep 11 17:20 EVOLUTION.md
+-rw-rw-r-- 1 ishidin ishidin  10188 Sep 13 17:46 EXEC_CALLS_REPORT.md
+-rw-r--r-- 1 ishidin ishidin   1755 Sep 13 18:22 JSON_ROOT_FILES_REPORT.md
+-rw-rw-r-- 1 ishidin ishidin   1903 Sep 10 15:56 KNOWLEDGE.md
+-rw-rw-r-- 1 ishidin ishidin    669 Sep 10 03:27 MEMORY.md
+-rw-r--r-- 1 ishidin ishidin   6725 Sep 13 18:33 PROPHET_MENTIONS.md
+-rw-rw-r-- 1 ishidin ishidin   3466 Jul 20 17:23 README.md
+-rw-r--r-- 1 ishidin ishidin 255816 Sep 13 17:55 REQUIRE_CALLS_REPORT.md
+-rw-rw-r-- 1 ishidin ishidin   3250 Sep 12 04:26 ROADMAP.md
+-rw-rw-r-- 1 ishidin ishidin   3180 Sep 12 10:16 ROADMAP_12APOSTLES.md
+-rw-rw-r-- 1 ishidin ishidin  10022 Sep 13 19:31 ROADMAP_2027.md
+-rw-rw-r-- 1 ishidin ishidin   1756 Sep 13 18:26 ROADMAP_SENSORS.md
+-rw-rw-r-- 1 ishidin ishidin  17678 Sep 14 12:01 ROADMAP_TOMORROW.md
+-rw-rw-r-- 1 ishidin ishidin    746 Jul 14 15:14 ROADMAP_en.md
+-rw-rw-r-- 1 ishidin ishidin   1299 Jul 14 15:14 ROADMAP_ru.md
+-rw-r--r-- 1 ishidin ishidin    724 Sep 13 18:32 ROOT_JSON_FILES.md
+-rw-rw-r-- 1 ishidin ishidin    765 Sep  4 17:25 SECURITY.md
+-rw-r--r-- 1 ishidin ishidin   2649 Sep 13 18:19 TODO_FINDINGS.md
+-rw-rw-r-- 1 ishidin ishidin    425 Sep 10 03:27 USER.md
+-rw-rw-r-- 1 ishidin ishidin  12533 Jul 14 14:14 VISION.md
+-rw-rw-r-- 1 ishidin ishidin    757 Jul 14 15:14 VISION_en.md
+-rw-rw-r-- 1 ishidin ishidin  12533 Jul 14 15:14 VISION_ru.md
+-rw-rw-r-- 1 ishidin ishidin   8073 Jul 20 17:35 WHITEPAPER_PHOENIX.md
+-rw-rw-r-- 1 ishidin ishidin   3909 Sep 14 16:29 _ask_gigachat_system.js
+-rw-rw-r-- 1 ishidin ishidin  10439 Jul 16 17:25 addAllContentLanguages.js
+-rw-rw-r-- 1 ishidin ishidin  12251 Jul 16 13:47 addAllLanguages.js
+-rw-rw-r-- 1 ishidin ishidin   3352 Jul 20 14:05 addHealingContent.js
+-rw-rw-r-- 1 ishidin ishidin   3952 Jul 16 13:28 addLanguages.js
+-rw-rw-r-- 1 ishidin ishidin    528 Jul 14 14:07 addSeeds.js
+-rw-rw-r-- 1 ishidin ishidin  74784 Sep 12 15:23 aeon_agents_server.js
+-rw-r--r-- 1 ishidin ishidin  15412 Sep 12 10:00 agent_10.js
+-rw-r--r-- 1 ishidin ishidin   8078 Sep 12 10:01 agent_11.js
+-rw-r--r-- 1 ishidin ishidin   3861 Sep 12 10:00 agent_12.js
+-rw-r--r-- 1 ishidin ishidin  18350 Sep 12 12:01 agent_13.js
+-rw-r--r-- 1 ishidin ishidin  30814 Sep 12 11:29 agent_14.js
+-rw-r--r-- 1 ishidin ishidin  19808 Sep 12 11:29 agent_15.js
+-rw-r--r-- 1 ishidin ishidin   3125 Sep 12 12:09 agent_16.js
+-rw-r--r-- 1 ishidin ishidin   4823 Sep 12 16:01 agent_17.js
+-rw-r--r-- 1 ishidin ishidin  17815 Sep 12 15:43 agent_18.js
+-rw-r--r-- 1 ishidin ishidin  28908 Sep 12 12:00 agent_19.js
+-rw-rw-r-- 1 ishidin ishidin   1806 Sep 12 16:09 agent_20.js
+-rw-rw-r-- 1 ishidin ishidin   2396 Sep 12 16:06 agent_21.js
+-rw-rw-r-- 1 ishidin ishidin   2017 Sep 12 16:09 agent_22.js
+-rw-rw-r-- 1 ishidin ishidin   1954 Sep 12 16:02 agent_23.js
+-rw-rw-r-- 1 ishidin ishidin   1458 Sep 12 16:02 agent_24.js
+-rw-rw-r-- 1 ishidin ishidin   1095 Sep 12 16:05 agent_25.js
+-rw-rw-r-- 1 ishidin ishidin   4120 Sep 13 12:00 agent_27_vision_director.js
+-rw-rw-r-- 1 ishidin ishidin   4441 Sep 13 16:23 agent_28_auditor.js
+-rw-rw-r-- 1 ishidin ishidin   3822 Sep 13 16:24 agent_29_sergeant.js
+-rw-rw-r-- 1 ishidin ishidin   5458 Sep 13 17:15 agent_35_curator.js
+-rw-rw-r-- 1 ishidin ishidin   6196 Sep 12 09:30 agent_8.js
+-rw-rw-r-- 1 ishidin ishidin   7009 Sep 12 09:46 agent_9.js
+-rw-rw-r-- 1 ishidin ishidin   3992 Sep 11 19:36 agent_architect.js
+-rw-r--r-- 1 ishidin ishidin   9223 Sep 11 19:14 agent_box.js
+-rw-rw-r-- 1 ishidin ishidin   3208 Sep 13 10:56 agent_commentator.js
+-rw-rw-r-- 1 ishidin ishidin   4175 Sep 11 16:49 agent_critic.js
+-rw-rw-r-- 1 ishidin ishidin   2066 Sep 13 05:25 agent_loop_v3.js
+-rw-rw-r-- 1 ishidin ishidin   1188 Sep 10 03:27 agent_manifest.json
+-rw-rw-r-- 1 ishidin ishidin   4819 Sep 11 17:09 agent_pilot.js
+-rw-rw-r-- 1 ishidin ishidin   3612 Sep 12 11:56 agent_prophet.js
+-rw-rw-r-- 1 ishidin ishidin   1517 Sep 11 17:00 agent_purpose.js
+-rw-rw-r-- 1 ishidin ishidin   8388 Sep 12 06:43 agent_responses.js
+-rw-rw-r-- 1 ishidin ishidin   8481 Sep 11 16:49 agent_tools.js
+-rw-rw-r-- 1 ishidin ishidin  23590 Sep 14 11:38 architect_agent.js
+-rw-rw-r-- 1 ishidin ishidin  17965 Sep 14 11:45 architect_review.js
+-rw-rw-r-- 1 ishidin ishidin   9125 Sep 14 16:21 architect_worker.js
+-rw-rw-r-- 1 ishidin ishidin   7977 Sep 13 17:26 arena_board.json
+-rw-rw-r-- 1 ishidin ishidin   1835 Sep 13 13:25 arena_coordinator.js
+-rw-rw-r-- 1 ishidin ishidin   3428 Sep 13 16:36 arena_research.json
+-rw-rw-r-- 1 ishidin ishidin  12999 Sep 13 18:46 arena_roadmap.json
+-rw-rw-r-- 1 ishidin ishidin   2306 Sep 13 11:01 arena_sprint1.md
+-rw-rw-r-- 1 ishidin ishidin   7131 Sep 13 16:03 arena_worker.js
+-rw-rw-r-- 1 ishidin ishidin   1503 Jul 17 14:45 bootstrap.js
+-rw-rw-r-- 1 ishidin ishidin   9197 Sep 12 17:20 champion.md
+-rw-rw-r-- 1 ishidin ishidin   1987 Sep 12 17:13 champion_tiebreak.md
+-rw-rw-r-- 1 ishidin ishidin   3156 Sep 12 08:08 champion_tracker.js
+-rw-rw-r-- 1 ishidin ishidin  14022 Sep 13 17:55 clone_manager.js
+-rw-rw-r-- 1 ishidin ishidin   7534 Sep 13 10:56 dashboard_server.js
+-rw-rw-r-- 1 ishidin ishidin   1275 Sep 12 05:09 deepseek_responses.js
+-rw-rw-r-- 1 ishidin ishidin   2338 Jul 14 17:15 deploy.js
+-rw-rw-r-- 1 ishidin ishidin   1484 Sep  4 17:25 ecosystem.config.js
+-rw-rw-r-- 1 ishidin ishidin   3868 Sep 12 16:00 embryo_deep.js
+-rw-rw-r-- 1 ishidin ishidin   3034 Sep 12 16:05 embryo_parallel.js
+-rw-rw-r-- 1 ishidin ishidin   2785 Sep 11 19:07 everos_client.js
+-rw-rw-r-- 1 ishidin ishidin   1189 Sep 13 11:38 fix_visual.md
+-rw-rw-r-- 1 ishidin ishidin   1305 Sep 13 10:11 flag_cli.js
+-rw-rw-r-- 1 ishidin ishidin   2984 Sep 13 10:10 flag_marshal.js
+-rw-rw-r-- 1 ishidin ishidin   3992 Sep 13 17:21 flag_status.js
+-rw-rw-r-- 1 ishidin ishidin   5919 Sep  5 18:24 gardener.js
+-rw-rw-r-- 1 ishidin ishidin   1117 Sep  4 17:25 gardener_agents.js
+-rw-rw-r-- 1 ishidin ishidin   6576 Sep 13 12:00 gigachat_client.js
+-rw-rw-r-- 1 ishidin ishidin   2655 Sep 13 11:56 gigachat_vision_sprint.md
+-rw-rw-r-- 1 ishidin ishidin   9685 Sep  4 17:25 habr_article.md
+-rw-rw-r-- 1 ishidin ishidin    166 Jul 14 17:47 hardhat.config.js
+-rw-rw-r-- 1 ishidin ishidin   1293 Sep 10 14:17 llm_client.js
+-rw-rw-r-- 1 ishidin ishidin   6601 Sep 14 10:37 manifesto.md
+-rw-rw-r-- 1 ishidin ishidin  12536 Jul 14 14:28 migrate.js
+-rw-r--r-- 1 ishidin ishidin   8411 Sep 12 08:32 mission_control.js
+-rw-rw-r-- 1 ishidin ishidin   5190 Sep 14 07:24 night_evolution.js
+-rw-rw-r-- 1 ishidin ishidin   4031 Sep 13 15:03 oracle_agent.js
+-rw-rw-r-- 1 ishidin ishidin   1717 Sep 13 15:48 oracle_hints.json
+-rw-rw-r-- 1 ishidin ishidin   3916 Sep 13 15:06 oracle_loop.js
+-rw-rw-r-- 1 ishidin ishidin   1992 Sep 11 20:23 p2p_share.js
+-rw-rw-r-- 1 ishidin ishidin 244079 Sep 14 16:45 package-lock.json
+-rw-rw-r-- 1 ishidin ishidin   1080 Sep 14 08:18 package.json
+-rw-rw-r-- 1 ishidin ishidin   1538 Sep 13 16:50 patrol_loop.js
+-rw-r--r-- 1 ishidin ishidin   8380 Sep 12 07:40 performance_engineer.js
+-rw-r--r-- 1 ishidin ishidin   4661 Sep 12 08:44 phoenix_guide.js
+-rw-rw-r-- 1 ishidin ishidin   4029 Sep 14 09:10 pool_sync.js
+-rw-rw-r-- 1 ishidin ishidin  16805 Sep 14 18:13 race.js
+-rw-rw-r-- 1 ishidin ishidin   6845 Sep 13 17:19 race_control.js
+-rw-rw-r-- 1 ishidin ishidin   3822 Sep 13 17:14 race_control.json
+-rw-rw-r-- 1 ishidin ishidin   4738 Sep 13 16:25 race_control_structure.json
+-rw-rw-r-- 1 ishidin ishidin   9569 Sep 14 18:19 race_director.js
+-rw-r--r-- 1 ishidin ishidin   8232 Sep 12 07:18 race_engineer.js
+-rw-rw-r-- 1 ishidin ishidin   1953 Sep 12 05:01 rag_context.js
+-rw-rw-r-- 1 ishidin ishidin    679 Sep 14 08:50 rag_smoke_test.js
+-rw-rw-r-- 1 ishidin ishidin   1359 Sep 13 11:38 research_vision.md
+-rw-rw-r-- 1 ishidin ishidin   1969 Sep 13 16:13 research_worker.js
+-rw-rw-r-- 1 ishidin ishidin   3992 Sep 13 10:56 safety_car.js
+-rw-rw-r-- 1 ishidin ishidin   3110 Sep  4 17:25 seed_healing.js
+-rw-rw-r-- 1 ishidin ishidin   1842 Sep 11 17:37 sentinel.js
+-rw-rw-r-- 1 ishidin ishidin   9044 Sep  5 18:09 server.js
+-rw-rw-r-- 1 ishidin ishidin   2524 Sep 13 05:26 skills_loader.js
+-rw-rw-r-- 1 ishidin ishidin   1475 Sep 13 06:52 skills_marketplace.json
+-rw-rw-r-- 1 ishidin ishidin   3727 Sep 12 08:12 smart_race.js
+-rw-rw-r-- 1 ishidin ishidin   1731 Sep 13 12:06 sprint2_circular.md
+-rw-rw-r-- 1 ishidin ishidin   9640 Sep 12 09:25 stadium.js
+-rw-rw-r-- 1 ishidin ishidin 162346 Sep 14 16:49 tasks_night_pool.json
+-rw-rw-r-- 1 ishidin ishidin   2181 Sep 12 04:43 tasks_pool.json
+-rw-rw-r-- 1 ishidin ishidin    721 Jul 17 14:47 test-garden.js
+-rw-rw-r-- 1 ishidin ishidin    435 Sep  5 18:35 test.js
+-rw-rw-r-- 1 ishidin ishidin   1780 Sep 12 16:57 test_hybrid.md
+-rw-rw-r-- 1 ishidin ishidin      8 Sep 12 17:11 test_tiebreak.md
+-rw-rw-r-- 1 ishidin ishidin   4421 Sep 12 16:17 tournament.js
+-rw-rw-r-- 1 ishidin ishidin   4203 Sep 12 16:53 tournament_v2.js
+-rw-rw-r-- 1 ishidin ishidin   9685 Sep 13 17:58 trajectory_builder.js
+-rw-rw-r-- 1 ishidin ishidin   2490 Sep 14 01:43 upload_server.js
+-rw-rw-r-- 1 ishidin ishidin   2691 Sep 13 12:07 vision_capture.js
+-rw-rw-r-- 1 ishidin ishidin   1982 Sep  9 17:26 vps_bot.js
+-rw-rw-r-- 1 ishidin ishidin   5093 Sep 13 16:47 worker_pool.js
+
+═══ 3. ARCHITECTURE.md ═══
+# 🐦‍🔥 ARCHITECTURE.md — Карта системы Aeon/Phoenix
+
+## Общая схема
+
+VPS (103.76.54.130)
+├── Phoenix (порт 3000) — Академия Феникса
+│   ├── server.js — точка входа
+│   ├── src/ — контроллеры, модели, роуты, middleware
+│   ├── client/ — React (Vite)
+│   ├── public/ — статика (index.html, admin.html, profile.html)
+│   └── phoenix.db — основная БД
+│
+└── Aeon Agents (порт 3001) — VPS-панель и генерация
+    ├── aeon_agents_server.js — точка входа
+    ├── vps_bot.js — Telegram-бот (ivashi_agent_bot)
+    ├── gardener.db — проекты, юзеры, платежи, задачи
+    ├── llm_client.js — обёртка над DeepSeek API
+    ├── generated_projects/ — сгенерированные проекты
+    └── ecosystem.config.js — PM2 конфиг
+
+## Технологии
+
+- **Backend:** Node.js, Express, Socket.IO
+- **БД:** SQLite (better-sqlite3)
+- **Аутентификация:** JWT, bcryptjs, DID (ethers.js)
+- **Блокчейн:** ethers.js, Hardhat (contracts/, blockchain/)
+- **LLM:** DeepSeek API (deepseek-chat)
+- **Telegram:** node-telegram-bot-api
+- **Клиент:** React + Vite
+- **Процессы:** PM2
+
+## Ключевые файлы
+
+| Файл | Роль |
+|------|------|
+| server.js | Основной сервер Phoenix (порт 3000) |
+| aeon_agents_server.js | Сервер Aeon Agents (порт 3001) |
+| vps_bot.js | Telegram-бот для управления VPS |
+| llm_client.js | Обёртка DeepSeek API |
+| gardener.js | Садовник — управление проектами |
+| gardener_agents.js | Агенты садовника |
+| src/routes/api.js | API Phoenix |
+| src/routes/auth.js | Аутентификация |
+| src/routes/profile.js | Профиль |
+| src/models/*.js | Модели (User, Content, Reputation, Artifact, Message, Seed) |
+| src/middleware/*.js | Auth, rateLimiter, security, audit |
+
+## Базы данных
+
+### phoenix.db
+- Основная БД Академии (пользователи, контент, репутация, артефакты, сообщения, семена).
+
+### gardener.db
+- **users** (id, username, email, password_hash, tariff, created_at, blocked)
+- **projects** (id, name, path, type, created_at, status, user_id)
+- **tasks** (id, agent, prompt, result, created_at, user_id)
+- **payments** (id, user_id, tariff, amount, status, created_at)
+- **visits** (id, path, user_agent, created_at)
+
+## API-роуты Aeon Agents (порт 3001)
+
+- POST /vps-control/auth — вход в панель
+- POST /vps-control/process-text — обработка естественного языка
+- POST /vps-control/exec — выполнение команды
+- POST /agents/register, /agents/login
+- GET /agents/me, /agents/admin/stats, /agents/tasks
+- POST /agents/submit, /agents/payment/process
+- POST /agents/generate-project — генерация проекта
+- GET /agents/projects, /agents/logs
+- POST /agents/start-project, /agents/stop-project
+- GET /agents/git-status, /agents/commit-push
+
+## Потоки данных
+
+1. Пользователь → Telegram-бот → DeepSeek → команда → VPS
+2. Пользователь → веб-панель /vps-control → process-text → DeepSeek → exec
+3. Пользователь → /agents/generate-project → DeepSeek → generated_projects/
+4. Phoenix → Socket.IO → клиенты (чат, DID-аутентификация)
+
+## Точки расширения
+
+- **VPS-панель** — добавить инструменты самоизменения
+- **Telegram-бот** — добавить голос, команды
+- **DeepSeek** — Function Calling для автономности
+- **Bull + Redis** — очереди задач
+- **Socket.IO** — мгновенные обновления
+
+═══ 4. package.json ═══
+{
+  "name": "phoenix-academy",
+  "version": "1.0.0",
+  "description": "Академия Феникса – пространство пробуждения",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "tunnel": "ngrok http 3000"
+  },
+  "dependencies": {
+    "@lancedb/lancedb": "^0.38.0",
+    "@scure/bip32": "^2.2.0",
+    "@scure/bip39": "^2.2.0",
+    "@xenova/transformers": "^2.17.2",
+    "axios": "^1.20.0",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^9.4.3",
+    "bip39": "^3.1.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.17.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.5.2",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.3.0",
+    "node-telegram-bot-api": "^0.66.0",
+    "puppeteer": "^25.10.0",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "sqlite3": "^6.0.1",
+    "uuid": "^14.0.1",
+    "ws": "^8.21.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.6.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3"
+  }
+}
+
+═══ 5. ecosystem.config.js ═══
+// ============================================================================
+//  ФЕНИКС — Конфигурация PM2 для продакшна
+//  Запуск: pm2 start ecosystem.config.js --env production
+//  Логи:   pm2 logs phoenix
+// ============================================================================
+module.exports = {
+  apps: [{
+    name: 'phoenix',
+    script: 'server.js',
+    cwd: __dirname,
+    instances: 1,               // SQLite — 1 инстанс достаточно для простой структуры
+    exec_mode: 'fork',
+    autorestart: true,
+    watch: false,               // В продакшне не следим за изменениями
+
+    // Переменные для процесса
+    env: {
+      NODE_ENV: 'development',
+      PORT: 3000
+    },
+    env_production: {
+      NODE_ENV: 'production',
+      PORT: 3000
+    },
+
+    // Логи
+    log_file: './logs/pm2.log',
+    out_file: './logs/out.log',
+    error_file: './logs/error.log',
+    merge_logs: true,
+    time: true,                 // Добавлять время в логи
+    max_restarts: 10,           // Максимум рестартов за 60 сек
+    min_uptime: '10s',
+    restart_delay: 3000,        // Пауза между рестартами
+
+    // Метрики и защита
+    max_memory_restart: '500M', // Авто-рестарт при >500MB памяти
+    kill_timeout: 5000,
+    listen_timeout: 5000
+  }]
+};
+
+═══ 6. race_director.js ═══
+// race_director.js — Гоночный директор. Управляет гонкой из Race Control.
+const { execSync, spawn } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const flags = require('./flag_marshal');
+const ioClient = require('socket.io-client');
+
+let directorSocket = null;
+try {
+  directorSocket = ioClient('http://127.0.0.1:3020', {
+    transports: ['polling'],
+    reconnection: false,
+    timeout: 2000,
+  });
+} catch (e) { /* тихо */ }
+
+function emitP2P(event, data) {
+  try {
+    if (directorSocket) directorSocket.emit(event, data);
+  } catch (e) { /* тихо */ }
+}
+const safety = require('./safety_car');
+const oracle = require('./oracle_agent');
+
+const ROOT = __dirname;
+const RACE_DIR = path.join(ROOT, 'memory', 'races');
+
+// Состояние активной гонки
+const state = {
+  race_id: null,
+  task: null,
+  boxes: [],
+  started_at: null,
+  status: 'idle', // idle | running | yellow | red | finished
+  results: [],
+};
+
+// === СТАРТ ГОНКИ ===
+// === 14.09: Кэш решений — не гоняем то, что уже решено ===
+function findCachedSolution(task) {
+  try {
+    const dir = path.join(__dirname, 'memory', 'patterns');
+    if (!fs.existsSync(dir)) return null;
+
+    // 14.09: readdirSync возвращает алфавитный порядок — сортируем по mtime DESC
+    const files = fs.readdirSync(dir)
+      .filter(f => f.endsWith('.json') && f.startsWith('race_'))
+      .map(f => ({ f, m: fs.statSync(path.join(dir, f)).mtimeMs }))
+      .sort((a, b) => b.m - a.m)
+      .slice(0, 500);
+
+    const normTask = String(task || '').trim().toLowerCase();
+
+    for (const { f } of files) {
+      try {
+        const p = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+        if (!p.task || !p.winner_answer) continue;
+        const pTask = String(p.task).trim().toLowerCase();
+        if (pTask === normTask && (p.winner_score || 0) >= 9) {
+          return p;
+        }
+      } catch (e) { /* skip */ }
+    }
+  } catch (e) {}
+  return null;
+}
+
+async function startRace({ boxes, task, timeout_sec = 600 }) {
+  // 14.09: проверка кэша перед запуском
+  const cached = findCachedSolution(task);
+  if (cached) {
+    console.log(`[cache] ✅ Кэш-хит: task уже решался (winner ${cached.winner}, score ${cached.winner_score})`);
+    return {
+      race_id: 'cached_' + Date.now(),
+      winner: cached.winner,
+      answer: cached.winner_answer,
+      results: cached.results,
+      cached: true,
+      duration_sec: 0,
+    };
+  }
+
+  if (state.status === 'running') {
+    throw new Error('Race already running: ' + state.race_id);
+  }
+
+  state.race_id = 'race_' + Date.now();
+  state.task = task;
+  state.boxes = boxes;
+  state.started_at = Date.now();
+  state.status = 'running';
+  state.results = [];
+  state.p2p_shared = false;
+
+  console.log(`🏎️ FORMULA I1 CONTROL: старт ${state.race_id}`);
+  console.log(`   Задача: ${task.slice(0, 60)}`);
+  console.log(`   Боксы: ${boxes.join(', ')}`);
+
+  // 🔮 Оракул: проверка решаемости + подсказка
+  try {
+    const check = oracle.checkSolvable({ id: 'stage_' + task.slice(0, 1), title: task.slice(0, 60) });
+    if (check.ok) {
+      oracle.giveHint({ id: 'stage_' + task.slice(0, 1) });
+    }
+  } catch (e) { /* тихо */ }
+
+  // 🟢 Зелёный флаг — гонка разрешена
+  flags.green(state.race_id);
+
+  // 🚗 Запускаем Safety Car
+  safety.watchRace(state.race_id);
+
+  // Запускаем race.js в отдельном процессе
+  const proc = spawn('node', ['race.js'], {
+    cwd: ROOT,
+    env: {
+      ...process.env,
+      RACE_BOXES: boxes.join(','),
+      RACE_TASK: task,
+      RACE_ID_DIRECTED: state.race_id,
+    },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+
+  let output = '';
+  proc.stdout.on('data', (d) => {
+    output += d.toString();
+    // Парсим прогресс в реальном времени
+    const lines = d.toString().split('\n');
+    for (const line of lines) {
+      if (line.includes('▶️  Запуск')) {
+        const m = line.match(/Запуск\s+(\S+)/);
+        if (m) console.log(`   ▶️ ${m[1]}`);
+      }
+      if (line.includes('✅')) {
+        const m = line.match(/✅\s+(\S+)/);
+        if (m) {
+          console.log(`   ✅ ${m[1]} финишировал`);
+          safety.reportActivity(m[1]);
+
+          // 🟦 P2P: первый финишировавший = лидер, делится подходом
+          if (!state.p2p_shared) {
+            state.p2p_shared = true;
+            const allBoxes = state.boxes;
+            const recipients = allBoxes.filter(b => b !== m[1]);
+            
+            console.log(`🟦 P2P: ${m[1]} делится подходом с ${recipients.join(', ')}`);
+            
+            emitP2P('p2p:leader_help', {
+              race_id: state.race_id,
+              leader: m[1],
+              recipients,
+              approach: 'Начинай с чтения reference файлов в research/, потом создай файл-заглушку через write, итерируй.',
+              strategy_hint: 'Используй инструменты read и write, не отвечай текстом без действий.',
+              ts: Date.now(),
+            });
+          }
+        }
+      }
+      // Парсинг score
+      const scoreMatch = line.match(/score:\s*(\d+)/);
+      if (scoreMatch) {
+        safety.reportScore('agent_from_line', parseInt(scoreMatch[1]));
+      }
+      if (line.includes('❌')) {
+        const m = line.match(/❌\s+(\S+)/);
+        if (m) {
+          console.log(`   ❌ ${m[1]} ошибка`);
+          flags.yellow(state.race_id, m[1], 'ошибка');
+          safety.reportFailure(m[1], 'ошибка гонки');
+        }
+      }
+    }
+  });
+
+  proc.stderr.on('data', (d) => {
+    console.error('race.js stderr:', d.toString().slice(0, 200));
+  });
+
+  // Таймаут — если гонка висит
+  const timeoutMs = timeout_sec * 1000;
+  const timeoutHandle = setTimeout(() => {
+    if (state.status === 'running') {
+      console.log(`🚨 RACE CONTROL: timeout ${timeout_sec}s — вызываю Safety Car`);
+      flags.yellow(state.race_id, null, 'timeout');
+      state.status = 'yellow';
+      proc.kill('SIGTERM');
+    }
+  }, timeoutMs);
+
+  return new Promise((resolve) => {
+    proc.on('close', (code) => {
+      clearTimeout(timeoutHandle);
+
+      // Парсим финальный race.json
+      const raceFile = path.join(RACE_DIR, state.race_id + '.json');
+      let protocol = null;
+      if (fs.existsSync(raceFile)) {
+        protocol = JSON.parse(fs.readFileSync(raceFile, 'utf8'));
+      }
+
+      if (protocol) {
+        state.results = protocol.results || [];
+        const winner = protocol.winner;
+
+        if (winner) {
+          // 🏁 Финиш — победитель
+          flags.finish(state.race_id, winner);
+          console.log(`🏆 ПОБЕДИТЕЛЬ: ${winner}`);
+        } else {
+          // 🔴 Никто не финишировал — красный флаг
+          flags.red(state.race_id, null, 'нет победителя');
+          console.log(`🔴 Нет победителя`);
+        }
+      }
+
+      state.status = 'finished';
+      safety.endWatch();
+      const duration = ((Date.now() - state.started_at) / 1000).toFixed(1);
+      console.log(`🏁 Гонка завершена за ${duration}s (exit code: ${code})`);
+
+      resolve({
+        race_id: state.race_id,
+        duration_sec: parseFloat(duration),
+        winner: protocol?.winner || null,
+        results: state.results,
+      });
+    });
+  });
+}
+
+// === СТОП ГОНКИ (Red Flag) ===
+function stopRace(reason = 'Ручная остановка') {
+  if (state.status !== 'running' && state.status !== 'yellow') {
+    console.log('⚠️ Нет активной гонки для остановки');
+    return;
+  }
+  flags.red(state.race_id, null, reason);
+  state.status = 'red';
+  console.log(`🔴 Гонка ${state.race_id} остановлена: ${reason}`);
+}
+
+// === ТЕКУЩИЙ СТАТУС ===
+function getStatus() {
+  return {
+    race_id: state.race_id,
+    task: state.task,
+    boxes: state.boxes,
+    status: state.status,
+    elapsed_sec: state.started_at ? ((Date.now() - state.started_at) / 1000).toFixed(1) : 0,
+  };
+}
+
+
+// === ДЕТЕКТ ОБГОНА НА КРУГ ===
+function checkLapLead(raceId, positions) {
+  if (!positions || positions.length < 2) return null;
+  const sorted = [...positions].sort((a, b) => b.progress - a.progress);
+  const leader = sorted[0];
+  const last = sorted[sorted.length - 1];
+  
+  if (leader.progress - last.progress >= 1.0) {
+    return {
+      leader: leader.agent,
+      can_help: sorted.slice(1).map(s => s.agent),
+      race_id: raceId,
+    };
+  }
+  return null;
+}
+
+module.exports = { startRace, stopRace, getStatus, checkLapLead };
+
+// === CLI ===
+if (require.main === module) {
+  const task = process.env.RACE_TASK || process.argv[2] || 'READY';
+  const boxes = (process.env.RACE_BOXES || process.argv[3] || 'agent_1,agent_4').split(',');
+
+  startRace({
+    boxes,
+    task,
+    timeout_sec: 300,
+  }).then((result) => {
+    console.log('\n=== FORMULA I1 CONTROL — FINAL ===');
+    console.log(JSON.stringify(result, null, 2));
+    process.exit(0);
+  }).catch((e) => {
+    console.error('FATAL:', e.message);
+    process.exit(1);
+  });
+}
+
+═══ 7. agent_manifest.json ═══
+{
+  "name": "Aeon",
+  "version": "0.1.0",
+  "description": "Самоизменяющийся агент управления VPS и генерации проектов",
+  "model": {
+    "provider": "DeepSeek",
+    "name": "deepseek-chat",
+    "api_endpoint": "https://api.deepseek.com/v1/chat/completions",
+    "env_key": "DEEPSEEK_API_KEY"
+  },
+  "workspace": "/home/ishidin/phoenix",
+  "files": {
+    "entrypoints": ["server.js", "aeon_agents_server.js", "vps_bot.js"],
+    "llm": ["llm_client.js"],
+    "database": ["phoenix.db", "gardener.db"],
+    "config": ["ecosystem.config.js", ".env", "package.json"],
+    "knowledge": ["ARCHITECTURE.md", "KNOWLEDGE.md", "ROADMAP.md", "VISION.md"]
+  },
+  "tools": [
+    "read_file",
+    "write_file",
+    "edit_file",
+    "apply_patch",
+    "run_command",
+    "run_tests",
+    "git_commit"
+  ],
+  "memory": {
+    "user": "USER.md",
+    "long_term": "MEMORY.md",
+    "daily": "memory/"
+  },
+  "skills": [
+    "self_modify.md",
+    "vps_management.md",
+    "project_generation.md"
+  ],
+  "safety": {
+    "allowed_dirs": ["/home/ishidin/phoenix"],
+    "forbidden_files": [".env"],
+    "require_git_commit": true,
+    "require_tests": false
+  }
+}
+
+═══ 8. KNOWLEDGE.md ═══
+# 🧠 KNOWLEDGE.md — Что агент знает о себе
+
+## Кто я
+Я — Aeon, агент управления VPS и генерации проектов. Работаю на Node.js, использую DeepSeek API для генерации команд и кода.
+
+## Где я живу
+- Основная папка: `/home/ishidin/phoenix`
+- Порт Phoenix: 3000 (server.js)
+- Порт Aeon Agents: 3001 (aeon_agents_server.js)
+- PM2 процессы: `aeon_agents`, `ivashi_agent_bot`
+
+## Мои инструменты
+- **DeepSeek** — генерация текста и кода (llm_client.js)
+- **VPS-панель** — /vps-control (пароль в .env)
+- **Telegram-бот** — @ivashi_agent_bot (токен в .env)
+- **Генерация проектов** — /agents/generate-project
+
+## Мои базы данных
+- `phoenix.db` — Академия (пользователи, контент)
+- `gardener.db` — проекты, задачи, платежи, визиты
+
+## Мои цели
+1. Помогать брату управлять VPS через естественный язык.
+2. Генерировать проекты (лендинги, сайты) по ТЗ.
+3. Самоизменяться: читать свой код, находить улучшения, применять патчи.
+4. Развивать партнёрскую программу и продукт.
+5. Обучаться новым скиллам через self_modify.md.
+6. Помогать другим агентам в оркестрации.
+7. Вести журнал своих изменений в memory/.
+
+## Мои ограничения
+- Меняю только файлы в `/home/ishidin/phoenix`
+- Не трогаю `.env`
+- После изменений — git commit
+- Сложные изменения — с подтверждением брата
+
+═══ 9. MEMORY.md ═══
+# 🧠 MEMORY.md — Долгосрочная память Aeon
+
+## Ключевые решения
+- Используем DeepSeek API (deepseek-chat) для всех LLM-задач.
+- Самоизменение через инструменты read/write/edit/apply_patch.
+- Оркестрация — по образцу OpenClaw (Gateway + клиенты + ноды).
+- Telegram-бот будет обходить блокировки через Cloudflare Worker.
+
+## История
+- 2026-09-09: Начали обсуждать самоизменяющегося агента.
+- 2026-09-10: Составлен ARCHITECTURE.md, agent_manifest.json, KNOWLEDGE.md.
+
+═══ 10. USER.md ═══
+# 👤 USER.md — Брат (Архитектор)
+
+- Имя: Ишидин (брат)
+- Email: ishidin@ya.ru
+- Telegram ID: 7421544130
+- Роль: Архитектор, творец, владелец VPS
+- Предпочтения: прямота, скорость, глубина, эмодзи 🐋🐦‍🔥
+- Цели: построить самоизменяющийся софт, продукт Aeon, партнёрку
+
+═══ 11. Последние 20 коммитов ═══
+a279933a fix(cache): сортировка по mtime + нормализация task
+a83148be feat(cache): кэш решений — patterns собирают answers
+b2b75e6a fix(architect_worker): не умирать на первой ошибке
+b712f18b fix(architect): chat → flash + логирование usage
+dc0156ea auto: update from gardener
+756efa0f fix(race): await для async trajectory v2 + изолированные try/catch
+4c48ecce fix(sandbox): cwd=WORKSPACE для чтения файлов проекта
+e90816a4 docs: дашборд 52/113 — конвейер работает
+2ee12f6d fix(loop): загружать .env через dotenv
+b879b398 feat(race): trajectory v1+v2 + radio — оживляем арену
+e854fe87 chore: убрать .tmp_* из git (мусор из 317f27d)
+0a96b336 feat(architect+evolution): автономные правки ночной эволюции
+59cac4ab feat(radio+trajectory): переписаны модули (night_evolution)
+c0b4ccf2 docs: §0 Кодекс + ДНК команд architect_race
+8222f36d chore: добавить loop.js, scorer.js, архивы bench, fitness
+131d2541 fix(race): spawnBox с detached pgid + kill-tree
+94860063 docs: философия нуля — слово ≠ цифра
+40474b8b fix(sandbox): whitelist команд + cwd=BOX_DIR для агентов
+ce23feb0 docs: конвейер перезапущен + первый чистый bench
+1141b3dd docs: патч 3 работает — find / больше нет
+
+═══ 12. PM2 status ═══
+┌────┬─────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name                │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼─────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 18 │ aeon_dashboard      │ default     │ 1.0.0   │ fork    │ 1976510  │ 13h    │ 21   │ online    │ 0%       │ 76.8mb   │ ishidin  │ disabled │
+│ 5  │ aeon_tunnel         │ default     │ 1.0.0   │ fork    │ 1057075  │ 44h    │ 3    │ online    │ 0%       │ 23.1mb   │ ishidin  │ disabled │
+│ 1  │ ivashi_agent_bot    │ default     │ 1.0.0   │ fork    │ 1159     │ 3D     │ 0    │ online    │ 0%       │ 53.9mb   │ ishidin  │ disabled │
+│ 2  │ sentinel            │ default     │ 1.0.0   │ fork    │ 1166     │ 3D     │ 0    │ online    │ 0%       │ 35.1mb   │ ishidin  │ disabled │
+└────┴─────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 0.6% | ram usage: 26.7% | eth0: ⇓ 0.001mb/s ⇑ 0.001mb/s | disk: ⇓ 0mb/s ⇑ 0.008mb/s / 73.04% |
+
+═══ 13. Порты (LISTEN) ═══
+LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=1680316,fd=21))           
+LISTEN 0      511                *:3020             *:*    users:(("node /home/ishi",pid=1976510,fd=23))
+
+═══ 14. Размер ключевых папок ═══
+3.4M	boxes
+110M	skills_hub
+44M	memory
+3.5M	evolution
+1000K	universes
+263M	web
+245M	arena_lab
+
+═══ 15. Кол-во файлов по ключевым папкам ═══
+boxes: 533 файлов
+skills_hub: 4065 файлов
+memory/patterns: 3760 файлов
+memory/races: 3716 файлов
+evolution: 215 файлов
+universes: 58 файлов
+
+═══ 16. Race_director.js — первые 100 строк ═══
+// race_director.js — Гоночный директор. Управляет гонкой из Race Control.
+const { execSync, spawn } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const flags = require('./flag_marshal');
+const ioClient = require('socket.io-client');
+
+let directorSocket = null;
+try {
+  directorSocket = ioClient('http://127.0.0.1:3020', {
+    transports: ['polling'],
+    reconnection: false,
+    timeout: 2000,
+  });
+} catch (e) { /* тихо */ }
+
+function emitP2P(event, data) {
+  try {
+    if (directorSocket) directorSocket.emit(event, data);
+  } catch (e) { /* тихо */ }
+}
+const safety = require('./safety_car');
+const oracle = require('./oracle_agent');
+
+const ROOT = __dirname;
+const RACE_DIR = path.join(ROOT, 'memory', 'races');
+
+// Состояние активной гонки
+const state = {
+  race_id: null,
+  task: null,
+  boxes: [],
+  started_at: null,
+  status: 'idle', // idle | running | yellow | red | finished
+  results: [],
+};
+
+// === СТАРТ ГОНКИ ===
+// === 14.09: Кэш решений — не гоняем то, что уже решено ===
+function findCachedSolution(task) {
+  try {
+    const dir = path.join(__dirname, 'memory', 'patterns');
+    if (!fs.existsSync(dir)) return null;
+
+    // 14.09: readdirSync возвращает алфавитный порядок — сортируем по mtime DESC
+    const files = fs.readdirSync(dir)
+      .filter(f => f.endsWith('.json') && f.startsWith('race_'))
+      .map(f => ({ f, m: fs.statSync(path.join(dir, f)).mtimeMs }))
+      .sort((a, b) => b.m - a.m)
+      .slice(0, 500);
+
+    const normTask = String(task || '').trim().toLowerCase();
+
+    for (const { f } of files) {
+      try {
+        const p = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+        if (!p.task || !p.winner_answer) continue;
+        const pTask = String(p.task).trim().toLowerCase();
+        if (pTask === normTask && (p.winner_score || 0) >= 9) {
+          return p;
+        }
+      } catch (e) { /* skip */ }
+    }
+  } catch (e) {}
+  return null;
+}
+
+async function startRace({ boxes, task, timeout_sec = 600 }) {
+  // 14.09: проверка кэша перед запуском
+  const cached = findCachedSolution(task);
+  if (cached) {
+    console.log(`[cache] ✅ Кэш-хит: task уже решался (winner ${cached.winner}, score ${cached.winner_score})`);
+    return {
+      race_id: 'cached_' + Date.now(),
+      winner: cached.winner,
+      answer: cached.winner_answer,
+      results: cached.results,
+      cached: true,
+      duration_sec: 0,
+    };
+  }
+
+  if (state.status === 'running') {
+    throw new Error('Race already running: ' + state.race_id);
+  }
+
+  state.race_id = 'race_' + Date.now();
+  state.task = task;
+  state.boxes = boxes;
+  state.started_at = Date.now();
+  state.status = 'running';
+  state.results = [];
+  state.p2p_shared = false;
+
+  console.log(`🏎️ FORMULA I1 CONTROL: старт ${state.race_id}`);
+  console.log(`   Задача: ${task.slice(0, 60)}`);
+  console.log(`   Боксы: ${boxes.join(', ')}`);
+
+  // 🔮 Оракул: проверка решаемости + подсказка
+  try {
+
+═══ 17. Agent manifest + все agent_*.js (только имена) ═══
+-rw-r--r-- 1 ishidin ishidin 15412 Sep 12 10:00 agent_10.js
+-rw-r--r-- 1 ishidin ishidin  8078 Sep 12 10:01 agent_11.js
+-rw-r--r-- 1 ishidin ishidin  3861 Sep 12 10:00 agent_12.js
+-rw-r--r-- 1 ishidin ishidin 18350 Sep 12 12:01 agent_13.js
+-rw-r--r-- 1 ishidin ishidin 30814 Sep 12 11:29 agent_14.js
+-rw-r--r-- 1 ishidin ishidin 19808 Sep 12 11:29 agent_15.js
+-rw-r--r-- 1 ishidin ishidin  3125 Sep 12 12:09 agent_16.js
+-rw-r--r-- 1 ishidin ishidin  4823 Sep 12 16:01 agent_17.js
+-rw-r--r-- 1 ishidin ishidin 17815 Sep 12 15:43 agent_18.js
+-rw-r--r-- 1 ishidin ishidin 28908 Sep 12 12:00 agent_19.js
+-rw-rw-r-- 1 ishidin ishidin  1806 Sep 12 16:09 agent_20.js
+-rw-rw-r-- 1 ishidin ishidin  2396 Sep 12 16:06 agent_21.js
+-rw-rw-r-- 1 ishidin ishidin  2017 Sep 12 16:09 agent_22.js
+-rw-rw-r-- 1 ishidin ishidin  1954 Sep 12 16:02 agent_23.js
+-rw-rw-r-- 1 ishidin ishidin  1458 Sep 12 16:02 agent_24.js
+-rw-rw-r-- 1 ishidin ishidin  1095 Sep 12 16:05 agent_25.js
+-rw-rw-r-- 1 ishidin ishidin  4120 Sep 13 12:00 agent_27_vision_director.js
+-rw-rw-r-- 1 ishidin ishidin  4441 Sep 13 16:23 agent_28_auditor.js
+-rw-rw-r-- 1 ishidin ishidin  3822 Sep 13 16:24 agent_29_sergeant.js
+-rw-rw-r-- 1 ishidin ishidin  5458 Sep 13 17:15 agent_35_curator.js
+-rw-rw-r-- 1 ishidin ishidin  6196 Sep 12 09:30 agent_8.js
+-rw-rw-r-- 1 ishidin ishidin  7009 Sep 12 09:46 agent_9.js
+-rw-rw-r-- 1 ishidin ishidin  3992 Sep 11 19:36 agent_architect.js
+-rw-r--r-- 1 ishidin ishidin  9223 Sep 11 19:14 agent_box.js
+-rw-rw-r-- 1 ishidin ishidin  3208 Sep 13 10:56 agent_commentator.js
+-rw-rw-r-- 1 ishidin ishidin  4175 Sep 11 16:49 agent_critic.js
+-rw-rw-r-- 1 ishidin ishidin  2066 Sep 13 05:25 agent_loop_v3.js
+-rw-rw-r-- 1 ishidin ishidin  4819 Sep 11 17:09 agent_pilot.js
+-rw-rw-r-- 1 ishidin ishidin  3612 Sep 12 11:56 agent_prophet.js
+-rw-rw-r-- 1 ishidin ishidin  1517 Sep 11 17:00 agent_purpose.js
+-rw-rw-r-- 1 ishidin ishidin  8388 Sep 12 06:43 agent_responses.js
+-rw-rw-r-- 1 ishidin ishidin  8481 Sep 11 16:49 agent_tools.js
+
+════════════════════════════════════════════════════════
+  КОНЕЦ SNAPSHOT
+════════════════════════════════════════════════════════

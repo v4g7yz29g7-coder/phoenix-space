@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — FrameFlow</title>
+  <!-- Шрифт Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Базовый сброс и стили темы (тёмная, минимализм, фиолетовый акцент) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0b0f;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #e9e9f0;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Контейнер #app — только контент страницы контактов */
+    #app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Заголовок страницы */
+    .contacts-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .contacts-header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .contacts-header p {
+      font-size: 1.1rem;
+      color: #a1a1b5;
+      max-width: 480px;
+    }
+
+    /* Сетка: форма + контактная информация */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Карточка формы */
+    .form-card {
+      background: #12121a;
+      border: 1px solid #262633;
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+    }
+
+    .form-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 1.8rem;
+      color: #f0f0f7;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-title::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #a78bfa;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #a78bfa;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #b9b9cf;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: #1d1d26;
+      border: 1px solid #2f2f3d;
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #f0f0f7;
+      transition: border 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #5f5f73;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      background: #a78bfa;
+      color: #0b0b0f;
+      border: none;
+      border-radius: 40px;
+      padding: 0.9rem 1.8rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.5rem;
+      width: 100%;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-submit:hover {
+      background: #c4b5fd;
+      transform: scale(1.01);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    /* Блок контактной информации */
+    .contact-info {
+      background: rgba(18, 18, 26, 0.6);
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      border: 1px solid #1f1f2b;
+      backdrop-filter: blur(4px);
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(167, 139, 250, 0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a78bfa;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .info-text h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #d0d0e2;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-text p, .info-text a {
+      color: #a1a1b5;
+      font-size</div>
+  <script src="app.js"></script>
+</body>
+</html>

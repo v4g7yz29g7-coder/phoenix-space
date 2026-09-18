@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>AI-1 ARENA · Моя команда</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0a0e17;
+    color: #e0e6f0;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-size: 26px; font-weight: 800; letter-spacing: 2px;
+    background: linear-gradient(90deg, #4dd0ff, #a855f7, #ff7eb6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .user-info { font-size: 13px; color: #7a8baa; }
+  .user-info strong { color: #6eff8b; }
+  .logout {
+    padding: 8px 14px; background: #1a2030; border: 1px solid #2a3247;
+    color: #7a8baa; border-radius: 6px; cursor: pointer; font-size: 12px;
+    margin-left: 12px;
+  }
+  .logout:hover { border-color: #ff5c5c; color: #ff5c5c; }
+
+  .section {
+    background: #0f1522; border-radius: 12px; padding: 24px;
+    margin-bottom: 24px; border: 1px solid #1a2030;
+  }
+  .section h2 { font-size: 15px; letter-spacing: 1.5px; color: #4dd0ff; margin-bottom: 16px; }
+
+  .upload-zone {
+    border: 2px dashed #2a3247; border-radius: 10px; padding: 32px;
+    text-align: center; cursor: pointer; transition: all 0.2s;
+  }
+  .upload-zone:hover, .upload-zone.dragover {
+    border-color: #a855f7; background: rgba(168, 85, 247, 0.05);
+  }
+  .upload-zone .icon { font-size: 32px; margin-bottom: 8px; }
+  .upload-zone .hint { color: #7a8baa; font-size: 13px; margin-top: 8px; }
+
+  .model-list { display: grid; gap: 12px; }
+  .model-card {
+    background: #0a0e17; border: 1px solid #1a2030; border-radius: 10px;
+    padding: 16px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .model-card:hover { border-color: #a855f7; }
+  .model-card.model-official {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, #0a0e17 0%, #1a1030 100%);
+  }
+  .model-card.model-official:hover { border-color: #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.15); }
+  .model-name { font-weight: 700; font-size: 15px; }
+  .model-meta { font-size: 12px; color: #7a8baa; margin-top: 4px; }
+  .model-actions button {
+    padding: 8px 16px; border: none; border-radius: 6px;
+    background: linear-gradient(90deg, #a855f7, #4dd0ff);
+    color: #fff; font-weight: 700; font-size: 12px; cursor: pointer;
+  }
+  .model-actions button:hover { opacity: 0.9; }
+
+  .empty {
+    text-align: center; padding: 40px; color: #4a5570; font-size: 13px;
+  }
+  .msg {
+    padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    margin-bottom: 16px; display: none;
+  }
+  .msg.error { background: rgba(255, 92, 92, 0.15); color: #ff5c5c; display: block; }
+  .msg.ok { background: rgba(110, 255, 139, 0.15); color: #6eff8b; display: block; }
+  .msg.info { background: rgba(77, 208, 255, 0.15); color: #4dd0ff; display: block; }
+
+  .back { color: #4dd0ff; text-decoration: none; font-size: 13px; margin-right: 12px; }
+  .back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🏁 AI-1 ARENA</h1>
+      <div class="user-info">Пилот: <strong id="user-name">—</strong> · <span id="user-email">—</span></div>
+    </div>
+    <div>
+      <a class="back" href="/3d/">← на арену</a>
+      <button class="logout" onclick="logout()">ВЫЙТИ</button>
+    </div>
+  </header>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="section">
+    <h2>📦 ЗАГРУЗИТЬ МОДЕЛЬ</h2>
+    <div class="upload-zone" id="dropzone">
+      <div class="icon">📁</div>
+      <div><strong>Перетащи ZIP</strong> или нажми чтобы выбрать</div>
+      <div class="hint">
+        Внутри ZIP должен быть <code>manifest.json</code>:<br>
+        <code>{"name": "MyBot", "version": "1.0", "strategy": "aggressive"}</code>
+      </div>
+      <input type="file" id="file-input" accept=".zip" style="display:none">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🏆 ОФИЦИАЛЬНЫЕ AI-1 · ЧЕМПИОНЫ АРЕНЫ</h2>
+    <div class="model-list" id="official">
+      <div class="empty">Загружаю...</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🚗 МОИ МОДЕЛИ</h2>
+    <div class="model-list" id="models">
+      <div class="empty">Загрузи первую модель — она появится здесь</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const msg = $('msg');
+const TOKEN = localStorage.getItem('ai1_token');
+
+function showMsg(text, kind) {
+  msg.textContent = text;
+  msg.className = 'msg ' + kind;
+  if (kind === 'ok') setTimeout(() => { msg.className = 'msg'; }, 4000);
+}
+
+if (!TOKEN) {
+  window.location.href = '/arena';
+}
+
+const user = JSON.parse(localStorage.getItem('ai1_user') || '{}');
+$('user-name').textContent = user.name || '—';
+$('user-email').textContent = user.email || '—';
+
+function logout() {
+  localStorage.removeItem('ai1_token');
+  localStorage.removeItem('ai1_user');
+  window.location.href = '/arena';
+}
+
+async function loadModels() {
+  try {
+    const res = await fetch('/api/arena/my-team', {
+      headers: { 'Authorization': 'Bearer ' + TOKEN },
+    });
+    if (res.status === 401) { logout(); return; }
+    const data = await res.json();
+    renderOfficial(data.official || []);
+    renderModels(data.models || []);
+  } catch (e) {
+    showMsg('Сеть: ' + e.message, 'error');
+  }
+}
+
+function modelCard(m, isOfficial) {
+  const badge = isOfficial ? '<span style="color:#ffd700;font-size:11px;margin-left:8px">🏆 AI-1 OFFICIAL</span>' : '';
+  const stats = m.races_count
+    ? ` · <span style="color:#6eff8b">wins ${m.wins || 0} / races ${m.races_count}</span> · best ${m.best_score || '—'}`
+    : '';
+  const meta = isOfficial
+    ? `${escape(m.description || '')}${stats}`
+    : `${m.files_count} файлов · загружено ${new Date(m.uploaded_at).toLocaleString('ru-RU')}${m.strategy ? ' · ' + escape(m.strategy) : ''}${stats}`;
+  return `
+    <div class="model-card${isOfficial ? ' model-official' : ''}">
+      <div>
+        <div class="model-name">${escape(m.name)} <span style="color:#7a8baa;font-size:12px">v${escape(m.version)}</span>${badge}</div>
+        <div class="model-meta">${meta}</div>
+      </div>
+      <div class="model-actions">
+        <button onclick="runRace('${m.id}')">▶ В ГОНКУ</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderOfficial(models) {
+  const el = $('official');
+  if (!models.length) {
+    el.innerHTML = '<div class="empty">Официальные модели недоступны</div>';
+    return;
+  }
+  el.innerHTML = models.map(m => modelCard(m, true)).join('');
+}
+
+function renderModels(models) {
+  const el = $('models');
+  if (!models.length) {
+    el.innerHTML = '<div class="empty">Загрузи первую модель — она появится здесь</div>';
+    return;
+  }
+  el.innerHTML = models.map(m => modelCard(m, false)).join('');
+}
+
+function escape(s) {
+  return String(s || '').replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+}
+
+const dropzone = $('dropzone');
+const fileInput = $('file-input');
+
+dropzone.addEventListener('click', () => fileInput.click());
+dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+dropzone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropzone.classList.remove('dragover');
+  if (e.dataTransfer.files.length) uploadFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length) uploadFile(fileInput.files[0]);
+});
+
+async function uploadFile(file) {
+  if (!file.name.endsWith('.zip')) {
+    showMsg('Только .zip файлы', 'error');
+    return;
+  }
+  showMsg('Загружаю ' + file.name + ' (' + Math.round(file.size/1024) + ' KB)...', 'info');
+
+  const fd = new FormData();
+  fd.append('model', file);
+
+  try {
+    const res = await fetch('/api/arena/upload', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + TOKEN },
+      body: fd,
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      showMsg(data.error || 'Ошибка загрузки', 'error');
+      return;
+    }
+    showMsg('✅ Модель загружена: ' + data.model.name, 'ok');
+    loadModels();
+  } catch (e) {
+    showMsg('Сеть: ' + e.message, 'error');
+  }
+}
+
+async function runRace(modelId) {
+  showMsg('🏁 Гонка идёт... ждём ~30 секунд', 'info');
+  try {
+    const res = await fetch('/api/arena/race', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + TOKEN,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ model_id: modelId }),
+    });
+
+    // Обработка не-JSON (504 от nginx)
+    const text = await res.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      showMsg('Сервер вернул ' + res.status + ' (' + text.slice(0, 80) + '...)', 'error');
+      return;
+    }
+
+    if (!res.ok) { showMsg('Ошибка: ' + (data.error || res.status), 'error'); return; }
+
+    const winner = data.winner || '?';
+    const score = data.user_score != null ? data.user_score : '—';
+    const time = data.user_time_ms != null ? Math.round(data.user_time_ms / 1000) + 's' : '—';
+    const verdict = data.is_winner ? '🥇 ПОБЕДА!' : 'Победил ' + winner;
+    showMsg('🏁 ' + verdict + ' · score ' + score + ' · ' + time, 'ok');
+  } catch (e) {
+    showMsg('Сеть: ' + e.message, 'error');
+  }
+}
+
+loadModels();
+</script>
+</body>
+</html>

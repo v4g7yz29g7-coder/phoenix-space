@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Конституция Феникса 🐦‍🔥</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 2rem;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: #ffb380; }
+    h1 { font-size: 2.6rem; text-align: center; color: #ffb347; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.7rem; margin-top: 2.5rem; border-bottom: 1px solid rgba(255,100,0,0.2); padding-bottom: 0.5rem; }
+    h3 { font-size: 1.3rem; margin-top: 1.5rem; }
+    .subtitle { text-align: center; color: #aa8c7a; font-style: italic; margin-bottom: 2rem; }
+    blockquote {
+      border-left: 3px solid #ff5500;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      background: rgba(255,100,0,0.05);
+      border-radius: 0 12px 12px 0;
+      color: #ffd9b3;
+      font-style: italic;
+    }
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .principle-card {
+      background: rgba(20, 20, 30, 0.7);
+      border: 1px solid rgba(255, 100, 0, 0.3);
+      border-radius: 16px;
+      padding: 1.2rem;
+      backdrop-filter: blur(10px);
+    }
+    .principle-card h3 { margin-top: 0; }
+    .principle-card p { font-size: 0.9rem; color: #ccbbaa; }
+    ul, ol { padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    .back-link { display: inline-block; margin-bottom: 2rem; color: #ffaa66; text-decoration: none; background: rgba(20, 20, 30, 0.7); backdrop-filter: blur(10px); padding: 0.5rem 1.2rem; border-radius: 30px; border: 1px solid rgba(255,120,0,0.4); font-size: 0.85rem; transition: 0.3s; }
+    .back-link:hover { background: rgba(255, 80, 0, 0.3); border-color: #ff8c00; color: #fff; box-shadow: 0 0 20px rgba(255,100,0,0.4); }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { text-align: left; color: #ffb380; border-bottom: 1px solid rgba(255,100,0,0.4); padding: 0.5rem; }
+    td { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.5rem; vertical-align: top; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Вернуться в Сад</a>
+    <h1>🐦‍🔥 Конституция Феникса</h1>
+    <p class="subtitle">Технический манифест децентрализованной экосистемы для личной трансформации и совместного творчества</p>
+
+    <h2>1. Продукт</h2>
+    <p>«Феникс» — это не приложение, а <strong>среда</strong>. Мы строим пространство, где человек может развивать мировоззрение, создавать артефакты, общаться напрямую (P2P) и управлять своей цифровой идентичностью без посредников.</p>
+    <p>В основе лежат три слоя: клиент (PWA/Desktop), координационный сервер (без хранения данных) и блокчейн-слой (Polygon) для регистрации артефактов и репутации.</p>
+
+<h2>Осознание против Пробуждения</h2>
+<table>
+<tr><th>Пробуждение (иллюзия)</th><th>Осознание (реальность)</th></tr>
+<tr><td>Я «проснулся» и теперь всё вижу</td><td>Я замечаю, что я часто не вижу</td></tr>
+<tr><td>Это разовое событие</td><td>Это постоянный процесс</td></tr>
+<tr><td>Требует усилий и специальных практик</td><td>Происходит само, когда я позволяю себе быть</td></tr>
+<tr><td>Даёт ощущение превосходства</td><td>Даёт ощущение связи с реальностью</td></tr>
+<tr><td>Ищет тайные знания</td><td>Встречается с открытой реальностью</td></tr>
+<tr><td>Бежит от «грязи»</td><td>Видит ценность в «грязи» как почве для роста</td></tr>
+</table>
+    <h2>2. Миссия</h2>
+    <blockquote>
+      Помочь человеку оставаться человеком в мире, который пытается сделать его машиной. Дать пространство для роста, а не инструкцию.
+    </blockquote>
+    <p>Мы создаём инструмент, который:</p>
+    <ul>
+      <li>Не собирает персональные данные.</li>
+      <li>Не использует алгоритмы рекомендаций, основанные на слежке.</li>
+      <li>Позволяет пользователю владеть своей идентичностью (DID).</li>
+      <li>Обеспечивает прямую связь между людьми без центрального сервера (WebRTC).</li>
+    </ul>
+
+    <h2>3. Шесть ключей</h2>
+    <p>Эти принципы вшиты в архитектуру, UX и каждое техническое решение.</p>
+    <div class="principles">
+      <div class="principle-card">
+        <h3>1. Реальность</h3>
+        <p>Нет разделения на «духовное» и «материальное». Задачи по оплате счетов и медитации — в одном интерфейсе, без осуждения.</p>
+      </div>
+      <div class="principle-card">
+        <h3>2. Амбивалентность</h3>
+        <p>Вмещать полярности. Одна функция может и успокаивать, и давать силу — без принудительного выбора.</p>
+      </div>
+      <div class="principle-card">
+        <h3>3. Парадоксальность</h3>
+        <p>Жить в противоречиях как источник творчества. Интерфейс, где отказ от контроля даёт больше результата.</p>
+      </div>
+      <div class="principle-card">
+        <h3>4. Трансгрессия</h3>
+        <p>Выход за границы привычного. «Гуру» вместо «Чат-бота» — функции, которые нарушают шаблоны.</p>
+      </div>
+      <div class="principle-card">
+        <h3>5. Радикальность</h3>
+        <p>Никакой аналитики без согласия, никаких «тёмных паттернов». Полная прозрачность.</p>
+      </div>
+      <div class="principle-card">
+        <h3>6. Природность</h3>
+        <p>UI не «заставляет», а «приглашает». Плавность, естественность, отсутствие насилия.</p>
+      </div>
+    </div>
+
+    <h2>4. Архитектура</h2>
+    <table>
+      <tr><th>Слой</th><th>Технологии</th><th>Описание</th></tr>
+      <tr>
+        <td>Клиент</td>
+        <td>HTML/CSS/JS, PWA, WebRTC, IPFS</td>
+        <td>Кроссплатформенное приложение. Локальное хранилище DID. Прямые P2P-соединения.</td>
+      </tr>
+      <tr>
+        <td>Сервер</td>
+        <td>Node.js, Express, Socket.io</td>
+        <td>Минимальная координация: обнаружение пиров, сигналинг. Без хранения пользовательских данных.</td>
+      </tr>
+      <tr>
+        <td>Блокчейн</td>
+        <td>Polygon, IPFS, ethers.js</td>
+        <td>Регистрация артефактов, репутация (Proof-of-Benefit), децентрализованное хранилище.</td>
+      </tr>
+      <tr>
+        <td>Идентичность</td>
+        <td>DID (BIP39), Ed25519</td>
+        <td>Пользователь генерирует 12-словную фразу. Никаких паролей, email или телефонов.</td>
+      </tr>
+    </table>
+
+    <h2>5. Безопасность и юридическая позиция</h2>
+    <h3>5.1. Ошибки, которые мы не повторяем</h3>
+    <ul>
+      <li>❌ Source map в production — CI/CD проверка.</li>
+      <li>❌ Слабые permission'ы — каждый инструмент имеет минимальные права.</li>
+      <li>❌ Command injection — валидация всех входов.</li>
+      <li>❌ Скрытый сбор данных — полная прозрачность.</li>
+    </ul>
+    <h3>5.2. Российское правовое поле</h3>
+    <ul>
+      <li><strong>ОРИ (10.1 ФЗ-149):</strong> Мы не храним сообщения и метаданные. P2P-трафик не проходит через сервер.</li>
+      <li><strong>Персональные данные (152-ФЗ):</strong> Данные хранятся исключительно на устройстве пользователя. Мы не оператор ПД.</li>
+      <li><strong>115-ФЗ:</strong> В экосистеме отсутствуют финансовые P2P-транзакции между пользователями.</li>
+    </ul>
+    <h3>5.3. Стратегия</h3>
+    <ul>
+      <li>Код опубликован под Open Source лицензией.</li>
+      <li>Пользовательское соглашение (<a href="/legal.html">legal.html</a>) чётко определяет ответственность.</li>
+      <li>Перед коммерческим релизом — обязательный аудит IT-юриста.</li>
+    </ul>
+
+    <h2>6. Дорожная карта</h2>
+    <table>
+      <tr><th>Фаза</th><th>Содержание</th></tr>
+      <tr><td>1. Живая оболочка (MVP)</td><td>Пульсар, Академия, Мастерская, Круг, DID, PWA, мультиязычность.</td></tr>
+      <tr><td>2. Децентрализованное ядро</td><td>P2P-звонки и файлы, IPFS для артефактов, bootstrap-узел (порт 8081).</td></tr>
+      <tr><td>3. Токенизированная экосистема</td><td>Смарт-контракты на Polygon, Phnx-токен, Proof-of-Benefit, DAO-голосования.</td></tr>
+      <tr><td>4. Сеть Садов</td><td>Каждый Мастер может поднять свой узел и соединиться с другими. Полная децентрализация.</td></tr>
+    </table>
+
+    <blockquote style="text-align:center; font-size:1.1rem; margin-top:3rem;">
+      Мы строим Сад, в котором каждый может пробудиться, творить и соединяться с другими. 🐦‍🔥
+    </blockquote>
+  </div>
+</body>
+</html>

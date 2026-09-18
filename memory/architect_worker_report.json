@@ -1,0 +1,35 @@
+{
+  "ts": "2026-09-15T17:21:16.238Z",
+  "mode": "philosopher",
+  "dna": "style",
+  "ragHits": 5,
+  "ms": 183449,
+  "reasoning": "Свежие 5 failures — это DNA.md для команд архитектурной гонки, а ВСЕ гонки завершаются без winner (—s) при живых агентах. Значит runner гонки и DNA-слой — узкое место. Ставлю: 1 фикс runner, 1 генератор DNA, 1 тесты fitness, 1 тесты llm_router, 1 тесты sensors.",
+  "added": [
+    {
+      "id": "AUTO-1-2",
+      "file": "evolution/race_runner.js",
+      "min_lines": 150
+    },
+    {
+      "id": "AUTO-2-2",
+      "file": "evolution/dna_generator.js",
+      "min_lines": 180
+    },
+    {
+      "id": "AUTO-3-2",
+      "file": "evolution/fitness.test.js",
+      "min_lines": 150
+    },
+    {
+      "id": "AUTO-4-2",
+      "file": "tests/llm_router.test.js",
+      "min_lines": 150
+    },
+    {
+      "id": "AUTO-5-2",
+      "file": "tests/sensors.test.js",
+      "min_lines": 120
+    }
+  ]
+}

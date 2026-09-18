@@ -1,0 +1,264 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-09-13T13:30:00Z",
+  "tasks": {},
+  "artifacts": {},
+  "conflicts": [],
+  "notes": [
+    {
+      "ts": "2026-09-13T16:27:26.098Z",
+      "type": "order",
+      "from": "agent_31_colonel_science",
+      "to": "major_jwt",
+      "mission": "Продолжить исследования: 3/5",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:27:26.098Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:27:26.103Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:27:26.109Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 DEFCON 5 — СПОКОЙСТВИЕ"
+    },
+    {
+      "ts": "2026-09-13T16:31:00.654Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 DEFCON 5 — СПОКОЙСТВИЕ"
+    },
+    {
+      "ts": "2026-09-13T16:31:00.657Z",
+      "type": "order",
+      "from": "agent_31_colonel_science",
+      "to": "major_jwt",
+      "mission": "Продолжить исследования: 4/5",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:31:00.660Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:31:00.661Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:36:00.712Z",
+      "type": "order",
+      "from": "agent_31_colonel_science",
+      "to": "major_jwt",
+      "mission": "Продолжить исследования: 5/5",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:36:00.713Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 DEFCON 5 — СПОКОЙСТВИЕ"
+    },
+    {
+      "ts": "2026-09-13T16:41:01.374Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 DEFCON 5 — СПОКОЙСТВИЕ"
+    },
+    {
+      "ts": "2026-09-13T16:46:00.968Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 DEFCON 5 — СПОКОЙСТВИЕ"
+    },
+    {
+      "ts": "2026-09-13T16:51:05.524Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 DEFCON 5 — СПОКОЙСТВИЕ"
+    },
+    {
+      "ts": "2026-09-13T16:53:49.551Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:53:49.551Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:56:01.098Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 DEFCON 5 — СПОКОЙСТВИЕ"
+    },
+    {
+      "ts": "2026-09-13T16:58:49.640Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T16:58:49.640Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:03:49.741Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:03:49.742Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:08:49.820Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:08:49.820Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:20:11.803Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 🟢 GREEN — всё под контролем"
+    },
+    {
+      "ts": "2026-09-13T17:20:11.836Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:20:11.836Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:20:12.903Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 🟢 GREEN — всё под контролем"
+    },
+    {
+      "ts": "2026-09-13T17:20:12.905Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:20:12.906Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:21:23.164Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 GREEN — всё под контролем"
+    },
+    {
+      "ts": "2026-09-13T17:25:12.978Z",
+      "type": "order",
+      "from": "agent_32_colonel_business",
+      "to": "major_pricing",
+      "mission": "Подготовить документы для CloudPayments после ОКВЭД",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:25:12.978Z",
+      "type": "order",
+      "from": "agent_33_colonel_sport",
+      "to": "major_cams",
+      "mission": "Завершить 4.4 (синхронизация с флагом)",
+      "priority": "normal",
+      "status": "issued"
+    },
+    {
+      "ts": "2026-09-13T17:26:23.251Z",
+      "type": "defcon",
+      "level": 5,
+      "message": "🟢 GREEN — всё под контролем"
+    }
+  ]
+}

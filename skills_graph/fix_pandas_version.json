@@ -1,0 +1,13 @@
+{
+  "id": "fix_pandas_version",
+  "name": "Fix pandas version mismatch",
+  "trigger_patterns": ["version", "pandas", "incompatible", "AttributeError"],
+  "trigger_keywords": ["pandas", "version", "requirements"],
+  "recipe_commands": [
+    "cd /app && ls -la && cat requirements.txt 2>/dev/null",
+    "python3 -c 'import pandas; print(pandas.__version__)' 2>&1",
+    "pip install --upgrade pandas 2>&1 | tail -3 || (curl -LsSf https://astral.sh/uv/0.7.13/install.sh | sh && source $HOME/.local/bin/env && cd /app && uv add pandas==2.0.0)",
+    "python3 -c 'import pandas; print(pandas.__version__)' 2>&1"
+  ],
+  "confidence": 0.8
+}

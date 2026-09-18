@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><div id="app">
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="/" class="logo">
+        <span class="logo__mark">◆</span>
+        <span class="logo__text">FrameFlow</span>
+      </a>
+      <nav class="nav">
+        <a href="#features" class="nav__link">Возможности</a>
+        <a href="#how" class="nav__link">Как это работает</a>
+        <a href="/pricing" class="nav__link">Тарифы</a>
+        <a href="/about" class="nav__link">О нас</a>
+        <a href="/contacts" class="nav__link">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <a href="/login" class="btn btn--ghost">Войти</a>
+        <a href="/signup" class="btn btn--primary">Попробовать бесплатно</a>
+      </div>
+      <button class="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <h1 class="hero__title">Ваша съёмка — готовая публикация за один клик</h1>
+        <p class="hero__subtitle">Загрузите фотографии один раз. Получите отобранные кадры, ретушь через Evoto, пресеты для Instagram, ВК и PDF-портфолио. Всё в одном рабочем процессе.</p>
+        <div class="hero__actions">
+          <a href="/signup" class="btn btn--primary btn--lg">Попробовать бесплатно</a>
+          <a href="#demo" class="btn btn--outline btn--lg">Смотреть демо</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__value">12</span>
+            <span class="stat__label">лучших кадров за секунды</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">30 сек</span>
+            <span class="stat__label">от съёмки до экспорта</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">3</span>
+            <span class="stat__label">формата на выходе</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__mockup">
+          <div class="mockup__top">
+            <span class="mockup__dot"></span>
+            <span class="mockup__dot"></span>
+            <span class="mockup__dot"></span>
+          </div>
+          <div class="mockup__body">
+            <div class="mockup__sidebar">
+              <div class="mockup__thumb mockup__thumb--active"></div>
+              <div class="mockup__thumb"></div>
+              <div class="mockup__thumb"></div>
+              <div class="mockup__thumb"></div>
+            </div>
+            <div class="mockup__main">
+              <div class="mockup__image"></div>
+              <div class="mockup__badge">AI Smart Select</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Преимущества -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Всё, что нужно после съёмки</h2>
+        <p class="section__subtitle">Один рабочий процесс вместо пяти разных программ</p>
+      </div>
+      <div class="features__grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">AI Smart Select</h3>
+          <p class="feature-card__text">Нейросеть анализирует резкость, эмоции и композицию, оставляя 12 лучших кадров из сотен.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Интеграция с Evoto</h3>
+          <p class="feature-card__text">Автоматическая передача отобранных кадров в Evoto для профессиональной ретуши кожи и света.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 8v4l3 3"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">История проектов</h3>
+          <p class="feature-card__text">Все съёмки хранятся в облаке. Возвращайтесь к любому проекту и экспортируйте заново.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature</div>
+  <script src="app.js"></script>
+</body>
+</html>

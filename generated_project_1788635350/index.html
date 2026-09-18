@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS — студия разработки</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a0a0f;
+            color: #e8e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            background-image: radial-gradient(circle at 20% 20%, rgba(100, 100, 255, 0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 80%, rgba(0, 200, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(100, 100, 255, 0.15);
+            border: 1px solid rgba(100, 100, 255, 0.3);
+            color: #a0a0ff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #b0b0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #9a9ab0;
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+            font-weight: 300;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6464ff, #00c8ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(100, 100, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .service-card p {
+            color: #9a9ab0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6464ff 0%, #00c8ff 100%);
+            color: #ffffff;
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(100, 100, 255, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(100, 100, 255, 0.5);
+            background: linear-gradient(135deg, #7575ff 0%, #1ad0ff 100%);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            color: #555570;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .services {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 350px;
+                padding: 1.2rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">Студия разработки</div>
+        <h1>Создаём цифровые продукты,<br>которые меняют правила игры</h1>
+        <p class="subtitle">Полный цикл разработки — от идеи до масштабирования. Мы превращаем сложные задачи в элегантные решения.</p>
+
+        <div class="services">
+            <div class="service-card">
+                <span class="service-icon">🚀</span>
+                <h3>В

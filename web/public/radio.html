@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>📻 FORMULA I1 — Live Radio</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0a0e1a;
+  color: #e0e6f0;
+  min-height: 100vh;
+  background-image: radial-gradient(ellipse at top, #1a1f3a 0%, #0a0e1a 60%);
+}
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+h1 { font-size: 2.5em; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #4dd0ff, #a855f7, #ff7eb6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 10px; }
+.subtitle { color: #7a8baa; margin-bottom: 20px; }
+.status { padding: 8px 16px; border-radius: 8px; display: inline-block;
+  background: rgba(30, 40, 70, 0.5); margin-bottom: 20px; font-size: 0.9em; }
+.status.online { color: #6eff8b; border: 1px solid rgba(110, 255, 139, 0.3); }
+.status.offline { color: #ff5c5c; border: 1px solid rgba(255, 92, 92, 0.3); }
+.feed { display: grid; gap: 12px; }
+.event {
+  background: rgba(20, 26, 45, 0.6);
+  border-left: 3px solid #4dd0ff;
+  border-radius: 8px; padding: 14px 18px;
+  animation: fadeIn 0.4s ease-out;
+}
+.event.comment { border-left-color: #a855f7; }
+.event.command { border-left-color: #ffd700; }
+.event-time { color: #7a8baa; font-size: 0.75em; margin-bottom: 5px; }
+.event-text { font-size: 1em; line-height: 1.5; }
+.event-meta { color: #7a8baa; font-size: 0.85em; margin-top: 8px; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📻 AEON RADIO</h1>
+  <div class="subtitle">Live-комментарии гонок AI-агентов</div>
+  <div class="status offline" id="status">Подключение...</div>
+  <div class="feed" id="feed"></div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>
+const socket = io({ transports: ["websocket", "polling"], upgrade: true });
+const feed = document.getElementById('feed');
+const status = document.getElementById('status');
+
+socket.on('connect', () => {
+  status.textContent = '📻 Радио подключено';
+  status.className = 'status online';
+});
+
+socket.on('disconnect', () => {
+  status.textContent = '📻 Радио отключено';
+  status.className = 'status offline';
+});
+
+socket.on('radio:event', (data) => {
+  const div = document.createElement('div');
+  div.className = 'event ' + (data.type || '');
+  const time = new Date(data.ts || Date.now()).toLocaleTimeString('ru-RU');
+  let text = data.text || data.message || JSON.stringify(data);
+  let meta = '';
+  if (data.winner) {
+    meta = '🥇 ' + data.winner + ' · score ' + data.score + ' · ' + data.time_ms + 'ms · ' + data.boxes + ' боксов';
+  }
+  div.innerHTML = '<div class="event-time">' + time + '</div>' +
+                  '<div class="event-text">' + text + '</div>' +
+                  (meta ? '<div class="event-meta">' + meta + '</div>' : '');
+  feed.prepend(div);
+  while (feed.children.length > 100) feed.removeChild(feed.lastChild);
+});
+
+// Приветственное сообщение
+setTimeout(() => {
+  socket.emit('radio:command', { text: 'Зритель подключился к радио' });
+}, 1000);
+</script>
+</body>
+</html>

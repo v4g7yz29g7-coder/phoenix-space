@@ -1,0 +1,44 @@
+{
+  "name": "Aeon",
+  "version": "0.1.0",
+  "description": "Самоизменяющийся агент управления VPS и генерации проектов",
+  "model": {
+    "provider": "DeepSeek",
+    "name": "deepseek-chat",
+    "api_endpoint": "https://api.deepseek.com/v1/chat/completions",
+    "env_key": "DEEPSEEK_API_KEY"
+  },
+  "workspace": "/home/ishidin/phoenix",
+  "files": {
+    "entrypoints": ["server.js", "aeon_agents_server.js", "vps_bot.js"],
+    "llm": ["llm_client.js"],
+    "database": ["phoenix.db", "gardener.db"],
+    "config": ["ecosystem.config.js", ".env", "package.json"],
+    "knowledge": ["ARCHITECTURE.md", "KNOWLEDGE.md", "ROADMAP.md", "VISION.md"]
+  },
+  "tools": [
+    "read_file",
+    "write_file",
+    "edit_file",
+    "apply_patch",
+    "run_command",
+    "run_tests",
+    "git_commit"
+  ],
+  "memory": {
+    "user": "USER.md",
+    "long_term": "MEMORY.md",
+    "daily": "memory/"
+  },
+  "skills": [
+    "self_modify.md",
+    "vps_management.md",
+    "project_generation.md"
+  ],
+  "safety": {
+    "allowed_dirs": ["/home/ishidin/phoenix"],
+    "forbidden_files": [".env"],
+    "require_git_commit": true,
+    "require_tests": false
+  }
+}

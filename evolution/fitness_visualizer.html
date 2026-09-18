@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evolution — Fitness Visualizer</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --panel: #161b22;
+      --panel2: #1c2128;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --red: #f85149;
+      --yellow: #d29922;
+      --purple: #bc8cff;
+      --cyan: #39c5cf;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #17223b 0%, var(--bg) 60%);
+      color: var(--text);
+      padding: 24px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 { font-size: 22px; font-weight: 600; }
+    h1 span { color: var(--accent); }
+    .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    button {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: border-color .15s, background .15s, transform .1s;
+    }
+    button:hover { border-color: var(--accent); background: var(--panel2); transform: translateY(-1px); }
+    button.active { border-color: var(--accent); color: var(--accent); }
+    input[type="file"] { display: none; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .stat .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .stat .value { font-size: 24px; font-weight: 600; margin-top: 4px; }
+    .stat .value.green { color: var(--green); }
+    .stat .value.red { color: var(--red); }
+    .stat .value.yellow { color: var(--yellow); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .card h2 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .card canvas { max-height: 260px; }
+    .legend-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: 12px; }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .pill.live { color: var(--green); border-color: var(--green); }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>🧬 Evolution <span>Fitness Visualizer</span></h1>
+      <div class="legend-note">Chart.js · мониторинг приспособленности агентов по поколениям</div>
+    </div>
+    <div class="controls">
+      <span class="pill live" id="gen-label">Поколение 0</span>
+      <label class="btn" for="file-input" style="background:var(--panel);border:1px solid var(--border);padding:8px 14px;border-radius:6px;cursor:pointer;font-size:13px;">⬆ Load JSON</label>
+      <input type="file" id="file-input" accept=".json,.jsonl,.txt" />
+      <button id="btn-random">🎲 Случайные данные</button>
+      <button id="btn-run" class="active">▶ Симуляция</button>
+      <button id="btn-reset">↺ Сброс</button>
+    </div>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Fitness по поколениям <span class="pill" id="best-tag"></span></h2>
+      <canvas id="fitnessChart"></canvas>
+      <div class="legend-note">Средний, лучший и худший fitness в каждом поколении.</div>
+    </div>
+
+    <div class="card">
+      <h2>Распределение популяции</h2>
+      <canvas id="histogramChart"></canvas>
+      <div class="legend-note">Гистограмма текущего поколения (bins по fitness).</div>
+    </div>
+
+    <div class="card">
+      <h2>Топ агентов</h2>
+      <canvas id="topAgentsChart"></canvas>
+      <div class="legend-note">Рейтинг 8 лучших агентов текущего поколения.</div>
+    </div>
+
+    <div class="card">
+      <h2>Скорость сходимости</h2>
+      <canvas id="convergenceChart"></canvas>
+      <div class="legend-note">Изменение лучшего fitness между поколениями (Δ).</div>
+    </div>
+
+    <div class="card">
+      <h2>Доля видов по fitness</h2>
+      <canvas id="speciesChart"></canvas>
+      <div class="legend-note">Сколько агентов попало в элитный/средний/слабый пул.</div>
+    </div>
+
+    <div class="card">
+      <h2>Волатильность популяции</h2>
+      <canvas id="volatilityChart"></canvas>
+      <div class="legend-note">Стандартное отклонение fitness (σ) по поколениям.</div>
+    </div>
+  </section>
+
+  <footer>
+    Evolution Fitness Visualizer · Chart.js · <span id="timestamp"></span>
+  </footer>
+
+  <script>
+    "use strict";
+
+    /* ---------------------------------------------------------------- *
+     * Chart.js global defaults
+     * ---------------------------------------------------------------- */
+    const CHART_DEFAULTS = {
+      color: "#8b949e",
+      borderColor: "#30363d",
+      gridColor: "rgba(48,54,61,0.5)"
+    };
+
+    Chart.defaults.color = CHART_DEFAULTS.color;
+    Chart.defaults.borderColor = CHART_DEFAULTS.borderColor;
+    Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, sans-serif";
+
+    /* ---------------------------------------------------------------- *
+     * State
+     * ---------------------------------------------------------------- */
+    const state = {
+      generations: [],
+      history: { avg: [], best: [], worst: [], std: [] },
+      population: [],
+      running: true,
+      generation: 1,
+      timer: null,
+      popSize: 40,
+      mutation: 0.12
+    };
+
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+    /* ------------------------------------------------ *
+     * Population model
+     * ------------------------------------------------ */
+    function makeAgent(id) {
+      return {
+        id,
+        fitness: clamp(rnd(0.15, 0.65), 0, 1),
+        age: 0,
+        genes: Array.from({ length: 5 }, () => Math.random())
+      };
+    }
+
+    function initPopulation(size) {
+      const n = size || state.popSize;
+      state.population = Array.from({ length: n }, (_, i) => makeAgent(i));
+      state.generation = 1;
+      state.generations = [];
+      state.history = { avg: [], best: [], worst: [], std: [] };
+    }
+
+    function evolve(pop) {
+      const sorted = [...pop].sort((a, b) => b.fitness - a.fitness);
+      const eliteCount = Math.max(1, Math.floor(pop.length * 0.2));
+      const elites = sorted.slice(0, eliteCount);
+
+      const next = elites.map(e => ({ ...e, age: e.age + 1 }));
+      while (next.length < pop.length) {
+        const parent = elites[Math.floor(Math.random() * elites.length)];
+        const child = {
+          id: next.length,
+          fitness: clamp(parent.fitness + rnd(-0.08, 0.14), 0, 1),
+          age: 0,
+          genes: parent.genes.map(g => clamp(g + rnd(-state.mutation, state.mutation), 0, 1))
+        };
+        next.push(child);
+      }
+      return next;
+    }
+
+    function stats(pop) {
+      const fits = pop.map(p => p.fitness);
+      const avg = fits.reduce((a, b) => a + b, 0) / fits.length;
+      const best = Math.max(...fits);
+      const worst = Math.min(...fits);
+      const variance = fits.reduce((s, f) => s + (f - avg) * (f - avg), 0) / fits.length;
+      return { avg, best, worst, std: Math.sqrt(variance) };
+    }
+
+    /* ---------------------------------------------------------------- *
+     * Charts
+     * ---------------------------------------------------------------- */
+    const charts = {};
+
+    function initCharts() {
+      charts.fitness = new Chart(document.getElementById("fitnessChart"), {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [
+            { label: "Лучший", data: [], borderColor: "#3fb950", backgroundColor: "rgba(63,185,80,0.1)", fill: true, tension: 0.35, pointRadius: 2 },
+            { label: "Средний", data: [], borderColor: "#58a6ff", borderDash: [5, 4], tension: 0.35, pointRadius: 0 },
+            { label: "Худший", data: [], borderColor: "#f85149", tension: 0.35, pointRadius: 0 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "index", intersect: false },
+          plugins: { legend: { labels: { boxWidth: 12, usePointStyle: true } } },
+          scales: { y: { beginAtZero: true, max: 1 } }
+        }
+      });
+
+      charts.histogram = new Chart(document.getElementById("histogramChart"), {
+        type: "bar",
+        data: {
+          labels: Array.from({ length: 10 }, (_, i) => `${i * 10}-${i * 10 + 10}%`),
+          datasets: [{ label: "Агентов", data: new Array(10).fill(0), backgroundColor: "rgba(188,140,255,0.6)", borderRadius: 4 }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+        }
+      });
+
+      charts.topAgents = new Chart(document.getElementById("topAgentsChart"), {
+        type: "bar",
+        data: {
+          labels: [],
+          datasets: [{ label: "Fitness", data: [], backgroundColor: "rgba(88,166,255,0.7)", borderRadius: 4 }]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { x: { beginAtZero: true, max: 1 } }
+        }
+      });
+
+      charts.convergence = new Chart(document.getElementById("convergenceChart"), {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [{
+            label: "Δ best",
+            data: [],
+            borderColor: "#d29922",
+            backgroundColor: "rgba(210,153,34,0.15)",
+            fill: true,
+            tension: 0.4,
+            pointRadius: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { suggestedMin: -0.1, suggestedMax: 0.15 } }
+        }
+      });
+
+      charts.species = new Chart(document.getElementById("speciesChart"), {
+        type: "doughnut",
+        data: {
+          labels: ["Элита (≥0.7)", "Средние (0.4-0.7)", "Слабые (<0.4)"],
+          datasets: [{
+            data: [0, 0, 0],
+            backgroundColor: ["rgba(63,185,80,0.75)", "rgba(88,166,255,0.75)", "rgba(248,81,73,0.75)"],
+            borderColor: "#161b22",
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: "bottom", labels: { boxWidth: 12, usePointStyle: true } } }
+        }
+      });
+
+      charts.volatility = new Chart(document.getElementById("volatilityChart"), {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [{
+            label: "σ fitness",
+            data: [],
+            borderColor: "#39c5cf",
+            backgroundColor: "rgba(57,197,207,0.12)",
+            fill: true,
+            tension: 0.4,
+            pointRadius: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, suggestedMax: 0.35 } }
+        }
+      });
+    }
+
+    /* ---------------------------------------------------------------- *
+     * Renderers
+     * ---------------------------------------------------------------- */
+    function renderStats(s) {
+      const up = s.best >= 0.7;
+      document.getElementById("stats").innerHTML = `
+        <div class="stat"><div class="label">Поколение</div><div class="value">${state.generation}</div></div>
+        <div class="stat"><div class="label">Лучший fitness</div><div class="value green">${s.best.toFixed(3)}</div></div>
+        <div class="stat"><div class="label">Средний fitness</div><div class="value yellow">${s.avg.toFixed(3)}</div></div>
+        <div class="stat"><div class="label">Худший fitness</div><div class="value red">${s.worst.toFixed(3)}</div></div>
+        <div class="stat"><div class="label">σ разнообразие</div><div class="value">${s.std.toFixed(3)}</div></div>
+        <div class="stat"><div class="label">Статус</div><div class="value">${up ? "🏆 Сходится" : "⏳ Эволюция"}</div></div>
+      `;
+      document.getElementById("gen-label").textContent = `Поколение ${state.generation}`;
+      document.getElementById("best-tag").textContent = `best=${s.best.toFixed(3)}`;
+    }
+
+    function renderFitness() {
+      const c = charts.fitness;
+      c.data.labels = state.generations;
+      c.data.datasets[0].data = state.history.best;
+      c.data.datasets[1].data = state.history.avg;
+      c.data.datasets[2].data = state.history.worst;
+      c.update("none");
+    }
+
+    function renderHistogram(pop) {
+      const bins = new Array(10).fill(0);
+      for (const p of pop) bins[clamp(Math.floor(p.fitness * 10), 0, 9)]++;
+      const c = charts.histogram;
+      c.data.datasets[0].data = bins;
+      c.update("none");
+    }
+
+    function renderTopAgents(pop) {
+      const top = [...pop].sort((a, b) => b.fitness - a.fitness).slice(0, 8);
+      const c = charts.topAgents;
+      c.data.labels = top.map((a, i) => `#${i + 1} · агент ${a.id}`);
+      c.data.datasets[0].data = top.map(a => a.fitness);
+      c.data.datasets[0].backgroundColor = top.map((a, i) =>
+        i === 0 ? "rgba(63,185,80,0.85)" : "rgba(88,166,255,0.65)"
+      );
+      c.update("none");
+    }
+
+    function renderConvergence() {
+      const deltas = [];
+      for (let i = 1; i < state.history.best.length; i++) {
+        deltas.push(+(state.history.best[i] - state.history.best[i - 1]).toFixed(4));
+      }
+      const c = charts.convergence;
+      c.data.labels = state.generations.slice(1);
+      c.data.datasets[0].data = deltas;
+      c.update("none");
+    }
+
+    function renderSpecies(pop) {
+      let elite = 0, mid = 0, weak = 0;
+      for (const p of pop) {
+        if (p.fitness >= 0.7) elite++;
+        else if (p.fitness >= 0.4) mid++;
+        else weak++;
+      }
+      const c = charts.species;
+      c.data.datasets[0].data = [elite, mid, weak];
+      c.update("none");
+    }
+
+    function renderVolatility() {
+      const c = charts.volatility;
+      c.data.labels = state.generations;
+      c.data.datasets[0].data = state.history.std;
+      c.update("none");
+    }
+
+    /* ---------------------------------------------------------------- *
+     * Evolution step
+     * ---------------------------------------------------------------- */
+    function step() {
+      const s = stats(state.population);
+      state.generations.push(state.generation);
+      state.history.avg.push(+s.avg.toFixed(4));
+      state.history.best.push(+s.best.toFixed(4));
+      state.history.worst.push(+s.worst.toFixed(4));
+      state.history.std.push(+s.std.toFixed(4));
+
+      renderStats(s);
+      renderFitness();
+      renderHistogram(state.population);
+      renderTopAgents(state.population);
+      renderConvergence();
+      renderSpecies(state.population);
+      renderVolatility();
+
+      state.population = evolve(state.population);
+      state.generation++;
+    }
+
+    /* ---------------------------------------------------------------- *
+     * Controls
+     * ---------------------------------------------------------------- */
+    function reset() {
+      initPopulation();
+      if (charts.fitness) {
+        Object.values(charts).forEach(c => {
+          c.data.labels = [];
+          c.data.datasets.forEach(d => (d.data = []));
+          c.update();
+        });
+      }
+      document.getElementById("timestamp").textContent = "сброшено " + new Date().toLocaleTimeString();
+      step();
+    }
+
+    function toggleRun() {
+      state.running = !state.running;
+      const btn = document.getElementById("btn-run");
+      btn.classList.toggle("active", state.running);
+      btn.textContent = state.running ? "▶ Симуляция" : "⏸ Пауза";
+      if (state.running) startLoop(); else stopLoop();
+    }
+
+    function startLoop() {
+      stopLoop();
+      state.timer = setInterval(step, 800);
+    }
+
+    function stopLoop() {
+      if (state.timer) { clearInterval(state.timer); state.timer = null; }
+    }
+
+    function randomize() {
+      state.population = state.population.map(p => ({ ...p, fitness: clamp(rnd(0.1, 0.9), 0, 1) }));
+      const s = stats(state.population);
+      renderStats(s);
+      renderHistogram(state.population);
+      renderTopAgents(state.population);
+      renderSpecies(state.population);
+    }
+
+    /* ---------------------------------------------------------------- *
+     * Optional: load real fitness history JSON
+     * Accepts { history:[{ ts, scores:{ id:{fitness} } }] } or
+     *         [{ generation, best, avg, worst }] or plain arrays.
+     * ---------------------------------------------------------------- */
+    function loadHistory(raw) {
+      let gens = null;
+      if (Array.isArray(raw)) gens = raw;
+      else if (raw && Array.isArray(raw.history)) gens = raw.history;
+
+      if (gens && gens.length && gens[0] && gens[0].scores) {
+        const series = { best: [], avg: [], worst: [], std: [] };
+        const labels = [];
+        gens.forEach((entry, i) => {
+          const fits = Object.values(entry.scores || {}).map(s => Number(s.fitness) || 0);
+          if (!fits.length) return;
+          const avg = fits.reduce((a, b) => a + b, 0) / fits.length;
+          const best = Math.max(...fits);
+          const worst = Math.min(...fits);
+          const variance = fits.reduce((s, f) => s + (f - avg) * (f - avg), 0) / fits.length;
+          labels.push(i + 1);
+          series.best.push(best);
+          series.avg.push(avg);
+          series.worst.push(worst);
+          series.std.push(Math.sqrt(variance));
+        });
+        if (labels.length) {
+          state.generations = labels;
+          state.history = series;
+          stopLoop();
+          state.running = false;
+          document.getElementById("btn-run").textContent = "▶ Симуляция";
+          document.getElementById("btn-run").classList.remove("active");
+          renderStats({
+            best: series.best[series.best.length - 1],
+            avg: series.avg[series.avg.length - 1],
+            worst: series.worst[series.worst.length - 1],
+            std: series.std[series.std.length - 1]
+          });
+          renderFitness();
+          renderConvergence();
+          renderVolatility();
+          document.getElementById("timestamp").textContent =
+            "загружено " + labels.length + " поколений · " + new Date().toLocaleTimeString();
+        }
+      } else if (gens && gens.length && gens[0] && gens[0].best !== undefined) {
+        state.generations = gens.map((g, i) => g.generation || i + 1);
+        state.history.best = gens.map(g => Number(g.best) || 0);
+        state.history.avg = gens.map(g => Number(g.avg) || Number(g.best) || 0);
+        state.history.worst = gens.map(g => Number(g.worst) || Number(g.avg) || 0);
+        state.history.std = state.history.avg.map((a, i) => Math.abs(a - state.history.best[i]));
+        renderFitness();
+        renderConvergence();
+        renderVolatility();
+      }
+    }
+
+    function boot() {
+      initPopulation();
+      initCharts();
+
+      document.getElementById("btn-run").addEventListener("click", toggleRun);
+      document.getElementById("btn-reset").addEventListener("click", reset);
+      document.getElementById("btn-random").addEventListener("click", randomize);
+
+      document.getElementById("file-input").addEventListener("change", ev => {
+        const file = ev.target.files && ev.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          try { loadHistory(JSON.parse(reader.result)); }
+          catch (err) { console.warn("fitness_visualizer: bad JSON", err); }
+        };
+        reader.readAsText(file);
+      });
+
+      document.getElementById("timestamp").textContent = new Date().toLocaleString();
+      step();
+      startLoop();
+    }
+
+    window.EvolutionFitness = { state, step, reset, randomize, loadHistory, charts };
+    document.addEventListener("DOMContentLoaded", boot);
+  </script>
+</body>
+</html>

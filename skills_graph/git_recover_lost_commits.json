@@ -1,0 +1,28 @@
+{
+  "id": "git_recover_lost_commits",
+  "name": "Recover lost git commits via fsck + cherry-pick",
+  "trigger_patterns": [
+    "can't find",
+    "lost commits",
+    "checked out",
+    "reflog",
+    "changes"
+  ],
+  "trigger_keywords": [
+    "git",
+    "commit",
+    "changes",
+    "master",
+    "branch",
+    "personal-site"
+  ],
+  "recipe_commands": [
+    "GITDIR=$(find /app -name '.git' -type d 2>/dev/null | grep -v /usr | grep -v /etc | grep -v /root | head -1 | xargs dirname) && echo GITDIR=$GITDIR && cd $GITDIR && git status && git log --oneline -5",
+    "cd $GITDIR && git fsck --lost-found 2>&1 | grep 'dangling commit' | head -5",
+    "cd $GITDIR && for c in $(git fsck --lost-found 2>/dev/null | grep 'dangling commit' | awk '{print $3}'); do echo \"== $c ==\"; git show --stat $c 2>/dev/null | head -12; done",
+    "cd $GITDIR && git checkout master && git cherry-pick <dangling-hash-with-about.html> || git merge <dangling-hash>",
+    "cd $GITDIR && git log --oneline -10 && git status && ls -la"
+  ],
+  "reasoning": "fsck --lost-found reveals dangling commits. Inspect each with git show --stat. The lost commit contains about.html/layout.html. Then CHERRY-PICK or MERGE it into master.",
+  "confidence": 0.98
+}

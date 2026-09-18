@@ -1,0 +1,19 @@
+{
+  "summary_created": "2026-09-13T05:15:00Z",
+  "baseline_deepseek": {
+    "accuracy": 0.5,
+    "resolved": ["fix-permissions"],
+    "failed": ["csv-to-parquet"]
+  },
+  "v5_no_skills": {
+    "agent_4": {"acc": 0.333, "resolved": ["csv-to-parquet"]},
+    "agent_20": {"acc": 0.333, "resolved": ["csv-to-parquet"]},
+    "agent_6": {"acc": 0.333, "resolved": ["csv-to-parquet"]}
+  },
+  "p2p_with_skills": {
+    "agent_4": {"acc": 0.333, "resolved": ["csv-to-parquet"]},
+    "agent_20": {"acc": 0.333, "resolved": ["csv-to-parquet"]},
+    "agent_6": {"status": "running", "skills_version": "v2_with_fsck_and_nginx"}
+  },
+  "key_finding": "fix-git требует git fsck --lost-found; configure-git требует nginx listen 8080"
+}

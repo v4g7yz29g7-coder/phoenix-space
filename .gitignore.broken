@@ -1,0 +1,59 @@
+public/uploads/avatars/*
+phoenix.tar.gz
+phoenix_backup.db
+.env
+node_modules/
+*.bak_*
+*.broken_*
+*.corrupted_*
+*.save
+public/out.json
+public/out.txt
+.env
+
+# Runtime-generated state (do not commit)
+gardener.db
+logs/
+memory/races/
+memory/patterns/
+memory/task_cache.json
+arena/sandboxes/*/memory/races/
+arena/sandboxes/*/memory/patterns/
+arena/sandboxes/*/memory/task_cache.json
+terminal-bench/
+.req_tmp.txt
+.exec_tmp.txt
+
+# Sensor gateway generated artifacts
+captures/
+
+# observability runtime artifacts
+observability/reports/
+observability/.tmp_*
+
+# === AI-1 ===
+# Временные тесты
+.tmp_*
+*_e.txt
+*_e.csv
+*_e.json
+*_e.py
+
+# Бэкапы
+*.bak
+*.bak.*
+*.bak_*
+*.pre_*
+
+# Логи
+*.log
+web/arena3d/build_out.log
+
+# Копии в боксах (симлинки — ок, копии — нет)
+boxes/*/sensors/
+boxes/*/_vs_test_run.js
+boxes/users/*/_runtime/
+
+# Snapshots
+snapshots/
+

@@ -1,0 +1,138 @@
+/* FrameFlow — Modern Dark Theme Stylesheet */
+/* Version: 1.0.0 */
+/* Author: Autonomous Web Developer */
+/* Description: Dark, responsive, modern layout with generous spacing */
+
+/* ============================================
+   1. CSS Custom Properties (Design Tokens)
+   ============================================ */
+:root {
+  /* Color Palette — Dark Theme */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-bg-tertiary: #1a1a24;
+  --color-bg-elevated: #22222e;
+  --color-bg-hover: #2a2a38;
+
+  --color-surface-glass: rgba(255, 255, 255, 0.03);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.15);
+
+  /* Accent Colors — Photography / Light & Shadow */
+  --color-accent-primary: #f5a623; /* Warm amber — like golden hour */
+  --color-accent-secondary: #7b61ff; /* Violet — creative contrast */
+  --color-accent-glow: rgba(245, 166, 35, 0.25);
+  --color-accent-glow-secondary: rgba(123, 97, 255, 0.2);
+
+  /* Text Colors */
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #a1a1b5;
+  --color-text-muted: #6b6b80;
+  --color-text-inverse: #0a0a0f;
+
+  /* Typography */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+  --font-size-5xl: 3rem;     /* 48px */
+  --font-size-6xl: 3.75rem;  /* 60px */
+
+  /* Spacing Scale — Generous & Consistent */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 2.5rem;    /* 40px */
+  --space-8: 3rem;      /* 48px */
+  --space-9: 4rem;      /* 64px */
+  --space-10: 5rem;     /* 80px */
+  --space-11: 6rem;     /* 96px */
+  --space-12: 8rem;     /* 128px */
+
+  /* Layout */
+  --container-max-width: 1280px;
+  --container-padding: clamp(1.5rem, 5vw, 4rem);
+  --section-vertical-padding: clamp(4rem, 10vw, 8rem);
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-glow-primary: 0 0 40px var(--color-accent-glow);
+  --shadow-glow-secondary: 0 0 40px var(--color-accent-glow-secondary);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index Scale */
+  --z-header: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+}
+
+/* ============================================
+   2. Reset & Base Styles
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(123, 97, 255, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245, 166, 35, 0.08), transparent);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color:

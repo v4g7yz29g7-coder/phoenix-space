@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORMULA I1 — Live Race</title>
+<!-- socket.io-client: UMD build (global `io`) -->
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" crossorigin="anonymous"></script>
+<!-- ESM alternative: import { io } from "socket.io-client"; -->
+<script type="module">
+  // Resolves to the socket.io-client ESM bundle when bundler is available.
+  // Kept as an explicit reference so the dependency name "socket.io-client" is present.
+  window.__SOCKET_IO_CLIENT__ = "socket.io-client";
+</script>
+<style>
+  :root{
+    --bg:#08090d;
+    --panel:#0e1117;
+    --panel-2:#141924;
+    --line:#1e2533;
+    --red:#e10600;
+    --red-2:#ff2d1a;
+    --green:#00e676;
+    --amber:#ffb300;
+    --cyan:#00e5ff;
+    --txt:#e8ecf4;
+    --muted:#7b8799;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(1200px 600px at 20% -10%, rgba(225,6,0,.10), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgba(0,229,255,.07), transparent 60%),
+      var(--bg);
+    color:var(--txt);
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  /* ---------- HEADER ---------- */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:20px;padding:18px 26px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(20,25,36,.9),rgba(8,9,13,.6));
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+  }
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .flag{
+    width:8px;height:40px;border-radius:3px;
+    background:linear-gradient(180deg,var(--red),var(--red-2));
+    box-shadow:0 0 18px rgba(225,6,0,.7);
+  }
+  .brand h1{font-size:20px;letter-spacing:.5px;text-transform:uppercase}
+  .brand .sub{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+  .race-title{
+    flex:1;text-align:center;
+  }
+  .race-title .name{
+    font-size:26px;font-weight:800;letter-spacing:1px;
+    text-transform:uppercase;
+    background:linear-gradient(90deg,#fff,var(--red-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .race-title .meta{font-size:12px;color:var(--muted);letter-spacing:2px;margin-top:4px}
+  .live-pill{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;
+    letter-spacing:1px;text-transform:uppercase;
+    background:rgba(225,6,0,.14);border:1px solid rgba(225,6,0,.5);color:#ff5a44;
+  }
+  .live-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--red-2);animation:pulse 1.2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.3)}}
+
+  /* ---------- TIMER BAR ---------- */
+  .timerbar{
+    display:flex;align-items:center;justify-content:center;gap:40px;
+    padding:14px 26px;border-bottom:1px solid var(--line);
+    background:rgba(14,17,23,.7);
+  }
+  .timer{display:flex;align-items:center;gap:12px}
+  .timer .lbl{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+  .timer .val{
+    font-family:'Consolas','Courier New',monospace;
+    font-size:32px;font-weight:700;color:var(--cyan);
+    text-shadow:0 0 16px rgba(0,229,255,.55);
+    letter-spacing:2px;
+  }
+  .timer .val .ms{font-size:16px;color:var(--muted);text-shadow:none}
+  .lapbadge{
+    font-size:13px;color:var(--muted);letter-spacing:2px;
+  }
+  .lapbadge b{color:var(--txt);font-size:18px}
+
+  /* ---------- LAYOUT ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:1.35fr 1.6fr .95fr;
+    gap:18px;
+    padding:18px 26px 40px;
+    max-width:1700px;margin:0 auto;
+  }
+  .panel{
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    display:flex;flex-direction:column;
+  }
+  .panel-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 18px;border-bottom:1px solid var(--line);
+    font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  }
+  .panel-head .tag{font-size:10px;color:var(--muted);letter-spacing:1px;font-weight:500}
+  .panel-body{padding:14px 18px;overflow-y:auto;flex:1}
+
+  /* ---------- PIT BOARD ---------- */
+  .pit{display:flex;flex-direction:column;gap:14px}
+  .driver{
+    background:rgba(0,0,0,.28);border:1px solid var(--line);
+    border-left:3px solid var(--muted);
+    border-radius:10px;padding:11px 13px;
+    transition:transform .15s,box-shadow .15s;
+  }
+  .driver:hover{transform:translateX(3px)}
+  .driver.p1{border-left-color:var(--amber);box-shadow:0 0 0 1px rgba(255,179,0,.18)}
+  .driver.p2{border-left-color:#cfd8e3}
+  .driver.p3{border-left-color:#cd7f32}
+  .driver .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .driver .pos{
+    font-family:'Consolas',monospace;font-size:15px;font-weight:800;color:var(--muted);
+    width:26px;text-align:center;
+  }
+  .driver .name{font-weight:700;font-size:14px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .driver .team{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+  .driver .gap{font-family:'Consolas',monospace;font-size:12px;color:var(--muted)}
+  .driver .pct{font-family:'Consolas',monospace;font-size:12px;color:var(--cyan);min-width:44px;text-align:right}
+  .bar{
+    height:7px;border-radius:5px;background:rgba(255,255,255,.06);
+    margin-top:9px;overflow:hidden;position:relative;
+  }
+  .bar > i{
+    display:block;height:100%;width:0;border-radius:5px;
+    background:linear-gradient(90deg,var(--red),var(--red-2));
+    transition:width .5s ease;
+    position:relative;
+  }
+  .bar > i::after{
+    content:'';position:absolute;top:0;right:0;bottom:0;width:20px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.5));
+  }
+  .driver.finished .bar > i{background:linear-gradient(90deg,#00b35a,var(--green))}
+  .tick{
+    position:absolute;top:-3px;bottom:-3px;width:1px;background:rgba(255,255,255,.25);
+  }
+
+  /* ---------- EVENT LOG ---------- */
+  .log{display:flex;flex-direction:column;gap:8px;font-family:'Consolas','Courier New',monospace;font-size:13px}
+  .log .ev{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:9px 11px;border-radius:8px;
+    background:rgba(0,0,0,.25);border:1px solid var(--line);
+    animation:evIn .3s ease;
+  }
+  @keyframes evIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .log .ev .t{color:var(--muted);flex-shrink:0}
+  .log .ev .e{font-size:15px;line-height:1.2}
+  .log .ev .m{flex:1;color:var(--txt)}
+  .log .ev.ok{border-color:rgba(0,230,118,.35)}
+  .log .ev.ok .m{color:var(--green)}
+  .log .ev.win{border-color:rgba(255,179,0,.45);background:rgba(255,179,0,.07)}
+  .log .ev.win .m{color:var(--amber);font-weight:700}
+  .log .ev.start{background:rgba(225,6,0,.07);border-color:rgba(225,6,0,.3)}
+  .empty{color:var(--muted);font-style:italic;text-align:center;padding:30px 0}
+
+  /* ---------- RADIO COMMENTATOR ---------- */
+  .radio{display:flex;flex-direction:column;height:100%}
+  .radio .commentator{
+    display:flex;align-items:center;gap:12px;padding-bottom:14px;
+    border-bottom:1px dashed var(--line);margin-bottom:14px;
+  }
+  .radio .avatar{
+    width:46px;height:46px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:22px;
+    background:linear-gradient(135deg,var(--red),#7a0300);
+    box-shadow:0 0 20px rgba(225,6,0,.5);flex-shrink:0;
+  }
+  .radio .avatar.speaking{animation:speak .8s infinite}
+  @keyframes speak{0%,100%{box-shadow:0 0 0 0 rgba(225,6,0,.6)}50%{box-shadow:0 0 0 10px rgba(225,6,0,0)}}
+  .radio .who .n{font-weight:700;font-size:14px}
+  .radio .who .r{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+  .radio .bubble{
+    background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.25);
+    border-radius:12px 12px 12px 4px;padding:13px 15px;
+    font-size:13.5px;line-height:1.55;color:#cfe9f2;
+    max-height:180px;overflow-y:auto;
+  }
+  .radio .bubble b{color:var(--cyan)}
+  .radio .feed{display:flex;flex-direction:column;gap:9px;margin-top:14px;overflow-y:auto;flex:1}
+  .radio .feed .line{
+    font-size:12.5px;line-height:1.5;color:var(--muted);
+    padding:8px 11px;border-left:2px solid var(--line);
+    animation:evIn .3s ease;
+  }
+  .radio .feed .line .ic{color:var(--red-2)}
+  .eq{display:flex;gap:3px;align-items:flex-end;height:16px;margin-left:auto}
+  .eq i{width:3px;background:var(--red-2);border-radius:1px;animation:eq .9s infinite ease-in-out}
+  .eq i:nth-child(1){animation-delay:0s;height:40%}
+  .eq i:nth-child(2){animation-delay:.15s;height:80%}
+  .eq i:nth-child(3){animation-delay:.3s;height:55%}
+  .eq i:nth-child(4){animation-delay:.45s;height:95%}
+  @keyframes eq{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+  .conn{position:fixed;bottom:14px;right:16px;font-size:11px;color:var(--muted);letter-spacing:1px;z-index:60}
+  .conn .s{color:var(--green)} .conn .f{color:var(--red-2)}
+
+  @media(max-width:1200px){
+    .grid{grid-template-columns:1fr 1fr}
+    .panel.radio-panel{grid-column:1/-1}
+  }
+  @media(max-width:780px){
+    .grid{grid-template-columns:1fr}
+    header{flex-wrap:wrap}
+    .race-title .name{font-size:19px}
+    .timerbar{gap:20px;flex-wrap:wrap}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="flag"></span>
+    <div>
+      <h1>FORMULA I1</h1>
+      <div class="sub">Evolution Arena</div>
+    </div>
+  </div>
+
+  <div class="race-title">
+    <div class="name" id="raceName">Гран-при Неона — Stage 4</div>
+    <div class="meta"><span id="raceTrack">TRACK: synthetic-evo · 12 LAPS</span></div>
+  </div>
+
+  <div class="live-pill"><span class="dot"></span> LIVE</div>
+</header>
+
+<div class="timerbar">
+  <div class="timer">
+    <span class="lbl">⏱ Race time</span>
+    <span class="val" id="timer">00:00<span class="ms">.0</span></span>
+  </div>
+  <div class="lapbadge">КРУГ <b id="lapNow">0</b> / <b id="lapTotal">12</b></div>
+  <div class="lapbadge">ЛИДЕР <b id="leaderName">—</b></div>
+</div>
+
+<div class="grid">
+
+  <!-- 1. PIT BOARD -->
+  <section class="panel">
+    <div class="panel-head">
+      <span>🏁 Табло боксов</span>
+      <span class="tag" id="gridCount">0 пилотов</span>
+    </div>
+    <div class="panel-body">
+      <div class="pit" id="pitBoard">
+        <div class="empty">Ожидание участников…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. EVENT LOG -->
+  <section class="panel">
+    <div class="panel-head">
+      <span>📡 Live события</span>
+      <span class="tag">realtime</span>
+    </div>
+    <div class="panel-body">
+      <div class="log" id="eventLog">
+        <div class="empty">События появятся здесь…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. RADIO COMMENTATOR -->
+  <section class="panel radio-panel">
+    <div class="panel-head">
+      <span>📻 Radio</span>
+      <span class="tag">live commentary</span>
+    </div>
+    <div class="panel-body radio">
+      <div class="commentator">
+        <div class="avatar" id="radioAvatar">📻</div>
+        <div class="who">
+          <div class="n">Марк «Turbo» Волков</div>
+          <div class="r">Главный комментатор</div>
+        </div>
+        <div class="eq" id="eq"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="bubble" id="radioBubble">
+        Добро пожаловать на <b>Гран-при Неона</b>! Погода идеальна, трасса разогрета — ждём старта!
+      </div>
+      <div class="feed" id="radioFeed"></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="conn">SOCKET <span id="connState" class="f">●</span> <span id="connText">connecting…</span></div>
+
+<script>
+/* ============================================================
+   FORMULA I1 — Live Race client
+   Namespace: /race:live
+   ============================================================ */
+
+const socket = io('/race:live', { transports:['websocket','polling'] });
+
+/* ---------- DOM ---------- */
+const $ = id => document.getElementById(id);
+const pitBoard = $('pitBoard'), eventLog = $('eventLog');
+const timerEl = $('timer'), lapNow = $('lapNow');
+const radioBubble = $('radioBubble'), radioFeed = $('radioFeed');
+const radioAvatar = $('radioAvatar');
+
+/* ---------- STATE ---------- */
+let raceState = { startedAt:null, running:false, elapsed:0, lap:0, lapsTotal:12 };
+const drivers = new Map();   // id -> {id,name,team,progress,lap,pos,gap,finished,best}
+let logCount = 0, feedCount = 0;
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+function fmtTime(ms){
+  const s = Math.floor(ms/1000);
+  const m = Math.floor(s/60);
+  const sec = s % 60;
+  const tenth = Math.floor((ms % 1000)/100);
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}<span class="ms">.${tenth}</span>`;
+}
+let startTS = null, frozenElapsed = 0;
+function renderTimer(){
+  let ms;
+  if (raceState.running && startTS) ms = Date.now() - startTS;
+  else ms = frozenElapsed;
+  timerEl.innerHTML = fmtTime(ms);
+}
+setInterval(renderTimer, 100);
+
+/* ============================================================
+   PIT BOARD
+   ============================================================ */
+function rankDrivers(){
+  return [...drivers.values()].sort((a,b)=>{
+    if(a.finished && b.finished) return (a.finishOrder||0)-(b.finishOrder||0);
+    if(a.finished) return -1;
+    if(b.finished) return 1;
+    return b.progress - a.progress;
+  });
+}
+function renderPit(){
+  const list = rankDrivers();
+  if(!list.length){ pitBoard.innerHTML = '<div class="empty">Ожидание участников…</div>'; return; }
+  $('gridCount').textContent = list.length + ' пилотов';
+  const leader = list[0];
+  $('leaderName').textContent = leader ? leader.name : '—';
+
+  pitBoard.innerHTML = list.map((d,i)=>{
+    const pos = i+1;
+    const pct = Math.max(0, Math.min(100, d.progress||0));
+    const cls = ['driver', pos<=3?('p'+pos):'', d.finished?'finished':''].join(' ');
+    const medal = pos===1?'🥇':pos===2?'🥈':pos===3?'🥉':'';
+    const gap = pos===1 ? 'LEADER' : (leader ? ('+'+(Math.max(0,(leader.progress-pct)*3)).toFixed(1)+'s') : '');
+    return `
+      <div class="${cls}" data-id="${d.id}">
+        <div class="row">
+          <span class="pos">${pos}</span>
+          <span class="name">${medal} ${esc(d.name)}</span>
+          <span class="team">${esc(d.team||'')}</span>
+        </div>
+        <div class="row" style="margin-top:6px">
+          <span class="gap">${d.finished ? '🏁 FINISH' : gap}</span>
+          <span class="pct">${pct.toFixed(1)}%</span>
+        </div>
+        <div class="bar"><i style="width:${pct}%"></i></div>
+      </div>`;
+  }).join('');
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+/* ============================================================
+   EVENT LOG
+   ============================================================ */
+function tsLabel(){
+  const d = new Date();
+  return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
+}
+function addEvent(icon, msg, kind){
+  if(logCount===0) eventLog.innerHTML = '';
+  logCount++;
+  const el = document.createElement('div');
+  el.className = 'ev ' + (kind||'');
+  el.innerHTML = `<span class="t">${tsLabel()}</span><span class="e">${icon}</span><span class="m">${msg}</span>`;
+  eventLog.appendChild(el);
+  eventLog.scrollTop = eventLog.scrollHeight;
+  while(eventLog.children.length > 200) eventLog.removeChild(eventLog.firstChild);
+}
+
+/* ============================================================
+   RADIO COMMENTATOR
+   ============================================================ */
+function say(text, feedIcon){
+  radioBubble.innerHTML = text;
+  radioAvatar.classList.add('speaking');
+  clearTimeout(say._t);
+  say._t = setTimeout(()=>radioAvatar.classList.remove('speaking'), 2200);
+
+  feedCount++;
+  const line = document.createElement('div');
+  line.className = 'line';
+  line.innerHTML = `<span class="ic">${feedIcon||'🎙'}</span> ${text}`;
+  radioFeed.prepend(line);
+  while(radioFeed.children.length > 30) radioFeed.removeChild(radioFeed.lastChild);
+}
+
+/* ============================================================
+   SOCKET EVENTS  (/race:live)
+   ============================================================ */
+socket.on('connect', ()=>{
+  $('connState').className='s'; $('connState').textContent='●';
+  $('connText').textContent='connected';
+  addEvent('🟢', 'Подключение к трансляции установлено', 'start');
+  socket.emit('race:subscribe');
+});
+
+socket.on('disconnect', ()=>{
+  $('connState').className='f'; $('connState').textContent='●';
+  $('connText').textContent='reconnecting…';
+  addEvent('🔌', 'Связь потеряна, переподключение…', '');
+});
+
+/* --- Race meta --- */
+socket.on('race:meta', d=>{
+  if(!d) return;
+  if(d.name) $('raceName').textContent = d.name;
+  if(d.track) $('raceTrack').textContent = 'TRACK: '+d.track+' · '+(d.lapsTotal||raceState.lapsTotal)+' LAPS';
+  if(d.lapsTotal){ raceState.lapsTotal=d.lapsTotal; $('lapTotal').textContent=d.lapsTotal; }
+  say(`Барабанная дробь! Это <b>${esc(d.name||'гонка')}</b> — ${d.lapsTotal||12} кругов чистой эволюции!`, '🏁');
+});
+
+/* --- Race start --- */
+socket.on('race:start', d=>{
+  raceState.running = true;
+  startTS = d && d.startedAt ? new Date(d.startedAt).getTime() : Date.now();
+  startTS = Math.min(startTS, Date.now());
+  if(d && d.lapsTotal){ raceState.lapsTotal=d.lapsTotal; $('lapTotal').textContent=d.lapsTotal; }
+  addEvent('▶️', 'Гонка началась! Поехали!', 'start');
+  say('🚦 <b>СВЕТ ЗЕЛЁНЫЙ!</b> Гонка началась — пелотон рвётся в первый поворот!', '▶️');
+});
+socket.on('race:started', d=>socket.emit('race:start', d));
+
+/* --- Timer sync from server --- */
+socket.on('race:timer', d=>{
+  if(!d) return;
+  if(typeof d.elapsed === 'number'){ frozenElapsed = d.elapsed; startTS = Date.now()-d.elapsed; }
+  if(d.running === false){ raceState.running=false; renderTimer(); }
+  if(d.running === true) raceState.running = true;
+});
+
+/* --- Lap updates --- */
+socket.on('race:lap', d=>{
+  if(!d) return;
+  if(d.lap!=null){ lapNow.textContent = d.lap; }
+  addEvent('🔄', `Круг ${d.lap}${d.lapsTotal?'/'+d.lapsTotal:''} завершён`, '');
+});
+
+/* --- Driver progress (pit board) --- */
+function upsertDriver(d){
+  if(!d || d.id==null) return null;
+  const prev = drivers.get(d.id) || { id:d.id, name:d.name||('Driver '+d.id), team:d.team||'', progress:0, lap:1 };
+  Object.assign(prev, d);
+  if(typeof prev.progress !== 'number') prev.progress = 0;
+  drivers.set(d.id, prev);
+  return prev;
+}
+socket.on('race:progress', d=>{
+  if(!d) return;
+  const drv = upsertDriver(d);
+  renderPit();
+  if(drv && d.overtake){
+    addEvent('💨', `${esc(drv.name)} совершает обгон!`, '');
+    say(`<b>${esc(drv.name)}</b> идёт на обгон по внешнему радиусу — дерзко и красиво!`, '💨');
+  }
+});
+socket.on('race:update', d=>{
+  if(!d) return;
+  (Array.isArray(d)?d:[d]).forEach(upsertDriver);
+  renderPit();
+});
+socket.on('race:drivers', arr=>{
+  if(Array.isArray(arr)){ arr.forEach(upsertDriver); renderPit(); }
+});
+
+/* --- Milestones / checkpoints --- */
+socket.on('race:checkpoint', d=>{
+  if(!d) return;
+  addEvent('✅', `Контроль пройден: ${esc(d.name||d.driver||'')} — сектор ${esc(d.sector||'-')}`, 'ok');
+});
+socket.on('race:pit', d=>{
+  if(!d) return;
+  addEvent('🔧', `${esc(d.name||'Пилот')} заезжает на пит-стоп`, '');
+  say(`Пит-стоп! <b>${esc(d.name||'пилот')}</b> заходит в боксы — команда работает молниеносно!`, '🔧');
+});
+socket.on('race:overtake', d=>{
+  if(!d) return;
+  addEvent('💨', `${esc(d.from||d.name||'Пилот')} обгоняет ${esc(d.to||'')}`, '');
+});
+
+/* --- Finish / winner --- */
+socket.on('race:finish', d=>{
+  if(!d) return;
+  const nm = d.name||d.driver||'Пилот';
+  addEvent('✅', `${esc(nm)} финишировал на P${d.position||1}`, 'ok');
+  if(d.id!=null){ const x=drivers.get(d.id); if(x){ x.finished=true; x.progress=100; x.finishOrder=raceState.finishN=(raceState.finishN||0)+1; } }
+  renderPit();
+});
+socket.on('race:winner', d=>{
+  const nm = d && (d.name||d.driver) || 'Победитель';
+  addEvent('🏆', `ПОБЕДИТЕЛЬ: ${esc(nm)}!`, 'win');
+  say(`🏆 <b>ПОБЕДА!</b> ${esc(nm)} первым пересекает финишную черту — это была безупречная гонка!`, '🏆');
+  raceState.running = false;
+  frozenElapsed = Date.now() - (startTS||Date.now());
+  renderTimer();
+});
+socket.on('race:end', d=>{
+  raceState.running = false;
+  frozenElapsed = Date.now() - (startTS||Date.now());
+  renderTimer();
+  addEvent('🏁', 'Гонка завершена!', 'win');
+  if(!d || !d.winner) say('Флаг! Шахматная клетка развернута — гонка официально завершена!', '🏁');
+});
+
+/* --- Commentary channel from server --- */
+socket.on('race:commentary', d=>{
+  const text = typeof d==='string' ? d : (d && (d.text||d.message));
+  if(text) say(text, '📻');
+});
+
+/* --- Generic catch fields --- */
+socket.on('race:event', d=>{
+  if(!d) return;
+  const map = { start:'▶️', finish:'✅', win:'🏆', lap:'🔄', pit:'🔧' };
+  addEvent(map[d.type]||'📌', esc(d.message||d.text||''), d.type==='win'?'win':(d.type==='finish'?'ok':''));
+});
+
+/* ============================================================
+   DEMO SIMULATION — if no backend data arrives (keeps page alive)
+   ============================================================ */
+(function demoFallback(){
+  const NAMES = [
+    ['Vortex-7','Теам Киборг','#e10600'],
+    ['Neo-Apex','Quantum GP','#00e5ff'],
+    ['ByteRacer','Grid Zero','#00e676'],
+    ['Chrome Wolf','Steelpack','#ffb300'],
+    ['Pixel Fury','Neon Labs','#ba68c8'],
+    ['Turbo Ghost','Phantom AI','#ff7043']
+  ];
+  NAMES.forEach((n,i)=>drivers.set(i+1,{id:i+1,name:n[0],team:n[1],progress:0,lap:1}));
+
+  let booted=false;
+  setTimeout(()=>{
+    if(socket.connected && logCount>0){ return; }   // real data flowed
+    if(booted) return; booted=true;
+    // offline demo so крiteriи (табло/лог/timer) работают без бэкенда
+    $('raceName').textContent = 'Гран-при Неона — Stage 4 (DEMO)';
+    addEvent('🟢', 'Демо-режим трансляции', 'start');
+    socket.fireFallback = true;
+
+    const t0 = Date.now();
+    startTS = t0; raceState.running = true;
+    addEvent('▶️', 'Гонка началась! Поехали!', 'start');
+    say('🚦 <b>СВЕТ ЗЕЛЁНЫЙ!</b> Демо-заезд стартовал — следим за пелотоном!', '▶️');
+
+    const prog = {};
+    const iv = setInterval(()=>{
+      const el = Date.now()-t0;
+      frozenElapsed = el;
+      let lap = Math.min(raceState.lapsTotal, Math.floor(el/8000)+1);
+      lapNow.textContent = lap;
+      for(const [id,d] of drivers){
+        const spd = 0.9 + Math.random()*1.4 + (id===1?0.5:0);
+        prog[id] = Math.min(100, (prog[id]||0) + spd);
+        d.progress = prog[id];
+        d.lap = Math.max(1, Math.ceil(prog[id]/100*raceState.lapsTotal));
+      }
+      renderPit();
+
+      if(Math.random()<0.4){
+        const arr=[...drivers.values()]; const a=arr[Math.floor(Math.random()*arr.length)];
+        const events=[
+          ['✅',`${a.name}: лучший сектор круга!`,'ok'],
+          ['💨',`${a.name} обгоняет соперника!`,''],
+          ['🔧',`${a.name} заезжает на пит-стоп`,''],
+          ['💨',`${a.name} отрывается вперёд`,'']
+        ];
+        const e=events[Math.floor(Math.random()*events.length)];
+        addEvent(e[0],e[1],e[2]);
+        if(e[0]==='💨') say(`<b>${a.name}</b> — чистейший обгон, болельщики на ногах!`, '💨');
+        if(e[0]==='🔧') say(`Пит-стоп для <b>${a.name}</b> — команда меняет колёса за 2.1 секунды!`, '🔧');
+      }
+      if((prog[1]>=100) && !drivers.get(1).finished){
+        const arr=[...drivers.values()].sort((x,y)=>y.progress-x.progress);
+        arr.forEach((d,i)=>{ if(d.progress>=100 && !d.finished){ d.finished=true; d.progress=100; d.finishOrder=i+1;
+          addEvent('✅',`${d.name} финишировал на P${i+1}`,'ok'); }});
+        renderPit();
+      }
+      if([...drivers.values()].every(d=>d.finished)){
+        clearInterval(iv);
+        addEvent('🏆','ПОБЕДИТЕЛЬ: Vortex-7!','win');
+        say('🏆 <b>ПОБЕДА!</b> Vortex-7 берёт клетчатый флаг — феноменальный заезд!', '🏆');
+        raceState.running=false; frozenElapsed=el; renderTimer();
+      }
+    }, 900);
+  }, 2600);
+})();
+
+/* initial paint */
+renderPit(); renderTimer();
+</script>
+</body>
+</html>

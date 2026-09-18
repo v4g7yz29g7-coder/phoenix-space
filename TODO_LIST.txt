@@ -1,0 +1,96 @@
+# Все TODO в собственном коде проекта (файл:строка)
+# Сгенерировано: полный рекурсивный скан, исключены node_modules/, .venv/,
+# skills_hub/, terminal-bench/ (сторонний код) и .git/.
+# Итого: 59 реальных TODO (56 JS-заглушек + 3 в Python-ядре everos/src).
+
+# --- JS-заглушки (56): маркер `/* TODO */` без реализации ---
+
+# agent_11.js (6):
+agent_11.js:73:  /* TODO */
+agent_11.js:84:  /* TODO */
+agent_11.js:97:  /* TODO */
+agent_11.js:108:  /* TODO */
+agent_11.js:117:  /* TODO */
+agent_11.js:129:  /* TODO */
+
+# agent_12.js (5):
+agent_12.js:36:  /* TODO */
+agent_12.js:45:  /* TODO */
+agent_12.js:56:  /* TODO */
+agent_12.js:66:  /* TODO */
+agent_12.js:76:  /* TODO */
+
+# agent_13.js (9):
+agent_13.js:89:  /* TODO */
+agent_13.js:121:  /* TODO */
+agent_13.js:136:  /* TODO */
+agent_13.js:145:  /* TODO */
+agent_13.js:154:  /* TODO */
+agent_13.js:165:  /* TODO */
+agent_13.js:218:  /* TODO */
+agent_13.js:358:  /* TODO */
+agent_13.js:402:  /* TODO */
+
+# agent_15.js (2):
+agent_15.js:340:  /* TODO */
+agent_15.js:351:  /* TODO */
+
+# agent_9.js (3):
+agent_9.js:98:  /* TODO */
+agent_9.js:108:  /* TODO */
+agent_9.js:118:  /* TODO */
+
+# boxes/agent_11/agent_11.js (6):
+boxes/agent_11/agent_11.js:73:  /* TODO */
+boxes/agent_11/agent_11.js:84:  /* TODO */
+boxes/agent_11/agent_11.js:97:  /* TODO */
+boxes/agent_11/agent_11.js:108:  /* TODO */
+boxes/agent_11/agent_11.js:117:  /* TODO */
+boxes/agent_11/agent_11.js:129:  /* TODO */
+
+# boxes/agent_12/agent_12.js (5):
+boxes/agent_12/agent_12.js:36:  /* TODO */
+boxes/agent_12/agent_12.js:45:  /* TODO */
+boxes/agent_12/agent_12.js:56:  /* TODO */
+boxes/agent_12/agent_12.js:66:  /* TODO */
+boxes/agent_12/agent_12.js:76:  /* TODO */
+
+# boxes/agent_13/agent_13.js (15):
+boxes/agent_13/agent_13.js:89:  /* TODO */
+boxes/agent_13/agent_13.js:103:  /* TODO */
+boxes/agent_13/agent_13.js:113:  /* TODO */
+boxes/agent_13/agent_13.js:128:  /* TODO */
+boxes/agent_13/agent_13.js:137:  /* TODO */
+boxes/agent_13/agent_13.js:146:  /* TODO */
+boxes/agent_13/agent_13.js:157:  /* TODO */
+boxes/agent_13/agent_13.js:170:  /* TODO */
+boxes/agent_13/agent_13.js:178:  /* TODO */
+boxes/agent_13/agent_13.js:187:  /* TODO */
+boxes/agent_13/agent_13.js:201:  /* TODO */
+boxes/agent_13/agent_13.js:210:  /* TODO */
+boxes/agent_13/agent_13.js:219:  /* TODO */
+boxes/agent_13/agent_13.js:227:  /* TODO */
+boxes/agent_13/agent_13.js:243:  /* TODO */
+
+# boxes/agent_15/agent_15.js (2):
+boxes/agent_15/agent_15.js:340:  /* TODO */
+boxes/agent_15/agent_15.js:351:  /* TODO */
+
+# boxes/agent_9/agent_9.js (3):
+boxes/agent_9/agent_9.js:98:  /* TODO */
+boxes/agent_9/agent_9.js:108:  /* TODO */
+boxes/agent_9/agent_9.js:118:  /* TODO */
+
+# --- Python-ядро everos/src (3): ---
+# TODO: sys._getframe walk для Runner.run должен быть leak-proof
+everos/src/everos/infra/ome/_dispatch/_state.py:10: TODO: ``sys._getframe`` walk for a ``Runner.run`` frame is leak-proof.
+# Перехватить типизированный ExtractionError, когда everalgo его введёт
+everos/src/everos/memory/extract/pipeline/user_memory.py:133: # TODO: catch a typed ExtractionError once everalgo introduces one.
+# profile-counter читает LanceDB и гоняется с cascade-демоном
+everos/src/everos/memory/strategies/extract_user_profile.py:256: # TODO(profile-counter): reads LanceDB and races the cascade daemon.
+
+# --- Ложные срабатывания (не TODO-маркеры, а строки/имена) — НЕ включены в итог ---
+# day_races.sh:13        -> строка задачи "Найди все TODO в коде через search_code."
+# night_master.sh:17     -> строка задачи "Найди все TODO в коде через search_code."
+# tournament.js:20       -> строка задачи 'Найди все TODO в коде... Ничего не меняй.'
+# .scan_require_calls.sh:31 -> имя артефакта "TODO_FINDINGS" в regex

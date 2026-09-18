@@ -1,0 +1,32 @@
+{
+  "stage_2": {
+    "approach": "Начни с research/racing-game/src/models/vehicle/. Vehicle.tsx — точка входа.",
+    "hint": "Используй @react-three/cannon. Физику бери из reference, но адаптируй под наш проект.",
+    "reference": "research/racing-game/src/models/vehicle/Vehicle.tsx"
+  },
+  "stage_3": {
+    "approach": "Смотри research/racing-game/src/effects/Cameras.tsx. Там 3 камеры — расширь до 6.",
+    "hint": "Работай только с камерами и трассой. Арена уже готова.",
+    "reference": "research/racing-game/src/effects/Cameras.tsx"
+  },
+  "stage_4": {
+    "approach": "Кинематография через useFrame + time.lerp для плавных переходов.",
+    "hint": "Начни с простой сцены в боксах, потом добавляй выезд.",
+    "reference": "arena_lab/src/scene/PitLane.tsx"
+  },
+  "stage_6": {
+    "approach": "AuthGate уже готов. Добавляй новые компоненты рядом.",
+    "hint": "JWT — на бэкенде web/server.js, не в React.",
+    "reference": "web/server.js"
+  },
+  "stage_7": {
+    "approach": "Схема: parts.json, builds.json. API: /api/parts, /api/builds.",
+    "hint": "Комиссия 30% — на бэкенде. UI — React-компоненты.",
+    "reference": "web/server.js"
+  },
+  "stage_8": {
+    "approach": "CloudPayments — виджет на лендинг. Подписки — рекуррентные.",
+    "hint": "Сначала договор-оферта, потом оплата.",
+    "reference": "web/public/landing.html"
+  }
+}

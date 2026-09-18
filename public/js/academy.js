@@ -1,0 +1,1 @@
+function renderAcademyContent(){var c=document.getElementById('academy-content');if(!c)return;c.innerHTML='<h2>Сутры</h2><p>Реальность, Амбивалентность, Парадоксальность, Трансгрессия, Радикальность, Природность.</p><h2>Практики</h2><p>Дыхание Осознания, Амбивалентная Медитация, Практика Природности.</p>';}

@@ -1,0 +1,96 @@
+{
+  "races": [],
+  "champions": {
+    "agent_1": {
+      "wins_recent": 115,
+      "avg_score": 8.95,
+      "avg_time_ms": 29460,
+      "races_in_window": 311
+    },
+    "agent_3": {
+      "wins_recent": 81,
+      "avg_score": 8.96,
+      "avg_time_ms": 30112,
+      "races_in_window": 286
+    },
+    "agent_7": {
+      "wins_recent": 111,
+      "avg_score": 9.01,
+      "avg_time_ms": 29454,
+      "races_in_window": 291
+    },
+    "agent_8": {
+      "wins_recent": 0,
+      "avg_score": 9.07,
+      "avg_time_ms": 23915,
+      "races_in_window": 15
+    },
+    "agent_2": {
+      "wins_recent": 1,
+      "avg_score": 8.75,
+      "avg_time_ms": 39080,
+      "races_in_window": 20
+    },
+    "agent_4": {
+      "wins_recent": 4,
+      "avg_score": 8.8,
+      "avg_time_ms": 30439,
+      "races_in_window": 20
+    },
+    "agent_5": {
+      "wins_recent": 3,
+      "avg_score": 8.95,
+      "avg_time_ms": 29281,
+      "races_in_window": 20
+    },
+    "agent_6": {
+      "wins_recent": 1,
+      "avg_score": 8.64,
+      "avg_time_ms": 23782,
+      "races_in_window": 14
+    },
+    "agent_9": {
+      "wins_recent": 0,
+      "avg_score": 9.33,
+      "avg_time_ms": 9574,
+      "races_in_window": 6
+    },
+    "agent_10": {
+      "wins_recent": 0,
+      "avg_score": 9.0,
+      "avg_time_ms": 7910,
+      "races_in_window": 6
+    },
+    "agent_11": {
+      "wins_recent": 0,
+      "avg_score": 8.5,
+      "avg_time_ms": 10156,
+      "races_in_window": 6
+    },
+    "agent_12": {
+      "wins_recent": 1,
+      "avg_score": 9.17,
+      "avg_time_ms": 8721,
+      "races_in_window": 6
+    },
+    "agent_13": {
+      "wins_recent": 0,
+      "avg_score": 9.33,
+      "avg_time_ms": 9416,
+      "races_in_window": 3
+    },
+    "agent_14": {
+      "wins_recent": 2,
+      "avg_score": 9.67,
+      "avg_time_ms": 8523,
+      "races_in_window": 3
+    },
+    "agent_15": {
+      "wins_recent": 0,
+      "avg_score": 9.33,
+      "avg_time_ms": 11040,
+      "races_in_window": 3
+    }
+  },
+  "last_updated": "2026-09-12T15:59:07.356718"
+}

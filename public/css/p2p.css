@@ -1,0 +1,5 @@
+#startCallBtn, #hangupCallBtn, #sendFileBtn { background: var(--accent-main); border: none; color: #fff; padding: 0.4rem 0.8rem; border-radius: 20px; cursor: pointer; font-size: 0.8rem; }
+#hangupCallBtn, #sendFileBtn { background: transparent; border: 1px solid var(--accent-main); color: var(--accent-main); }
+#startCallBtn:hover, #hangupCallBtn:hover, #sendFileBtn:hover { box-shadow: 0 0 15px rgba(255,80,0,0.5); }
+#reportUserBtn { background: transparent; border: 1px solid var(--accent-main); color: var(--accent-main); padding: 0.4rem; border-radius: 20px; cursor: pointer; font-size: 0.8rem; margin-left: 0.3rem; transition: all 0.2s; }
+#reportUserBtn:hover { background: rgba(255,80,0,0.2); transform: scale(1.1); }

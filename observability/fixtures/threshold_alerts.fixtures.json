@@ -1,0 +1,52 @@
+{
+  "description": "Fixture snapshots for observability/threshold_alerts.js. Each scenario is designed to trigger exactly one distinct threshold alert.",
+  "windowMs": 600000,
+  "scenarios": [
+    {
+      "name": "high_fail_rate",
+      "expect": { "count": 1, "severity": "WARN", "key": "fail_rate_10m" },
+      "snapshot": {
+        "timestamp": "2024-01-01T00:00:00.000Z",
+        "fail_rate_10m": 0.45,
+        "races": [],
+        "cpu": { "percent": 20, "sustained_minutes": 0 }
+      }
+    },
+    {
+      "name": "race_timeout",
+      "expect": { "count": 1, "severity": "CRIT", "key": "race_timeout:race-7" },
+      "snapshot": {
+        "timestamp": "2024-01-01T00:00:00.000Z",
+        "fail_rate_10m": 0.05,
+        "races": [
+          { "id": "race-7", "timeout_s": 420 }
+        ],
+        "cpu": { "percent": 30, "sustained_minutes": 1 }
+      }
+    },
+    {
+      "name": "cpu_sustained",
+      "expect": { "count": 1, "severity": "WARN", "key": "cpu_sustained" },
+      "snapshot": {
+        "timestamp": "2024-01-01T00:00:00.000Z",
+        "fail_rate_10m": 0.1,
+        "races": [],
+        "cpu": { "percent": 95, "sustained_minutes": 6 }
+      }
+    }
+  ],
+  "negative": [
+    {
+      "name": "fail_rate_boundary",
+      "snapshot": { "fail_rate_10m": 0.3, "races": [], "cpu": { "percent": 10 } }
+    },
+    {
+      "name": "race_timeout_boundary",
+      "snapshot": { "races": [{ "id": "race-x", "timeout_s": 300 }] }
+    },
+    {
+      "name": "cpu_not_sustained",
+      "snapshot": { "cpu": { "percent": 95, "sustained_minutes": 3 } }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "fix_permissions",
+  "name": "Fix script permissions",
+  "trigger_patterns": ["won't run", "permission denied", "not executable"],
+  "trigger_keywords": ["script", "chmod", "executable", ".sh"],
+  "recipe_commands": [
+    "ls -la /app/",
+    "head -5 /app/process_data.sh",
+    "file /app/process_data.sh",
+    "chmod +x /app/process_data.sh",
+    "bash /app/process_data.sh && echo OK"
+  ],
+  "confidence": 1.0
+}

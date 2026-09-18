@@ -1,0 +1,212 @@
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a24;
+  --bg-hover: #22222e;
+  --accent: #6c63ff;
+  --accent-hover: #8b83ff;
+  --text-primary: #f0f0f5;
+  --text-secondary: #a0a0b0;
+  --border: #2a2a3a;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --radius: 16px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-image: radial-gradient(circle at 20% 20%, rgba(108, 99, 255, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(108, 99, 255, 0.05) 0%, transparent 50%);
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Заголовок */
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #b0a8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(108, 99, 255, 0.3);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  font-weight: 300;
+}
+
+/* Сетка карточек */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* Карточка услуги */
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  background: var(--bg-hover);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  filter: drop-shadow(0 0 20px rgba(108, 99, 255, 0.3));
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.service-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Кнопка заявки */
+.cta-button {
+  display: inline-block;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1.2rem 3.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.cta-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(108, 99, 255, 0.6);
+}
+
+.cta-button:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 3rem;
+  }
+
+  .services-grid {
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .service-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.3rem

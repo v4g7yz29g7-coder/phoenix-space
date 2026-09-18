@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — О нас (контент)</title>
+  <!-- Подключение шрифта для стилистики (не влияет на структуру) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    /* Только базовые сбросы и минимальные стили для наглядности, 
+       чтобы контент выглядел аккуратно. Основной упор — на семантику и структуру. */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #faf9f7;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      color: #1e1e1e;
+    }
+    /* контейнер #app — мы наполняем только его */
+    #app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+    /* лёгкие акценты для демонстрации структуры */
+    .about-hero, .story-section, .values-section, .team-section, .cta-block {
+      margin-bottom: 3.5rem;
+    }
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    h1 {
+      font-size: 2.8rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      background: #e8e0d5;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: #3b2e22;
+      margin-bottom: 1.5rem;
+    }
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 2rem;
+    }
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      border: 1px solid #edeae5;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #b45f2b;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label {
+      font-size: 0.95rem;
+      color: #5f5b55;
+    }
+    .team-photo-placeholder {
+      background: linear-gradient(135deg, #d9d2c5, #c0b6a8);
+      border-radius: 60px;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3b2e22;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    .team-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .role {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #8a7a6a;
+      margin-bottom: 0.75rem;
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid #b45f2b;
+      color: #b45f2b;
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+      cursor: default;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .btn-ghost:hover {
+      background: #b45f2b10;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd8d0;
+      margin: 2.5rem 0;
+    }
+    .quote {
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.4;
+      color: #2c2a27;
+      border-left: 4px solid #b45f2b;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+    }
+    /* адаптивность для малых экранов */
+    @media (max-width: 700px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ВАЖНО: внутри #app только контент страницы «О нас» -->
+  <div id="app">
+    <!-- Hero-блок "О нас" -->
+    <section class="about-hero">
+      <span class="badge">FrameFlow · наша история</span>
+      <h1>Мы делаем фотографии<br>частью вашей жизни</h1>
+      <p style="font-size: 1.2rem; max-width: 640px; color: #4a443e;">
+        FrameFlow — это не просто фотосервис, это команда энтузиастов, которые верят, что каждый кадр заслуживает быть сохранённым, обработанным и рассказанным. Мы соединяем технологии и эстетику, чтобы вы могли делиться воспоминаниями без границ.
+      </p>
+    </section>
+
+    <!-- Блок цифр и фактов (кратко о нас</div>
+  <script src="app.js"></script>
+</body>
+</html>

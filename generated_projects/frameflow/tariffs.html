@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тарифы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — тарифы</title>
+  <!-- Подключение шрифта Inter для современного вида -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    /* Сброс и базовые стили — только для контента внутри #app */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f8fafc;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      color: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    #app {
+      width: 100%;
+      max-width: 1200px;
+      background: transparent;
+    }
+
+    /* Стили секции тарифов */
+    .pricing-section {
+      background: #ffffff;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      padding: 3rem 2rem;
+      transition: all 0.2s ease;
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .pricing-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    .pricing-header p {
+      font-size: 1.125rem;
+      color: #475569;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    /* Карточка тарифа */
+    .pricing-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1.75rem;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    /* Популярный тариф — выделен */
+    .pricing-card.popular {
+      background: #0f172a;
+      color: #ffffff;
+      border: 1px solid #0f172a;
+      position: relative;
+      box-shadow: 0 25px 40px -12px rgba(15, 23, 42, 0.25);
+    }
+
+    .pricing-card.popular .badge {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: #fbbf24;
+      color: #0f172a;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+    }
+
+    .pricing-card.popular .plan-name,
+    .pricing-card.popular .plan-price,
+    .pricing-card.popular .plan-desc,
+    .pricing-card.popular .feature-item {
+      color: #f8fafc;
+    }
+
+    .pricing-card.popular .feature-item {
+      border-bottom-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .pricing-card.popular .btn-primary {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #ffffff;
+    }
+
+    .pricing-card.popular .btn-primary:hover {
+      background: #f1f5f9;
+      border-color: #f1f5f9;
+    }
+
+    .plan-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0f172a;
+    }
+
+    .plan-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 1.5rem;
+      min-height: 2.5rem;
+    }
+
+    .plan-price {
+      font-size: 2.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+
+    .plan-price .currency {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+
+    .plan-price .period {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #94a3b8;
+      margin-left: 0.25rem;
+    }
+
+    .pricing-card.popular .plan-price .currency,
+    .pricing-card.popular .plan-price .period {
+      color: #cbd5e1;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 1.75rem 0 2rem;
+      flex: 1;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;</div>
+  <script src="app.js"></script>
+</body>
+</html>

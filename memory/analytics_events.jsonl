@@ -1,0 +1,5 @@
+{"ts":"2026-09-14T04:34:22.245Z","name":"page_view","props":{"page":"/a"}}
+{"ts":"2026-09-14T04:34:22.246Z","name":"page_view","props":{"page":"/b"}}
+{"ts":"2026-09-14T04:34:22.246Z","name":"click","props":{"id":"x"}}
+{"name":"test","props":{"a":1},"ts":"2026-09-15T18:06:09.394Z","tsMs":1789495569394}
+{"name":"probe","props":{"ok":true},"ts":1789503580366,"iso":"2026-09-15T20:19:40.366Z"}

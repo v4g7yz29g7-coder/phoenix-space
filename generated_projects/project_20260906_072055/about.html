@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — О нас</title>
+  <!-- Подключение шрифта Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Базовые сбросы и стили, только для контента внутри #app (без каркаса) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0b0f;
+      font-family: 'Inter', sans-serif;
+      color: #e9e9f0;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* контейнер #app — именно его содержимое мы рендерим */
+    #app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Типографика */
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    p {
+      color: #b0b0c0;
+      font-size: 1.1rem;
+    }
+
+    /* акцентный фиолетовый */
+    .accent {
+      color: #a78bfa;
+    }
+
+    /* карточки и блоки */
+    .about-hero {
+      margin-bottom: 4rem;
+      max-width: 800px;
+    }
+
+    .about-hero p {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: #c2c2d6;
+      border-left: 4px solid #a78bfa;
+      padding-left: 1.5rem;
+      background: rgba(167, 139, 250, 0.03);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0 4rem;
+    }
+
+    .value-card {
+      background: #12121a;
+      border: 1px solid #262636;
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .value-card:hover {
+      border-color: #a78bfa;
+      transform: translateY(-4px);
+    }
+
+    .value-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      background: rgba(167, 139, 250, 0.1);
+      padding: 0.5rem 0.7rem;
+      border-radius: 16px;
+    }
+
+    .value-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .value-card p {
+      font-size: 1rem;
+      color: #9a9ab0;
+    }
+
+    /* Команда */
+    .team-section {
+      margin-top: 3rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .team-member {
+      background: #0f0f15;
+      border-radius: 24px;
+      padding: 1.8rem 1.2rem;
+      text-align: center;
+      border: 1px solid #20202c;
+      transition: background 0.2s;
+    }
+
+    .team-member:hover {
+      background: #15151f;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #2a2a3a, #1a1a24);
+      margin: 0 auto 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #a78bfa;
+      border: 2px solid #a78bfa40;
+    }
+
+    .team-member h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .team-role {
+      color: #a78bfa;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .team-bio {
+      font-size: 0.95rem;
+      color: #9a9ab0;
+    }
+
+    /* разделители */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #a78bfa40, transparent);
+      margin: 3rem 0;
+    }
+
+    /* адаптивность */
+    @media (max-width: 640px) {
+      #app {
+        padding: 1.5rem 1rem 3rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      .about-hero p {
+        font-size: 1.1rem;
+      }
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Содержимое страницы "О нас" внутри</div>
+  <script src="app.js"></script>
+</body>
+</html>

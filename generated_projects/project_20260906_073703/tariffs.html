@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тарифы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">Вот HTML-разметка для страницы «Тарифы» лендинга FrameFlow. Она выполнена в тёмной теме с фиолетовыми акцентами, адаптивна и содержит три тарифных плана с переключением на год/месяц.
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — Тарифы</title>
+  <!-- Подключение шрифта Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок (минимальный набор) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b0b0f;
+      color: #e5e5e5;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* Навигация (упрощённая, для контекста) */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .logo span {
+      color: #a78bfa;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: #c0c0c0;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #a78bfa;
+    }
+
+    /* Заголовок страницы */
+    .page-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: #a0a0b0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Переключатель месяц/год */
+    .billing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      background: #1e1e24;
+      padding: 0.5rem 1.5rem;
+      border-radius: 60px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid #2a2a32;
+    }
+
+    .billing-toggle span {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #b0b0b8;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 26px;
+      background: #2d2d35;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .toggle-switch.active {
+      background: #a78bfa;
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .toggle-switch.active::after {
+      transform: translateX(22px);
+    }
+
+    .billing-toggle .discount-badge {
+      background: #a78bfa20;
+      color: #a78bfa;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid #a78bfa40;
+    }
+
+    /* Сетка тарифов */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      background: #15151b;
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      border: 1px solid #26262e;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: #a78bfa60;
+      box-shadow: 0 20px 30px -10px rgba(167, 139, 250, 0.15);
+    }
+
+    .pricing-card.popular {
+      border: 1px solid #a78bfa;
+      background: linear-gradient(145deg, #191922, #15151b);
+      box-shadow: 0 0 0 1px #a78bfa30, 0 20px 30px -10px rgba(167, 139, 250, 0.2);
+    }
+
+    .plan-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .plan-name .badge {
+      background: #a78bfa;</div>
+  <script src="app.js"></script>
+</body>
+</html>

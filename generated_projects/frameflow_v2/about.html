@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — О нас</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0d0d12;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: #e9e9f0;
+      line-height: 1.5;
+    }
+    /* тёмная тема, фиолетовый акцент */
+    .about-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+    .about-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+    .logo span {
+      color: #a78bfa;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      color: #c9c9de;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #a78bfa;
+    }
+    .btn-login {
+      background: transparent;
+      border: 1px solid #a78bfa;
+      color: #a78bfa;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .btn-login:hover {
+      background: rgba(167, 139, 250, 0.15);
+    }
+    .mission-block {
+      background: #15151d;
+      border-radius: 32px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      border: 1px solid #2a2a35;
+    }
+    .mission-block h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .mission-block h1 i {
+      color: #a78bfa;
+      font-style: normal;
+    }
+    .mission-text {
+      font-size: 1.2rem;
+      color: #b9b9cf;
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+    .accent-text {
+      color: #a78bfa;
+      font-weight: 500;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0;
+    }
+    .value-card {
+      background: #15151d;
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid #2a2a35;
+      transition: 0.2s;
+    }
+    .value-card:hover {
+      border-color: #a78bfa;
+      transform: translateY(-3px);
+    }
+    .value-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .value-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .value-card p {
+      color: #a0a0b8;
+    }
+    .team-section {
+      margin-top: 3.5rem;
+    }
+    .team-section h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .team-member {
+      background: #15151d;
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem;
+      flex: 1 1 200px;
+      border: 1px solid #2a2a35;
+      text-align: center;
+    }
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      background: #a78bfa20;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #a78bfa;
+      border: 1px solid #a78bfa40;
+    }
+    .team-member h4 {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .team-member .role {
+      color: #a78bfa;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .team-member p {
+      color: #9d9db5;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+    }
+    .footer-note {
+      margin-top: 4rem;
+      border-top: 1px solid #2a2a35;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      color: #7a7a93;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #a78bfa;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 700px) {
+      .about-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .mission-block h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Контент страницы "О нас" внутри #app (без</div>
+  <script src="app.js"></script>
+</body>
+</html>

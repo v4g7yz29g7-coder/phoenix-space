@@ -1,0 +1,232 @@
+#!/usr/bin/env node
+// arena_tui.js — полноэкранная AI-1 арена (как в старых играх)
+// Запуск: node scripts/arena_tui.js
+// Алиас: arena
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const term = require('terminal-kit').terminal;
+
+const ROOT = path.join(__dirname, '..');
+const RAcesDir = path.join(ROOT, 'memory', 'races');
+const PATTERNS_DIR = path.join(ROOT, 'memory', 'patterns');
+
+// Цвета
+const C = {
+  fire:   [255, 100, 0],
+  gold:   [255, 200, 50],
+  green:  [80, 220, 120],
+  red:    [255, 80, 80],
+  blue:   [80, 180, 255],
+  purple: [200, 100, 255],
+  cyan:   [100, 220, 220],
+  gray:   [120, 120, 140],
+  dim:    [70, 70, 90],
+  white:  [240, 240, 250],
+};
+// 15.09: terminal-kit имеет .color(), не .colorRgb()
+// .color() возвращает функцию, которую надо вызывать с текстом
+// 15.09: rgb возвращает функцию-обёртку для текста
+const rgb = (r, g, b) => (text) => `\x1b[38;2;${r};${g};${b}m${text}\x1b[0m`;
+
+function readLatestRace() {
+  try {
+    const files = fs.readdirSync(RAcesDir)
+      .filter(f => f.startsWith('race_') && f.endsWith('.json'))
+      .map(f => ({ f, m: fs.statSync(path.join(RAcesDir, f)).mtimeMs }))
+      .sort((a, b) => b.m - a.m);
+    if (!files.length) return null;
+    return JSON.parse(fs.readFileSync(path.join(RAcesDir, files[0].f), 'utf8'));
+  } catch (e) { return null; }
+}
+
+function readLatestPattern() {
+  try {
+    const files = fs.readdirSync(PATTERNS_DIR)
+      .filter(f => f.startsWith('race_') && f.endsWith('.json'))
+      .map(f => ({ f, m: fs.statSync(path.join(PATTERNS_DIR, f)).mtimeMs }))
+      .sort((a, b) => b.m - a.m);
+    if (!files.length) return null;
+    return JSON.parse(fs.readFileSync(path.join(PATTERNS_DIR, files[0].f), 'utf8'));
+  } catch (e) { return null; }
+}
+
+function readFitness() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(ROOT, 'memory', 'fitness.json'), 'utf8'));
+  } catch (e) { return { agents: {} }; }
+}
+
+function readPool() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(ROOT, 'tasks_night_pool.json'), 'utf8'));
+  } catch (e) { return { tasks: [] }; }
+}
+
+function progressBar(value, max, width) {
+  const p = Math.max(0, Math.min(1, value / (max || 1)));
+  const filled = Math.round(p * width);
+  return '█'.repeat(filled) + '░'.repeat(width - filled);
+}
+
+function padRight(s, len) {
+  s = String(s || '');
+  if (s.length >= len) return s.slice(0, len);
+  return s + ' '.repeat(len - s.length);
+}
+
+function render() {
+  const [W, H] = process.stdout.getWindowSize ? process.stdout.getWindowSize() : [80, 24];
+  const race = readLatestRace();
+  const pattern = readLatestPattern();
+  const fit = readFitness();
+  const pool = readPool();
+  const agents = Object.values(fit.agents || {}).sort((a, b) => b.fitness - a.fitness).slice(0, 5);
+  const tasks = pool.tasks || [];
+
+  term.clear();
+  term.moveTo(1, 1);
+
+  // ═══ Шапка ═══
+  rgb(...C.fire)('  🐦‍🔥  ');
+  rgb(...C.gold).bold('AI-1  ·  EVOLUTION ARENA');
+  const dt = new Date().toLocaleTimeString('ru-RU');
+  rgb(...C.dim)(`  ${dt}  `);
+  rgb(...C.green)('● LIVE');
+  term('\n');
+  rgb(...C.dim)('  ' + '═'.repeat(Math.min(W - 4, 78)));
+  term('\n\n');
+
+  // ═══ Гонка сейчас ═══
+  if (race) {
+    const task = (race.task || '—').slice(0, W - 14);
+    rgb(...C.cyan).bold('  🏁 ТЕКУЩАЯ ГОНКА  ');
+    rgb(...C.dim)(race.race_id || '');
+    term('\n\n');
+    rgb(...C.white)('     Задача: ');
+    rgb(...C.gold)(task);
+    term('\n\n');
+
+    // Машинки (агенты)
+    const results = (race.results || []).sort((a, b) => (b.score || 0) - (a.score || 0));
+    const winnerName = race.winner;
+
+    for (const [i, r] of results.entries()) {
+      const isWinner = r.box === winnerName;
+      const score = r.score != null ? r.score : 0;
+      const duration = r.duration_ms || 0;
+      const maxTime = 180000;
+      const laps = Math.round((score / 10) * 20);
+
+      const medal = isWinner ? '🥇' : ['', '🥈', '🥉'][i] || '  ';
+
+      term('     ');
+      rgb(...(isWinner ? C.gold : C.blue)).bold(padRight(r.box, 10));
+      term(' ');
+      if (isWinner) rgb(...C.gold).bold('🏆 ');
+      else rgb(...C.dim)('   ');
+
+      // Прогресс-бар как "машинка на трассе"
+      const track = progressBar(score, 10, 30);
+      if (isWinner) rgb(...C.green).bold(track);
+      else if (score >= 7) rgb(...C.gold)(track);
+      else if (score >= 4) rgb(...C.cyan)(track);
+      else rgb(...C.red)(track);
+
+      term('  ');
+      rgb(...C.white)(`score `);
+      rgb(...(score >= 8 ? C.green : score >= 5 ? C.gold : C.red)).bold(String(score).padStart(2));
+      rgb(...C.dim)(`/10  `);
+      rgb(...C.white)(`${(duration / 1000).toFixed(1)}s`);
+      term('\n');
+    }
+    term('\n');
+  } else {
+    rgb(...C.dim)('  (нет свежих гонок — запусти /race в боте или подожди benchmark/loop)');
+    term('\n\n');
+  }
+
+  // ═══ Лидерборд ═══
+  rgb(...C.purple).bold('  🏆 ЛИДЕРБОРД');
+  term('\n\n');
+  for (const [i, a] of agents.entries()) {
+    const medal = ['🥇', '🥈', '🥉', '🏅', '🏅'][i];
+    term('     ');
+    rgb(...C.gold)(medal + ' ');
+    rgb(...C.white).bold(padRight(a.box, 10));
+    rgb(...C.dim)('fitness ');
+    const fitBar = progressBar(a.fitness, 10, 15);
+    rgb(...C.green)(fitBar);
+    rgb(...C.gold).bold(' ' + a.fitness.toFixed(2));
+    rgb(...C.dim)(`  wins ${a.wins_total}/${a.runs_total}`);
+    term('\n');
+  }
+  term('\n');
+
+  // ═══ Задачи на старте ═══
+  const pending = tasks.filter(t => t.status === 'pending').slice(0, 4);
+  const inprog = tasks.filter(t => t.status === 'in_progress').slice(0, 1);
+  rgb(...C.fire).bold('  📋 ЗАДАЧИ НА СТАРТЕ');
+  term('\n\n');
+  for (const t of inprog) {
+    rgb(...C.gold)('     🔄 ');
+    rgb(...C.white).bold(padRight(t.id, 14));
+    rgb(...C.cyan)((t.file || '').slice(0, W - 30));
+    term('\n');
+  }
+  for (const t of pending) {
+    rgb(...C.dim)('     ⏳ ');
+    rgb(...C.gray)(padRight(t.id, 14));
+    rgb(...C.dim)((t.file || '').slice(0, W - 30));
+    term('\n');
+  }
+  term('\n');
+
+  // ═══ Пул — мини прогресс ═══
+  const total = tasks.length || 1;
+  const completed = tasks.filter(t => t.status === 'completed').length;
+  rgb(...C.blue)('  📊 ПУЛ  ');
+  rgb(...C.green)(progressBar(completed, total, 30));
+  rgb(...C.white)(` ${completed}/${total}  `);
+  rgb(...C.dim)(`(${Math.round(completed / total * 100)}%)`);
+  term('\n');
+
+  // ═══ Футер ═══
+  rgb(...C.dim)('  ' + '═'.repeat(Math.min(W - 4, 78)));
+  term('\n');
+  rgb(...C.dim)('  Обновление каждые 3 сек  |  q — выход, Ctrl+C — выход  ');
+  rgb(...C.fire)('🏎️');
+  term('\n');
+}
+
+term.hideCursor();
+term.fullscreen(true);
+
+// Обновление каждые 3 сек
+render();
+const timer = setInterval(render, 3000);
+
+// q — выход
+term.grabInput({ mouse: false });
+term.on('key', (name) => {
+  if (name === 'q' || name === 'Q' || name === 'CTRL_C') {
+    clearInterval(timer);
+    term.fullscreen(false);
+    term.grabInput(false);
+    term.hideCursor(false);
+    term.clear();
+    term('\n  👋 Арена закрыта. До встречи, Пульсар.\n\n');
+    process.exit(0);
+  }
+});
+
+process.on('SIGINT', () => {
+  clearInterval(timer);
+  term.fullscreen(false);
+  term.grabInput(false);
+  term.hideCursor(false);
+  term.clear();
+  term('\n  👋 Арена закрыта. До встречи, Пульсар.\n\n');
+  process.exit(0);
+});

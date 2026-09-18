@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "seq": 5,
+  "proposals": [
+    {
+      "id": "prop-0001",
+      "title": "Обновить SYSTEM_INSTRUCTIONS ядра",
+      "summary": "Добавить правило самопроверки перед ответом и запрет на выдуманные пути.",
+      "target": "aeon_agents_server.js",
+      "priority": "high",
+      "requiresRestart": true,
+      "status": "pending",
+      "reason": null,
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "createdAt": "2026-09-15T22:53:55.718Z",
+      "updatedAt": "2026-09-15T22:53:55.718Z",
+      "history": [
+        {
+          "action": "created",
+          "at": "2026-09-15T22:53:55.718Z",
+          "priority": "high",
+          "seed": true
+        }
+      ]
+    },
+    {
+      "id": "prop-0002",
+      "title": "Ввести DAS-маршрутизацию режимов",
+      "summary": "Подключить architect/router.js к циклу ответа Архитектора.",
+      "target": "architect/router.js",
+      "priority": "normal",
+      "requiresRestart": false,
+      "status": "pending",
+      "reason": null,
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "createdAt": "2026-09-15T22:53:55.718Z",
+      "updatedAt": "2026-09-15T22:53:55.718Z",
+      "history": [
+        {
+          "action": "created",
+          "at": "2026-09-15T22:53:55.718Z",
+          "priority": "normal",
+          "seed": true
+        }
+      ]
+    },
+    {
+      "id": "prop-0003",
+      "title": "Собирать ДНК из обеих сторон диалога",
+      "summary": "dna_builder должен учитывать REQUEST и RESPONSE, а не только реплики ассистента.",
+      "target": "architect/dna_builder.js",
+      "priority": "critical",
+      "requiresRestart": false,
+      "status": "pending",
+      "reason": null,
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "createdAt": "2026-09-15T22:53:55.718Z",
+      "updatedAt": "2026-09-15T22:53:55.732Z",
+      "history": [
+        {
+          "action": "created",
+          "at": "2026-09-15T22:53:55.718Z",
+          "priority": "critical",
+          "seed": true
+        },
+        {
+          "action": "approved",
+          "at": "2026-09-15T22:53:55.729Z",
+          "by": "architect_review"
+        },
+        {
+          "action": "rejected",
+          "at": "2026-09-15T22:53:55.730Z",
+          "by": "architect_review",
+          "reason": "не соответствует инвариантам"
+        },
+        {
+          "action": "reset",
+          "at": "2026-09-15T22:53:55.732Z",
+          "by": "architect_review"
+        }
+      ]
+    },
+    {
+      "id": "prop-0004",
+      "title": "Обновить SYSTEM_INSTRUCTIONS",
+      "summary": "Добавить правило самопроверки",
+      "target": "agent_responses.js",
+      "priority": "high",
+      "requiresRestart": false,
+      "status": "approved",
+      "reason": null,
+      "reviewedBy": "reviewer",
+      "reviewedAt": "2026-09-15T22:53:58.875Z",
+      "createdAt": "2026-09-15T22:53:57.357Z",
+      "updatedAt": "2026-09-15T22:53:58.875Z",
+      "history": [
+        {
+          "action": "created",
+          "at": "2026-09-15T22:53:57.357Z",
+          "priority": "high"
+        },
+        {
+          "action": "approved",
+          "at": "2026-09-15T22:53:58.875Z",
+          "by": "reviewer"
+        }
+      ]
+    },
+    {
+      "id": "prop-0005",
+      "title": "Добавить skill",
+      "summary": "Новый навык парсинга",
+      "target": "skills/parse.js",
+      "priority": "normal",
+      "requiresRestart": true,
+      "status": "rejected",
+      "reason": "риск высокий, нет тестов",
+      "reviewedBy": "architect_review",
+      "reviewedAt": "2026-09-15T22:53:58.876Z",
+      "createdAt": "2026-09-15T22:53:57.357Z",
+      "updatedAt": "2026-09-15T22:53:58.876Z",
+      "history": [
+        {
+          "action": "created",
+          "at": "2026-09-15T22:53:57.357Z",
+          "priority": "normal"
+        },
+        {
+          "action": "rejected",
+          "at": "2026-09-15T22:53:58.876Z",
+          "by": "architect_review",
+          "reason": "риск высокий, нет тестов"
+        }
+      ]
+    }
+  ]
+}

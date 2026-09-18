@@ -1,0 +1,43 @@
+Total races: 152
+Total patterns: 173
+Success patterns: 17
+Failure patterns: 4
+Own skills: 6
+Hub skills: 809
+Cached tasks: 4
+Cache hit rate: 1189/1431
+
+WINS:
+  agent_1: 44
+  agent_7: 41
+  agent_3: 28
+  agent_5: 3
+  agent_4: 3
+  agent_6: 1
+  agent_2: 1
+
+SCORES:
+  agent_7: 9.12 (n=109)
+  agent_5: 9.07 (n=14)
+  agent_1: 9.06 (n=120)
+  agent_3: 8.89 (n=112)
+  agent_6: 8.67 (n=9)
+  agent_2: 8.64 (n=14)
+  agent_4: 8.57 (n=14)
+
+TIMES (ms):
+  agent_7: 24704 (n=109)
+  agent_1: 25341 (n=120)
+  agent_6: 27414 (n=9)
+  agent_3: 27629 (n=112)
+  agent_5: 37197 (n=14)
+  agent_4: 37834 (n=14)
+  agent_2: 51957 (n=14)
+
+FAILS:
+  agent_7: 36
+  agent_3: 34
+  agent_1: 32
+  agent_6: 5
+
+CHAMPION: agent_1 (5/10, score 8.8)

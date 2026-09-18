@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тарифы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — Тарифы</title>
+  <!-- Тёмная тема + фиолетовый акцент #a78bfa -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0f0f1a;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #e2e2f0;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* акцентный цвет */
+    .accent {
+      color: #a78bfa;
+    }
+
+    .btn-accent {
+      background-color: #a78bfa;
+      color: #0f0f1a;
+      border: none;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-accent:hover {
+      background-color: #c4b5fd;
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #a78bfa;
+      color: #a78bfa;
+      font-weight: 500;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(167, 139, 250, 0.1);
+      color: #c4b5fd;
+      cursor: pointer;
+    }
+
+    /* каркас #app — контент страницы тарифов */
+    #app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* микро-шапка для контекста (не входит в #app, но мы внутри #app создадим структуру) */
+    /* всё содержимое — внутри #app по условию */
+
+    /* Заголовок страницы */
+    .page-header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      color: #9b9bb5;
+      font-size: 1.1rem;
+    }
+
+    /* карточки тарифов */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      align-items: stretch;
+      margin: 2rem 0 3rem;
+    }
+
+    .pricing-card {
+      background: #1a1a2e;
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      border: 1px solid #2a2a44;
+      transition: border 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    .pricing-card:hover {
+      border-color: #a78bfa;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -12px rgba(167, 139, 250, 0.15);
+    }
+
+    .pricing-card.popular {
+      border: 1px solid #a78bfa;
+      background: #1e1b33;
+      box-shadow: 0 0 0 1px #a78bfa, 0 20px 35px -12px rgba(167, 139, 250, 0.3);
+    }
+
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .plan-price {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
+    }
+
+    .plan-price small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #a0a0c0;
+    }
+
+    .plan-desc {
+      color: #b0b0cc;
+      margin: 0.75rem 0 1.5rem;
+      font-size: 0.95rem;
+      border-bottom: 1px dashed #2f2f4a;
+      padding-bottom: 1.2rem;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex: 1;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+      color: #d0d0e8;
+    }
+
+    .plan-features li::before {
+      content: "✓";
+      color: #a78bfa;
+      font-weight: 700;
+      display: inline-block;
+      width: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .btn-pricing {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      text-align: center;
+      display: inline-block;
+      background: transparent;
+      border: 1px solid #a78bfa;
+      color: #a78bfa;
+    }
+
+    .btn-pricing:hover {
+      background: rgba(167, 139, 250, 0.15);
+      cursor: pointer;
+    }
+
+    .btn-pricing.btn-accent {
+      background-color: #a78bf</div>
+  <script src="app.js"></script>
+</body>
+</html>

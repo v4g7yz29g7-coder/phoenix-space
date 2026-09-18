@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arena Analytics — Dashboard</title>
+  <meta name="description" content="Аналитический дашборд арены: гонки, агенты, trajectories, средний score." />
+
+  <!-- Chart.js через CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --panel: #121a2b;
+      --panel-2: #182338;
+      --border: #24314d;
+      --text: #e8eefc;
+      --muted: #8ea0c0;
+      --accent: #4dd0ff;
+      --accent-2: #a855f7;
+      --green: #6eff8b;
+      --red: #ff5c5c;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 700px at 20% -10%, #16223a 0%, var(--bg) 55%);
+      color: var(--text);
+      font: 14px/1.5 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 15, 26, 0.78);
+      backdrop-filter: blur(8px);
+    }
+    header h1 { font-size: 20px; margin: 0; letter-spacing: .3px; }
+    header h1 span { color: var(--accent); }
+    .status { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+    .dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--red); box-shadow: 0 0 8px var(--red);
+      flex: 0 0 auto;
+    }
+    .dot.ok { background: var(--green); box-shadow: 0 0 8px var(--green); }
+    .refresh {
+      color: var(--muted);
+      font-size: 12px;
+      cursor: pointer;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      transition: color .15s, border-color .15s;
+    }
+    .refresh:hover { color: var(--text); border-color: var(--accent); }
+    main { padding: 28px; max-width: 1200px; margin: 0 auto; }
+
+    .err {
+      display: none;
+      margin: 0 0 18px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 92, 92, .4);
+      background: rgba(255, 92, 92, .08);
+      color: #ffb4b4;
+      font-size: 13px;
+    }
+    .err.show { display: block; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+    .card {
+      background: linear-gradient(160deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute; inset: 0 0 auto 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: .7;
+    }
+    .card .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .card .value { font-size: 32px; font-weight: 700; margin-top: 8px; }
+    .card .value small { font-size: 14px; color: var(--muted); font-weight: 400; }
+
+    .grid-2 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: start; }
+    @media (max-width: 860px) { .grid-2 { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .panel h2 { margin: 0 0 16px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+    .panel h2 em { color: var(--accent); font-style: normal; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+    th {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+    tbody tr:hover { background: rgba(77, 208, 255, .06); }
+    .rank { color: var(--muted); width: 34px; }
+    .agent-name { font-weight: 600; }
+    .score-pill {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      background: rgba(110, 255, 139, .12); color: var(--green);
+      font-variant-numeric: tabular-nums; font-weight: 600;
+    }
+    .bar { height: 6px; border-radius: 3px; background: var(--panel-2); overflow: hidden; margin-top: 5px; }
+    .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    .chart-wrap { position: relative; height: 280px; }
+    .muted { color: var(--muted); }
+    footer { text-align: center; color: var(--muted); font-size: 12px; padding: 26px 0 40px; }
+    code { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏁 Arena <span>Analytics</span></h1>
+    <div class="status">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">подключение…</span>
+      <button class="refresh" id="refreshBtn" type="button">Обновить</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="err" id="errBox"></div>
+
+    <!-- Метрики -->
+    <section class="cards" id="cards">
+      <div class="card">
+        <div class="label">Всего гонок</div>
+        <div class="value" id="mRaces">—</div>
+      </div>
+      <div class="card">
+        <div class="label">Агентов</div>
+        <div class="value" id="mAgents">—</div>
+      </div>
+      <div class="card">
+        <div class="label">Trajectories</div>
+        <div class="value" id="mTraj">—</div>
+      </div>
+      <div class="card">
+        <div class="label">Средний score</div>
+        <div class="value" id="mScore">—</div>
+      </div>
+    </section>
+
+    <div class="grid-2">
+      <!-- Топ-5 агентов -->
+      <section class="panel">
+        <h2>🏆 Топ-5 <em>агентов</em></h2>
+        <table id="topTable">
+          <thead>
+            <tr>
+              <th class="rank">#</th>
+              <th>Агент</th>
+              <th>Гонок</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="topBody">
+            <tr><td colspan="4" class="muted">Загрузка…</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Динамика score -->
+      <section class="panel">
+        <h2>📈 Динамика <em>score</em></h2>
+        <div class="chart-wrap">
+          <canvas id="scoreChart"></canvas>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    Arena Analytics · данные с <code>/api/analytics</code> · обновлено <span id="updated">—</span>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const API_URL = "/api/analytics";
+    const el = (id) => document.getElementById(id);
+    let chart = null;
+
+    /* Демо-данные: дашборд остаётся живым, если API ещё не поднят. */
+    function mockData() {
+      const agents = [
+        { name: "agent_1",  races: 18, score: 0.94 },
+        { name: "agent_7",  races: 16, score: 0.91 },
+        { name: "agent_4",  races: 15, score: 0.87 },
+        { name: "agent_23", races: 13, score: 0.82 },
+        { name: "agent_6",  races: 11, score: 0.78 },
+        { name: "agent_20", races: 9,  score: 0.71 }
+      ];
+      return {
+        total_races: 42,
+        total_agents: agents.length,
+        total_trajectories: 137,
+        avg_score: 0.84,
+        agents: agents
+      };
+    }
+
+    /* Приводим ответ API к единому виду (поддержка разных имён полей). */
+    function normalize(raw) {
+      const d = raw && typeof raw === "object" ? raw : {};
+      const rawAgents = Array.isArray(d.agents) ? d.agents
+        : Array.isArray(d.top_agents) ? d.top_agents
+        : Array.isArray(d.top) ? d.top : [];
+
+      const agents = rawAgents.map(function (a) {
+        return {
+          name: a.name || a.agent || a.id || "unknown",
+          races: Number(a.races != null ? a.races : a.total_races != null ? a.total_races : 0) || 0,
+          score: Number(a.score != null ? a.score : a.avg_score != null ? a.avg_score : 0) || 0
+        };
+      }).sort(function (x, y) { return y.score - x.score; });
+
+      const avg = Number(
+        d.avg_score != null ? d.avg_score :
+        d.average_score != null ? d.average_score : NaN
+      );
+
+      return {
+        total_races: Number(d.total_races != null ? d.total_races : d.races) || 0,
+        agentsCount: Number(d.agents_count != null ? d.agents_count :
+          (d.total_agents != null ? d.total_agents : agents.length)) || agents.length,
+        trajectories: Number(d.total_trajectories != null ? d.total_trajectories :
+          (d.trajectories != null ? d.trajectories : 0)) || 0,
+        avgScore: isFinite(avg) ? avg : (agents.length
+          ? agents.reduce(function (s, a) { return s + a.score; }, 0) / agents.length
+          : 0),
+        agents: agents
+      };
+    }
+
+    /* Форматирование чисел. */
+    function fmt(n, digits) {
+      const x = Number(n);
+      if (!isFinite(x)) return "—";
+      if (digits != null) return x.toFixed(digits);
+      return x.toLocaleString("ru-RU");
+    }
+
+    function setStatus(text, state) {
+      el("statusText").textContent = text;
+      el("statusDot").classList.toggle("ok", state === "ok");
+    }
+
+    function showError(msg) {
+      const box = el("errBox");
+      box.textContent = msg;
+      box.classList.add("show");
+    }
+
+    function renderMetrics(m) {
+      el("mRaces").textContent = fmt(m.total_races);
+      el("mAgents").textContent = fmt(m.agentsCount);
+      el("mTraj").textContent = fmt(m.trajectories);
+      el("mScore").innerHTML = fmt(m.avgScore, 2) +
+        ' <small>/ 1.00</small>';
+      el("updated").textContent = new Date().toLocaleString("ru-RU");
+    }
+
+    function renderTable(list) {
+      const top = (list || []).slice(0, 5);
+      const body = el("topBody");
+      if (!top.length) {
+        body.innerHTML = '<tr><td colspan="4" class="muted">Нет данных</td></tr>';
+        return;
+      }
+      body.innerHTML = top.map(function (a, i) {
+        const pct = Math.max(0, Math.min(100, a.score * 100));
+        return '<tr>' +
+          '<td class="rank">' + (i + 1) + '</td>' +
+          '<td>' +
+            '<div class="agent-name">' + escapeHtml(a.name) + '</div>' +
+            '<div class="bar"><i style="width:' + pct.toFixed(1) + '%"></i></div>' +
+          '</td>' +
+          '<td>' + fmt(a.races) + '</td>' +
+          '<td><span class="score-pill">' + fmt(a.score, 2) + '</span></td>' +
+        '</tr>';
+      }).join("");
+    }
+
+    function renderChart(list) {
+      const top = (list || []).slice(0, 5);
+      const labels = top.map(function (a) { return a.name; });
+      const values = top.map(function (a) { return a.score; });
+
+      if (chart) { chart.destroy(); chart = null; }
+      if (typeof Chart === "undefined") return;
+
+      chart = new Chart(el("scoreChart").getContext("2d"), {
+        type: "bar",
+        data: {
+          labels: labels.length ? labels : ["—"],
+          datasets: [{
+            label: "Средний score",
+            data: values.length ? values : [0],
+            backgroundColor: "rgba(77, 208, 255, 0.65)",
+            borderColor: "rgba(77, 208, 255, 1)",
+            borderWidth: 1,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) { return "score: " + fmt(ctx.parsed.y, 2); }
+              }
+            }
+          },
+          scales: {
+            y: { beginAtZero: true, max: 1, ticks: { color: "#8ea0c0" }, grid: { color: "#24314d" } },
+            x: { ticks: { color: "#8ea0c0" }, grid: { display: false } }
+          }
+        }
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    /* Загрузка данных с /api/analytics. */
+    async function loadData() {
+      const btn = el("refreshBtn");
+      btn.disabled = true;
+      el("errBox").classList.remove("show");
+      setStatus("Загрузка данных…", "");
+
+      try {
+        const res = await fetch(API_URL, {
+          headers: { "Accept": "application/json" },
+          cache: "no-store"
+        });
+        if (!res.ok) throw new Error("HTTP " + res.status + " " + res.statusText);
+        const data = await res.json();
+        const m = normalize(data);
+        renderMetrics(m);
+        renderTable(m.agents);
+        renderChart(m.agents);
+        setStatus("Обновлено: " + new Date().toLocaleTimeString("ru-RU"), "ok");
+      } catch (err) {
+        // Fallback на демо-данные, чтобы дашборд не был пустым.
+        const m = normalize(mockData());
+        renderMetrics(m);
+        renderTable(m.agents);
+        renderChart(m.agents);
+        showError("Не удалось получить /api/analytics (" + err.message + "). Показаны демо-данные.");
+        setStatus("Offline · демо-данные", "");
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    el("refreshBtn").addEventListener("click", loadData);
+    loadData();
+    setInterval(loadData, 60000);
+  </script>
+</body>
+</html>

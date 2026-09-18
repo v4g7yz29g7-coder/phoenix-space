@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тарифы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — Тарифы</title>
+  <!-- Тёмная тема + фиолетовый акцент #a78bfa -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0b0f;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #e9e9f0;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* акцентный фиолетовый */
+    .accent {
+      color: #a78bfa;
+    }
+
+    .btn-accent {
+      background-color: #a78bfa;
+      color: #0b0b0f;
+      font-weight: 600;
+      border: none;
+      border-radius: 40px;
+      padding: 0.8rem 1.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 20px rgba(167, 139, 250, 0.15);
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-accent:hover {
+      background-color: #c4b5fd;
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px rgba(167, 139, 250, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #3f3f55;
+      color: #e9e9f0;
+      border-radius: 40px;
+      padding: 0.8rem 1.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline:hover {
+      border-color: #a78bfa;
+      color: #a78bfa;
+      background: rgba(167, 139, 250, 0.05);
+    }
+
+    /* каркас #app — контент только внутри */
+    #app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* микро-шапка для контекста (не входит в #app, но мы её не используем — только #app) */
+    /* всё что нужно — внутри #app */
+
+    /* Тарифы */
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .pricing-header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .pricing-header p {
+      color: #9b9bb0;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      background: #14141d;
+      border-radius: 32px;
+      padding: 2.2rem 1.8rem;
+      border: 1px solid #2a2a3a;
+      transition: 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .pricing-card:hover {
+      border-color: #a78bfa;
+      transform: translateY(-6px);
+      box-shadow: 0 30px 50px rgba(167, 139, 250, 0.08);
+    }
+
+    .pricing-card.popular {
+      border: 1px solid #a78bfa;
+      background: linear-gradient(145deg, #171624 0%, #1e1b2e 100%);
+      position: relative;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #a78bfa;
+      color: #0b0b0f;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-price {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 0.8rem 0 1.2rem;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .plan-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #9b9bb0;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin: 1.2rem 0 2rem;
+      flex: 1;
+    }
+
+    .plan-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #262636;
+      font-size: 0.95rem;
+    }
+
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+
+    .plan-features li::before {
+      content: "✓";
+      color: #a78bfa;
+      font-weight: 700;
+      background: rgba(167, 139, 250, 0.1);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .btn-plan {
+      width:</div>
+  <script src="app.js"></script>
+</body>
+</html>

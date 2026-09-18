@@ -1,0 +1,366 @@
+{
+  "ts": "2026-09-12T16:58:09.539Z",
+  "duration_min": "4.8",
+  "leagues": [
+    {
+      "league": "A",
+      "boxes": [
+        "agent_1",
+        "agent_7",
+        "agent_3",
+        "agent_14",
+        "agent_8"
+      ],
+      "tasks": [
+        {
+          "task": "Прочитай README.md и перечисли разделы в 5 пунктах. Ничего не меняй.",
+          "winner": "agent_1",
+          "results": [
+            {
+              "box": "agent_1",
+              "duration_ms": 6265,
+              "ok": true,
+              "score": 9,
+              "verdict": "approve",
+              "answer": "Файл прочитан, ничего не изменено. Разделы README.md (5 пунктов):\n\n1. **🔥 Почему это важно (тренды 2026)** — SSI/DID, отказ от коммерциализации, устойчивость к цензуре.\n2. **🛡️ Что уже работает** — генерация DID, Академия, Мастерская, Круг Соратников, мультиязычность, открытый код.\n3. **🗺️ Дорожн",
+              "steps_count": 1
+            }
+          ]
+        },
+        {
+          "task": "Найди все TODO ТОЛЬКО в файлах agent_*.js в корне проекта (не заходи в",
+          "winner": "agent_1",
+          "results": [
+            {
+              "box": "agent_1",
+              "duration_ms": 11511,
+              "ok": true,
+              "score": 10,
+              "verdict": "approve",
+              "answer": "## Результат поиска TODO (read-only, изменений не вносил)\n\n**Область поиска:** только `agent_*.js` в корне `/home/ishidin/phoenix` (28 файлов). `node_modules` не затронут — маска ограничена корнем.\n\n**Найдено 25 совпадений в 5 файлах:**\n\n```\nagent_9.js:98\nagent_9.js:108\nagent_9.js:118\n\nagent_11.js:7",
+              "steps_count": 4
+            }
+          ]
+        },
+        {
+          "task": "Создай файл test_hybrid.md с тремя пунктами о гибридных стратегиях аге",
+          "winner": "agent_3",
+          "results": [
+            {
+              "box": "agent_1",
+              "duration_ms": 17488,
+              "ok": true,
+              "score": 7,
+              "verdict": "approve",
+              "answer": "Готово.\n\n**Что сделано:**\n1. Проверил — файла `test_hybrid.md` не было (ENOENT).\n2. Создал файл через `write` с тремя пунктами о гибридных стратегиях агентов:\n   - Комбинация rule-based и LLM-подхода\n   - Смешение планирования и реактивности\n   - Параллельное/каскадное сочетание ролей\n3. Прочитал фа",
+              "steps_count": 4
+            },
+            {
+              "box": "agent_7",
+              "duration_ms": 9304,
+              "ok": true,
+              "score": 7,
+              "verdict": "approve",
+              "answer": "Файл `test_hybrid.md` создан. Содержит три пункта о гибридных стратегиях агентов:\n\n1. **Комбинирование ролей** — сочетание детерминированных инструментов и вероятностного планирования LLM.\n2. **Fallback и эскалация** — быстрая простая стратегия с эскалацией к сложному пути при провале.\n3. **Гибридна",
+              "steps_count": 1
+            },
+            {
+              "box": "agent_3",
+              "duration_ms": 15439,
+              "ok": true,
+              "score": 9,
+              "verdict": "approve",
+              "answer": "Готово.\n\n**Что сделано:**\n- Создан файл `test_hybrid.md` (в корне проекта, `/home/ishidin/phoenix/test_hybrid.md`) с тремя пунктами о гибридных стратегиях агентов:\n  1. **Read-only first** — анализ перед действием (сбор фактов → план → правки).\n  2. **Комбинирование контекста** — предзагрузка правил",
+              "steps_count": 6
+            }
+          ]
+        }
+      ],
+      "champion": "agent_1",
+      "champion_wins": 2
+    },
+    {
+      "league": "B",
+      "boxes": [
+        "agent_4",
+        "agent_5",
+        "agent_9",
+        "agent_10",
+        "agent_13"
+      ],
+      "tasks": [
+        {
+          "task": "Прочитай README.md и перечисли разделы в 5 пунктах. Ничего не меняй.",
+          "winner": "agent_4",
+          "results": [
+            {
+              "box": "agent_4",
+              "duration_ms": 8046,
+              "ok": true,
+              "score": 9,
+              "verdict": "approve",
+              "answer": "Разделы README.md (5 пунктов):\n\n1. **🔥 Почему это важно (тренды 2026)** — суверенная идентичность (SSI/DID), отказ от коммерциализации, устойчивость к цензуре.\n2. **🛡️ Что уже работает** — генерация DID, Академия, Мастерская, Круг Соратников, мультиязычность, открытый код.\n3. **🗺️ Дорожная карта*",
+              "steps_count": 1
+            }
+          ]
+        },
+        {
+          "task": "Найди все TODO ТОЛЬКО в файлах agent_*.js в корне проекта (не заходи в",
+          "winner": "agent_4",
+          "results": [
+            {
+              "box": "agent_4",
+              "duration_ms": 9833,
+              "ok": true,
+              "score": 10,
+              "verdict": "approve",
+              "answer": "## TODO в `agent_*.js` (корень проекта)\n\n```\nagent_9.js:98\nagent_9.js:108\nagent_9.js:118\n\nagent_11.js:73\nagent_11.js:84\nagent_11.js:97\nagent_11.js:108\nagent_11.js:117\nagent_11.js:129\n\nagent_12.js:36\nagent_12.js:45\nagent_12.js:56\nagent_12.js:66\nagent_12.js:76\n\nagent_13.js:89\nagent_13.js:121\nagent_13.",
+              "steps_count": 1
+            }
+          ]
+        },
+        {
+          "task": "Создай файл test_hybrid.md с тремя пунктами о гибридных стратегиях аге",
+          "winner": "agent_4",
+          "results": [
+            {
+              "box": "agent_4",
+              "duration_ms": 11205,
+              "ok": true,
+              "score": 8,
+              "verdict": "approve",
+              "answer": "Готово. Файл `test_hybrid.md` создан с тремя пунктами о гибридных стратегиях агентов:\n\n1. Комбинирование планирования и реакции\n2. Сочетание правил и обучения\n3. Гибридная архитектура с несколькими исполнителями",
+              "steps_count": 1
+            }
+          ]
+        }
+      ],
+      "champion": "agent_4",
+      "champion_wins": 3
+    },
+    {
+      "league": "C",
+      "boxes": [
+        "agent_23",
+        "agent_24",
+        "agent_25",
+        "agent_12",
+        "agent_15"
+      ],
+      "tasks": [
+        {
+          "task": "Прочитай README.md и перечисли разделы в 5 пунктах. Ничего не меняй.",
+          "winner": "agent_23",
+          "results": [
+            {
+              "box": "agent_23",
+              "duration_ms": 7001,
+              "ok": true,
+              "score": 10,
+              "verdict": "approve",
+              "answer": "README.md содержит 5 разделов (плюс вводный блок-описание):\n\n1. **🔥 Почему это важно (тренды 2026)** — суверенная идентичность (SSI/DID), усталость от коммерциализации, устойчивость к цензуре.\n2. **🛡️ Что уже работает** — генерация DID, Академия, Мастерская (NFT), Круг Соратников (P2P/WebRTC), мул",
+              "steps_count": 1
+            }
+          ]
+        },
+        {
+          "task": "Найди все TODO ТОЛЬКО в файлах agent_*.js в корне проекта (не заходи в",
+          "winner": "agent_23",
+          "results": [
+            {
+              "box": "agent_23",
+              "duration_ms": 14496,
+              "ok": true,
+              "score": 8,
+              "verdict": "approve",
+              "answer": "## TODO в `agent_*.js` (корень проекта, без node_modules)\n\nВсего найдено **24 совпадения** в 4 файлах:\n\n**agent_9.js** (3)\n```\nagent_9.js:98\nagent_9.js:108\nagent_9.js:118\n```\n\n**agent_11.js** (6)\n```\nagent_11.js:73\nagent_11.js:84\nagent_11.js:97\nagent_11.js:108\nagent_11.js:117\nagent_11.js:129\n```\n\n**",
+              "steps_count": 4
+            }
+          ]
+        },
+        {
+          "task": "Создай файл test_hybrid.md с тремя пунктами о гибридных стратегиях аге",
+          "winner": "agent_24",
+          "results": [
+            {
+              "box": "agent_23",
+              "duration_ms": 41049,
+              "ok": true,
+              "score": 7,
+              "verdict": "approve",
+              "answer": "Готово.\n\n**Файл:** `test_hybrid.md` (744 байта)\n\n**Что сделано:**\n- Прочитал файл перед записью (стратегия: read-before-edit). Файл уже существовал с похожим содержимым.\n- Записал через `write` три пункта о гибридных стратегиях агентов:\n  1. Комбинирование планирования и реакции (переключение режимо",
+              "steps_count": 5
+            },
+            {
+              "box": "agent_24",
+              "duration_ms": 11611,
+              "ok": true,
+              "score": 8,
+              "verdict": "approve",
+              "answer": "Файл создан: `/home/ishidin/phoenix/test_hybrid.md`\n\nТри пункта:\n1. Комбинация детерминированных и LLM-этапов\n2. Гибридный поиск: dense + sparse (RRF)\n3. Онлайн-планирование с офлайн-памятью\n\nЗамечание: инструмент сообщил о создании `.bak`-файла, значит `test_hybrid.md` уже существовал до записи и б",
+              "steps_count": 1
+            }
+          ]
+        }
+      ],
+      "champion": "agent_23",
+      "champion_wins": 2
+    },
+    {
+      "league": "D",
+      "boxes": [
+        "agent_20",
+        "agent_21",
+        "agent_22",
+        "agent_11",
+        "agent_2"
+      ],
+      "tasks": [
+        {
+          "task": "Прочитай README.md и перечисли разделы в 5 пунктах. Ничего не меняй.",
+          "winner": "agent_20",
+          "results": [
+            {
+              "box": "agent_20",
+              "duration_ms": 7709,
+              "ok": true,
+              "score": 9,
+              "verdict": "approve",
+              "answer": "Вот разделы README.md (5 пунктов):\n\n1. **🔥 Почему это важно (тренды 2026)** — суверенная идентичность (SSI), усталость от коммерциализации, устойчивость к цензуре.\n2. **🛡️ Что уже работает** — генерация DID, Академия, Мастерская, Круг Соратников, мультиязычность, открытый код.\n3. **🗺️ Дорожная ка",
+              "steps_count": 1
+            }
+          ]
+        },
+        {
+          "task": "Найди все TODO ТОЛЬКО в файлах agent_*.js в корне проекта (не заходи в",
+          "winner": "agent_20",
+          "results": [
+            {
+              "box": "agent_20",
+              "duration_ms": 22733,
+              "ok": true,
+              "score": 10,
+              "verdict": "approve",
+              "answer": "**Отчёт: done**\n\nПоиск выполнен только по файлам `agent_*.js` в корне проекта (glob `agent_*.js`, рекурсии в `node_modules` нет). Найдено 25 вхождений `TODO` (uppercase) в 4 файлах:\n\n```\nagent_9.js:98\nagent_9.js:108\nagent_9.js:118\nagent_11.js:73\nagent_11.js:84\nagent_11.js:97\nagent_11.js:108\nagent_11",
+              "steps_count": 5
+            }
+          ]
+        },
+        {
+          "task": "Создай файл test_hybrid.md с тремя пунктами о гибридных стратегиях аге",
+          "winner": "agent_20",
+          "results": [
+            {
+              "box": "agent_20",
+              "duration_ms": 13960,
+              "ok": true,
+              "score": 8,
+              "verdict": "approve",
+              "answer": "Готово. Файл `test_hybrid.md` создан по пути `/home/ishidin/phoenix/test_hybrid.md` (972 байта).\n\nСодержит три пункта о гибридных стратегиях агентов:\n\n1. **Комбинирование локальных и облачных моделей** — маршрутизация простых задач на локальную модель, сложных — в облако (баланс стоимости, задержки ",
+              "steps_count": 2
+            }
+          ]
+        }
+      ],
+      "champion": "agent_20",
+      "champion_wins": 3
+    },
+    {
+      "league": "E",
+      "boxes": [
+        "agent_6",
+        "agent_17",
+        "agent_18",
+        "agent_19",
+        "agent_16"
+      ],
+      "tasks": [
+        {
+          "task": "Прочитай README.md и перечисли разделы в 5 пунктах. Ничего не меняй.",
+          "winner": "agent_6",
+          "results": [
+            {
+              "box": "agent_6",
+              "duration_ms": 25665,
+              "ok": true,
+              "score": 7,
+              "verdict": "approve",
+              "answer": "已完成。我阅读了 `README.md`，没有做任何修改——哈希值保持不变（`500163360a7f219b05dd305b8a72ce8e`），且 `git status` 显示该文件是干净的。我在终端中用 `grep -n '^## '` 核对过小节清单，因此列表基于证据，而不是凭印象。\n\n**README.md 中的 5 个小节（H2 级）：**\n\n1. **🔥 为什么这很重要（2026 年趋势）** — 行 9：主权的自我主权身份（SSI/DID）、对商业化的疲劳、抗审查性。\n2. **🛡️ 已经能用的功能** — 行 17：DID 生成（12 个单词的助记词，Ed25519）、",
+              "steps_count": 5
+            },
+            {
+              "box": "agent_17",
+              "duration_ms": 1,
+              "ok": false,
+              "error": "spawnSync /bin/sh ENOENT"
+            },
+            {
+              "box": "agent_18",
+              "duration_ms": 1,
+              "ok": false,
+              "error": "spawnSync /bin/sh ENOENT"
+            },
+            {
+              "box": "agent_19",
+              "duration_ms": 1,
+              "ok": false,
+              "error": "spawnSync /bin/sh ENOENT"
+            },
+            {
+              "box": "agent_16",
+              "duration_ms": 1,
+              "ok": false,
+              "error": "spawnSync /bin/sh ENOENT"
+            }
+          ]
+        },
+        {
+          "task": "Найди все TODO ТОЛЬКО в файлах agent_*.js в корне проекта (не заходи в",
+          "winner": "agent_6",
+          "results": [
+            {
+              "box": "agent_6",
+              "duration_ms": 29123,
+              "ok": true,
+              "score": 10,
+              "verdict": "approve",
+              "answer": "Готово. Задача read-only: код не менялся, я только выполнил поиск и задокументировал результат.\n\n## Результат: TODO в `agent_*.js` в корне проекта\n\nВсего: **25 вхождений в 5 файлах** (из 28 `agent_*.js` в корне).\n\n```\nagent_9.js:98\nagent_9.js:108\nagent_9.js:118\nagent_11.js:73\nagent_11.js:84\nagent_11",
+              "steps_count": 10
+            }
+          ]
+        },
+        {
+          "task": "Создай файл test_hybrid.md с тремя пунктами о гибридных стратегиях аге",
+          "winner": "agent_6",
+          "results": [
+            {
+              "box": "agent_6",
+              "duration_ms": 25082,
+              "ok": true,
+              "score": 9,
+              "verdict": "approve",
+              "answer": "Готово.\n\n## Что сделано\n\n**Файл `test_hybrid.md` создан через инструмент `write`** и содержит ровно три пункта о гибридных стратегиях агентов:\n\n1. **Read-only first: анализ перед действием** — сначала факты и план, потом изменения.\n2. **Комбинирование локальных и облачных моделей** — маршрутизация п",
+              "steps_count": 10
+            }
+          ]
+        }
+      ],
+      "champion": "agent_6",
+      "champion_wins": 3
+    }
+  ],
+  "finalists": [
+    "agent_4",
+    "agent_20",
+    "agent_6"
+  ],
+  "tie_note": "Ничья 3x3 разошлась: победил agent_4 (10.2 сек, score 8).",
+  "absolute_champion": "agent_4",
+  "tiebreak": {
+    "task": "Создай файл champion_tiebreak.md с тремя пунктами о стратегиях гибридных агентов. Используй write.",
+    "winner": "agent_4",
+    "score": 8,
+    "time_ms": 10158,
+    "race_id": "race_1789233211658"
+  }
+}

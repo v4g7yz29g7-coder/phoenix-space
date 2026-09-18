@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>FrameFlow</title><link rel="stylesheet" href="style.css"></head><body><div id="app"><header class="site-header"><div class="container header-inner"><a href="index.html" class="logo">FrameFlow</a><nav class="main-nav"><a href="index.html">Главная</a><a href="about.html">О нас</a><a href="tariffs.html">Тарифы</a><a href="contact.html">Контакты</a></nav><button class="btn btn-small" id="loginBtn">Войти</button></div></header><section class="hero"><h1>Ваша съёмка — готовая публикация за один клик</h1><p>Загрузите фотографии, а AI отберёт лучшие кадры и сгенерирует коллаж.</p><div class="hero-actions"><button class="btn btn-primary" id="uploadBtn">📷 Выбрать фото</button><input type="file" id="fileInput" accept="image/*" multiple style="display:none"><select id="layoutSelect" style="padding:10px;border-radius:8px;background:#12121f;color:#f0eef8;border:1px solid #333">
+<option value="carousel">Carousel Story</option>
+<option value="before-after">Before/After</option>
+<option value="moodboard">Moodboard</option>
+<option value="filmstrip">Filmstrip</option>
+<option value="polaroid-stack">Polaroid Stack</option>
+</select><button class="btn btn-outline" id="generateBtn">✨ Сгенерировать коллаж</button>
+<button class="btn btn-outline" id="downloadBtn">⬇️ Скачать PNG</button></div></section><section class="upload-section"><h2>Предпросмотр</h2><div id="previewGrid" class="preview-grid"></div></section><section class="features"><div class="feature"><h3>AI Smart Select</h3><p>12 лучших кадров</p></div><div class="feature"><h3>Evoto</h3><p>Передача на ретушь</p></div><div class="feature"><h3>Экспорт</h3><p>Instagram, ВК, PDF</p></div></section><footer class="site-footer"><p>© 2026 FrameFlow</p></footer></div><script src="app.js"></script><script src="collage.js"></script>
+<script src="layout.js"></script>
+<script src="export.js"></script>
+<script src="watermark.js"></script>
+<script src="storage.js"></script>
+</body></html>

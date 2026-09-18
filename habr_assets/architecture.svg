@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#0a0a12"/>
+  <text x="30" y="50" fill="#ff5500" font-family="Arial" font-weight="bold" font-size="18">ТРИ СЛОЯ ЦИФРОВОГО КОВЧЕГА</text>
+  <!-- Клиент -->
+  <rect x="30" y="80" width="540" height="80" rx="8" fill="#1a1a2e" stroke="#ff5500" stroke-width="2"/>
+  <text x="50" y="115" fill="#ffb380" font-family="Arial" font-weight="bold" font-size="16">КЛИЕНТ (PWA)</text>
+  <text x="50" y="140" fill="#aa8c7a" font-family="Arial" font-size="12">DID-менеджер, WebRTC, localStorage</text>
+  <!-- Сервер -->
+  <rect x="30" y="180" width="540" height="80" rx="8" fill="#1a1a2e" stroke="#ff5500" stroke-width="2"/>
+  <text x="50" y="215" fill="#ffb380" font-family="Arial" font-weight="bold" font-size="16">СЕРВЕР (SIGNAL)</text>
+  <text x="50" y="240" fill="#aa8c7a" font-family="Arial" font-size="12">Express + Socket.io (не хранит данные)</text>
+  <!-- Блокчейн -->
+  <rect x="30" y="280" width="540" height="80" rx="8" fill="#1a1a2e" stroke="#ff5500" stroke-width="2"/>
+  <text x="50" y="315" fill="#ffb380" font-family="Arial" font-weight="bold" font-size="16">БЛОКЧЕЙН / IPFS</text>
+  <text x="50" y="340" fill="#aa8c7a" font-family="Arial" font-size="12">Polygon, ArtifactRegistry.sol</text>
+</svg>

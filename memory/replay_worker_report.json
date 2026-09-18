@@ -1,0 +1,158 @@
+{
+  "ts": "2026-09-17T04:07:44.963Z",
+  "mode": "replay",
+  "top": 100,
+  "patterns": {
+    "trajectories": 100,
+    "avgScore": 8.62,
+    "avgDurationMs": 29182,
+    "successRate": 1,
+    "slowestAction": {
+      "action": "углубился",
+      "avgMs": 33418
+    },
+    "actions": [
+      {
+        "action": "старт",
+        "count": 100,
+        "avgScore": 2.15,
+        "avgMs": null
+      },
+      {
+        "action": "сдача",
+        "count": 100,
+        "avgScore": 8.62,
+        "avgMs": null
+      },
+      {
+        "action": "углубился",
+        "count": 53,
+        "avgScore": 6.88,
+        "avgMs": 33418
+      },
+      {
+        "action": "быстро решил",
+        "count": 47,
+        "avgScore": 6,
+        "avgMs": 24405
+      }
+    ],
+    "topSequences": [
+      {
+        "seq": "старт -> углубился -> сдача",
+        "count": 53
+      },
+      {
+        "seq": "старт -> быстро решил -> сдача",
+        "count": 47
+      }
+    ],
+    "topOutcomeTokens": [
+      {
+        "token": "принял",
+        "count": 100
+      },
+      {
+        "token": "задачу",
+        "count": 100
+      },
+      {
+        "token": "score",
+        "count": 100
+      },
+      {
+        "token": "7266ms",
+        "count": 1
+      },
+      {
+        "token": "9284ms",
+        "count": 1
+      },
+      {
+        "token": "9845ms",
+        "count": 1
+      },
+      {
+        "token": "17171ms",
+        "count": 1
+      },
+      {
+        "token": "19406ms",
+        "count": 1
+      },
+      {
+        "token": "22093ms",
+        "count": 1
+      },
+      {
+        "token": "27725ms",
+        "count": 1
+      },
+      {
+        "token": "29744ms",
+        "count": 1
+      },
+      {
+        "token": "31129ms",
+        "count": 1
+      },
+      {
+        "token": "6156ms",
+        "count": 1
+      },
+      {
+        "token": "8438ms",
+        "count": 1
+      },
+      {
+        "token": "8812ms",
+        "count": 1
+      }
+    ]
+  },
+  "planned": [
+    {
+      "id": "RP-mu50e0jn-1",
+      "file": "tools/replay_report.js"
+    },
+    {
+      "id": "RP-mu50e0jn-2",
+      "file": "replay/pattern_miner.js"
+    },
+    {
+      "id": "RP-mu50e0jn-3",
+      "file": "test/replay_worker.test.js"
+    },
+    {
+      "id": "RP-mu50e0jn-4",
+      "file": "replay/task_synthesizer.js"
+    },
+    {
+      "id": "RP-mu50e0jn-5",
+      "file": "tools/replay_cron_check.js"
+    }
+  ],
+  "added": [
+    {
+      "id": "RP-mu50e0jn-1",
+      "file": "tools/replay_report.js"
+    },
+    {
+      "id": "RP-mu50e0jn-2",
+      "file": "replay/pattern_miner.js"
+    },
+    {
+      "id": "RP-mu50e0jn-3",
+      "file": "test/replay_worker.test.js"
+    },
+    {
+      "id": "RP-mu50e0jn-4",
+      "file": "replay/task_synthesizer.js"
+    },
+    {
+      "id": "RP-mu50e0jn-5",
+      "file": "tools/replay_cron_check.js"
+    }
+  ],
+  "ms": 10095
+}

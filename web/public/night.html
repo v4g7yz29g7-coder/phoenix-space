@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>NIGHT EVOLUTION · LIVE</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0a0e17;
+    color: #e0e6f0;
+    padding: 24px;
+    min-height: 100vh;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #4dd0ff, #a855f7, #ff7eb6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .live {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #6eff8b;
+  }
+  .live::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #6eff8b;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat {
+    background: #1a2030;
+    border-radius: 10px;
+    padding: 16px;
+    border-left: 3px solid #4dd0ff;
+  }
+  .stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #7a8baa;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  .stat.completed { border-color: #6eff8b; }
+  .stat.completed .stat-value { color: #6eff8b; }
+  .stat.in_progress { border-color: #ffd700; }
+  .stat.in_progress .stat-value { color: #ffd700; }
+  .stat.pending { border-color: #4a5570; }
+  .stat.pending .stat-value { color: #7a8baa; }
+  .stat.failed { border-color: #ff5c5c; }
+  .stat.failed .stat-value { color: #ff5c5c; }
+
+  .progress-wrap {
+    background: #1a2030;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+  .progress-bar {
+    height: 12px;
+    background: #0a0e17;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6eff8b, #4dd0ff);
+    transition: width 0.5s;
+  }
+
+  .controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .filter {
+    background: #1a2030;
+    border: 1px solid #2a3247;
+    color: #e0e6f0;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+  .filter:hover { border-color: #a855f7; }
+  .filter.active {
+    background: #a855f7;
+    border-color: #a855f7;
+    color: #fff;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0f1522;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  thead {
+    background: #1a2030;
+  }
+  th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #7a8baa;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 16px;
+    border-top: 1px solid #1a2030;
+    font-size: 13px;
+  }
+  tr.completed { background: rgba(110, 255, 139, 0.05); }
+  tr.completed td:first-child { border-left: 3px solid #6eff8b; }
+  tr.in_progress { background: rgba(255, 215, 0, 0.08); }
+  tr.in_progress td:first-child { border-left: 3px solid #ffd700; }
+  tr.in_progress td { animation: shimmer 2s infinite; }
+  @keyframes shimmer {
+    0%, 100% { background: rgba(255, 215, 0, 0.08); }
+    50% { background: rgba(255, 215, 0, 0.15); }
+  }
+  tr.failed { background: rgba(255, 92, 92, 0.05); }
+  tr.failed td:first-child { border-left: 3px solid #ff5c5c; }
+  tr.pending { opacity: 0.6; }
+
+  .status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .status.completed { background: rgba(110, 255, 139, 0.15); color: #6eff8b; }
+  .status.in_progress { background: rgba(255, 215, 0, 0.15); color: #ffd700; }
+  .status.failed { background: rgba(255, 92, 92, 0.15); color: #ff5c5c; }
+  .status.pending { background: rgba(122, 139, 170, 0.1); color: #7a8baa; }
+
+  .id { font-family: monospace; color: #4dd0ff; font-weight: 600; }
+  .file { font-family: monospace; color: #b0b8c8; font-size: 12px; }
+
+  .updated {
+    text-align: center;
+    color: #4a5570;
+    font-size: 11px;
+    margin-top: 16px;
+  }
+  .pulse-border {
+    animation: borderPulse 1.5s infinite;
+  }
+  @keyframes borderPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(168, 85, 247, 0); }
+  }
+
+  .group-header {
+    background: #1a2030;
+    padding: 10px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 13px;
+    color: #4dd0ff;
+    border-radius: 6px;
+    margin-top: 12px;
+  }
+  .group-header:hover { background: #252b3d; }
+  .group-header .stats-mini {
+    font-size: 11px;
+    color: #7a8baa;
+  }
+  .group-body { display: block; }
+  .group-body.collapsed { display: none; }
+  .timer { font-family: monospace; font-size: 11px; color: #ffd700; }
+  .timer.warn { color: #ff9f43; }
+  .timer.alarm { color: #ff5c5c; }
+  .recent-count {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(110, 255, 139, 0.15);
+    color: #6eff8b;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-left: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌙 NIGHT EVOLUTION · LIVE</h1>
+  <div class="live">LIVE · <span id="updated">—</span></div>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="progress-wrap">
+  <div style="display:flex;justify-content:space-between;font-size:12px;color:#7a8baa">
+    <span>PROGRESS</span>
+    <span id="progress-text">— / —</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+</div>
+
+<div class="controls" id="filters">
+  <button class="filter active" data-filter="all">Все</button>
+  <button class="filter" data-filter="in_progress">🔄 В работе</button>
+  <button class="filter" data-filter="pending">⏳ Ожидают</button>
+  <button class="filter" data-filter="completed">✅ Готово</button>
+  <button class="filter" data-filter="failed">❌ Failed</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:60px">ID</th>
+      <th style="width:140px">Группа</th>
+      <th style="width:120px">Статус</th>
+      <th>Файл</th>
+      <th style="width:100px">Строк</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<div class="updated">Обновление каждые 3 секунды</div>
+
+<script>
+let allTasks = [];
+let filter = 'all';
+
+async function fetchTasks() {
+  try {
+    const res = await fetch('/api/night?_=' + Date.now());
+    const d = await res.json();
+    allTasks = d.tasks || [];
+    render();
+    document.getElementById('updated').textContent = new Date().toLocaleTimeString('ru-RU');
+  } catch (e) {
+    document.getElementById('updated').textContent = 'ошибка: ' + e.message;
+  }
+}
+
+const groupCollapsed = {};
+
+function formatTimeSince(startIso) {
+  if (!startIso) return '—';
+  const sec = Math.round((Date.now() - new Date(startIso).getTime()) / 1000);
+  if (sec < 0) return '—';
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function render() {
+  const stats = { completed: 0, in_progress: 0, pending: 0, failed: 0 };
+  for (const t of allTasks) {
+    const s = t.status || 'pending';
+    stats[s] = (stats[s] || 0) + 1;
+  }
+  const total = allTasks.length;
+  const done = stats.completed;
+  const hourAgo = Date.now() - 3600 * 1000;
+  const recent = allTasks.filter(t => t.status === 'completed' && t.completed_at && new Date(t.completed_at).getTime() > hourAgo).length;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="stat-value">${total}</div><div class="stat-label">Всего</div></div>
+    <div class="stat completed"><div class="stat-value">${stats.completed}<span class="recent-count">+${recent}/ч</span></div><div class="stat-label">✅ Готово</div></div>
+    <div class="stat in_progress"><div class="stat-value">${stats.in_progress}</div><div class="stat-label">🔄 В работе</div></div>
+    <div class="stat pending"><div class="stat-value">${stats.pending}</div><div class="stat-label">⏳ Ожидают</div></div>
+    <div class="stat failed"><div class="stat-value">${stats.failed}</div><div class="stat-label">❌ Failed</div></div>
+  `;
+
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `${done} / ${total} (${pct}%)`;
+
+  const filtered = filter === 'all' ? allTasks : allTasks.filter(t => (t.status || 'pending') === filter);
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+
+  // Группировка
+  const groups = {};
+  for (const t of filtered) {
+    const g = t.group || 'other';
+    if (!groups[g]) groups[g] = [];
+    groups[g].push(t);
+  }
+
+  const order = { in_progress: 0, failed: 1, pending: 2, completed: 3 };
+
+  for (const gName of Object.keys(groups).sort()) {
+    const tasks = groups[gName].sort((a, b) => {
+      const oa = order[a.status || 'pending'] - order[b.status || 'pending'];
+      if (oa !== 0) return oa;
+      return (a.id || '').localeCompare(b.id || '');
+    });
+
+    const gStats = { completed: 0, in_progress: 0, pending: 0, failed: 0 };
+    for (const t of tasks) gStats[t.status || 'pending']++;
+
+    const isCollapsed = groupCollapsed[gName] ? 'collapsed' : '';
+    const arrow = groupCollapsed[gName] ? '▶' : '▼';
+
+    const headerRow = document.createElement('tr');
+    headerRow.innerHTML = `
+      <td colspan="5" class="group-header" data-group="${gName}">
+        <span>${arrow} ${gName.toUpperCase()} (${tasks.length})</span>
+        <span class="stats-mini">✅ ${gStats.completed} · 🔄 ${gStats.in_progress} · ⏳ ${gStats.pending}</span>
+      </td>
+    `;
+    tbody.appendChild(headerRow);
+
+    for (const t of tasks) {
+      const s = t.status || 'pending';
+      const icon = { completed: '✅', in_progress: '🔄', failed: '❌', pending: '⏳' }[s];
+      const lines = t.result?.verify?.checks?.lines || t.result?.verify?.lines || t.result?.lines || '—';
+      const timer = s === 'in_progress' ? formatTimeSince(t.started_at) : '—';
+      const timerCls = s === 'in_progress' ? (parseFloat(timer) > 20 ? 'alarm' : parseFloat(timer) > 10 ? 'warn' : '') : '';
+      
+      const tr = document.createElement('tr');
+      tr.className = s + ' ' + isCollapsed;
+      tr.innerHTML = `
+        <td class="id">${t.id || '?'}</td>
+        <td>${t.group || '—'}</td>
+        <td><span class="status ${s}">${icon} ${s}</span></td>
+        <td class="file">${t.file || '—'}${s === 'in_progress' ? ` <span class="timer ${timerCls}">${timer}</span>` : ''}</td>
+        <td>${lines}</td>
+      `;
+      tr.style.display = groupCollapsed[gName] ? 'none' : '';
+      tbody.appendChild(tr);
+    }
+  }
+
+  // Клик по группе — сворачивание
+  tbody.querySelectorAll('.group-header').forEach(el => {
+    el.addEventListener('click', () => {
+      const g = el.dataset.group;
+      groupCollapsed[g] = !groupCollapsed[g];
+      render();
+    });
+  });
+}
+
+document.getElementById('filters').addEventListener('click', (e) => {
+  if (!e.target.classList.contains('filter')) return;
+  document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  filter = e.target.dataset.filter;
+  render();
+});
+
+fetchTasks();
+setInterval(fetchTasks, 3000);
+</script>
+</body>
+</html>

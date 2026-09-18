@@ -1,0 +1,91 @@
+body{background:#0a0a12;color:#f0eef8;font-family:Inter,system-ui,sans-serif;margin:0}#app{max-width:1100px;margin:0 auto;padding:24px}.site-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}.logo{font-size:1.6rem;font-weight:700;color:#a78bfa;text-decoration:none}.main-nav a{color:#f0eef8;text-decoration:none;margin-right:16px}.btn{background:#a78bfa;color:#0a0a12;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem}.btn-outline{background:transparent;border:1px solid #a78bfa;color:#a78bfa}.btn-small{padding:8px 16px}.hero{text-align:center;margin-bottom:60px}.hero h1{font-size:2.5rem;margin-bottom:16px}.hero-subtitle{color:#88839a;max-width:600px;margin:0 auto 24px}.upload-section h2{margin-bottom:16px}.preview-grid{display:flex;flex-wrap:wrap;gap:12px}.photo-card{width:120px;height:120px}.photo-preview{width:100%;height:100%;object-fit:cover;border-radius:8px}.features{display:flex;gap:24px;margin-top:60px}.feature{flex:1;background:rgba(255,255,255,0.05);padding:24px;border-radius:12px}.site-footer{margin-top:60px;text-align:center;color:#88839a}.content{max-width:700px;margin:0 auto}.tariffs{display:flex;gap:24px}.tariff{flex:1;background:rgba(255,255,255,0.05);padding:24px;border-radius:12px}
+
+.collage-photo {
+  object-fit: cover;
+  border-radius: 8px;
+}
+.collage-grid .collage-photo {
+  width: 100px;
+  height: 100px;
+}
+.collage-asymmetrical .collage-photo:first-child {
+  width: 200px;
+  height: 200px;
+}
+.collage-asymmetrical .collage-photo {
+  width: 100px;
+  height: 100px;
+}
+.collage-polaroid .polaroid-card {
+  background: white;
+  padding: 8px 8px 24px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.collage-polaroid .polaroid-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.collage-polaroid figcaption {
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  margin-top: 8px;
+}
+.collage-freeform .collage-photo {
+  width: 90px;
+  height: 90px;
+  border: 3px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.preview-section {
+  margin-bottom: 24px;
+  transition: opacity 0.3s;
+}
+.upload-section.dimmed {
+  opacity: 0.35;
+}
+.collage-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.collage-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #a78bfa;
+}
+
+html, body {
+  overflow-x: hidden !important;
+}
+.collage {
+  max-width: 100% !important;
+  overflow: auto !important;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.collage img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+.collage-freeform .collage-photo,
+.collage-stack .collage-photo {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: cover;
+}
+.collage-filmstrip {
+  display: flex !important;
+  overflow-x: auto !important;
+  gap: 4px !important;
+  padding: 8px !important;
+}
+.collage-filmstrip .collage-photo {
+  flex: 0 0 auto;
+  width: 80px !important;
+  height: 60px !important;
+}

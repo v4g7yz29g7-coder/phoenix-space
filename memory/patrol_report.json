@@ -1,0 +1,25 @@
+{
+  "ts": "2026-09-13T16:27:41.163Z",
+  "checks": {
+    "completed": {
+      "ok": true,
+      "total": 27,
+      "without_completed_at": []
+    },
+    "stuck": {
+      "ok": true,
+      "stuck": []
+    },
+    "fake": {
+      "ok": true,
+      "fake": []
+    },
+    "processes": {
+      "ok": true,
+      "count": 1,
+      "processes": "ishidin  1326013  0.0  3.2 11579172 65372 pts/0  Sl   16:16   0:00 node research_worker.js --loop\n"
+    }
+  },
+  "passed": 4,
+  "failed": 0
+}

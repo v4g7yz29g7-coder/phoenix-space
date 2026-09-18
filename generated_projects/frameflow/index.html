@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — лендинг фото-сервиса</title>
+  <!-- только базовые стили для читабельности разметки, без каркаса -->
+  <style>
+    /* минимальные сбросы и базовые стили, чтобы было видно структуру */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f8fafc; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; color: #0f172a; }
+    #app { max-width: 1200px; margin: 0 auto; padding: 1.5rem; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border-radius: 2rem; }
+    /* лёгкие акценты для наглядности */
+    .header, .hero, .upload-section, .preview-grid, .layout-panel, .generate-block, .features, .footer {
+      padding: 1rem 0;
+    }
+    .grid-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: #f1f5f9;
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+      border: 1px dashed #cbd5e1;
+    }
+    button {
+      background: #2563eb;
+      border: none;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 500;
+      cursor: default; /* просто разметка */
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #2563eb;
+      color: #2563eb;
+    }
+    .layout-options {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .layout-item {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 1rem;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+    }
+    .layout-item.active {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-item {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+    }
+    hr { margin: 1.5rem 0; border: 0; border-top: 1px solid #e2e8f0; }
+    .footer { display: flex; justify-content: space-between; align-items: center; color: #475569; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { text-decoration: none; color: #334155; font-weight: 500; }
+    .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; }
+    .logo span { color: #2563eb; }
+    .hero h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; color: #475569; max-width: 600px; }
+    .btn-group { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .upload-area { background: #f1f5f9; border: 2px dashed #94a3b8; border-radius: 2rem; padding: 2rem; text-align: center; }
+    .file-label { font-weight: 600; background: #2563eb; color: white; padding: 0.8rem 1.8rem; border-radius: 999px; display: inline-block; margin: 1rem 0; }
+    .preview-grid .card { background: #e2e8f0; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 0.9rem; }
+    .generate-block { display: flex; align-items: center; justify-content: space-between; background: #f1f5f9; border-radius: 2rem; padding: 1.5rem 2rem; }
+    .generate-block button { padding: 1rem 2.5rem; font-size: 1.1rem; }
+    .layout-panel select { padding: 0.6rem 1rem; border-radius: 1rem; border: 1px solid #cbd5e1; background: white; }
+  </style>
+</head>
+<body>
+  <!-- Вся разметка внутри #app, без внешнего каркаса -->
+  <div id="app">
+    <!-- ШАПКА С НАВИГАЦИЕЙ -->
+    <header class="header" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="logo">Frame<span>Flow</span></div>
+      <nav class="nav-links">
+        <a href="#">Возможности</a>
+        <a href="#">Макеты</a>
+        <a href="#">Примеры</a>
+        <a href="#">Контакты</a>
+      </nav>
+      <div>
+        <button class="btn-outline" style="margin-right: 0.5rem;">Войти</button>
+        <button>Регистрация</button>
+      </div>
+    </header>
+
+    <!-- HERO С КНОПКАМИ -->
+    <section class="hero">
+      <h1>Создавайте коллажи<br>из ваших фото за минуту</h1>
+      <p>FrameFlow — умный сервис для мгновенной сборки эстетичных коллажей. Загрузите фотографии, выберите макет — и получите готовый результат.</p>
+      <div class="btn-group">
+        <button>Начать бесплатно</button>
+        <button class="btn-outline">Смотреть демо</button>
+      </div></div>
+  <script src="app.js"></script>
+</body>
+</html>

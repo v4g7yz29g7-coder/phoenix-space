@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пульсар — Observability Dashboard</title>
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --panel: #131a2b;
+    --panel-2: #1a2338;
+    --accent: #00e5ff;
+    --accent-2: #7c4dff;
+    --ok: #00e676;
+    --warn: #ffb300;
+    --crit: #ff1744;
+    --text: #e3e7f0;
+    --muted: #8892a6;
+    --border: #253048;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(circle at 20% 0%, #16203a 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: "SF Mono", "JetBrains Mono", Consolas, monospace;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .pulse-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 18px var(--accent);
+    animation: pulse 1.6s infinite ease-in-out;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.35); opacity: .55; }
+  }
+  h1 { font-size: 22px; letter-spacing: 2px; font-weight: 600; }
+  h1 span { color: var(--accent); }
+  .meta { color: var(--muted); font-size: 12px; text-align: right; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .card {
+    background: linear-gradient(160deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  }
+  .card h3 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--muted); margin-bottom: 10px; font-weight: 500;
+  }
+  .metric { font-size: 30px; font-weight: 700; }
+  .metric small { font-size: 13px; color: var(--muted); font-weight: 400; }
+  .delta { font-size: 12px; margin-top: 6px; }
+  .up { color: var(--ok); }
+  .down { color: var(--crit); }
+  .neutral { color: var(--warn); }
+  section { margin-bottom: 28px; }
+  section > h2 {
+    font-size: 14px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); margin-bottom: 14px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; }
+  tr:hover td { background: rgba(0, 229, 255, .04); }
+  .badge {
+    display: inline-block; padding: 3px 9px; border-radius: 20px;
+    font-size: 11px; font-weight: 600;
+  }
+  .badge.ok { background: rgba(0, 230, 118, .14); color: var(--ok); }
+  .badge.warn { background: rgba(255, 179, 0, .14); color: var(--warn); }
+  .badge.crit { background: rgba(255, 23, 68, .14); color: var(--crit); }
+  .bars { display: flex; flex-direction: column; gap: 12px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; font-size: 12px; }
+  .bar-label { width: 120px; color: var(--muted); }
+  .bar-track {
+    flex: 1; height: 10px; background: var(--panel-2);
+    border-radius: 6px; overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%; border-radius: 6px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transition: width .6s ease;
+  }
+  .bar-fill.warn { background: linear-gradient(90deg, var(--warn), #ff6d00); }
+  .bar-fill.crit { background: linear-gradient(90deg, var(--crit), #d50000); }
+  .bar-val { width: 48px; text-align: right; color: var(--text); }
+  .topics { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .topic {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px;
+  }
+  .topic h4 { font-size: 13px; margin-bottom: 8px; color: var(--text); }
+  .topic .row { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin: 4px 0; }
+  .topic .row b { color: var(--text); font-weight: 600; }
+  footer {
+    border-top: 1px solid var(--border); padding-top: 14px;
+    color: var(--muted); font-size: 11px; display: flex;
+    justify-content: space-between;
+  }
+  .ledger { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  .ledger code { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="pulse-dot"></div>
+    <h1>PULSAR<span>//</span>OBSERVABILITY</h1>
+  </div>
+  <div class="meta">
+    <div>cluster: pulsar-core-01</div>
+    <div id="clock">--:--:-- UTC</div>
+  </div>
+</header>
+
+<section>
+  <h2>Ключевые метрики</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Throughput</h3>
+      <div class="metric" id="m-throughput">482.6 <small>K msg/s</small></div>
+      <div class="delta up">&#9650; 4.2% за 15м</div>
+    </div>
+    <div class="card">
+      <h3>Publish Latency p99</h3>
+      <div class="metric" id="m-latency">18.4 <small>ms</small></div>
+      <div class="delta up">&#9660; 1.1ms за 15м</div>
+    </div>
+    <div class="card">
+      <h3>Active Topics</h3>
+      <div class="metric" id="m-topics">1 284</div>
+      <div class="delta neutral">= стабильно</div>
+    </div>
+    <div class="card">
+      <h3>Consumer Lag</h3>
+      <div class="metric" id="m-lag">2.7 <small>M</small></div>
+      <div class="delta down">&#9650; 8.9% за 15м</div>
+    </div>
+    <div class="card">
+      <h3>Uptime</h3>
+      <div class="metric" id="m-uptime">99.98 <small>%</small></div>
+      <div class="delta up">SLA OK</div>
+    </div>
+    <div class="card">
+      <h3>Error Rate</h3>
+      <div class="metric" id="m-errors">0.014 <small>%</small></div>
+      <div class="delta up">&#9660; в норме</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Broker Health</h2>
+  <table>
+    <thead>
+      <tr><th>Broker</th><th>Роль</th><th>Load</th><th>Connections</th><th>Статус</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>pulsar-broker-01</td><td>active</td><td>42%</td><td>3 812</td><td><span class="badge ok">healthy</span></td></tr>
+      <tr><td>pulsar-broker-02</td><td>active</td><td>58%</td><td>4 201</td><td><span class="badge ok">healthy</span></td></tr>
+      <tr><td>pulsar-broker-03</td><td>active</td><td>71%</td><td>5 044</td><td><span class="badge warn">degraded</span></td></tr>
+      <tr><td>pulsar-broker-04</td><td>standby</td><td>12%</td><td>0</td><td><span class="badge ok">ready</span></td></tr>
+      <tr><td>pulsar-broker-05</td><td>active</td><td>39%</td><td>3 110</td><td><span class="badge ok">healthy</span></td></tr>
+      <tr><td>pulsar-broker-06</td><td>active</td><td>88%</td><td>6 780</td><td><span class="badge crit">overloaded</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Resource Saturation</h2>
+  <div class="bars">
+    <div class="bar-row">
+      <div class="bar-label">CPU</div>
+      <div class="bar-track"><div class="bar-fill" style="width:54%"></div></div>
+      <div class="bar-val">54%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Heap Memory</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width:73%"></div></div>
+      <div class="bar-val">73%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Disk I/O</div>
+      <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
+      <div class="bar-val">38%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Net TX</div>
+      <div class="bar-track"><div class="bar-fill" style="width:61%"></div></div>
+      <div class="bar-val">61%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Net RX</div>
+      <div class="bar-track"><div class="bar-fill" style="width:47%"></div></div>
+      <div class="bar-val">47%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Direct Buffer</div>
+      <div class="bar-track"><div class="bar-fill crit" style="width:91%"></div></div>
+      <div class="bar-val">91%</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Top Topics по нагрузке</h2>
+  <div class="topics">
+    <div class="topic">
+      <h4>persistent://events/orders</h4>
+      <div class="row"><span>Rate</span><b>142 300 msg/s</b></div>
+      <div class="row"><span>Subscriptions</span><b>14</b></div>
+      <div class="row"><span>Backlog</span><b>0.4M</b></div>
+    </div>
+    <div class="topic">
+      <h4>persistent://events/telemetry</h4>
+      <div class="row"><span>Rate</span><b>98 120 msg/s</b></div>
+      <div class="row"><span>Subscriptions</span><b>7</b></div>
+      <div class="row"><span>Backlog</span><b>1.2M</b></div>
+    </div>
+    <div class="topic">
+      <h4>persistent://core/audit-log</h4>
+      <div class="row"><span>Rate</span><b>44 900 msg/s</b></div>
+      <div class="row"><span>Subscriptions</span><b>3</b></div>
+      <div class="row"><span>Backlog</span><b>0.0M</b></div>
+    </div>
+    <div class="topic">
+      <h4>non-persistent://rt/quotes</h4>
+      <div class="row"><span>Rate</span><b>210 770 msg/s</b></div>
+      <div class="row"><span>Subscriptions</span><b>22</b></div>
+      <div class="row"><span>Backlog</span><b>n/a</b></div>
+    </div>
+    <div class="topic">
+      <h4>persistent://events/payments</h4>
+      <div class="row"><span>Rate</span><b>31 400 msg/s</b></div>
+      <div class="row"><span>Subscriptions</span><b>9</b></div>
+      <div class="row"><span>Backlog</span><b>0.9M</b></div>
+    </div>
+    <div class="topic">
+      <h4>persistent://ml/features</h4>
+      <div class="row"><span>Rate</span><b>27 650 msg/s</b></div>
+      <div class="row"><span>Subscriptions</span><b>5</b></div>
+      <div class="row"><span>Backlog</span><b>0.1M</b></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Активные алерты</h2>
+  <table>
+    <thead>
+      <tr><th>Время</th><th>Severity</th><th>Компонент</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>12:04:11</td><td><span class="badge crit">P1</span></td><td>broker-06</td><td>Direct buffer usage &gt; 90%</td></tr>
+      <tr><td>11:58:47</td><td><span class="badge warn">P2</span></td><td>broker-03</td><td>Publish latency p99 &gt; 15ms</td></tr>
+      <tr><td>11:41:03</td><td><span class="badge warn">P2</span></td><td>topic/telemetry</td><td>Consumer backlog рост &gt; 1M</td></tr>
+      <tr><td>11:22:19</td><td><span class="badge ok">P3</span></td><td>broker-04</td><td>Standby peer heartbeat ok</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>BookKeeper / Ledger</h2>
+  <table>
+    <thead>
+      <tr><th>Ledger Node</th><th>Write Ops/s</th><th>Read Ops/s</th><th>Ensemble</th><th>Статус</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>bk-01</td><td>88 400</td><td>120 100</td><td>3/3</td><td><span class="badge ok">healthy</span></td></tr>
+      <tr><td>bk-02</td><td>91 200</td><td>118 700</td><td>3/3</td><td><span class="badge ok">healthy</span></td></tr>
+      <tr><td>bk-03</td><td>76 300</td><td>99 400</td><td>2/3</td><td><span class="badge warn">under-replicated</span></td></tr>
+      <tr><td>bk-04</td><td>82 900</td><td>110 050</td><td>3/3</td><td><span class="badge ok">healthy</span></td></tr>
+    </tbody>
+  </table>
+  <p class="ledger">Ledger lag: <code>0.004s</code> &middot; fSync limit: <code>0.5s</code> &middot; Cache hit: <code>94.2%</code></p>
+</section>
+
+<footer>
+  <div>Pulsar Dashboard v1.0 &middot; observability/pulsar_dashboard.html</div>
+  <div>auto-refresh: 5s &middot; source: prometheus + pulsar-admin</div>
+</footer>
+
+<script>
+  // Часы UTC
+  function tick() {
+    const d = new Date();
+    const t = d.toISOString().slice(11, 19) + " UTC";
+    document.getElementById("clock").textContent = t;
+  }
+  setInterval(tick, 1000);
+  tick();
+
+  // Лёгкая симуляция живых метрик
+  const jitter = (base, spread) => base + (Math.random() - 0.5) * spread;
+
+  function updateMetrics() {
+    document.getElementById("m-throughput").innerHTML =
+      jitter(482.6, 40).toFixed(1) + " <small>K msg/s</small>";
+    document.getElementById("m-latency").innerHTML =
+      jitter(18.4, 4).toFixed(1) + " <small>ms</small>";
+    document.getElementById("m-lag").innerHTML =
+      jitter(2.7, 0.5).toFixed(1) + " <small>M</small>";
+    document.getElementById("m-errors").innerHTML =
+      Math.abs(jitter(0.014, 0.008)).toFixed(3) + " <small>%</small>";
+  }
+  setInterval(updateMetrics, 5000);
+</script>
+</body>
+</html>

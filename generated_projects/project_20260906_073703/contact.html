@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">Вот HTML-разметка для страницы «Контакты» с формой обратной связи, стилизованная под тёмную тему с фиолетовыми акцентами.
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — Контакты</title>
+  <!-- Подключение шрифта Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок (опционально, для соцсетей/иконок) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Сброс и базовые стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0b0b0f; /* глубокий тёмный фон */
+      color: #e5e5e5;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Контейнер для центрирования */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== ШАПКА (как на всех страницах) ===== */
+    .navbar {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+      background-color: rgba(11, 11, 15, 0.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .logo span {
+      color: #a78bfa; /* фиолетовый акцент */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #b0b0b8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #a78bfa;
+    }
+
+    .nav-links a.active {
+      color: #ffffff;
+      border-bottom: 2px solid #a78bfa;
+      padding-bottom: 4px;
+    }
+
+    /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 0;
+    }
+
+    .contact-section {
+      width: 100%;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Левая часть — информация */
+    .contact-info h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-info h1 span {
+      color: #a78bfa;
+    }
+
+    .contact-info .subtitle {
+      font-size: 1.1rem;
+      color: #a0a0b0;
+      margin-bottom: 40px;
+      max-width: 400px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(167, 139, 250, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a78bfa;
+      font-size: 1.3rem;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+    }
+
+    .info-text h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .info-text p {
+      color: #a0a0b0;
+      font-size: 0.95rem;
+    }
+
+    .info-text a {
+      color: #a78bfa;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .info-text a:hover {
+      opacity: 0.8;
+    }
+
+    /* Правая часть — форма */
+    .form-wrapper {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(167, 139, 250, 0.15);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-wrapper h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .form-wrapper .form-subtitle {
+      color: #a0a0b0;
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #c0c0cc;
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width:</div>
+  <script src="app.js"></script>
+</body>
+</html>

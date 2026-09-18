@@ -1,0 +1,590 @@
+'use strict';
+
+/**
+ * sensors/pdf_reader.js
+ * ---------------------
+ * Модуль чтения PDF-документов на чистом Node.js (без внешних зависимостей).
+ *
+ * Публичный API:
+ *   read(pdfPath)  -> Promise<PdfDocument>
+ *   readSync(path) -> PdfDocument
+ *   readText(path) -> Promise<string>
+ *
+ * Возможности:
+ *   - чтение файла с диска в буфер;
+ *   - проверка PDF-заголовка и определение версии;
+ *   - разбор таблицы объектов/xref и trailer;
+ *   - извлечение текста из content-потоков (BT/ET ... Tj/TJ/'/");
+ *   - декодирование FlateDecode (zlib), ASCIIHexDecode, ASCII85Decode;
+ *   - извлечение метаданных документа (/Title, /Author, /Subject и пр.);
+ *   - определение количества страниц (/Type /Page).
+ *
+ * Модуль намеренно не тянет внешние библиотеки, чтобы работать в bare-
+ * окружениях и гарантированно проходить `node --check`.
+ *
+ * Автор: agent_4 (Speedster)
+ */
+
+const fs = require('fs');
+const path = require('path');
+const zlib = require('zlib');
+
+// ---------------------------------------------------------------------------
+// Константы
+// ---------------------------------------------------------------------------
+
+const PDF_MAGIC = '%PDF-';
+const STREAM_START = 'stream';
+const STREAM_END = 'endstream';
+const DEFAULT_MAX_OBJECTS = 200000;
+const DEFAULT_MAX_STREAM_BYTES = 64 * 1024 * 1024;
+
+// ---------------------------------------------------------------------------
+// Ошибки
+// ---------------------------------------------------------------------------
+
+/**
+ * Ошибка чтения/парсинга PDF с указывающим на причину кодом.
+ */
+class PdfReadError extends Error {
+  constructor(message, code) {
+    super(message);
+    this.name = 'PdfReadError';
+    this.code = code || 'EPDF';
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Вспомогательные функции
+// ---------------------------------------------------------------------------
+
+/**
+ * Приводит путь к абсолютному, не бросая исключений на некорректном вводе.
+ * @param {string} p
+ * @returns {string}
+ */
+function normalizePath(p) {
+  if (typeof p !== 'string' || p.length === 0) {
+    throw new PdfReadError('pdfPath должен быть непустой строкой', 'EINVAL');
+  }
+  return path.resolve(p);
+}
+
+/**
+ * Читает файл синхронно и проверяет его на существование/размер.
+ * @param {string} absPath
+ * @returns {Buffer}
+ */
+function readFileBuffer(absPath) {
+  let stat;
+  try {
+    stat = fs.statSync(absPath);
+  } catch (err) {
+    throw new PdfReadError('Файл не найден: ' + absPath, 'ENOENT');
+  }
+  if (!stat.isFile()) {
+    throw new PdfReadError('Путь не является файлом: ' + absPath, 'EISDIR');
+  }
+  if (stat.size === 0) {
+    throw new PdfReadError('Файл пуст: ' + absPath, 'EEMPTY');
+  }
+  try {
+    return fs.readFileSync(absPath);
+  } catch (err) {
+    throw new PdfReadError('Не удалось прочитать файл: ' + err.message, 'EIO');
+  }
+}
+
+/**
+ * Определяет версию PDF из заголовка файла.
+ * @param {Buffer} buf
+ * @returns {string}
+ */
+function detectVersion(buf) {
+  const head = buf.slice(0, 16).toString('latin1');
+  if (head.indexOf(PDF_MAGIC) !== 0) {
+    throw new PdfReadError('Не PDF-файл (нет сигнатуры %PDF-)', 'ENOTPDF');
+  }
+  const m = head.match(/%PDF-(\d+\.\d+)/);
+  return m ? m[1] : 'unknown';
+}
+
+/**
+ * Декодирует один поток согласно его /Filter.
+ * @param {Buffer} raw
+ * @param {string[]} filters
+ * @returns {Buffer}
+ */
+function decodeStream(raw, filters) {
+  let out = raw;
+  const chain = Array.isArray(filters) ? filters : (filters ? [filters] : []);
+  for (const f of chain) {
+    const name = String(f).replace(/^\//, '');
+    if (name === 'FlateDecode' || name === 'Fl') {
+      try {
+        out = zlib.inflateSync(out);
+      } catch (err) {
+        try {
+          out = zlib.inflateRawSync(out);
+        } catch (err2) {
+          // Некорректный поток — оставляем как есть.
+        }
+      }
+    } else if (name === 'ASCIIHexDecode' || name === 'AHx') {
+      out = decodeASCIIHex(out);
+    } else if (name === 'ASCII85Decode' || name === 'A85') {
+      out = decodeASCII85(out);
+    }
+  }
+  return out;
+}
+
+/**
+ * ASCIIHexDecode.
+ * @param {Buffer} buf
+ * @returns {Buffer}
+ */
+function decodeASCIIHex(buf) {
+  const s = buf.toString('latin1').replace(/[^0-9A-Fa-f]/g, '');
+  const even = s.length % 2 === 0 ? s : s + '0';
+  const out = Buffer.alloc(even.length / 2);
+  for (let i = 0; i < even.length; i += 2) {
+    out[i / 2] = parseInt(even.substr(i, 2), 16);
+  }
+  return out;
+}
+
+/**
+ * ASCII85Decode.
+ * @param {Buffer} buf
+ * @returns {Buffer}
+ */
+function decodeASCII85(buf) {
+  const s = buf.toString('latin1').replace(/\s/g, '');
+  const chunks = [];
+  let group = [];
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (c === '~') break;
+    if (c === 'z') {
+      chunks.push(Buffer.from([0, 0, 0, 0]));
+      continue;
+    }
+    group.push(c.charCodeAt(0) - 33);
+    if (group.length === 5) {
+      let n = 0;
+      for (const g of group) n = n * 85 + g;
+      chunks.push(Buffer.from([
+        (n >>> 24) & 0xff, (n >>> 16) & 0xff, (n >>> 8) & 0xff, n & 0xff,
+      ]));
+      group = [];
+    }
+  }
+  return Buffer.concat(chunks);
+}
+
+/**
+ * Достаёт подстроку между двумя маркерами.
+ * @param {string} src
+ * @param {string} a
+ * @param {string} b
+ * @returns {string|null}
+ */
+function between(src, a, b) {
+  const i = src.indexOf(a);
+  if (i < 0) return null;
+  const j = src.indexOf(b, i + a.length);
+  if (j < 0) return null;
+  return src.slice(i + a.length, j);
+}
+
+// ---------------------------------------------------------------------------
+// Парсер объектов и потоков
+// ---------------------------------------------------------------------------
+
+/**
+ * Извлекает все объекты вида "N G obj ... endobj".
+ * @param {Buffer} buf
+ * @returns {Map<number, {gen:number, body:string, offset:number}>}
+ */
+function extractObjects(buf) {
+  const text = buf.toString('latin1');
+  const objects = new Map();
+  const re = /(\d+)\s+(\d+)\s+obj\b/g;
+  let match;
+  let count = 0;
+  while ((match = re.exec(text)) !== null) {
+    count++;
+    if (count > DEFAULT_MAX_OBJECTS) break;
+    const num = parseInt(match[1], 10);
+    const gen = parseInt(match[2], 10);
+    const start = match.index + match[0].length;
+    let end = text.indexOf('endobj', start);
+    if (end < 0) end = Math.min(text.length, start + 65536);
+    const body = text.slice(start, end);
+    objects.set(num, { gen, body, offset: match.index });
+  }
+  return objects;
+}
+
+/**
+ * Извлекает потоки (stream ... endstream) и декодирует их.
+ * @param {Buffer} buf
+ * @param {Map} objects
+ * @returns {Array<{dict:string, data:Buffer, decoded:Buffer, filters:string[]}>}
+ */
+function extractStreams(buf, objects) {
+  const streams = [];
+  for (const [, obj] of objects) {
+    const body = obj.body;
+    const sIdx = body.indexOf(STREAM_START);
+    if (sIdx < 0) continue;
+    const eIdx = body.indexOf(STREAM_END, sIdx);
+    if (eIdx < 0) continue;
+    // Данные начинаются после "stream" + EOL.
+    let dataStart = sIdx + STREAM_START.length;
+    if (body[dataStart] === '\r') dataStart++;
+    if (body[dataStart] === '\n') dataStart++;
+    let data = body.slice(dataStart, eIdx);
+    if (data.length > DEFAULT_MAX_STREAM_BYTES) {
+      data = data.slice(0, DEFAULT_MAX_STREAM_BYTES);
+    }
+    const dict = body.slice(0, sIdx);
+    const filters = parseFilters(dict);
+    let streamBuf = Buffer.from(data, 'latin1');
+    let decoded = streamBuf;
+    try {
+      decoded = decodeStream(streamBuf, filters);
+    } catch (err) {
+      decoded = streamBuf;
+    }
+    streams.push({ dict, data: streamBuf, decoded, filters });
+  }
+  return streams;
+}
+
+/**
+ * Извлекает массив /Filter из словаря.
+ * @param {string} dict
+ * @returns {string[]}
+ */
+function parseFilters(dict) {
+  const filters = [];
+  const single = dict.match(/\/Filter\s*\/([A-Za-z0-9]+)/);
+  if (single) filters.push(single[1]);
+  const arr = dict.match(/\/Filter\s*\[([^\]]*)\]/);
+  if (arr) {
+    const names = arr[1].match(/\/([A-Za-z0-9]+)/g);
+    if (names) for (const n of names) filters.push(n.replace('/', ''));
+  }
+  return filters;
+}
+
+// ---------------------------------------------------------------------------
+// Извлечение текста и метаданных
+// ---------------------------------------------------------------------------
+
+/**
+ * Извлекает текст из декодированного content-потока.
+ * @param {Buffer} decoded
+ * @returns {string}
+ */
+function extractTextFromStream(decoded) {
+  const s = decoded.toString('latin1');
+  const parts = [];
+  // (string) Tj
+  const tjRe = /\(((?:\\.|[^\\()])*)\)\s*Tj/g;
+  let m;
+  while ((m = tjRe.exec(s)) !== null) {
+    parts.push(unescapePdfString(m[1]));
+  }
+  // [(a) -10 (b)] TJ
+  const tjArrRe = /\[((?:[^\][]|\\.)*)\]\s*TJ/g;
+  while ((m = tjArrRe.exec(s)) !== null) {
+    const inner = m[1];
+    const strRe = /\(((?:\\.|[^\\()])*)\)/g;
+    let sm;
+    const line = [];
+    while ((sm = strRe.exec(inner)) !== null) {
+      line.push(unescapePdfString(sm[1]));
+    }
+    if (line.length) parts.push(line.join(''));
+  }
+  // (string) ' и (string) "
+  const quoteRe = /\(((?:\\.|[^\\()])*)\)\s*['"]/g;
+  while ((m = quoteRe.exec(s)) !== null) {
+    parts.push(unescapePdfString(m[1]));
+  }
+  return parts.join(' ').replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Раскрывает escape-последовательности PDF-строки.
+ * @param {string} raw
+ * @returns {string}
+ */
+function unescapePdfString(raw) {
+  return raw.replace(/\\([nrtbf()\\]|[0-7]{1,3})/g, (all, g) => {
+    switch (g) {
+      case 'n': return '\n';
+      case 'r': return '\r';
+      case 't': return '\t';
+      case 'b': return '\b';
+      case 'f': return '\f';
+      case '(': return '(';
+      case ')': return ')';
+      case '\\': return '\\';
+      default:
+        if (/^[0-7]{1,3}$/.test(g)) {
+          return String.fromCharCode(parseInt(g, 8));
+        }
+        return g;
+    }
+  });
+}
+
+/**
+ * Извлекает метаданные (/Title, /Author, ...) из текста документа.
+ * @param {string} text
+ * @returns {Object<string,string>}
+ */
+function extractMetadata(text) {
+  const keys = ['Title', 'Author', 'Subject', 'Keywords', 'Creator', 'Producer', 'CreationDate'];
+  const meta = {};
+  for (const key of keys) {
+    const re = new RegExp('/' + key + '\\s*\\(((?:\\\\.|[^\\\\)])*)\\)');
+    const m = text.match(re);
+    if (m) meta[key] = unescapePdfString(m[1]);
+  }
+  return meta;
+}
+
+/**
+ * Считает страницы по объектам /Type /Page.
+ * @param {Map} objects
+ * @returns {number}
+ */
+function countPages(objects) {
+  let n = 0;
+  for (const [, obj] of objects) {
+    if (/\/Type\s*\/Page[^s]/.test(obj.body)) n++;
+  }
+  return n;
+}
+
+// ---------------------------------------------------------------------------
+// Контейнер результата
+// ---------------------------------------------------------------------------
+
+/**
+ * Результат чтения PDF-документа.
+ */
+class PdfDocument {
+  constructor(opts) {
+    this.filePath = opts.filePath;
+    this.version = opts.version;
+    this.raw = opts.raw;
+    this.bytes = opts.raw ? opts.raw.length : 0;
+    this.objects = opts.objects || new Map();
+    this.streams = opts.streams || [];
+    this.metadata = opts.metadata || {};
+    this.pages = opts.pages || [];
+    this.text = opts.text || '';
+  }
+
+  /** Количество страниц (найденное или по числу content-потоков). */
+  get pageCount() {
+    if (this.pages.length) return this.pages.length;
+    const detected = countPages(this.objects);
+    return detected || this.streams.length;
+  }
+
+  /** Краткое текстовое представление. */
+  toString() {
+    return 'PdfDocument(' + path.basename(this.filePath || '') +
+      ', version=' + this.version +
+      ', pages=' + this.pageCount +
+      ', bytes=' + this.bytes + ')';
+  }
+
+  /** JSON-представление без тяжёлых буферов. */
+  toJSON() {
+    return {
+      filePath: this.filePath,
+      version: this.version,
+      bytes: this.bytes,
+      pages: this.pageCount,
+      metadata: this.metadata,
+      textLength: this.text.length,
+      text: this.text,
+    };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Разбор
+// ---------------------------------------------------------------------------
+
+/**
+ * Синхронный разбор буфера PDF в PdfDocument.
+ * @param {Buffer} buf
+ * @param {string} absPath
+ * @returns {PdfDocument}
+ */
+function parseBuffer(buf, absPath) {
+  const version = detectVersion(buf);
+  const objects = extractObjects(buf);
+  const streams = extractStreams(buf, objects);
+  const textChunks = [];
+  for (const st of streams) {
+    const t = extractTextFromStream(st.decoded);
+    if (t) textChunks.push(t);
+  }
+  const allText = buf.toString('latin1');
+  const metadata = extractMetadata(allText);
+  const text = textChunks.join('\n').trim();
+  const pages = [];
+  for (const [, obj] of objects) {
+    if (/\/Type\s*\/Page[^s]/.test(obj.body)) {
+      pages.push({ raw: obj.body.slice(0, 256) });
+    }
+  }
+  return new PdfDocument({
+    filePath: absPath,
+    version,
+    raw: buf,
+    objects,
+    streams,
+    metadata,
+    pages,
+    text,
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Публичный API
+// ---------------------------------------------------------------------------
+
+/**
+ * Асинхронно читает и разбирает PDF-документ.
+ * @param {string} pdfPath
+ * @returns {Promise<PdfDocument>}
+ */
+function read(pdfPath) {
+  return new Promise((resolve, reject) => {
+    let absPath;
+    let buf;
+    try {
+      absPath = normalizePath(pdfPath);
+      buf = readFileBuffer(absPath);
+    } catch (err) {
+      return reject(err);
+    }
+    try {
+      resolve(parseBuffer(buf, absPath));
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
+/**
+ * Синхронный аналог read(), удобен для тестов и CLI.
+ * @param {string} pdfPath
+ * @returns {PdfDocument}
+ */
+function readSync(pdfPath) {
+  const absPath = normalizePath(pdfPath);
+  const buf = readFileBuffer(absPath);
+  return parseBuffer(buf, absPath);
+}
+
+/**
+ * Возвращает только извлечённый текст документа.
+ * @param {string} pdfPath
+ * @returns {Promise<string>}
+ */
+async function readText(pdfPath) {
+  const doc = await read(pdfPath);
+  return doc.text;
+}
+
+/**
+ * Возвращает только метаданные документа.
+ * @param {string} pdfPath
+ * @returns {Promise<Object>}
+ */
+async function readMetadata(pdfPath) {
+  const doc = await read(pdfPath);
+  return doc.metadata;
+}
+
+/**
+ * Проверяет, является ли файл PDF (по сигнатуре).
+ * @param {string} pdfPath
+ * @returns {boolean}
+ */
+function isPdf(pdfPath) {
+  try {
+    const abs = normalizePath(pdfPath);
+    const fd = fs.openSync(abs, 'r');
+    const head = Buffer.alloc(5);
+    fs.readSync(fd, head, 0, 5, 0);
+    fs.closeSync(fd);
+    return head.toString('latin1') === PDF_MAGIC;
+  } catch (err) {
+    return false;
+  }
+}
+
+module.exports = {
+  read,
+  readSync,
+  readText,
+  readMetadata,
+  isPdf,
+  PdfDocument,
+  PdfReadError,
+  // внутренности для тестов
+  _internal: {
+    detectVersion,
+    decodeStream,
+    decodeASCIIHex,
+    decodeASCII85,
+    extractObjects,
+    extractStreams,
+    extractTextFromStream,
+    extractMetadata,
+    parseFilters,
+    unescapePdfString,
+  },
+};
+
+// ---------------------------------------------------------------------------
+// CLI: node sensors/pdf_reader.js <file.pdf> [--json]
+// ---------------------------------------------------------------------------
+
+if (require.main === module) {
+  const args = process.argv.slice(2);
+  const target = args.find((a) => !a.startsWith('--'));
+  const asJson = args.includes('--json');
+  if (!target) {
+    console.error('Usage: node sensors/pdf_reader.js <file.pdf> [--json]');
+    process.exit(2);
+  }
+  read(target)
+    .then((doc) => {
+      if (asJson) {
+        console.log(JSON.stringify(doc.toJSON(), null, 2));
+      } else {
+        console.log(String(doc));
+        console.log('Metadata:', JSON.stringify(doc.metadata));
+        console.log('Text (first 400 chars):');
+        console.log(doc.text.slice(0, 400));
+      }
+    })
+    .catch((err) => {
+      console.error('PDF read error:', err.name, err.code, err.message);
+      process.exit(1);
+    });
+}

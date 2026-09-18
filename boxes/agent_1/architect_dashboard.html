@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pulsar · Architect Dashboard</title>
+<!--
+  ============================================================================
+   architect_dashboard.html — UI «Пульсар» для ревью предложений Архитектора
+  ----------------------------------------------------------------------------
+   Назначение:
+     Единый self-contained дашборд для очереди предложений Архитектора:
+       • список proposals с фильтрами (status / priority / tags / поиск)
+       • approve(id) и reject(id, reason) — как в architect_review.js
+       • метрики: total, по статусам, по приоритетам, high-risk, approval rate
+       • audit-лог и экспорт отчёта (markdown) / стора (JSON)
+
+   Данные:
+     1) localStorage          — локальные решения (dashboard:store:v1)
+     2) fetch memory/architect_proposals.json  — если дашборд открыт рядом
+     3) встроенный SEED        — демо-данные для офлайн-режима
+
+   Совместимо с моделью architect_review.js:
+     proposal = { id,title,summary,author,target,priority,tags,
+                  requiresRestart,touchesProduction,status,createdAt,
+                  updatedAt,decision,history,meta,risk{score,level,reasons} }
+  ============================================================================
+-->
+<style>
+  :root{
+    --bg:#0b0f19;
+    --bg-2:#111827;
+    --panel:#151b2b;
+    --panel-2:#1b2338;
+    --line:#26304a;
+    --text:#e6ecff;
+    --muted:#8b97b8;
+    --accent:#5b8cff;
+    --accent-2:#7c5cff;
+    --ok:#2ecc8f;
+    --warn:#ffb020;
+    --danger:#ff5d6c;
+    --low:#34d399;
+    --medium:#60a5fa;
+    --high:#f59e0b;
+    --critical:#ef4444;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 600px at 20% -10%,#1a2547 0%,var(--bg) 55%);
+    color:var(--text);
+    font:14px/1.5 "Segoe UI",Inter,system-ui,-apple-system,sans-serif;
+    min-height:100vh;
+  }
+  a{color:var(--accent)}
+  header.top{
+    display:flex;align-items:center;gap:16px;
+    padding:18px 26px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(21,27,43,.9),rgba(21,27,43,.6));
+    position:sticky;top:0;z-index:40;backdrop-filter:blur(8px);
+  }
+  .logo{
+    width:42px;height:42px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;font-weight:800;font-size:18px;
+    box-shadow:0 0 24px rgba(91,140,255,.45);
+  }
+  .brand h1{margin:0;font-size:19px;letter-spacing:.3px}
+  .brand p{margin:0;color:var(--muted);font-size:12px}
+  .top-spacer{flex:1}
+  .pill{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:6px 12px;border-radius:999px;font-size:12px;
+    background:var(--panel-2);border:1px solid var(--line);color:var(--muted);
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+  .dot.off{background:var(--warn);box-shadow:0 0 8px var(--warn)}
+  .btn{
+    border:1px solid var(--line);background:var(--panel-2);color:var(--text);
+    padding:8px 14px;border-radius:10px;cursor:pointer;font-size:13px;
+    transition:.15s border-color,.15s transform,.15s background;
+  }
+  .btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent;font-weight:600}
+  .btn.ok{background:rgba(46,204,143,.14);border-color:rgba(46,204,143,.5);color:var(--ok)}
+  .btn.no{background:rgba(255,93,108,.14);border-color:rgba(255,93,108,.5);color:var(--danger)}
+  .btn.ghost{background:transparent}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+  main{padding:22px 26px 70px;max-width:1400px;margin:0 auto}
+
+  /* ---------- KPI ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:20px}
+  .kpi{
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .kpi::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:var(--accent);opacity:.6}
+  .kpi.ok::after{background:var(--ok)}
+  .kpi.no::after{background:var(--danger)}
+  .kpi.warn::after{background:var(--warn)}
+  .kpi .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+  .kpi .value{font-size:28px;font-weight:800;margin-top:6px}
+  .kpi .sub{color:var(--muted);font-size:11px;margin-top:2px}
+
+  /* ---------- layout ---------- */
+  .grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:start}
+  .card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
+  }
+  .card h2{
+    margin:0;padding:14px 18px;font-size:14px;letter-spacing:.4px;
+    border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;
+  }
+  .card h2 .count{margin-left:auto;color:var(--muted);font-weight:400;font-size:12px}
+  .card .body{padding:16px 18px}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+  .tabs{display:flex;gap:6px;background:var(--bg-2);padding:4px;border-radius:10px;border:1px solid var(--line)}
+  .tab{padding:6px 14px;border-radius:7px;cursor:pointer;color:var(--muted);font-size:13px;user-select:none}
+  .tab.active{background:var(--panel-2);color:var(--text);box-shadow:inset 0 0 0 1px var(--line)}
+  .tab .n{opacity:.7;font-size:11px}
+  input[type=text],select,textarea{
+    background:var(--bg-2);border:1px solid var(--line);color:var(--text);
+    border-radius:9px;padding:8px 11px;font-size:13px;outline:none;font-family:inherit;
+  }
+  input[type=text]:focus,select:focus,textarea:focus{border-color:var(--accent)}
+  .search{flex:1;min-width:160px}
+
+  /* ---------- proposal rows ---------- */
+  .list{display:flex;flex-direction:column}
+  .prop{
+    display:grid;grid-template-columns:10px 1fr auto;gap:14px;
+    padding:14px 18px;border-bottom:1px solid var(--line);cursor:pointer;
+    transition:background .15s;
+  }
+  .prop:hover{background:var(--panel-2)}
+  .prop.selected{background:linear-gradient(90deg,rgba(91,140,255,.14),transparent)}
+  .prop .stripe{border-radius:3px;background:var(--muted)}
+  .prop[data-status=pending] .stripe{background:var(--warn)}
+  .prop[data-status=approved] .stripe{background:var(--ok)}
+  .prop[data-status=rejected] .stripe{background:var(--danger)}
+  .prop .ttl{font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .prop .sum{color:var(--muted);font-size:12.5px;margin-top:5px;max-width:720px}
+  .prop .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+  .badge{
+    font-size:11px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);
+    background:var(--bg-2);color:var(--muted);white-space:nowrap;
+  }
+  .badge.pri-low{color:var(--low);border-color:rgba(52,211,153,.4)}
+  .badge.pri-normal{color:var(--medium);border-color:rgba(96,165,250,.4)}
+  .badge.pri-high{color:var(--high);border-color:rgba(245,158,11,.45)}
+  .badge.pri-critical{color:var(--critical);border-color:rgba(239,68,68,.5)}
+  .badge.risk-low{color:var(--low)}
+  .badge.risk-medium{color:var(--medium)}
+  .badge.risk-high{color:var(--high)}
+  .badge.risk-critical{color:var(--critical);background:rgba(239,68,68,.12)}
+  .prop .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+  .prop .date{color:var(--muted);font-size:11px}
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+
+  /* ---------- detail drawer ---------- */
+  .detail{position:fixed;top:0;right:0;height:100%;width:460px;max-width:92vw;
+    background:var(--panel);border-left:1px solid var(--line);box-shadow:-20px 0 50px rgba(0,0,0,.5);
+    transform:translateX(105%);transition:transform .22s ease;z-index:60;display:flex;flex-direction:column}
+  .detail.open{transform:translateX(0)}
+  .detail header{padding:16px 18px;border-bottom:1px solid var(--line)}
+  .detail header h3{margin:0 0 6px;font-size:16px}
+  .detail .dbody{padding:16px 18px;overflow:auto;flex:1}
+  .detail .dfoot{padding:14px 18px;border-top:1px solid var(--line);display:flex;gap:10px}
+  .kv{display:grid;grid-template-columns:110px 1fr;gap:6px 12px;font-size:13px;margin-bottom:16px}
+  .kv .k{color:var(--muted)}
+  .riskbox{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:16px}
+  .riskbar{height:7px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:8px}
+  .riskbar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--warn),var(--danger))}
+  .timeline{list-style:none;margin:0;padding:0;position:relative;padding-left:18px}
+  .timeline::before{content:"";position:absolute;left:5px;top:4px;bottom:4px;width:1px;background:var(--line)}
+  .timeline li{position:relative;padding:0 0 14px 0;font-size:12.5px}
+  .timeline li::before{content:"";position:absolute;left:-17px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+  .timeline .when{color:var(--muted);font-size:11px}
+
+  /* ---------- charts ---------- */
+  .donut{display:flex;align-items:center;gap:20px}
+  .donut .ring{
+    width:132px;height:132px;border-radius:50%;position:relative;flex:none;
+    background:conic-gradient(var(--ok) 0deg,var(--line) 0deg);
+    transition:background .4s;
+  }
+  .donut .hole{
+    position:absolute;inset:20px;border-radius:50%;background:var(--panel);
+    display:grid;place-items:center;font-size:20px;font-weight:800;
+  }
+  .legend{display:flex;flex-direction:column;gap:9px;font-size:13px;flex:1}
+  .legend .row{display:flex;align-items:center;gap:9px}
+  .legend .sw{width:11px;height:11px;border-radius:3px}
+  .legend .val{margin-left:auto;color:var(--muted)}
+  .bars{display:flex;flex-direction:column;gap:11px}
+  .bar .bl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
+  .bar .bt{height:8px;border-radius:999px;background:var(--bg-2);overflow:hidden}
+  .bar .bt i{display:block;height:100%;border-radius:999px;transition:width .4s}
+
+  /* ---------- audit ---------- */
+  .audit{list-style:none;margin:0;padding:0;max-height:280px;overflow:auto}
+  .audit li{padding:10px 18px;border-bottom:1px solid var(--line);font-size:12.5px;display:flex;gap:10px}
+  .audit li .act{font-weight:600}
+  .audit li .at{margin-left:auto;color:var(--muted);font-size:11px}
+
+  /* ---------- modal ---------- */
+  .overlay{position:fixed;inset:0;background:rgba(5,8,16,.72);display:none;place-items:center;z-index:80;padding:20px}
+  .overlay.open{display:grid}
+  .modal{width:560px;max-width:96vw;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  .modal h3{margin:0;padding:16px 20px;border-bottom:1px solid var(--line);font-size:15px}
+  .modal .mbody{padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+  .modal .mfoot{padding:14px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field label{font-size:12px;color:var(--muted)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+  /* ---------- toast ---------- */
+  .toasts{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:90}
+  .toast{padding:11px 18px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);font-size:13px;box-shadow:var(--shadow);animation:pop .18s ease}
+  .toast.ok{border-color:rgba(46,204,143,.6)}
+  .toast.no{border-color:rgba(255,93,108,.6)}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+  footer.credits{color:var(--muted);font-size:12px;text-align:center;margin-top:26px}
+  @media(max-width:1080px){
+    .kpis{grid-template-columns:repeat(3,1fr)}
+    .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="logo">✦</div>
+  <div class="brand">
+    <h1>Pulsar · Architect Dashboard</h1>
+    <p>Ревью предложений Архитектора — approve / reject · метрики очереди</p>
+  </div>
+  <div class="top-spacer"></div>
+  <span class="pill"><span class="dot" id="connDot"></span><span id="connText">local store</span></span>
+  <span class="pill" id="clock">--:--:--</span>
+  <button class="btn ghost" id="btnNew">+ Предложение</button>
+  <button class="btn" id="btnReload">↻ Обновить</button>
+</header>
+
+<main>
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="toolbar">
+        <div class="tabs" id="statusTabs"></div>
+        <select id="priFilter">
+          <option value="">Все приоритеты</option>
+          <option value="critical">critical</option>
+          <option value="high">high</option>
+          <option value="normal">normal</option>
+          <option value="low">low</option>
+        </select>
+        <input type="text" class="search" id="search" placeholder="Поиск по title / target / tag…" />
+      </div>
+      <div class="list" id="list"></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="card">
+        <h2>📊 Метрики по статусам <span class="count" id="donutCount"></span></h2>
+        <div class="body donut">
+          <div class="ring" id="ring"><div class="hole" id="ringHole">0</div></div>
+          <div class="legend" id="legend"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>⚖️ Приоритеты</h2>
+        <div class="body bars" id="priBars"></div>
+      </div>
+      <div class="card">
+        <h2>🧾 Audit log <span class="count" id="auditCount"></span></h2>
+        <ul class="audit" id="audit"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="credits">
+    Pulsar Architect UI · источник: <code>memory/architect_proposals.json</code>
+    · совместимо с <code>architect_review.js</code> (show / approve / reject)
+  </footer>
+</main>
+
+<!-- detail drawer -->
+<aside class="detail" id="detail">
+  <header>
+    <h3 id="dTitle">—</h3>
+    <div id="dBadges" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  </header>
+  <div class="dbody" id="dBody"></div>
+  <div class="dfoot">
+    <button class="btn ok" id="dApprove" style="flex:1">✓ Approve</button>
+    <button class="btn no" id="dReject" style="flex:1">✕ Reject</button>
+    <button class="btn ghost" id="dClose">Закрыть</button>
+  </div>
+</aside>
+
+<!-- reject / approve / new modal -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3 id="mTitle">Reject proposal</h3>
+    <div class="mbody" id="mBody"></div>
+    <div class="mfoot">
+      <button class="btn ghost" id="mCancel">Отмена</button>
+      <button class="btn primary" id="mConfirm">Подтвердить</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+<script>
+/* ===========================================================================
+   Pulsar Architect Dashboard — логика
+   ---------------------------------------------------------------------------
+   Модель повторяет architect_review.js. Дашборд работает на клиенте:
+   решения сохраняются в localStorage, экспортируются в JSON (совместимый стор).
+   =========================================================================== */
+"use strict";
+
+const STORE_KEY = "dashboard:store:v1";
+const STATUSES = ["pending", "approved", "rejected"];
+const PRIORITIES = ["low", "normal", "high", "critical"];
+const MIN_REJECT_REASON = 3;
+
+/* --- демо-данные (используются, если нет localStorage и нет файла стора) --- */
+const SEED = {
+  version: 1,
+  proposals: [
+    {
+      id: "prop-m1a2b3-001-x7",
+      title: "Вынести конфиг агентов в отдельный layers.json",
+      summary: "Сейчас параметры моделей зашиты в agent_loop_v3.js. Предлагаю вынести все параметры (temperature, max_tokens, retries) в конфиг и читать его при старте.",
+      author: "architect", target: "agent_loop_v3.js", priority: "high",
+      tags: ["refactor", "config"], requiresRestart: true, touchesProduction: false,
+      status: "pending",
+      createdAt: "2026-09-14T09:20:00.000Z", updatedAt: "2026-09-14T09:20:00.000Z",
+      decision: null,
+      history: [{ at: "2026-09-14T09:20:00.000Z", action: "created", by: "architect" }],
+      meta: {}, risk: { score: 15, level: "medium", reasons: ["требует перезапуска сервиса"] }
+    },
+    {
+      id: "prop-m1a2b3-002-x8",
+      title: "Добавить post-receive hook для синка /srv/www",
+      summary: "Автоматизировать деплой статики: после push в bare-репозиторий checkout в рабочую директорию и nginx отдаёт свежие файлы.",
+      author: "architect", target: "/git/server/hooks/post-receive", priority: "critical",
+      tags: ["deploy", "git", "nginx"], requiresRestart: false, touchesProduction: true,
+      status: "pending",
+      createdAt: "2026-09-14T10:05:00.000Z", updatedAt: "2026-09-14T10:05:00.000Z",
+      decision: null,
+      history: [{ at: "2026-09-14T10:05:00.000Z", action: "created", by: "architect" }],
+      meta: {}, risk: { score: 20, level: "medium", reasons: ["production-контур"] }
+    },
+    {
+      id: "prop-m1a2b3-003-x9",
+      title: "Очистить устаревшие patterns в memory/patterns",
+      summary: "Удалить паттерны старше 90 дней, которые ни разу не использовались. Освободит место и ускорит загрузку skills_loader.",
+      author: "gardener", target: "memory/patterns", priority: "low",
+      tags: ["cleanup", "memory"], requiresRestart: false, touchesProduction: false,
+      status: "approved",
+      createdAt: "2026-09-13T14:00:00.000Z", updatedAt: "2026-09-13T15:12:00.000Z",
+      decision: { action: "approve", by: "reviewer", at: "2026-09-13T15:12:00.000Z", reason: "низкий риск, полезно" },
+      history: [
+        { at: "2026-09-13T14:00:00.000Z", action: "created", by: "gardener" },
+        { at: "2026-09-13T15:12:00.000Z", action: "approved", by: "reviewer", note: "низкий риск, полезно" }
+      ],
+      meta: {}, risk: { score: 0, level: "low", reasons: [] }
+    },
+    {
+      id: "prop-m1a2b3-004-xa",
+      title: "Прямая миграция схемы в phoenix.db без бэкапа",
+      summary: "Быстро добавить индексы в SQLite через ALTER TABLE. Бэкап делать не будем, чтобы уложиться в окно.",
+      author: "architect", target: "phoenix.db", priority: "high",
+      tags: ["database", "risky"], requiresRestart: false, touchesProduction: true,
+      status: "rejected",
+      createdAt: "2026-09-13T11:30:00.000Z", updatedAt: "2026-09-13T12:01:00.000Z",
+      decision: { action: "reject", by: "reviewer", at: "2026-09-13T12:01:00.000Z", reason: "нет бэкапа — недопустимый риск для БД" },
+      history: [
+        { at: "2026-09-13T11:30:00.000Z", action: "created", by: "architect" },
+        { at: "2026-09-13T12:01:00.000Z", action: "rejected", by: "reviewer", reason: "нет бэкапа — недопустимый риск для БД" }
+      ],
+      meta: {}, risk: { score: 55, level: "critical", reasons: ["работа с БД напрямую", "production-контур"] }
+    },
+    {
+      id: "prop-m1a2b3-005-xb",
+      title: "Кэшировать RAG-контекст в rag_context.js",
+      summary: "Добавить LRU-кэш на 200 элементов, чтобы не пересчитывать эмбеддинги для повторяющихся запросов. Экономит токены и время.",
+      author: "architect", target: "rag_context.js", priority: "normal",
+      tags: ["performance", "rag"], requiresRestart: false, touchesProduction: false,
+      status: "pending",
+      createdAt: "2026-09-14T08:10:00.000Z", updatedAt: "2026-09-14T08:10:00.000Z",
+      decision: null,
+      history: [{ at: "2026-09-14T08:10:00.000Z", action: "created", by: "architect" }],
+      meta: {}, risk: { score: 0, level: "low", reasons: [] }
+    }
+  ],
+  audit: [
+    { at: "2026-09-14T10:05:00.000Z", action: "add", id: "prop-m1a2b3-002-x8", by: "architect" },
+    { at: "2026-09-14T08:10:00.000Z", action: "add", id: "prop-m1a2b3-005-xb", by: "architect" },
+    { at: "2026-09-13T15:12:00.000Z", action: "approve", id: "prop-m1a2b3-003-x9", by: "reviewer" },
+    { at: "2026-09-13T12:01:00.000Z", action: "reject", id: "prop-m1a2b3-004-xa", by: "reviewer", reason: "нет бэкапа — недопустимый риск для БД" }
+  ]
+};
+
+/* ------------------------------ состояние ------------------------------ */
+let store = { version: 1, proposals: [], audit: [] };
+let ui = { status: "pending", priority: "", q: "", selected: null };
+let modalMode = null; // 'reject' | 'approve' | 'new'
+
+/* ------------------------------ утилиты -------------------------------- */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s == null ? "" : s)
+  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;");
+
+function nowIso() { return new Date().toISOString(); }
+
+function rel(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso), diff = (Date.now() - d.getTime()) / 1000;
+  if (diff < 60) return "только что";
+  if (diff < 3600) return Math.floor(diff / 60) + " мин назад";
+  if (diff < 86400) return Math.floor(diff / 3600) + " ч назад";
+  return Math.floor(diff / 86400) + " дн назад";
+}
+
+function genId() {
+  const s = Date.now().toString(36), r = Math.random().toString(36).slice(2, 6);
+  return "prop-" + s + "-" + String(store.proposals.length + 1).padStart(3, "0") + "-" + r;
+}
+
+function riskLevel(p) { return (p.risk && p.risk.level) || "low"; }
+
+function computeRisk(p) {
+  const reasons = []; let score = 0;
+  const t = String(p.target || "");
+  if (/\.env($|\.)/.test(t)) { score += 40; reasons.push("затрагивает .env"); }
+  if (/(^|\/)\.git\//.test(t)) { score += 30; reasons.push("изменения в .git"); }
+  if (/node_modules/.test(t)) { score += 25; reasons.push("пишет в node_modules"); }
+  if (/\.(db|sqlite)$/.test(t)) { score += 35; reasons.push("работа с БД напрямую"); }
+  if (p.requiresRestart) { score += 15; reasons.push("требует перезапуска сервиса"); }
+  if (p.touchesProduction) { score += 20; reasons.push("production-контур"); }
+  let level = "low";
+  if (score >= 45) level = "critical";
+  else if (score >= 25) level = "high";
+  else if (score >= 10) level = "medium";
+  return { score, level, reasons };
+}
+
+/* --------------------------- персистентность --------------------------- */
+function saveLocal() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) {}
+}
+
+function loadLocal() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (!raw) return null;
+    const p = JSON.parse(raw);
+    if (!p || !Array.isArray(p.proposals)) return null;
+    return { version: p.version || 1, proposals: p.proposals, audit: Array.isArray(p.audit) ? p.audit : [] };
+  } catch (e) { return null; }
+}
+
+/* Пытаемся подтянуть стор архитектора (если дашборд открыт рядом с модулем). */
+async function tryFetchStore() {
+  const paths = ["memory/architect_proposals.json", "./architect_proposals.json", "../memory/architect_proposals.json"];
+  for (const p of paths) {
+    try {
+      const r = await fetch(p, { cache: "no-store" });
+      if (!r.ok) continue;
+      const j = await r.json();
+      if (j && Array.isArray(j.proposals)) return { version: j.version || 1, proposals: j.proposals, audit: j.audit || [] };
+    } catch (e) { /* file:// или 404 — игнорируем */ }
+  }
+  return null;
+}
+
+async function init() {
+  const local = loadLocal();
+  if (local) {
+    store = local;
+    setConn(true, "localStorage");
+  } else {
+    const fetched = await tryFetchStore();
+    if (fetched) { store = fetched; store.proposals.forEach(p => { if (!p.risk) p.risk = computeRisk(p); }); setConn(true, "store file"); }
+    else { store = JSON.parse(JSON.stringify(SEED)); setConn(false, "demo seed"); }
+    saveLocal();
+  }
+  render();
+}
+
+function setConn(ok, text) {
+  $("#connDot").className = "dot" + (ok ? "" : " off");
+  $("#connText").textContent = text;
+}
+
+/* ------------------------------- audit -------------------------------- */
+function audit(entry) {
+  store.audit.push(Object.assign({ at: nowIso() }, entry));
+  if (store.audit.length > 5000) store.audit = store.audit.slice(-5000);
+}
+
+/* ------------------------------- фильтр ------------------------------- */
+function filtered() {
+  let items = store.proposals.slice();
+  if (ui.status) items = items.filter(p => p.status === ui.status);
+  if (ui.priority) items = items.filter(p => p.priority === ui.priority);
+  if (ui.q) {
+    const q = ui.q.toLowerCase();
+    items = items.filter(p =>
+      (p.title || "").toLowerCase().includes(q) ||
+      (p.target || "").toLowerCase().includes(q) ||
+      (p.tags || []).join(" ").toLowerCase().includes(q));
+  }
+  items.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  return items;
+}
+
+/* ------------------------------- метрики ------------------------------ */
+function stats() {
+  const byStatus = { pending: 0, approved: 0, rejected: 0 };
+  const byPriority = { low: 0, normal: 0, high: 0, critical: 0 };
+  let highRisk = 0;
+  for (const p of store.proposals) {
+    byStatus[p.status] = (byStatus[p.status] || 0) + 1;
+    byPriority[p.priority] = (byPriority[p.priority] || 0) + 1;
+    if (["high", "critical"].includes(riskLevel(p))) highRisk++;
+  }
+  const decided = byStatus.approved + byStatus.rejected;
+  return {
+    total: store.proposals.length, byStatus, byPriority, highRisk,
+    auditEntries: store.audit.length,
+    approvalRate: decided ? Math.round((byStatus.approved / decided) * 100) : 0
+  };
+}
+
+/* ------------------------------ рендер -------------------------------- */
+function render() {
+  renderKpis();
+  renderTabs();
+  renderList();
+  renderDonut();
+  renderBars();
+  renderAudit();
+  if (ui.selected) {
+    const p = store.proposals.find(x => x.id === ui.selected);
+    if (p) openDetail(p.id, true); else closeDetail();
+  }
+}
+
+function renderKpis() {
+  const s = stats();
+  const cards = [
+    { label: "Всего", value: s.total, sub: "предложений в сторе", cls: "" },
+    { label: "В очереди", value: s.byStatus.pending, sub: "ожидают решения", cls: "warn" },
+    { label: "Одобрено", value: s.byStatus.approved, sub: "approved", cls: "ok" },
+    { label: "Отклонено", value: s.byStatus.rejected, sub: "rejected", cls: "no" },
+    { label: "High-risk", value: s.highRisk, sub: "риск high / critical", cls: "no" },
+    { label: "Approval rate", value: s.approvalRate + "%", sub: "от решённых", cls: "ok" }
+  ];
+  $("#kpis").innerHTML = cards.map(c =>
+    `<div class="kpi ${c.cls}"><div class="label">${c.label}</div>` +
+    `<div class="value">${c.value}</div><div class="sub">${c.sub}</div></div>`).join("");
+}
+
+function renderTabs() {
+  const s = stats();
+  const tabs = [{ key: "", label: "Все", n: s.total }]
+    .concat(STATUSES.map(st => ({ key: st, label: st, n: s.byStatus[st] || 0 })));
+  $("#statusTabs").innerHTML = tabs.map(t =>
+    `<div class="tab ${ui.status === t.key ? "active" : ""}" data-status="${t.key}">` +
+    `${t.label} <span class="n">${t.n}</span></div>`).join("");
+  $("#statusTabs").querySelectorAll(".tab").forEach(el =>
+    el.addEventListener("click", () => { ui.status = el.dataset.status; render(); }));
+}
+
+function badgePri(p) { return `<span class="badge pri-${p}">${p}</span>`; }
+function badgeRisk(p) { const l = riskLevel(p); return `<span class="badge risk-${l}">risk: ${l} (${(p.risk && p.risk.score) || 0})</span>`; }
+
+function renderList() {
+  const items = filtered();
+  const box = $("#list");
+  if (!items.length) { box.innerHTML = `<div class="empty">Очередь пуста — нет предложений под текущий фильтр.</div>`; return; }
+  box.innerHTML = items.map(p => `
+    <div class="prop ${ui.selected === p.id ? "selected" : ""}" data-id="${p.id}" data-status="${p.status}">
+      <div class="stripe"></div>
+      <div>
+        <div class="ttl">${esc(p.title)} <span class="badge">${p.status}</span></div>
+        <div class="sum">${esc((p.summary || "").slice(0, 220))}${(p.summary || "").length > 220 ? "…" : ""}</div>
+        <div class="meta">
+          ${badgePri(p.priority)} ${badgeRisk(p)}
+          <span class="badge">target: ${esc(p.target || "—")}</span>
+          <span class="badge">by: ${esc(p.author)}</span>
+          ${(p.tags || []).slice(0, 4).map(t => `<span class="badge">#${esc(t)}</span>`).join("")}
+        </div>
+      </div>
+      <div class="right">
+        <span class="date">${rel(p.createdAt)}</span>
+        ${p.status === "pending"
+          ? `<div style="display:flex;gap:6px">
+               <button class="btn ok" data-act="approve" data-id="${p.id}">✓</button>
+               <button class="btn no" data-act="reject" data-id="${p.id}">✕</button>
+             </div>`
+          : `<span class="date">${p.decision ? esc(p.decision.by) : ""}</span>`}
+      </div>
+    </div>`).join("");
+
+  box.querySelectorAll(".prop").forEach(el => {
+    el.addEventListener("click", (ev) => {
+      const btn = ev.target.closest("button[data-act]");
+      if (btn) { ev.stopPropagation(); btn.dataset.act === "approve" ? doApprove(btn.dataset.id) : openReject(btn.dataset.id); return; }
+      ui.selected = el.dataset.id; openDetail(el.dataset.id);
+    });
+  });
+}
+
+function renderDonut() {
+  const s = stats();
+  const total = Math.max(s.total, 1);
+  const a = (s.byStatus.approved / total) * 360;
+  const r = (s.byStatus.rejected / total) * 360;
+  const p = (s.byStatus.pending / total) * 360;
+  const c1 = s.byStatus.approved;
+  const c2 = c1 + s.byStatus.rejected;
+  $("#ring").style.background =
+    `conic-gradient(var(--ok) 0deg ${a}deg, var(--danger) ${a}deg ${a + r}deg, var(--warn) ${a + r}deg ${a + r + p}deg, var(--line) ${a + r + p}deg 360deg)`;
+  $("#ringHole").textContent = s.total;
+  $("#donutCount").textContent = s.total + " шт.";
+  const legend = [
+    { c: "var(--warn)", k: "pending", v: s.byStatus.pending },
+    { c: "var(--ok)", k: "approved", v: s.byStatus.approved },
+    { c: "var(--danger)", k: "rejected", v: s.byStatus.rejected }
+  ];
+  $("#legend").innerHTML = legend.map(l =>
+    `<div class="row"><span class="sw" style="background:${l.c}"></span>${l.k}<span class="val">${l.v}</span></div>`).join("");
+}
+
+function renderBars() {
+  const s = stats();
+  const max = Math.max(1, ...PRIORITIES.map(p => s.byPriority[p] || 0));
+  const colors = { low: "var(--low)", normal: "var(--medium)", high: "var(--high)", critical: "var(--critical)" };
+  $("#priBars").innerHTML = PRIORITIES.map(p => {
+    const v = s.byPriority[p] || 0, w = Math.round((v / max) * 100);
+    return `<div class="bar"><div class="bl"><span>${p}</span><span>${v}</span></div>` +
+      `<div class="bt"><i style="width:${w}%;background:${colors[p]}"></i></div></div>`;
+  }).join("");
+}
+
+function renderAudit() {
+  const items = store.audit.slice(-40).reverse();
+  $("#auditCount").textContent = store.audit.length;
+  if (!items.length) { $("#audit").innerHTML = `<li><span class="act">—</span> пусто</li>`; return; }
+  $("#audit").innerHTML = items.map(e => {
+    const short = (e.id || "").slice(-6);
+    return `<li><span class="act">${esc(e.action)}</span><span style="color:var(--muted)">${esc(short)}</span>` +
+      `${e.reason ? `<span style="color:var(--muted)">· ${esc(e.reason)}</span>` : ""}` +
+      `<span class="at">${rel(e.at)}</span></li>`;
+  }).join("");
+}
+
+/* ------------------------------ drawer -------------------------------- */
+function openDetail(id, keep) {
+  const p = store.proposals.find(x => x.id === id);
+  if (!p) return closeDetail();
+  ui.selected = id;
+  $("#dTitle").textContent = p.title;
+  $("#dBadges").innerHTML = `<span class="badge">${p.status}</span>${badgePri(p.priority)}${badgeRisk(p)}`;
+  const risk = p.risk || computeRisk(p);
+  const tl = (p.history || []).map(h =>
+    `<li><div>${esc(h.action)}${h.by ? " · " + esc(h.by) : ""}</div>` +
+    `${h.reason || h.note ? `<div style="color:var(--muted)">${esc(h.reason || h.note)}</div>` : ""}` +
+    `<div class="when">${new Date(h.at).toLocaleString("ru-RU")}</div></li>`).join("") || "<li>нет записей</li>";
+  $("#dBody").innerHTML = `
+    <div class="kv">
+      <div class="k">id</div><div>${esc(p.id)}</div>
+      <div class="k">author</div><div>${esc(p.author)}</div>
+      <div class="k">target</div><div>${esc(p.target || "—")}</div>
+      <div class="k">priority</div><div>${esc(p.priority)}</div>
+      <div class="k">tags</div><div>${(p.tags || []).map(t => "#" + esc(t)).join(" ") || "—"}</div>
+      <div class="k">created</div><div>${new Date(p.createdAt).toLocaleString("ru-RU")}</div>
+      <div class="k">updated</div><div>${new Date(p.updatedAt).toLocaleString("ru-RU")}</div>
+      <div class="k">restart</div><div>${p.requiresRestart ? "да" : "нет"}</div>
+      <div class="k">production</div><div>${p.touchesProduction ? "да" : "нет"}</div>
+    </div>
+    <p style="color:var(--muted);white-space:pre-wrap">${esc(p.summary)}</p>
+    <div class="riskbox">
+      <b>Risk: ${risk.level} · ${risk.score}/100</b>
+      <div class="riskbar"><i style="width:${Math.min(risk.score, 100)}%"></i></div>
+      <div style="color:var(--muted);margin-top:8px">${(risk.reasons || []).join(", ") || "факторов риска нет"}</div>
+    </div>
+    <h4 style="margin:0 0 8px">История</h4>
+    <ul class="timeline">${tl}</ul>
+    ${p.decision ? `<h4 style="margin:8px 0 6px">Решение</h4><div style="color:var(--muted)">${esc(p.decision.action)} · ${esc(p.decision.by)} · ${esc(p.decision.reason || "")}</div>` : ""}`;
+  const isPending = p.status === "pending";
+  $("#dApprove").disabled = !isPending;
+  $("#dReject").disabled = !isPending;
+  $("#detail").classList.add("open");
+  if (!keep) renderList();
+}
+
+function closeDetail() {
+  ui.selected = null;
+  $("#detail").classList.remove("open");
+  renderList();
+}
+
+/* ---------------------------- действия -------------------------------- */
+function doApprove(id) {
+  const p = store.proposals.find(x => x.id === id);
+  if (!p) return;
+  if (p.status === "approved") return toast("Уже одобрено", "no");
+  if (p.status === "rejected") return toast("Отклонённое нужно сперва переоткрыть", "no");
+  p.status = "approved"; p.updatedAt = nowIso();
+  p.decision = { action: "approve", by: "dashboard", at: nowIso(), reason: "" };
+  p.history.push({ at: p.updatedAt, action: "approved", by: "dashboard", note: "" });
+  audit({ action: "approve", id, by: "dashboard" });
+  saveLocal(); render(); toast("Предложение одобрено", "ok");
+}
+
+function openReject(id) {
+  const p = store.proposals.find(x => x.id === id);
+  if (!p) return;
+  if (p.status === "rejected") return toast("Уже отклонено", "no");
+  modalMode = "reject"; ui.selected = id;
+  $("#mTitle").textContent = "Reject proposal · " + p.title;
+  $("#mBody").innerHTML = `
+    <div class="field">
+      <label>Причина отклонения (обязательно, ≥ ${MIN_REJECT_REASON} символов)</label>
+      <textarea id="mReason" rows="4" placeholder="Например: нет бэкапа, недопустимый риск"></textarea>
+    </div>
+    <div style="color:var(--muted);font-size:12px">Предложение: <code>${esc(p.id)}</code></div>`;
+  $("#overlay").classList.add("open");
+  setTimeout(() => { const t = $("#mReason"); if (t) t.focus(); }, 30);
+}
+
+function doReject(id, reason) {
+  const text = String(reason || "").trim();
+  if (text.length < MIN_REJECT_REASON) return toast("Причина слишком короткая", "no");
+  const p = store.proposals.find(x => x.id === id);
+  if (!p) return;
+  if (p.status === "rejected") return toast("Уже отклонено", "no");
+  const at = nowIso();
+  p.status = "rejected"; p.updatedAt = at;
+  p.decision = { action: "reject", by: "dashboard", at, reason: text };
+  p.history.push({ at, action: "rejected", by: "dashboard", reason: text });
+  audit({ action: "reject", id, by: "dashboard", reason: text });
+  saveLocal(); render(); toast("Предложение отклонено", "no");
+}
+
+function openNew() {
+  modalMode = "new";
+  $("#mTitle").textContent = "Новое предложение";
+  $("#mBody").innerHTML = `
+    <div class="field"><label>Title</label><input type="text" id="nTitle" placeholder="Кратко о предложении" /></div>
+    <div class="field"><label>Summary</label><textarea id="nSummary" rows="3" placeholder="Что и зачем меняем"></textarea></div>
+    <div class="row2">
+      <div class="field"><label>Target</label><input type="text" id="nTarget" placeholder="path/to/file.js" /></div>
+      <div class="field"><label>Priority</label>
+        <select id="nPriority">${PRIORITIES.map(p => `<option value="${p}" ${p === "normal" ? "selected" : ""}>${p}</option>`).join("")}</select>
+      </div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Tags (через запятую)</label><input type="text" id="nTags" placeholder="refactor, config" /></div>
+      <div class="field"><label>Флаги</label>
+        <div style="display:flex;gap:14px;padding-top:8px">
+          <label style="color:var(--text)"><input type="checkbox" id="nRestart" /> restart</label>
+          <label style="color:var(--text)"><input type="checkbox" id="nProd" /> production</label>
+        </div>
+      </div>
+    </div>`;
+  $("#overlay").classList.add("open");
+  setTimeout(() => { const t = $("#nTitle"); if (t) t.focus(); }, 30);
+}
+
+function confirmNew() {
+  const title = ($("#nTitle").value || "").trim();
+  const summary = ($("#nSummary").value || "").trim();
+  if (!title) return toast("Title обязателен", "no");
+  if (!summary) return toast("Summary обязателен", "no");
+  const base = {
+    id: genId(), title, summary, author: "dashboard",
+    target: ($("#nTarget").value || "").trim(),
+    priority: $("#nPriority").value,
+    tags: ($("#nTags").value || "").split(",").map(s => s.trim()).filter(Boolean).slice(0, 20),
+    requiresRestart: $("#nRestart").checked, touchesProduction: $("#nProd").checked,
+    status: "pending", createdAt: nowIso(), updatedAt: nowIso(),
+    decision: null, history: [{ at: nowIso(), action: "created", by: "dashboard" }], meta: {}
+  };
+  base.risk = computeRisk(base);
+  store.proposals.push(base);
+  audit({ action: "add", id: base.id, by: "dashboard" });
+  saveLocal(); closeModal(); render(); toast("Предложение добавлено", "ok");
+}
+
+/* ------------------------------ модалка -------------------------------- */
+function closeModal() { $("#overlay").classList.remove("open"); modalMode = null; }
+
+$("#mCancel").addEventListener("click", closeModal);
+$("#overlay").addEventListener("click", (e) => { if (e.target === $("#overlay")) closeModal(); });
+$("#mConfirm").addEventListener("click", () => {
+  if (modalMode === "reject") { doReject(ui.selected, $("#mReason").value); closeModal(); }
+  else if (modalMode === "new") { confirmNew(); }
+});
+
+/* ------------------------------- toast -------------------------------- */
+function toast(msg, kind) {
+  const el = document.createElement("div");
+  el.className = "toast " + (kind || "");
+  el.textContent = msg;
+  $("#toasts").appendChild(el);
+  setTimeout(() => el.remove(), 2600);
+}
+
+/* --------------------------- экспорт / импорт -------------------------- */
+function download(name, text, mime) {
+  const blob = new Blob([text], { type: mime || "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 100);
+}
+
+function exportReport() {
+  const pending = store.proposals.filter(p => p.status === "pending");
+  const s = stats();
+  const lines = [
+    "# Architect Review Report", "",
+    "- generated: " + nowIso(),
+    "- total: " + s.total,
+    "- pending: " + s.byStatus.pending,
+    "- approved: " + s.byStatus.approved,
+    "- rejected: " + s.byStatus.rejected,
+    "- high-risk: " + s.highRisk,
+    "- approval rate: " + s.approvalRate + "%", "",
+    "## Pending", ""
+  ];
+  if (!pending.length) lines.push("(нет предложений в очереди)");
+  for (const p of pending) {
+    lines.push("### " + p.title + " (" + p.priority + ")");
+    lines.push("- id: " + p.id);
+    lines.push("- target: " + (p.target || "—"));
+    lines.push("- risk: " + riskLevel(p) + "/" + ((p.risk && p.risk.score) || 0));
+    lines.push("- summary: " + p.summary);
+    lines.push("");
+  }
+  return lines.join("\n");
+}
+
+/* ------------------------------ события ------------------------------- */
+$("#search").addEventListener("input", (e) => { ui.q = e.target.value; render(); });
+$("#priFilter").addEventListener("change", (e) => { ui.priority = e.target.value; render(); });
+$("#dClose").addEventListener("click", closeDetail);
+$("#dApprove").addEventListener("click", () => { if (ui.selected) doApprove(ui.selected); });
+$("#dReject").addEventListener("click", () => { if (ui.selected) openReject(ui.selected); });
+$("#btnNew").addEventListener("click", openNew);
+$("#btnReload").addEventListener("click", async () => {
+  const fetched = await tryFetchStore();
+  if (fetched) { store = fetched; store.proposals.forEach(p => { if (!p.risk) p.risk = computeRisk(p); }); setConn(true, "store file"); saveLocal(); render(); toast("Стор перечитан", "ok"); }
+  else { toast("Внешний стор недоступен — данные из localStorage", "no"); }
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") { closeModal(); closeDetail(); }
+  if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && modalMode === "new") confirmNew();
+});
+
+/* ------------------------------ экспорт-кнопки ------------------------ */
+(function addExportButtons() {
+  const bar = document.querySelector("header.top");
+  const b1 = document.createElement("button");
+  b1.className = "btn"; b1.textContent = "↓ JSON";
+  b1.title = "Экспорт стора (совместим с architect_review.js)";
+  b1.addEventListener("click", () => download("architect_proposals.json", JSON.stringify(store, null, 2)));
+  const b2 = document.createElement("button");
+  b2.className = "btn ghost"; b2.textContent = "↓ Report";
+  b2.title = "Экспорт markdown-отчёта по pending";
+  b2.addEventListener("click", () => download("architect_report.md", exportReport(), "text/markdown"));
+  bar.insertBefore(b2, $("#btnReload"));
+  bar.insertBefore(b1, $("#btnReload"));
+})();
+
+/* ------------------------------- часы ---------------------------------- */
+setInterval(() => { $("#clock").textContent = new Date().toLocaleTimeString("ru-RU"); }, 1000);
+
+/* ------------------------------- старт --------------------------------- */
+init();
+window.PulsarDashboard = { get store() { return store; }, stats, exportReport, doApprove, doReject, computeRisk };
+</script>
+</body>
+</html>

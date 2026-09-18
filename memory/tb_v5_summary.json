@@ -1,0 +1,13 @@
+{
+  "ts": "2026-09-12T19:15:58Z",
+  "adapter": "tb_multi_strategy.py",
+  "task_ids": ["csv-to-parquet", "fix-git", "configure-git-webserver"],
+  "agents": {
+    "agent_4": {"accuracy": 0.333, "resolved": ["csv-to-parquet"]},
+    "agent_20": {"accuracy": 0.333, "resolved": ["csv-to-parquet"]},
+    "agent_6": {"accuracy": 0.333, "resolved": ["csv-to-parquet"]}
+  },
+  "baseline_deepseek_single_shot": 0.5,
+  "key_finding": "decision tree с uv работает на csv-to-parquet; fix-git и configure-git требуют отдельных рецептов",
+  "lesson": "TB-прогоны только последовательно (Docker compose name collision)"
+}

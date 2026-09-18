@@ -1,0 +1,117 @@
+{
+  "version": "2.0",
+  "name": "AI-1 ARMY",
+  "created_at": "2026-09-13",
+  
+  "doctrine": {
+    "RF": "Вертикаль: единоначалие, дисциплина, резервы",
+    "USA": "Mission Command: OODA, Commander's Intent, AAR",
+    "PRC": "Рой: асимметрия, массовость, 3x резерв на задачу"
+  },
+  
+  "headquarters": {
+    "general": {
+      "id": "agent_30_general",
+      "zvan": "Генерал",
+      "rank": "G5",
+      "responsibilities": [
+        "Стратегия проекта на 6 месяцев",
+        "Распределение бюджета между направлениями",
+        "Утверждение миссий полковников",
+        "Финальные решения по конфликтам",
+        "DEFCON управление"
+      ],
+      "report_to": null
+    },
+    "chief_auditor": {
+      "id": "agent_28_auditor",
+      "zvan": "Генерал-аудитор",
+      "rank": "G4",
+      "responsibilities": [
+        "Аудит качества каждой completed задачи",
+        "Проверка research-файлов",
+        "tsc --noEmit проверки",
+        "Отчёт Генералу о фальсификациях"
+      ],
+      "report_to": "agent_30_general"
+    },
+    "chief_sergeant": {
+      "id": "agent_29_sergeant",
+      "zvan": "Главный прапорщик",
+      "rank": "G4",
+      "responsibilities": [
+        "Дисциплина во всех направлениях",
+        "Проверка completed_at у задач",
+        "Поиск застрявших (stuck) > 1 час",
+        "Доклад майорам о нарушениях"
+      ],
+      "report_to": "agent_30_general"
+    }
+  },
+  
+  "directions": [
+    {
+      "id": "science",
+      "name": "НАУКА",
+      "mission": "R&D, исследования, новые модели",
+      "budget_share": 0.30,
+      "colonel": "agent_31_colonel_science",
+      "majors": [
+        { "id": "major_jwt", "name": "JWT/Авторизация", "squads": ["jwt", "oauth"] },
+        { "id": "major_db", "name": "Базы данных", "squads": ["sqlite", "postgres"] },
+        { "id": "major_ai", "name": "AI/LLM", "squads": ["prompts", "models", "agents"] }
+      ],
+      "assigned_agents": ["agent_1", "agent_4", "agent_7", "agent_13", "agent_14", "agent_16"],
+      "active_squads": ["research_jwt", "research_db", "research_email"]
+    },
+    {
+      "id": "business",
+      "name": "БИЗНЕС",
+      "mission": "Монетизация, продажи, маркетинг",
+      "budget_share": 0.30,
+      "colonel": "agent_32_colonel_business",
+      "majors": [
+        { "id": "major_pricing", "name": "Тарифы и биллинг", "squads": ["pricing", "cloudpayments"] },
+        { "id": "major_marketing", "name": "Маркетинг", "squads": ["landing", "content", "pr"] },
+        { "id": "major_partners", "name": "Партнёры", "squads": ["deepseek", "b2b"] }
+      ],
+      "assigned_agents": ["agent_2", "agent_5", "agent_8", "agent_11", "agent_17", "agent_18", "agent_19"],
+      "active_squads": ["landing_v2", "pitch_deepseek"]
+    },
+    {
+      "id": "sport",
+      "name": "СПОРТ",
+      "mission": "Гонки, агенты, зрелище",
+      "budget_share": 0.20,
+      "colonel": "agent_33_colonel_sport",
+      "majors": [
+        { "id": "major_races", "name": "Гонки", "squads": ["race_director", "safety_car", "flags"] },
+        { "id": "major_cams", "name": "Камеры и графика", "squads": ["tv_director", "cinematic", "fx"] },
+        { "id": "major_tuning", "name": "Тюнинг", "squads": ["parts", "livery", "craft"] }
+      ],
+      "assigned_agents": ["agent_3", "agent_6", "agent_9", "agent_10", "agent_12", "agent_15", "agent_23", "agent_24", "agent_25"],
+      "active_squads": ["cinematic_4.4", "tuning_catalog"]
+    },
+    {
+      "id": "defense",
+      "name": "ОБОРОНА",
+      "mission": "Безопасность, порядок, дисциплина",
+      "budget_share": 0.20,
+      "colonel": "agent_34_colonel_defense",
+      "majors": [
+        { "id": "major_audit", "name": "Аудит", "squads": ["auditor", "sergeant"] },
+        { "id": "major_anticheat", "name": "Анти-чит", "squads": ["tech_delegate", "scrutineer"] },
+        { "id": "major_recovery", "name": "Recovery", "squads": ["medical_car", "fire_marshal"] }
+      ],
+      "assigned_agents": ["agent_20", "agent_21", "agent_22"],
+      "active_squads": ["patrol_loop", "audit_report"]
+    }
+  ],
+  
+  "totals": {
+    "agents": 25,
+    "directions": 4,
+    "majors": 12,
+    "active_squads": 11
+  }
+}

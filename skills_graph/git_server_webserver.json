@@ -1,0 +1,20 @@
+{
+  "id": "git_server_webserver",
+  "name": "Setup git-daemon + webserver on port 8080",
+  "trigger_patterns": ["git clone", "git push", "webserver", "port 8080", "curl"],
+  "trigger_keywords": ["git server", "git-daemon", "8080", "hello.html", "webserver"],
+  "recipe_commands": [
+    "apt-get update && apt-get install -y git nginx",
+    "mkdir -p /git/server && cd /git/server && git init --bare",
+    "git config --global user.email 'test@example.com' && git config --global user.name 'Test'",
+    "cd /git/server && git config core.bare false && git config core.worktree /srv/www",
+    "mkdir -p /srv/www && cd /srv/www && git init && echo 'hello world' > hello.html && git add . && git commit -m 'init'",
+    "cd /git/server && cat > hooks/post-receive << 'HEOF'\n#!/bin/sh\nGIT_WORK_TREE=/srv/www git checkout -f master\nHEOF\nchmod +x hooks/post-receive",
+    "cat > /etc/nginx/sites-available/default << 'NEOF'\nserver {\n    listen 8080;\n    root /srv/www;\n    location / {\n        try_files $uri $uri/ =404;\n    }\n}\nNEOF",
+    "nginx -t && nginx",
+    "service nginx start || nginx -s reload || nginx",
+    "sleep 2 && curl -s http://localhost:8080/hello.html && echo && ls -la /srv/www/hello.html"
+  ],
+  "reasoning": "Setup bare git repo + post-receive hook syncs to /srv/www. nginx MUST listen on 8080 (not default 80). ALWAYS verify with curl http://localhost:8080/hello.html at the end.",
+  "confidence": 0.85
+}

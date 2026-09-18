@@ -1,0 +1,16 @@
+{
+  "name": "architect",
+  "role": "Architect",
+  "version": "1.0.0",
+  "created_at": "2026-09-14",
+  "type": "meta_agent",
+  "description": "Автономный мозг проекта. 12-осевой DAS, RAG Xenova, DNA v3.",
+  "dna_version": "v3",
+  "das_axes": 12,
+  "rag": {
+    "backend": "lancedb",
+    "dim": 384,
+    "chunks": 13111,
+    "embedder": "Xenova/multilingual-e5-small"
+  }
+}

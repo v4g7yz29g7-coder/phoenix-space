@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-card: #1a2332;
+  --accent: #6c63ff;
+  --accent-hover: #8b83ff;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --border: #2d3748;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-image: radial-gradient(circle at 20% 20%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(108, 99, 255, 0.1) 0%, transparent 50%);
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Заголовок */
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(108, 99, 255, 0.3);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  font-weight: 300;
+}
+
+/* Сетка карточек */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Карточка услуги */
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  background: rgba(26, 35, 50, 0.8);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #a78bfa, var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  background: rgba(108, 99, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  line-height: 1;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.service-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.service-features li {
+  padding: 0.4rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.service-features li::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* Кнопка заявки */
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(108, 99, 255, 0.6);
+  background: linear-gradient(135deg, var(--accent-hover), #7c6cf6);
+}
+
+.cta-button:hover::after {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card

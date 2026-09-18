@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORMULA I1 · Панель задач</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0e1a; color: #e0e6f0; padding: 24px; min-height: 100vh;
+  background-image: radial-gradient(ellipse at top, #1a1f3a 0%, #0a0e1a 60%); }
+h1 { font-size: 2em; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #4dd0ff, #a855f7, #ff7eb6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+.subtitle { color: #7a8baa; margin-bottom: 24px; }
+.stats { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.stat { background: rgba(20,26,45,0.7); border-radius: 12px; padding: 16px 24px; min-width: 140px; }
+.stat-value { font-size: 2em; font-weight: 900; color: #4dd0ff; line-height: 1; }
+.stat-label { font-size: 0.75em; color: #7a8baa; margin-top: 6px; letter-spacing: 1.5px; }
+.stage { background: rgba(20,26,45,0.5); border-radius: 12px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #4dd0ff; }
+.stage-title { font-size: 1.15em; font-weight: 700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+.stage-progress { font-size: 0.85em; color: #7a8baa; font-weight: 400; }
+.task { display: flex; align-items: center; padding: 8px 12px; border-radius: 8px; margin-bottom: 4px; background: rgba(10,14,26,0.4); font-size: 0.9em; }
+.task.in_progress { background: rgba(77,208,255,0.15); border-left: 3px solid #4dd0ff; }
+.task.completed { background: rgba(110,255,139,0.08); border-left: 3px solid #6eff8b; opacity: 0.75; }
+.task.failed { background: rgba(255,92,92,0.1); border-left: 3px solid #ff5c5c; }
+.task-id { font-weight: 700; color: #4dd0ff; margin-right: 12px; min-width: 40px; }
+.task-title { flex: 1; }
+.task-assignee { color: #a855f7; margin-left: 12px; font-size: 0.85em; }
+.task-status { margin-left: 12px; padding: 3px 8px; border-radius: 4px; font-size: 0.7em; font-weight: 700; letter-spacing: 1px; }
+.task-status.pending { background: rgba(122,139,170,0.2); color: #7a8baa; }
+.task-status.in_progress { background: #4dd0ff; color: #0a0e1a; animation: pulse 1.5s infinite; }
+.task-status.completed { background: #6eff8b; color: #0a0e1a; }
+.task-status.failed { background: #ff5c5c; color: white; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+.error { color: #ff5c5c; padding: 20px; background: rgba(255,92,92,0.1); border-radius: 8px; }
+</style>
+</head>
+<body>
+<h1>🚀 FORMULA I1 · ROADMAP</h1>
+<div class="subtitle">Киберпанк-гонки · Автоматический sprint</div>
+<div class="stats" id="stats"></div>
+<div id="stages"></div>
+
+<script>
+const STATUS_LABEL = { pending: 'ОЖИДАЕТ', in_progress: 'В РАБОТЕ', completed: 'ГОТОВО', failed: 'ПРОВАЛ' };
+
+async function load() {
+  try {
+    const res = await fetch('/api/roadmap');
+    if (!res.ok) throw new Error('API: ' + res.status);
+    const data = await res.json();
+
+    const allTasks = (data.stages || []).flatMap(s => s.tasks || []);
+    const completed = allTasks.filter(t => t.status === 'completed').length;
+    const inProgress = allTasks.filter(t => t.status === 'in_progress').length;
+    const pending = allTasks.filter(t => t.status === 'pending').length;
+    const totalHours = allTasks.reduce((sum, t) => sum + (t.hours || 0), 0);
+
+    document.getElementById('stats').innerHTML = `
+      <div class="stat"><div class="stat-value">${completed}/${allTasks.length}</div><div class="stat-label">ВЫПОЛНЕНО</div></div>
+      <div class="stat"><div class="stat-value" style="color:#ffd700">${inProgress}</div><div class="stat-label">В РАБОТЕ</div></div>
+      <div class="stat"><div class="stat-value" style="color:#7a8baa">${pending}</div><div class="stat-label">ОЖИДАЕТ</div></div>
+      <div class="stat"><div class="stat-value" style="color:#a855f7">${totalHours}</div><div class="stat-label">ЧАСОВ</div></div>
+    `;
+
+    document.getElementById('stages').innerHTML = (data.stages || []).map(stage => {
+      const tasks = stage.tasks || [];
+      const done = tasks.filter(t => t.status === 'completed').length;
+      return `<div class="stage">
+        <div class="stage-title">
+          <span>${stage.name}</span>
+          <span class="stage-progress">${done}/${tasks.length}</span>
+        </div>
+        ${tasks.map(t => `<div class="task ${t.status}">
+          <span class="task-id">${t.id}</span>
+          <span class="task-title">${t.title}</span>
+          <span class="task-assignee">${t.assignee}</span>
+          <span class="task-status ${t.status}">${STATUS_LABEL[t.status] || t.status}</span>
+        </div>`).join('')}
+      </div>`;
+    }).join('');
+  } catch (e) {
+    document.getElementById('stages').innerHTML = '<div class="error">Ошибка: ' + e.message + '</div>';
+    console.error(e);
+  }
+}
+
+load();
+setInterval(load, 10000);
+</script>
+</body>
+</html>

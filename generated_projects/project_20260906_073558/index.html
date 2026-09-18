@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><div id="app">
+  <!-- Шапка -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M9 21V9"/>
+        </svg>
+        <span>FrameFlow</span>
+      </a>
+      <nav class="main-nav">
+        <a href="#features">Возможности</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="#docs">Документация</a>
+        <a href="#blog">Блог</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/login" class="btn btn-ghost">Войти</a>
+        <a href="/signup" class="btn btn-primary">Начать бесплатно</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero секция -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <span class="badge">🚀 Новое: AI-ассистент в FrameFlow</span>
+        <h1>Создавайте веб-приложения<br>в <span class="gradient-text">10 раз быстрее</span></h1>
+        <p class="hero-subtitle">
+          FrameFlow — это платформа для разработки, которая объединяет визуальный редактор,
+          генерацию кода и автоматическое развертывание в одном рабочем пространстве.
+        </p>
+        <div class="hero-cta">
+          <a href="/signup" class="btn btn-primary btn-lg">Попробовать бесплатно</a>
+          <a href="/demo" class="btn btn-outline btn-lg">Смотреть демо</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">50K+</span>
+            <span class="stat-label">разработчиков</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">120K+</span>
+            <span class="stat-label">проектов создано</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">4.9/5</span>
+            <span class="stat-label">рейтинг на ProductHunt</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="code-window">
+          <div class="window-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="window-title">app.tsx</span>
+          </div>
+          <pre class="code-block">
+            <code>
+<span class="code-keyword">const</span> <span class="code-function">App</span> = () => {
+  <span class="code-keyword">return</span> (
+    &lt;<span class="code-tag">FrameFlow</span>
+      layout=<span class="code-string">"dashboard"</span>
+      theme=<span class="code-string">"dark"</span>
+      components={<span class="code-string">[Sidebar, Chart]</span>}
+    /&gt;
+  );
+};
+            </code>
+          </pre>
+          <div class="window-footer">
+            <span class="status-dot"></span>
+            <span>Автосохранение включено</span>
+            <span class="deploy-badge">⚡ Деплой за 2 сек</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Преимущества -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Всё, что нужно для современной разработки</h2>
+        <p>Замените 5 инструментов одним — FrameFlow покрывает весь цикл разработки</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Визуальный редактор</h3>
+          <p>Перетаскивайте компоненты, настраивайте стили и связи — код генерируется автоматически в реальном времени.</p>
+          <a href="/features/editor" class="feature-link">Узнать больше →</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3>Мгновенный деплой</h3>
+          <p>Один клик — и ваше приложение в production. Автоматические SSL-сертификаты, CDN и масштабирование.</p>
+          <a href="/features/deploy" class="feature-link">Узнать больше →</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+          </div>
+          <h</div>
+  <script src="app.js"></script>
+</body>
+</html>

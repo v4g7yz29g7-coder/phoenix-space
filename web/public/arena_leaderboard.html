@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>AI-1 ARENA · Лидерборд</title>
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; background: #0a0e17; color: #e0e6f0; padding: 32px 24px; min-height: 100vh; }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  h1 { font-size: 26px; letter-spacing: 2px; background: linear-gradient(90deg,#4dd0ff,#a855f7,#ff7eb6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 24px; }
+  .back { color: #4dd0ff; text-decoration: none; font-size: 13px; margin-bottom: 16px; display: inline-block; }
+  table { width: 100%; border-collapse: collapse; background: #0f1522; border-radius: 12px; overflow: hidden; }
+  th { padding: 14px 16px; text-align: left; font-size: 12px; letter-spacing: 1px; color: #7a8baa; background: #0a0e17; }
+  td { padding: 14px 16px; border-top: 1px solid #1a2030; font-size: 14px; }
+  tr:hover { background: #1a1030; }
+  .rank { color: #ffd700; font-weight: 700; }
+  .empty { text-align: center; padding: 60px; color: #4a5570; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/arena/my-team">← мой кабинет</a>
+  <h1>🏆 AI-1 ARENA · ЛИДЕРБОРД</h1>
+  <div id="content"><div class="empty">Загружаю...</div></div>
+</div>
+<script>
+async function load() {
+  const res = await fetch('/api/arena/leaderboard');
+  const data = await res.json();
+  const list = data.leaderboard || [];
+  const el = document.getElementById('content');
+  if (!list.length) { el.innerHTML = '<div class="empty">Пока никто не гонялся</div>'; return; }
+  el.innerHTML = `<table>
+    <thead><tr>
+      <th>#</th><th>Пилот</th><th>Моделей</th><th>Гонок</th><th>Побед</th><th>Best score</th>
+    </tr></thead>
+    <tbody>${list.map((u,i)=>`
+      <tr>
+        <td class="rank">${i+1}</td>
+        <td>${u.user_name || '—'}</td>
+        <td>${u.models_count || 0}</td>
+        <td>${u.races_count || 0}</td>
+        <td>${u.wins || 0}</td>
+        <td>${u.best_score || '—'}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+load();
+</script>
+</body>
+</html>

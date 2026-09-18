@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Админ-панель Феникса</title>
+  <style>
+    body { background: #1a1a2e; color: #eee; font-family: sans-serif; padding: 2rem; }
+    input, textarea, select { width: 100%; margin: 0.5rem 0; padding: 0.7rem; background: #2a2a3e; border: 1px solid #ff5500; color: #fff; border-radius: 8px; }
+    button { background: #ff5500; border: none; padding: 0.7rem 1.5rem; border-radius: 8px; color: #fff; cursor: pointer; margin: 0.3rem; }
+    .item { background: #2a2a3e; margin: 1rem 0; padding: 1rem; border-radius: 12px; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+    .tab-btn { background: transparent; border: 1px solid #ff5500; color: #ff5500; }
+    .tab-btn.active { background: #ff5500; color: #fff; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <h1>🐦‍🔥 Админ-панель Феникса</h1>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('reports')">⚠️ Жалобы</button>
+    <button class="tab-btn" onclick="showTab('users')">👤 Пользователи</button>
+    <button class="tab-btn" onclick="showTab('content')">📝 Контент</button>
+  </div>
+
+  <!-- Жалобы -->
+  <div id="tab-reports" class="tab-content active">
+    <div id="reportsList">Загрузка...</div>
+  </div>
+
+  <!-- Пользователи -->
+  <div id="tab-users" class="tab-content">
+    <div id="usersList">Загрузка...</div>
+  </div>
+
+  <!-- Контент (старая админка) -->
+  <div id="tab-content" class="tab-content">
+    <h3>Добавить/Редактировать</h3>
+    <select id="hall"><option value="keys">Шесть Врат</option><option value="practices">Дыхание Пути</option><option value="sutras">Свитки Света</option></select>
+    <input type="text" id="title" placeholder="Название">
+    <textarea id="body" rows="5" placeholder="Содержание"></textarea>
+    <input type="number" id="order" placeholder="Порядок" value="0">
+    <button onclick="saveContent()">Сохранить</button>
+    <div id="list"></div>
+  </div>
+
+  <script>
+    const ADMIN_KEY = 'phoenix-architect-2024';
+
+    function showTab(name) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      document.querySelector(`[onclick="showTab('${name}')"]`).classList.add('active');
+      if (name === 'reports') loadReports();
+      if (name === 'users') loadUsers();
+      if (name === 'content') loadContent();
+    }
+
+    // Загрузка жалоб
+    async function loadReports() {
+      const res = await fetch('/api/admin/reports', { headers: { 'x-admin-key': ADMIN_KEY } });
+      const data = await res.json();
+      const list = document.getElementById('reportsList');
+      if (!data.success || !data.data.length) {
+        list.innerHTML = '<p>Жалоб нет.</p>';
+        return;
+      }
+      list.innerHTML = data.data.map(r => `
+        <div class="item">
+          <strong>Нарушитель:</strong> ${r.target_did}<br>
+          <strong>Заявитель:</strong> ${r.reporter_did}<br>
+          <strong>Причина:</strong> ${r.reason}<br>
+          <strong>Дата:</strong> ${r.timestamp}
+        </div>
+      `).join('');
+    }
+
+    // Загрузка пользователей
+    async function loadUsers() {
+      const res = await fetch('/api/admin/users', { headers: { 'x-admin-key': ADMIN_KEY } });
+      const data = await res.json();
+      const list = document.getElementById('usersList');
+      if (!data.success || !data.data.length) {
+        list.innerHTML = '<p>Пользователей нет.</p>';
+        return;
+      }
+      list.innerHTML = data.data.map(u => `
+        <div class="item">
+          <strong>DID:</strong> ${u.did}<br>
+          <strong>Статус:</strong> ${u.status}<br>
+          <strong>Практик:</strong> ${u.practices_completed}<br>
+          <strong>Жалоб:</strong> ${u.complaints_count}
+          <br>
+          <button onclick="banUser('${u.did}')">Забанить</button>
+          <button onclick="unbanUser('${u.did}')">Разбанить</button>
+        </div>
+      `).join('');
+    }
+
+    async function banUser(did) {
+      await fetch('/api/admin/ban', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-key': ADMIN_KEY },
+        body: JSON.stringify({ did })
+      });
+      loadUsers();
+    }
+
+    async function unbanUser(did) {
+      await fetch('/api/admin/unban', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-key': ADMIN_KEY },
+        body: JSON.stringify({ did })
+      });
+      loadUsers();
+    }
+
+    // Старый функционал для контента
+    async function loadContent() {
+      const hall = document.getElementById('hall').value;
+      const res = await fetch(`/api/contents/${hall}`);
+      const data = await res.json();
+      const list = document.getElementById('list');
+      list.innerHTML = data.data.map(item => `
+        <div class="item">
+          <strong>${item.title}</strong> (порядок: ${item.order})
+          <p>${item.body.substring(0, 100)}...</p>
+          <button onclick="editItem(${item.id}, '${item.title.replace(/'/g, "\\'")}', \`${item.body.replace(/`/g, "\\`")}\`, ${item.order})">Редактировать</button>
+          <button onclick="deleteItem(${item.id})">Удалить</button>
+        </div>
+      `).join('');
+    }
+
+    async function saveContent() {
+      const hall = document.getElementById('hall').value;
+      const title = document.getElementById('title').value;
+      const body = document.getElementById('body').value;
+      const order = document.getElementById('order').value;
+      await fetch('/api/admin/contents', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-key': ADMIN_KEY },
+        body: JSON.stringify({ hall, title, body, order: parseInt(order) })
+      });
+      loadContent();
+    }
+
+    window.editItem = (id, title, body, order) => {
+      document.getElementById('title').value = title;
+      document.getElementById('body').value = body;
+      document.getElementById('order').value = order;
+      window.editingId = id;
+    };
+
+    window.deleteItem = async (id) => {
+      await fetch(`/api/admin/contents/${id}`, { method: 'DELETE', headers: { 'x-admin-key': ADMIN_KEY } });
+      loadContent();
+    };
+
+    // Загружаем по умолчанию
+    loadReports();
+    loadContent(); // для вкладки контента
+  </script>
+</body>
+</html>

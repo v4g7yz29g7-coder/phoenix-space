@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — AI Photo Story Builder</title>
+  <!-- Подключение шрифта Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок (минимальный набор) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Сброс и базовые стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0b0f;
+      font-family: 'Inter', sans-serif;
+      color: #e5e5e5;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #app {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      background-color: #0b0b0f;
+    }
+
+    /* Тёмная тема, фиолетовые акценты */
+    :root {
+      --accent: #a78bfa;
+      --accent-hover: #c4b5fd;
+      --bg-dark: #0b0b0f;
+      --bg-card: #15151c;
+      --bg-soft: #1e1e26;
+      --border: #2c2c35;
+      --text-muted: #9ca3af;
+      --text-light: #f3f4f6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Шапка */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      color: var(--text-light);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav a {
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 500;
+      color: var(--text-light);
+      transition: 0.2s;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #0b0b0f;
+      transition: 0.2s;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Hero секция */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+      margin-bottom: 24px;
+      color: var(--text-light);
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, #a78bfa, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-large {
+      padding: 14px 32px;
+      font-size: 1rem;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(167, 139, 250, 0.1);
+    }
+
+    /* Секция преимуществ */
+    .features {
+      padding: 60px 0 80px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--text-light);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 20px;
+      transition: 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .feature</div>
+  <script src="app.js"></script>
+</body>
+</html>

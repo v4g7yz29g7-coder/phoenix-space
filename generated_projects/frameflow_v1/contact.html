@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — контакты</title>
+  <!-- Тёмная тема + фиолетовый акцент #a78bfa -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0f0f1a;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: #e5e5f0;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    #app {
+      width: 100%;
+      max-width: 1200px;
+      background: transparent;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    /* имитация общего каркаса (шапка/футер) — только для контекста */
+    .nav-placeholder, .footer-placeholder {
+      opacity: 0.8;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #2a2a3f;
+      padding-bottom: 0.75rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-placeholder {
+      border-bottom: none;
+      border-top: 1px solid #2a2a3f;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #9a9ab0;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #a78bfa;
+    }
+
+    .nav-links a {
+      color: #c9c9e0;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #a78bfa;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #a78bfa;
+      color: #a78bfa;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .btn-outline:hover {
+      background: #a78bfa20;
+    }
+
+    /* контакты — основная часть */
+    .contact-page {
+      background: #151525;
+      border-radius: 32px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid #2a2a40;
+    }
+
+    .contact-header {
+      margin-bottom: 2rem;
+    }
+
+    .contact-header h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #fff, #c9b8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-header p {
+      color: #a0a0c0;
+      margin-top: 0.5rem;
+      max-width: 500px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-container {
+      background: #1c1c30;
+      border-radius: 24px;
+      padding: 1.8rem;
+      border: 1px solid #2e2e4a;
+    }
+
+    .form-container label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: #bdbdd6;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      width: 100%;
+      background: #12121f;
+      border: 1px solid #3a3a5a;
+      border-radius: 16px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.2rem;
+      color: #f0f0ff;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+
+    .form-container input:focus,
+    .form-container textarea:focus {
+      outline: none;
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 3px #a78bfa30;
+    }
+
+    .form-container textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .btn-primary {
+      background: #a78bfa;
+      border: none;
+      color: #0f0f1a;
+      font-weight: 600;
+      padding: 0.9rem 1.8rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover {
+      background: #b79ffa;
+      transform: scale(1.01);
+    }
+
+    .info-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .info-card {
+      background: #1c1c30;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid #2e2e4a;
+    }
+
+    .info-card h3 {
+      color: #a78bfa;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card p {
+      color: #b0b0cc;
+      font-size: 0.95rem;
+    }
+
+    .info-card .small-icon {
+      font-size: 1.3rem;
+    }
+
+    .team-note {
+      background: #1a1a</div>
+  <script src="app.js"></script>
+</body>
+</html>

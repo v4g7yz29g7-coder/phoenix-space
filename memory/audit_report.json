@@ -1,0 +1,256 @@
+{
+  "ts": "2026-09-13T16:30:39.548Z",
+  "tasks": [
+    {
+      "task_id": "1.1",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "1.2",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "1.3",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "1.4",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "1.5",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "2.1",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 11765,
+          "path": "arena_lab/src/scene/Vehicle.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "2.2",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 4981,
+          "path": "arena_lab/src/scene/Chassis.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "2.3",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 15105,
+          "path": "arena_lab/src/scene/VehicleFX.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "2.4",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 12891,
+          "path": "arena_lab/src/scene/TeamLivery.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "2.5",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 19800,
+          "path": "arena_lab/src/scene/PilotCockpit.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "3.1",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "3.2",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "3.3",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "3.4",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "3.5",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 15856,
+          "path": "arena_lab/src/scene/TVDirector.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "3.6",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 22779,
+          "path": "arena_lab/src/scene/SlowMoOvertake.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "3.7",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 13789,
+          "path": "arena_lab/src/scene/CameraShake.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "4.1",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 9799,
+          "path": "arena_lab/src/scene/CockpitStage.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "4.2",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 22905,
+          "path": "arena_lab/src/scene/PitLane.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "4.3",
+      "passed": true,
+      "checks": {
+        "file": {
+          "ok": true,
+          "size": 17903,
+          "path": "arena_lab/src/scene/CameraCrane.tsx"
+        },
+        "ts": {
+          "ok": true,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "task_id": "5.1",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "5.2",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "5.3",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "5.4",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "5.5",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "5.6",
+      "passed": true,
+      "checks": {}
+    },
+    {
+      "task_id": "6.3",
+      "passed": true,
+      "checks": {}
+    }
+  ],
+  "summary": {
+    "total": 27,
+    "passed": 27,
+    "failed": 0,
+    "fake": 0
+  }
+}

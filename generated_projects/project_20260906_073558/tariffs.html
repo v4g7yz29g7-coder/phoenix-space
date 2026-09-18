@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тарифы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">Вот HTML-разметка для страницы «Тарифы» с тремя тарифами, разработанная с учётом требований для проекта FrameFlow. Код включает адаптивную сетку, семантические элементы и стилизованные компоненты.
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — Тарифы и цены</title>
+  <!-- Подключение шрифта Inter для современного вида -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок (бесплатная версия) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #f8faff 0%, #eef2f9 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      color: #1a2b4c;
+    }
+
+    .pricing-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Заголовок секции */
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .pricing-header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.75rem;
+    }
+
+    .pricing-header p {
+      font-size: 1.2rem;
+      color: #4a5b7a;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* Сетка тарифов */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    /* Карточка тарифа */
+    .pricing-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 40px -12px rgba(0, 20, 60, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(4px);
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 50px -12px rgba(0, 40, 100, 0.25);
+    }
+
+    /* Популярный тариф (выделен) */
+    .pricing-card.popular {
+      background: #ffffff;
+      border: 2px solid #3b82f6;
+      box-shadow: 0 25px 45px -12px rgba(59, 130, 246, 0.3);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #3b82f6;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+      white-space: nowrap;
+    }
+
+    /* Название тарифа */
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1e293b;
+    }
+
+    /* Описание */
+    .plan-description {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+      min-height: 3.2em; /* выравнивание высоты */
+    }
+
+    /* Цена */
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .price-amount {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+    }
+
+    .price-period {
+      font-size: 1rem;
+      color: #64748b;
+      font-weight: 400;
+    }
+
+    /* Список возможностей */
+    .features-list {
+      list-style: none;
+      margin: 0 0 2rem 0;
+      flex-grow: 1;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      font-size: 0.95rem;
+      color: #334155;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+
+    .features-list i {
+      color: #3b82f6;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+      min-width: 1.2rem;
+    }
+
+    .features-list .feature-disabled i {
+      color: #cbd5e1;
+    }
+
+    .features-list .feature-disabled</div>
+  <script src="app.js"></script>
+</body>
+</html>

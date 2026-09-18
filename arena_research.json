@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "tasks": [
+    {
+      "id": "R.1",
+      "title": "JWT best practices (Node.js/Express)",
+      "assignee": "agent_1",
+      "status": "completed",
+      "file": "research/jwt.md",
+      "prompt": "Изучи GitHub и документацию. Найди best practices для JWT в Node.js/Express. Что писать в research/jwt.md: 1) библиотеки (jsonwebtoken vs jose), 2) структура токена, 3) refresh tokens, 4) безопасность (httpOnly cookies), 5) примеры кода. Используй write для сохранения.",
+      "started_at": "2026-09-13T16:13:10.162Z",
+      "completed_at": "2026-09-13T16:15:00Z",
+      "file_created": true
+    },
+    {
+      "id": "R.2",
+      "title": "БД для FORMULA I1: SQLite vs PostgreSQL",
+      "assignee": "agent_4",
+      "status": "completed",
+      "file": "research/db.md",
+      "prompt": "Сравни SQLite vs PostgreSQL для нашего проекта (25 агентов, гонки, маркетплейс, пользователи). Что писать в research/db.md: 1) плюсы/минусы каждой, 2) рекомендация, 3) схема таблиц (users, agents, races, parts, builds), 4) миграции, 5) примеры запросов. Используй write.",
+      "started_at": "2026-09-13T16:16:39.127Z",
+      "completed_at": "2026-09-13T16:23:34.718Z",
+      "winner": "agent_4"
+    },
+    {
+      "id": "R.3",
+      "title": "Email + IMAP через Node.js",
+      "assignee": "agent_7",
+      "status": "completed",
+      "file": "research/email.md",
+      "prompt": "Как читать почту через IMAP в Node.js. Что писать в research/email.md: 1) библиотеки (imap, mailparser), 2) подключение к Gmail/Yandex, 3) парсинг писем, 4) поиск паролей/ссылок в письмах, 5) примеры кода. Используй write.",
+      "started_at": "2026-09-13T16:24:04.741Z",
+      "completed_at": "2026-09-13T16:27:30.502Z",
+      "winner": "agent_4"
+    },
+    {
+      "id": "R.4",
+      "title": "Хранение паролей (bcrypt/argon2)",
+      "assignee": "agent_1",
+      "status": "completed",
+      "file": "research/password.md",
+      "prompt": "Как безопасно хранить пароли пользователей. Что писать: 1) bcrypt vs argon2, 2) соль, 3) cost factor, 4) примеры на Node.js, 5) восстановление пароля через email. Используй write.",
+      "started_at": "2026-09-13T16:28:00.505Z",
+      "completed_at": "2026-09-13T16:31:56.315Z",
+      "winner": "agent_4"
+    },
+    {
+      "id": "R.5",
+      "title": "Архитектура маркетплейса запчастей",
+      "assignee": "agent_4",
+      "status": "completed",
+      "file": "research/catalog.md",
+      "prompt": "Как построить маркетплейс цифровых товаров (запчасти для машин). Что писать: 1) схема БД (parts, builds, purchases, users), 2) API дизайн, 3) комиссия 30%, 4) рейтинги и отзывы, 5) примеры с Steam/OpenSea. Используй write.",
+      "started_at": "2026-09-13T16:32:26.316Z",
+      "completed_at": "2026-09-13T16:36:31.312Z",
+      "winner": "agent_4"
+    }
+  ]
+}

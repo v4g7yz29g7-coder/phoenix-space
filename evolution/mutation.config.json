@@ -1,0 +1,20 @@
+{
+  "weights": {
+    "point": 0.4,
+    "block": 0.25,
+    "swap": 0.2,
+    "gaussian": 0.15
+  },
+  "defaultRate": 0.1,
+  "scale": 0.25,
+  "sigma": 0.2,
+  "blockMin": 1,
+  "blockMax": 3,
+  "globalMin": null,
+  "globalMax": null,
+  "geneBounds": null,
+  "clamp": true,
+  "round": 6,
+  "debug": false,
+  "seed": null
+}

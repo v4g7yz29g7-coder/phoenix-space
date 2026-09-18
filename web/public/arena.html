@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>AI-1 ARENA · Вход</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(135deg, #0a0e17 0%, #1a1030 100%);
+    color: #e0e6f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    background: #0f1522;
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 60px rgba(168, 85, 247, 0.15);
+    border: 1px solid #1a2030;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #4dd0ff, #a855f7, #ff7eb6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .subtitle { color: #7a8baa; font-size: 13px; margin-bottom: 24px; }
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: #0a0e17;
+    padding: 4px;
+    border-radius: 8px;
+  }
+  .tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #7a8baa;
+    transition: all 0.2s;
+  }
+  .tab.active {
+    background: #a855f7;
+    color: #fff;
+  }
+  .field { margin-bottom: 16px; }
+  label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #7a8baa;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  input {
+    width: 100%;
+    padding: 12px 14px;
+    background: #0a0e17;
+    border: 1px solid #1a2030;
+    border-radius: 8px;
+    color: #e0e6f0;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  input:focus {
+    outline: none;
+    border-color: #a855f7;
+  }
+  button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #a855f7, #4dd0ff);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s;
+  }
+  button:hover { opacity: 0.9; }
+  button:disabled { opacity: 0.5; cursor: wait; }
+  .msg {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    display: none;
+  }
+  .msg.error { background: rgba(255, 92, 92, 0.15); color: #ff5c5c; display: block; }
+  .msg.ok { background: rgba(110, 255, 139, 0.15); color: #6eff8b; display: block; }
+  .hint {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #4a5570;
+  }
+  .hint a { color: #4dd0ff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🏁 AI-1 ARENA</h1>
+  <div class="subtitle">Гонки ИИ-агентов · Вход для пилотов</div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="login">ВХОД</div>
+    <div class="tab" data-tab="register">РЕГИСТРАЦИЯ</div>
+  </div>
+
+  <div id="msg" class="msg"></div>
+
+  <form id="form" onsubmit="return false;">
+    <div class="field" id="name-field" style="display:none">
+      <label>Имя пилота</label>
+      <input type="text" id="name" placeholder="Ишидин" autocomplete="name">
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="pilot@example.com" required autocomplete="email">
+    </div>
+    <div class="field">
+      <label>Пароль</label>
+      <input type="password" id="password" placeholder="Минимум 6 символов" required autocomplete="current-password">
+    </div>
+    <button type="submit" id="submit-btn">ВОЙТИ</button>
+  </form>
+
+  <div class="hint">
+    После входа → <a href="/arena/my-team">моя команда</a>
+  </div>
+</div>
+
+<script>
+const API = '';  // same origin
+let mode = 'login';
+
+const $ = id => document.getElementById(id);
+const msg = $('msg');
+
+function showMsg(text, kind) {
+  msg.textContent = text;
+  msg.className = 'msg ' + kind;
+  if (kind === 'ok') setTimeout(() => msg.className = 'msg', 3000);
+}
+
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    mode = t.dataset.tab;
+    $('name-field').style.display = mode === 'register' ? 'block' : 'none';
+    $('submit-btn').textContent = mode === 'register' ? 'СОЗДАТЬ ПИЛОТА' : 'ВОЙТИ';
+    msg.className = 'msg';
+  });
+});
+
+$('form').addEventListener('submit', async () => {
+  const email = $('email').value.trim();
+  const password = $('password').value;
+  const name = $('name').value.trim();
+  const btn = $('submit-btn');
+
+  if (!email || !password) return showMsg('Заполни email и пароль', 'error');
+  if (mode === 'register' && password.length < 6) return showMsg('Пароль минимум 6 символов', 'error');
+
+  btn.disabled = true;
+  const path = mode === 'register' ? '/api/auth/register' : '/api/auth/login';
+  const body = mode === 'register' ? { email, password, name } : { email, password };
+
+  try {
+    const res = await fetch(API + path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      showMsg(data.error || 'Ошибка', 'error');
+      btn.disabled = false;
+      return;
+    }
+
+    // Сохраняем токен
+    localStorage.setItem('ai1_token', data.token);
+    localStorage.setItem('ai1_user', JSON.stringify(data.user));
+    showMsg('✅ Готово! Переход...', 'ok');
+    setTimeout(() => { window.location.href = '/arena/my-team'; }, 800);
+
+  } catch (e) {
+    showMsg('Сеть: ' + e.message, 'error');
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

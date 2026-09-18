@@ -1,0 +1,15 @@
+{
+  "ts": "2026-09-13T05:30:00Z",
+  "runs": [
+    {"run": "deepseek_baseline", "acc": 0.5},
+    {"run": "v5_agent_4", "acc": 0.333},
+    {"run": "v5_agent_20", "acc": 0.333},
+    {"run": "v5_agent_6", "acc": 0.333},
+    {"run": "p2p_agent_4", "acc": 0.333},
+    {"run": "p2p_agent_20", "acc": 0.333},
+    {"run": "p2p_agent_6", "acc": 0.333}
+  ],
+  "avg_accuracy": 0.333,
+  "key_insight": "csv-to-parquet стабильно решается; fix-git требует fsck; configure-git требует nginx 8080",
+  "skills_evolution": {"v1": "reflog only", "v2": "reflog + fsck + nginx 8080"}
+}

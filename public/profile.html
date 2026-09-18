@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Профиль | Феникс 🐦‍🔥</title>
+  <style>
+    body { background: #0a0a12; color: #e0e0e0; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .container { max-width: 500px; width: 100%; text-align: center; }
+    .back-link { display: inline-block; margin-bottom: 2rem; color: #ffaa66; text-decoration: none; }
+    .avatar { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #ff5500; object-fit: cover; background: #2a2a3e; box-shadow: 0 0 30px rgba(255,80,0,0.4); }
+    .name { font-size: 1.8rem; color: #ffd9b3; margin: 0.5rem 0; }
+    .btn { background: #ff5500; border: none; color: #fff; padding: 0.6rem 2rem; border-radius: 30px; cursor: pointer; font-size: 0.9rem; margin: 0.5rem; }
+    .edit-form { display: none; background: rgba(20,20,30,0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255,100,0,0.4); border-radius: 20px; padding: 1.5rem; margin-top: 1.5rem; }
+    .edit-form input[type="text"] { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,140,0,0.3); border-radius: 12px; padding: 0.7rem; color: #fff; margin-bottom: 0.8rem; }
+    .edit-form input[type="file"] { color: #aa8c7a; margin-bottom: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Вернуться в Сад</a>
+    <div id="profileContent"></div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'phoenix_profile';
+    
+    function loadProfile() {
+      let profile = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      const did = JSON.parse(localStorage.getItem('phoenix_did') || '{}');
+      const address = did.address ? did.address.substring(0, 8) + '...' : '';
+      
+      profile = {
+        name: profile.name || 'Архитектор ' + address,
+        avatar: profile.avatar || '/icons/phoenix-192.png'
+      };
+      
+      document.getElementById('profileContent').innerHTML = `
+        <img src="${profile.avatar}" class="avatar" id="avatarImg">
+        <div class="name" id="nameDisplay">${profile.name}</div>
+        <button class="btn" onclick="toggleEdit()">✏️ Редактировать</button>
+        <div class="edit-form" id="editForm">
+          <input type="text" id="newName" placeholder="Твоё имя" value="${profile.name}">
+          <input type="file" id="newAvatar" accept="image/*">
+          <button class="btn" onclick="saveProfile()">Сохранить</button>
+        </div>
+      `;
+    }
+    
+    window.toggleEdit = function() {
+      const form = document.getElementById('editForm');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    };
+    
+    window.saveProfile = function() {
+      const name = document.getElementById('newName').value || 'Архитектор';
+      const file = document.getElementById('newAvatar').files[0];
+      
+      const profile = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      profile.name = name;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+      
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          profile.avatar = e.target.result;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+          document.getElementById('avatarImg').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+      
+      document.getElementById('nameDisplay').textContent = name;
+      document.getElementById('editForm').style.display = 'none';
+    };
+    
+    loadProfile();
+  </script>
+</body>
+</html>

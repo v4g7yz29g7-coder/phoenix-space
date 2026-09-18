@@ -1,0 +1,87 @@
+{
+  "tracks": [
+    {
+      "id": "grid",
+      "name": "AI-1 Grand Prix",
+      "difficulty": "hard",
+      "length": 240,
+      "lanes": 6,
+      "path": [
+        {"x": -60, "z": -30},
+        {"x":  60, "z": -30},
+        {"x":  60, "z":   0},
+        {"x":  30, "z":  20},
+        {"x": -30, "z":  20},
+        {"x": -60, "z":   0}
+      ],
+      "tribunes": [
+        {"side": "north", "size": 80, "levels": 4},
+        {"side": "south", "size": 80, "levels": 4},
+        {"side": "west",  "size": 60, "levels": 3}
+      ]
+    },
+    {
+      "id": "oval",
+      "name": "AI-1 Oval",
+      "difficulty": "easy",
+      "length": 120,
+      "lanes": 6,
+      "path": [
+        {"x": -30, "z": -15},
+        {"x":  30, "z": -15},
+        {"x":  45, "z":   0},
+        {"x":  30, "z":  15},
+        {"x": -30, "z":  15},
+        {"x": -45, "z":   0}
+      ],
+      "tribunes": [
+        {"side": "north", "size": 40, "levels": 3},
+        {"side": "south", "size": 40, "levels": 3}
+      ]
+    },
+    {
+      "id": "figure-8",
+      "name": "AI-1 Crossroads",
+      "difficulty": "medium",
+      "length": 160,
+      "lanes": 6,
+      "path": [
+        {"x": -40, "z": -20},
+        {"x":  40, "z":  20},
+        {"x":  40, "z": -20},
+        {"x": -40, "z":  20},
+        {"x": -40, "z": -20}
+      ],
+      "tribunes": [{"side": "center", "size": 50, "levels": 3}]
+    },
+    {
+      "id": "spiral",
+      "name": "AI-1 Spiral",
+      "difficulty": "medium",
+      "length": 200,
+      "lanes": 6,
+      "path": [
+        {"x": 0, "z": 0, "radius": 5},
+        {"x": 0, "z": 0, "radius": 15},
+        {"x": 0, "z": 0, "radius": 30},
+        {"x": 0, "z": 0, "radius": 45}
+      ],
+      "tribunes": [{"side": "outer", "size": 60, "levels": 3}]
+    },
+    {
+      "id": "chicane",
+      "name": "AI-1 Chicane",
+      "difficulty": "hard",
+      "length": 140,
+      "lanes": 6,
+      "path": [
+        {"x": -50, "z": 0},
+        {"x": -20, "z": -10},
+        {"x":   0, "z":  10},
+        {"x":  20, "z": -10},
+        {"x":  50, "z":   0}
+      ],
+      "tribunes": [{"side": "both", "size": 80, "levels": 4}]
+    }
+  ]
+}

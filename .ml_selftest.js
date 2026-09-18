@@ -1,0 +1,20 @@
+'use strict';
+process.env.MUTATION_LOG_FILE = '/home/ishidin/phoenix/.ml_test.jsonl';
+const path = require('path');
+const fs = require('fs');
+const m = require('./evolution/mutation_logger.js');
+try { fs.unlinkSync('/home/ishidin/phoenix/.ml_test.jsonl'); } catch (_) {}
+m.clear();
+const r1 = m.log({ agentId: 'a1', type: 'prompt', gene: 'tone', from: 'terse', to: 'verbose', reason: 'test', generation: 3, fitness: 0.7, meta: { src: 'unit' } });
+const r2 = m.log({ agentId: 'a1', type: 'param', gene: 'lr', from: 0.01, to: 0.005 });
+m.log({ agentId: 'a2', type: 'grant', gene: 'tools', to: ['web_search'] });
+console.log('r1:', JSON.stringify(r1));
+console.log('r2:', JSON.stringify(r2));
+console.log('history a1 len:', m.history('a1').length);
+console.log('history all len:', m.history().length);
+console.log('count a1:', m.count('a1'));
+console.log('stats total:', m.stats().total);
+const circ = {}; circ.self = circ;
+console.log('circular result:', JSON.stringify(m.log({ agentId: 'a3', meta: circ })));
+console.log('null input:', m.log(null));
+console.log('FUNCTIONAL_OK');

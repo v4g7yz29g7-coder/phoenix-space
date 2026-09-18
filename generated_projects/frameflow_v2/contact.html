@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — контакты</title>
+  <!-- Тёмная тема + фиолетовый акцент #a78bfa -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0b0f;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: #eaeaf0;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* общий контейнер #app — как указано в ТЗ */
+    #app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* имитация шапки (для контекста) */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #a78bfa;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #c9c9d6;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #a78bfa;
+    }
+
+    .btn-login {
+      background: transparent;
+      border: 1px solid #a78bfa;
+      color: #a78bfa;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .btn-login:hover {
+      background: #a78bfa20;
+      border-color: #c4b5fd;
+    }
+
+    /* контакты — основная разметка */
+    .contact-page {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .contact-header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-header p {
+      color: #a0a0b0;
+      max-width: 600px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* карточка формы */
+    .form-card {
+      background: #14141c;
+      border-radius: 28px;
+      padding: 2rem;
+      border: 1px solid #2a2a35;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      color: #b0b0c0;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: #1e1e28;
+      border: 1px solid #2f2f3d;
+      border-radius: 18px;
+      padding: 0.9rem 1.2rem;
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.2s;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+      background: #1b1b26;
+    }
+
+    .form-group textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      background: #a78bfa;
+      color: #0b0b0f;
+      font-weight: 700;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      letter-spacing: 0.3px;
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      background: #c4b5fd;
+      transform: scale(1.01);
+    }
+
+    /* контактная информация (дополнительно) */
+    .contact-info {
+      background: #14141c;
+      border-radius: 28px;
+      padding: 2rem;
+      border: 1px solid #2a2a35;
+    }
+
+    .contact-info h3 {
+      color: #fff;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      color: #bdbdd0;
+    }
+
+    .info-icon {
+      background: #a78bfa20;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a78bfa;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .info-text {
+      font-size: 0</div>
+  <script src="app.js"></script>
+</body>
+</html>

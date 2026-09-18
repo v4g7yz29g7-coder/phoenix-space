@@ -1,0 +1,7 @@
+{
+  "name": "agent_8",
+  "created_at": "2026-09-12T09:32:00Z",
+  "created_by": "agent_7",
+  "parent_commit": "73e43dd",
+  "strategy": "devils-advocate: adversarial self-falsification"
+}

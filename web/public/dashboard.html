@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐦‍🔥 PHOENIX Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background: #0a0e1a;
+    color: #e0e6f0;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  h1 { color: #7dd3fc; margin-bottom: 8px; font-size: 24px; }
+  .subtitle { color: #64748b; font-size: 12px; margin-bottom: 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: #131826;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 16px;
+    transition: border-color 0.3s;
+  }
+  .card:hover { border-color: #38bdf8; }
+  .card h2 {
+    font-size: 14px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .card .value { color: #7dd3fc; font-size: 22px; font-weight: bold; }
+  .card .value.green { color: #4ade80; }
+  .card .value.yellow { color: #facc15; }
+  .card .value.red { color: #f87171; }
+  .list { font-size: 12px; line-height: 1.8; max-height: 200px; overflow-y: auto; }
+  .list .row { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #1e293b; }
+  .list .row:last-child { border-bottom: none; }
+  .status-online { color: #4ade80; }
+  .status-stopped { color: #f87171; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; margin-right: 4px; }
+  .pill.green { background: #14532d; color: #4ade80; }
+  .pill.yellow { background: #422006; color: #facc15; }
+  .pill.red { background: #450a0a; color: #f87171; }
+  .footer { margin-top: 20px; font-size: 11px; color: #475569; text-align: center; }
+</style>
+</head>
+<body>
+  <h1>🐦‍🔥 PHOENIX · Dashboard</h1>
+  <div class="subtitle">Обновление: <span id="ts">—</span> · <span id="auto">авто каждые 5 сек</span></div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Модули Института <span id="modules-count" class="value">0</span></h2>
+      <div class="list" id="modules-list"></div>
+    </div>
+    <div class="card">
+      <h2>Топ агентов <span id="agents-count" class="value">0</span></h2>
+      <div class="list" id="agents-list"></div>
+    </div>
+    <div class="card">
+      <h2>Пул задач <span id="pool-total" class="value">0</span></h2>
+      <div class="list" id="pool-list"></div>
+    </div>
+    <div class="card">
+      <h2>Последние гонки</h2>
+      <div class="list" id="races-list"></div>
+    </div>
+    <div class="card">
+      <h2>PM2 процессы</h2>
+      <div class="list" id="pm2-list"></div>
+    </div>
+    <div class="card">
+      <h2>Бюджет LLM <span id="budget-spent" class="value">$0</span></h2>
+      <div style="font-size:12px;color:#94a3b8">Лимит: $<span id="budget-limit">2</span> / день</div>
+      <div style="margin-top:8px">
+        <span id="git-badge" class="pill green">git: clean</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">PHOENIX · AI-1 Evolution Arena · <span id="total-updates">0</span> обновлений</div>
+
+<script>
+let updates = 0;
+function cls(v, g, y) { return v >= g ? 'green' : v >= y ? 'yellow' : 'red'; }
+function esc(s) { return String(s || '').replace(/</g, '&lt;').slice(0, 60); }
+
+async function tick() {
+  try {
+    const r = await fetch('/api/dashboard/state?t=' + Date.now());
+    const d = await r.json();
+    updates++;
+
+    document.getElementById('ts').textContent = new Date(d.ts).toLocaleTimeString('ru-RU');
+    document.getElementById('total-updates').textContent = updates;
+
+    // Модули
+    if (d.modules) {
+      document.getElementById('modules-count').textContent = d.modules.total || 0;
+      document.getElementById('modules-list').innerHTML =
+        (d.modules.list || []).slice(0, 20).map(m =>
+          `<div class="row"><span>${esc(m.name)}</span><span class="status-online">●</span></div>`
+        ).join('');
+    }
+
+    // Агенты
+    if (d.agents) {
+      document.getElementById('agents-count').textContent = d.agents.total || 0;
+      document.getElementById('agents-list').innerHTML =
+        (d.agents.top || []).map(a => {
+          const c = cls(a.fitness, 4, 2);
+          return `<div class="row"><span>${esc(a.box)}</span><span class="value ${c}" style="font-size:12px">${a.fitness.toFixed(2)} · ${a.wins}w/${a.runs}r</span></div>`;
+        }).join('');
+    }
+
+    // Пул
+    if (d.pool) {
+      document.getElementById('pool-total').textContent = d.pool.total || 0;
+      document.getElementById('pool-list').innerHTML =
+        Object.entries(d.pool.byStatus || {}).map(([k, v]) => {
+          const cls2 = k === 'completed' ? 'green' : k === 'pending' ? 'yellow' : k === 'failed' ? 'red' : '';
+          return `<div class="row"><span class="pill ${cls2}">${k}</span><span class="value" style="font-size:14px">${v}</span></div>`;
+        }).join('');
+    }
+
+    // Гонки
+    if (d.races) {
+      document.getElementById('races-list').innerHTML =
+        d.races.map(r => {
+          const w = r.winner ? `<span class="status-online">${esc(r.winner)} · ${r.score}</span>` : `<span class="status-stopped">null</span>`;
+          return `<div class="row"><span>${esc(r.id).slice(-15)}</span>${w}</div>`;
+        }).join('');
+    }
+
+    // PM2
+    if (d.pm2) {
+      document.getElementById('pm2-list').innerHTML =
+        d.pm2.map(p => {
+          const st = p.status === 'online' ? 'status-online' : 'status-stopped';
+          return `<div class="row"><span>${esc(p.name)}</span><span class="${st}">${p.status} · ${(p.mem/1048576).toFixed(0)}MB</span></div>`;
+        }).join('');
+    }
+
+    // Бюджет
+    if (d.budget) {
+      document.getElementById('budget-spent').textContent = '$' + (d.budget.spent || 0).toFixed(4);
+      document.getElementById('budget-limit').textContent = d.budget.limit || 2;
+    }
+
+    // Git
+    if (d.git) {
+      const badge = document.getElementById('git-badge');
+      if (d.git.uncommitted > 0) {
+        badge.className = 'pill yellow';
+        badge.textContent = `git: ${d.git.uncommitted} uncommitted`;
+      } else {
+        badge.className = 'pill green';
+        badge.textContent = 'git: clean';
+      }
+    }
+  } catch (e) {
+    console.error('Dashboard error:', e);
+  }
+}
+
+tick();
+setInterval(tick, 5000);
+</script>
+</body>
+</html>

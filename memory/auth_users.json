@@ -1,0 +1,18 @@
+{
+  "test@ai1.local": {
+    "id": "5137fde2-deb8-4599-aeb5-f1f6de7b20bd",
+    "email": "test@ai1.local",
+    "name": "Test Pilot",
+    "salt": "85686e1f16a3da66e799b29e7b19ef5d",
+    "hash": "36ddf54addfc13b7f626aa5f9630645d89f954e3f0cb3c45e748136b65a8e277a461baa683440845b796d81cbf85af1576e1983d1cee35067e971c590d42df17",
+    "createdAt": 1789373477329
+  },
+  "ishidin@ya.ru": {
+    "id": "9903632d-591a-4dfa-8035-7f7ea813d407",
+    "email": "ishidin@ya.ru",
+    "name": "Ivashi",
+    "salt": "73bef44f2c287291c7cde2ce0e8dfd14",
+    "hash": "d7584668247e21faf7a5855a62d4b70bd662aae772c53b95145fd843d4c036d4fb0adfd28bf9d990a7e255733a2d8fc60422faa4b9daba46dd3e5ec1c9ed4da5",
+    "createdAt": 1789373596562
+  }
+}

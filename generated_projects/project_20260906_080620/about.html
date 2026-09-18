@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — О нас</title>
+  <!-- Подключение шрифта Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Базовые сбросы и стили, только для контента внутри #app (без каркаса) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0b0f;
+      font-family: 'Inter', sans-serif;
+      color: #e2e2ea;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* контейнер #app — только контент, без внешнего каркаса */
+    #app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Типографика */
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    p {
+      color: #b9b9c9;
+      font-size: 1.1rem;
+    }
+
+    /* Акцентный фиолетовый */
+    .accent {
+      color: #a78bfa;
+    }
+
+    .badge-accent {
+      background: rgba(167, 139, 250, 0.1);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: #a78bfa;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    /* Секции */
+    .about-hero {
+      margin-bottom: 4rem;
+    }
+
+    .about-hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      color: #c6c6d6;
+      border-left: 4px solid #a78bfa;
+      padding-left: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0 4rem;
+    }
+
+    .value-card {
+      background: #12121a;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      border: 1px solid #23232e;
+      transition: border-color 0.2s ease;
+    }
+
+    .value-card:hover {
+      border-color: #a78bfa40;
+    }
+
+    .value-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .value-card p {
+      font-size: 1rem;
+      color: #a0a0b2;
+    }
+
+    /* Команда */
+    .team-section {
+      margin-top: 3rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .team-member {
+      background: #0f0f15;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid #23232e;
+      text-align: center;
+    }
+
+    .member-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #1e1e2a, #2a2a3a);
+      margin: 0 auto 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #a78bfa;
+      border: 2px solid #a78bfa30;
+    }
+
+    .member-name {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .member-role {
+      color: #a78bfa;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .member-desc {
+      font-size: 0.95rem;
+      color: #9a9aaf;
+      margin-top: 1rem;
+    }
+
+    /* Дополнительный блок с цитатой/миссией */
+    .mission-quote {
+      background: #12121a;
+      border-radius: 28px;
+      padding: 2.5rem;
+      margin: 4rem 0 2rem;
+      border: 1px solid #2a2a3a;
+      position: relative;
+    }
+
+    .mission-quote::before {
+      content: '“';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      font-size: 6rem;
+      color: #a78bfa20;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .mission-quote p {
+      font-size: 1.4rem;
+      color: #d0d0e0;
+      font-weight: 400;
+      max-width: 800px;
+      margin-top: 1rem;
+    }
+
+    .mission-quote .author {
+      margin-top: 1.5rem;
+      color: #a78bfa;
+      font-weight: 500;
+    }
+
+    /* Ада</div>
+  <script src="app.js"></script>
+</body>
+</html>

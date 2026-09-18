@@ -1,0 +1,32 @@
+{
+  "id": "uv_python_deps",
+  "name": "Install Python deps via uv (bare Ubuntu)",
+  "trigger_patterns": [
+    "ModuleNotFoundError",
+    "pip: command not found",
+    "No module named"
+  ],
+  "trigger_keywords": [
+    "pandas",
+    "pyarrow",
+    "python",
+    "convert",
+    "parquet"
+  ],
+  "recipe_commands": [
+    "curl -LsSf https://astral.sh/uv/0.7.13/install.sh | sh",
+    "source $HOME/.local/bin/env && cd /app && uv init && uv add pandas pyarrow",
+    "cd /app && uv run -- python3 -c \"import pandas as pd; df = pd.read_csv('/app/data.csv'); df.to_parquet('/app/data.parquet', index=False); print('OK', len(df))\"",
+    "ls -la /app/data.parquet",
+    "cd /app && uv run -- python3 -c \\",
+    "pwd && ls -la /app/data.csv /app/data.parquet 2>&1",
+    "cd /app && uv run -- python3 -c \\",
+    "pwd && ls -la /app/data.csv && head -3 /app/data.csv",
+    "curl -LsSf https://astral.sh/uv/0.7.13/install.sh | sh && source $HOME/.local/bin/env && cd /app && uv init --no-workspace 2>/dev/null; cd /app && uv add pandas pyarrow",
+    "ls -la /app/data.csv && head -3 /app/data.csv",
+    "pwd && ls -la /app/data.parquet && ls -la /app/data.csv",
+    "ls -la /app/data.parquet && ls -la /app/data.csv"
+  ],
+  "confidence": 1.0,
+  "last_updated_by": "agent_6"
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">Вот HTML-разметка для страницы "Контакты" с формой обратной связи, разработанная с учётом требований ТЗ для FrameFlow:
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — FrameFlow</title>
+    <!-- Подключение стилей (минимальный сброс и базовая стилизация для демонстрации) -->
+    <style>
+        /* Сброс и базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            padding: 2.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        .subtitle {
+            color: #475569;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        /* Стили формы */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: #f8fafc;
+            font-family: inherit;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            background-color: white;
+        }
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .btn-submit {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-submit:hover {
+            background-color: #4338ca;
+        }
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+        /* Дополнительная контактная информация */
+        .contact-info {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .info-item h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-bottom: 0.25rem;
+        }
+        .info-item p, .info-item a {
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .info-item a:hover {
+            text-decoration: underline;
+        }
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <!-- Заголовок страницы -->
+        <h1>Свяжитесь с нами</h1>
+        <p class="subtitle">Мы всегда рады услышать ваши идеи, вопросы или предложения. Заполните форму — ответим в течение 24 часов.</p>
+
+        <!-- Форма обратной связи (id = contact-form) -->
+        <form id="contact-form" action="#" method="post" novalidate>
+            <!-- Поле Имя -->
+            <div class="form-group">
+                <label for="name">Ваше имя</label>
+                <input type="text" id="name" name="name" placeholder="Иван Петров" required autocomplete="name">
+            </div>
+
+            <!-- Поле Email -->
+            <div class="form-group">
+                <label for="email">Электронная почта</label>
+                <input type="email" id="email" name="email" placeholder="ivan@example.com" required autocomplete="email">
+            </div>
+
+            <!-- Поле Сообщение -->
+            <div class="form-group">
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" placeholder="Опишите ваш вопрос или проект..." required></textarea>
+            </div>
+
+            <!-- Кнопка отправки -->
+            <button type="submit" class="btn-submit">
+                <!-- Иконка отправки (простая SVG) -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                Отправить сообщение
+            </button>
+        </form>
+
+        <!-- Дополнительная контактная информация (для полноты страницы) -->
+        <div class="contact-info">
+            <div class="info-item">
+                <h3>Email</h3>
+                <p><a href="mailto</div>
+  <script src="app.js"></script>
+</body>
+</html>

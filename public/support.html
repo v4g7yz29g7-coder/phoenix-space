@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Поддержать Сад | Феникс 🐦‍🔥</title>
+  <link rel="stylesheet" href="/css/core.css">
+  <style>
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Inter', sans-serif; padding: 2rem; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .container { max-width: 600px; width: 100%; text-align: center; }
+    .back-link { display: inline-block; margin-bottom: 2rem; color: #ffaa66; text-decoration: none; font-size: 0.9rem; }
+    h1 { font-family: 'Cormorant Garamond', serif; color: #ffb347; margin-bottom: 1rem; }
+    .card { background: rgba(20,20,30,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,100,0,0.3); border-radius: 16px; padding: 1.5rem; margin: 1rem 0; }
+    .eth-address { background: #1a1a2e; padding: 0.8rem; border-radius: 8px; word-break: break-all; font-family: monospace; color: #ffb380; }
+    .btn { display: inline-block; background: #ff5500; color: #fff; padding: 0.6rem 1.8rem; border-radius: 30px; text-decoration: none; margin: 0.5rem; transition: all 0.3s; }
+    .btn:hover { box-shadow: 0 0 20px rgba(255,80,0,0.6); transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Вернуться в Сад</a>
+    <h1>🐦‍🔥 Поддержать Сад</h1>
+    <p style="color: #aa8c7a; margin-bottom: 2rem;">Каждое семя благодарности помогает Саду расти.</p>
+    
+    <div class="card">
+      <h3>💎 Криптовалюта (Ethereum)</h3>
+      <p>Отправьте ETH или любой токен ERC-20 на адрес:</p>
+      <div class="eth-address" id="ethAddress">0x... (замени на свой)</div>
+    </div>
+    
+    <div class="card">
+      <h3>💳 Фиат (Patreon / Boosty)</h3>
+      <p>Поддержите нас через удобный сервис:</p>
+      <a href="https://www.patreon.com/your_page" target="_blank" class="btn">Patreon</a>
+      <a href="https://boosty.to/your_page" target="_blank" class="btn">Boosty</a>
+    </div>
+  </div>
+</body>
+</html>

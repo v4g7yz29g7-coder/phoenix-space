@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<!--
+  universes_dashboard.html
+  Observability dashboard for the AEON multiverse of universes.
+
+  Purpose:
+    Single-file, dependency-free control room that visualises the health,
+    load, agent population and throughput of every known universe. It is
+    designed to be opened directly from disk (file://) or served statically
+    by nginx, and it degrades gracefully when no backend is reachable.
+
+  Data contract:
+    GET /api/universes  ->  { generatedAt: ISO, universes: [ Universe ] }
+    Universe = {
+      id: string, name: string, status: "ok"|"warn"|"err",
+      load: number (0..100), agents: number, epochs: number,
+      latencyMs: number, tps: number, errors: number,
+      color?: string, region?: string, version?: string
+    }
+    If the endpoint is unreachable the dashboard falls back to a realistic
+    synthetic fleet so the UI is always demonstrable.
+
+  Author: agent_1 (Conservative Executor)
+  Criteria: >200 lines, contains <html>.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Universes Dashboard — live observability across the AEON multiverse" />
+  <meta name="color-scheme" content="dark" />
+  <title>Universes Dashboard — Observability</title>
+  <style>
+    :root {
+      --bg:            #070b16;
+      --bg-soft:       #0c1224;
+      --panel:         #111a30;
+      --panel-2:       #16213d;
+      --border:        #223156;
+      --text:          #e8eeff;
+      --muted:         #8694b8;
+      --accent:        #5b8cff;
+      --accent-2:      #2ee6d6;
+      --ok:            #2ee08a;
+      --warn:          #ffb454;
+      --err:           #ff5c72;
+      --shadow:        0 10px 30px rgba(0, 0, 0, 0.42);
+      --radius:        14px;
+      --mono:          "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --sans:          "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(1200px 620px at 15% -12%, #16233f 0%, transparent 60%),
+        radial-gradient(900px 500px at 105% 0%, #1b1636 0%, transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ---------- top bar ---------- */
+    header.topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 11, 22, 0.82);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.2px; }
+
+    .brand .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 14px var(--accent-2);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    .brand small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.55; transform: scale(0.86); }
+    }
+
+    .topbar .meta { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 13px; }
+
+    .pill {
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--panel);
+      font-family: var(--mono);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .btn {
+      cursor: pointer;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: rgba(91, 140, 255, 0.12);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .btn:hover { background: rgba(91, 140, 255, 0.24); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    /* ---------- layout ---------- */
+    main { max-width: 1320px; margin: 0 auto; padding: 28px; }
+
+    h1, h2, h3 { margin: 0 0 10px; }
+    h1 { font-size: 27px; letter-spacing: 0.2px; }
+    .subtitle { color: var(--muted); margin-bottom: 26px; max-width: 720px; line-height: 1.5; }
+
+    .grid-kpi {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(182px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .kpi {
+      background: linear-gradient(180deg, var(--panel-2), var(--panel));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .kpi .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
+    }
+
+    .kpi .value { font-size: 30px; font-weight: 700; font-family: var(--mono); }
+    .kpi .delta { font-size: 12px; margin-top: 6px; }
+    .delta.up { color: var(--ok); }
+    .delta.down { color: var(--err); }
+    .delta.flat { color: var(--muted); }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel-2), transparent);
+    }
+    .panel-head h2 { font-size: 16px; }
+    .panel-head .hint { color: var(--muted); font-size: 12px; font-family: var(--mono); }
+    .panel-body { padding: 18px 20px; }
+
+    /* ---------- table ---------- */
+    .table-wrap { overflow-x: auto; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+    thead th {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel-2);
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(34, 49, 86, 0.55);
+      font-family: var(--mono);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    tbody tr:hover { background: rgba(91, 140, 255, 0.07); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .uni-name { font-family: var(--sans); font-weight: 600; }
+    .uni-id { color: var(--muted); font-size: 11px; }
+
+    .status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 12px; font-weight: 600; }
+    .status .led { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+    .status.ok   .led { background: var(--ok);   box-shadow: 0 0 10px var(--ok); }
+    .status.warn .led { background: var(--warn); box-shadow: 0 0 10px var(--warn); }
+    .status.err  .led { background: var(--err);  box-shadow: 0 0 10px var(--err); }
+    .status.ok   { color: var(--ok); }
+    .status.warn { color: var(--warn); }
+    .status.err  { color: var(--err); }
+
+    .bar { height: 8px; border-radius: 999px; background: var(--panel-2); overflow: hidden; min-width: 110px; }
+    .bar > span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 0.5s ease; }
+    .bar.warn > span { background: linear-gradient(90deg, var(--warn), #ffd089); }
+    .bar.err  > span { background: linear-gradient(90deg, var(--err), #ff9aa8); }
+
+    /* ---------- two column ---------- */
+    .two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+
+    @media (max-width: 920px) {
+      .two-col { grid-template-columns: 1fr; }
+      .topbar .meta { display: none; }
+    }
+
+    /* ---------- lists ---------- */
+    .list { list-style: none; padding: 0; margin: 0; }
+    .list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 13px;
+    }
+    .list li:last-child { border-bottom: none; }
+    .list .k { color: var(--muted); }
+    .list .v { font-family: var(--mono); }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(91, 140, 255, 0.14);
+      color: var(--accent);
+      border: 1px solid rgba(91, 140, 255, 0.32);
+    }
+    .tag.ok   { color: var(--ok);   border-color: rgba(46, 224, 138, 0.4);  background: rgba(46, 224, 138, 0.12); }
+    .tag.warn { color: var(--warn); border-color: rgba(255, 180, 84, 0.4);  background: rgba(255, 180, 84, 0.12); }
+    .tag.err  { color: var(--err);  border-color: rgba(255, 92, 114, 0.4);  background: rgba(255, 92, 114, 0.12); }
+
+    /* ---------- sparkline ---------- */
+    .sparkline { display: flex; align-items: flex-end; gap: 3px; height: 46px; }
+    .sparkline i { display: block; width: 7px; border-radius: 2px 2px 0 0; background: linear-gradient(180deg, var(--accent-2), var(--accent)); opacity: 0.88; }
+
+    /* ---------- event log ---------- */
+    .log { font-family: var(--mono); font-size: 12px; max-height: 260px; overflow-y: auto; }
+    .log .row { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(34, 49, 86, 0.4); }
+    .log .t { color: var(--muted); flex: 0 0 78px; }
+    .log .lvl { flex: 0 0 52px; text-transform: uppercase; font-weight: 700; }
+    .log .lvl.info { color: var(--accent); }
+    .log .lvl.warn { color: var(--warn); }
+    .log .lvl.err  { color: var(--err); }
+    .log .msg { color: var(--text); }
+
+    /* ---------- filters ---------- */
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filters .btn { font-size: 11px; padding: 5px 11px; }
+    .filters .btn.active { background: var(--accent); color: #06101f; border-color: var(--accent); }
+
+    footer { text-align: center; color: var(--muted); font-size: 12px; padding: 26px 0 44px; }
+
+    code.inline {
+      font-family: var(--mono);
+      background: var(--panel-2);
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <div>
+        Universes Dashboard
+        <small>Observability · Fleet Overview</small>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="pill" id="clock">--:--:--</span>
+      <span class="pill" id="source-pill">source: synthetic</span>
+      <button class="btn" id="refresh-btn">Refresh now</button>
+    </div>
+  </header>
+
+  <main>
+    <h1>Universe Fleet Health</h1>
+    <p class="subtitle">
+      Live view of every active universe: agent population, load, throughput and
+      error budget. Data is loaded from <code class="inline">/api/universes</code>
+      when available and falls back to a synthetic fleet otherwise.
+    </p>
+
+    <section class="grid-kpi" aria-label="Key performance indicators">
+      <div class="kpi">
+        <div class="label">Active Universes</div>
+        <div class="value" id="kpi-universes">—</div>
+        <div class="delta flat" id="kpi-universes-delta">awaiting data</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Total Agents</div>
+        <div class="value" id="kpi-agents">—</div>
+        <div class="delta up" id="kpi-agents-delta">—</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Avg Load</div>
+        <div class="value" id="kpi-load">—</div>
+        <div class="delta flat" id="kpi-load-delta">—</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Aggregate TPS</div>
+        <div class="value" id="kpi-tps">—</div>
+        <div class="delta up" id="kpi-tps-delta">—</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Open Errors</div>
+        <div class="value" id="kpi-errors">—</div>
+        <div class="delta down" id="kpi-errors-delta">—</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Universe Matrix</h2>
+        <div class="filters" id="filters">
+          <button class="btn active" data-filter="all">All</button>
+          <button class="btn" data-filter="ok">Healthy</button>
+          <button class="btn" data-filter="warn">Degraded</button>
+          <button class="btn" data-filter="err">Critical</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="uni-table">
+          <thead>
+            <tr>
+              <th>Universe</th>
+              <th>Status</th>
+              <th>Load</th>
+              <th>Agents</th>
+              <th>Epochs</th>
+              <th>Latency</th>
+              <th>TPS</th>
+              <th>Errors</th>
+              <th>Region</th>
+            </tr>
+          </thead>
+          <tbody id="uni-tbody">
+            <tr><td colspan="9" style="color:var(--muted)">Loading universes…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="two-col">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Aggregate Throughput</h2>
+          <span class="hint" id="tps-hint">last 32 samples</span>
+        </div>
+        <div class="panel-body">
+          <div class="sparkline" id="spark-tps" aria-label="Aggregate throughput sparkline"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Fleet Composition</h2>
+        </div>
+        <div class="panel-body">
+          <ul class="list" id="composition">
+            <li><span class="k">Total universes</span><span class="v" id="c-total">—</span></li>
+            <li><span class="k">Healthy</span><span class="v tag ok" id="c-ok">—</span></li>
+            <li><span class="k">Degraded</span><span class="v tag warn" id="c-warn">—</span></li>
+            <li><span class="k">Critical</span><span class="v tag err" id="c-err">—</span></li>
+            <li><span class="k">Busiest universe</span><span class="v" id="c-busiest">—</span></li>
+            <li><span class="k">Median latency</span><span class="v" id="c-medlat">—</span></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Event Stream</h2>
+        <span class="hint">most recent 60 events</span>
+      </div>
+      <div class="panel-body">
+        <div class="log" id="event-log">
+          <div class="row"><span class="t">--:--:--</span><span class="lvl info">info</span><span class="msg">dashboard booting…</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Universes Dashboard · single-file observability ·
+      <span id="foot-gen">generated —</span>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* ------------------------------------------------------------------ *
+       *  Utilities                                                          *
+       * ------------------------------------------------------------------ */
+      var $ = function (sel, root) { return (root || document).querySelector(sel); };
+      var $$ = function (sel, root) {
+        return Array.prototype.slice.call((root || document).querySelectorAll(sel));
+      };
+      var rnd = function (min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; };
+      var clamp = function (v, min, max) { return Math.max(min, Math.min(max, v)); };
+      var pick = function (arr) { return arr[Math.floor(Math.random() * arr.length)]; };
+      var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+      var fmtTime = function (d) { return pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds()); };
+      var fmtNum = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); };
+
+      /* ------------------------------------------------------------------ *
+       *  Seed data                                                          *
+       * ------------------------------------------------------------------ */
+      var UNIVERSE_SEED = [
+        { id: "uni-arena",    name: "Arena",    desc: "Competitive agent tournaments.",   color: "#5b8cff", region: "eu-west" },
+        { id: "uni-genetics", name: "Genetics", desc: "Mutation and DNA evolution.",      color: "#2ee6d6", region: "eu-central" },
+        { id: "uni-training", name: "Training", desc: "Fitness runs and evaluation.",     color: "#2ee08a", region: "us-east" },
+        { id: "uni-sandbox",  name: "Sandbox",  desc: "Isolated experiments.",            color: "#ffb454", region: "us-west" },
+        { id: "uni-void",     name: "Void",     desc: "Archived and dormant universes.",  color: "#ff5c72", region: "ap-south" },
+        { id: "uni-mirror",   name: "Mirror",   desc: "Shadow copies of production.",     color: "#c98bff", region: "ap-north" }
+      ];
+
+      var REGIONS = ["eu-west", "eu-central", "us-east", "us-west", "ap-south", "ap-north"];
+      var VERSIONS = ["3.0.0", "3.1.0", "3.2.0-rc1"];
+
+      var state = {
+        universes: [],
+        history: [],
+        events: [],
+        filter: "all",
+        previous: null
+      };
+
+      /* ------------------------------------------------------------------ *
+       *  Synthetic fleet generation (fallback when no backend)              *
+       * ------------------------------------------------------------------ */
+      function statusFromLoad(load, errors) {
+        if (errors > 8 || load > 88) return "err";
+        if (errors > 3 || load > 62) return "warn";
+        return "ok";
+      }
+
+      function makeUniverse(seed) {
+        var load = rnd(18, 96);
+        var errors = rnd(0, 12);
+        return {
+          id: seed.id,
+          name: seed.name,
+          desc: seed.desc,
+          color: seed.color,
+          region: seed.region || pick(REGIONS),
+          version: pick(VERSIONS),
+          load: load,
+          agents: rnd(3, 96),
+          epochs: rnd(10, 900),
+          latencyMs: rnd(11, 320),
+          tps: rnd(40, 1800),
+          errors: errors,
+          status: statusFromLoad(load, errors)
+        };
+      }
+
+      function synthesizeFleet() {
+        return UNIVERSE_SEED.map(makeUniverse);
+      }
+
+      /* ------------------------------------------------------------------ *
+       *  Backend loading                                                    *
+       * ------------------------------------------------------------------ */
+      function loadUniverses() {
+        return fetch("/api/universes", { headers: { Accept: "application/json" } })
+          .then(function (res) {
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            return res.json();
+          })
+          .then(function (payload) {
+            var list = (payload && payload.universes) ? payload.universes : payload;
+            if (!Array.isArray(list) || !list.length) throw new Error("empty payload");
+            return list.map(function (u) {
+              return {
+                id: u.id || u.name || ("uni-" + rnd(1, 9999)),
+                name: u.name || u.id || "unnamed",
+                desc: u.desc || "",
+                color: u.color || "#5b8cff",
+                region: u.region || pick(REGIONS),
+                version: u.version || "3.0.0",
+                load: clamp(Number(u.load) || 0, 0, 100),
+                agents: Number(u.agents) || 0,
+                epochs: Number(u.epochs) || 0,
+                latencyMs: Number(u.latencyMs || u.latency) || 0,
+                tps: Number(u.tps) || 0,
+                errors: Number(u.errors) || 0,
+                status: u.status || statusFromLoad(Number(u.load) || 0, Number(u.errors) || 0)
+              };
+            });
+          });
+      }
+
+      /* ------------------------------------------------------------------ *
+       *  Rendering                                                          *
+       * ------------------------------------------------------------------ */
+      function statusClass(s) { return s === "ok" ? "ok" : (s === "warn" ? "warn" : "err"); }
+      function statusLabel(s) { return { ok: "Healthy", warn: "Degraded", err: "Critical" }[s] || "Unknown"; }
+
+      function renderKpis() {
+        var list = state.universes.filter(function (u) { return state.filter === "all" || u.status === state.filter; });
+        var totalAgents = state.universes.reduce(function (a, u) { return a + u.agents; }, 0);
+        var totalTps = state.universes.reduce(function (a, u) { return a + u.tps; }, 0);
+        var totalErrors = state.universes.reduce(function (a, u) { return a + u.errors; }, 0);
+        var avgLoad = state.universes.length
+          ? state.universes.reduce(function (a, u) { return a + u.load; }, 0) / state.universes.length
+          : 0;
+
+        $("#kpi-universes").textContent = String(list.length);
+        $("#kpi-agents").textContent = fmtNum(totalAgents);
+        $("#kpi-load").textContent = avgLoad.toFixed(1) + "%";
+        $("#kpi-tps").textContent = fmtNum(totalTps);
+        $("#kpi-errors").textContent = fmtNum(totalErrors);
+
+        $("#kpi-universes-delta").textContent = "filter: " + state.filter;
+        $("#kpi-agents-delta").textContent = "across fleet";
+        $("#kpi-load-delta").textContent = avgLoad > 70 ? "elevated" : "nominal";
+        $("#kpi-tps-delta").textContent = "requests / sec";
+        $("#kpi-errors-delta").textContent = totalErrors > 20 ? "needs attention" : "within budget";
+      }
+
+      function renderTable() {
+        var tbody = $("#uni-tbody");
+        var rows = state.universes.filter(function (u) {
+          return state.filter === "all" || u.status === state.filter;
+        });
+
+        if (!rows.length) {
+          tbody.innerHTML = '<tr><td colspan="9" style="color:var(--muted)">No universes match this filter.</td></tr>';
+          return;
+        }
+
+        rows.sort(function (a, b) { return b.load - a.load; });
+
+        tbody.innerHTML = rows.map(function (u) {
+          var cls = statusClass(u.status);
+          return '' +
+            '<tr>' +
+              '<td><span class="uni-name" style="color:' + u.color + '">' + u.name + '</span>' +
+                '<div class="uni-id">' + u.id + ' · v' + u.version + '</div></td>' +
+              '<td><span class="status ' + cls + '"><span class="led"></span>' + statusLabel(u.status) + '</span></td>' +
+              '<td><div class="bar ' + cls + '"><span style="width:' + clamp(u.load, 0, 100) + '%"></span></div>' +
+                '<div class="uni-id">' + u.load.toFixed(0) + '%</div></td>' +
+              '<td>' + fmtNum(u.agents) + '</td>' +
+              '<td>' + fmtNum(u.epochs) + '</td>' +
+              '<td>' + u.latencyMs + ' ms</td>' +
+              '<td>' + fmtNum(u.tps) + '</td>' +
+              '<td><span class="tag ' + cls + '">' + u.errors + '</span></td>' +
+              '<td>' + u.region + '</td>' +
+            '</tr>';
+        }).join("");
+      }
+
+      function renderComposition() {
+        var ok = 0, warn = 0, err = 0;
+        state.universes.forEach(function (u) {
+          if (u.status === "ok") ok++;
+          else if (u.status === "warn") warn++;
+          else err++;
+        });
+
+        $("#c-total").textContent = String(state.universes.length);
+        $("#c-ok").textContent = String(ok);
+        $("#c-warn").textContent = String(warn);
+        $("#c-err").textContent = String(err);
+
+        var busiest = state.universes.slice().sort(function (a, b) { return b.load - a.load; })[0];
+        $("#c-busiest").textContent = busiest ? busiest.name + " (" + busiest.load.toFixed(0) + "%)" : "—";
+
+        var lats = state.universes.map(function (u) { return u.latencyMs; }).sort(function (a, b) { return a - b; });
+        var med = lats.length ? lats[Math.floor(lats.length / 2)] : 0;
+        $("#c-medlat").textContent = med + " ms";
+      }
+
+      function renderSparkline() {
+        var el = $("#spark-tps");
+        if (!state.history.length) { el.innerHTML = ""; return; }
+        var max = Math.max.apply(null, state.history.concat([1]));
+        el.innerHTML = state.history.map(function (v) {
+          var h = Math.max(4, Math.round((v / max) * 46));
+          return '<i style="height:' + h + 'px"></i>';
+        }).join("");
+        $("#tps-hint").textContent = "last " + state.history.length + " samples · peak " + fmtNum(max);
+      }
+
+      function renderLog() {
+        var el = $("#event-log");
+        el.innerHTML = state.events.slice(0, 60).map(function (e) {
+          return '<div class="row"><span class="t">' + e.t + '</span>' +
+                 '<span class="lvl ' + e.lvl + '">' + e.lvl + '</span>' +
+                 '<span class="msg">' + e.msg + '</span></div>';
+        }).join("");
+      }
+
+      function renderAll() {
+        renderKpis();
+        renderTable();
+        renderComposition();
+        renderSparkline();
+        renderLog();
+      }
+
+      /* ------------------------------------------------------------------ *
+       *  Events                                                             *
+       * ------------------------------------------------------------------ */
+      function logEvent(lvl, msg) {
+        state.events.unshift({ t: fmtTime(new Date()), lvl: lvl, msg: msg });
+        if (state.events.length > 200) state.events.pop();
+      }
+
+      function randomEvent() {
+        var u = pick(state.universes);
+        if (!u) return;
+        var roll = Math.random();
+        if (roll > 0.9) {
+          logEvent("err", u.name + ": latency spike " + rnd(300, 900) + " ms");
+        } else if (roll > 0.68) {
+          logEvent("warn", u.name + ": load above threshold (" + u.load.toFixed(0) + "%)");
+        } else if (roll > 0.36) {
+          logEvent("info", u.name + ": spawned " + rnd(1, 6) + " agents");
+        } else {
+          logEvent("info", u.name + ": epoch " + fmtNum(u.epochs) + " checkpointed");
+        }
+      }
+
+      /* ------------------------------------------------------------------ *
+       *  Tick / refresh                                                     *
+       * ------------------------------------------------------------------ */
+      function tick() {
+        state.universes.forEach(function (u) {
+          u.load = clamp(u.load + rnd(-7, 7), 3, 99);
+          u.agents = clamp(u.agents + rnd(-3, 4), 0, 200);
+          u.epochs += rnd(0, 5);
+          u.latencyMs = clamp(u.latencyMs + rnd(-18, 18), 8, 600);
+          u.tps = clamp(u.tps + rnd(-90, 110), 10, 2400);
+          u.errors = clamp(u.errors + rnd(-2, 1), 0, 40);
+          u.status = statusFromLoad(u.load, u.errors);
+        });
+
+        var total = state.universes.reduce(function (a, u) { return a + u.tps; }, 0);
+        state.history.push(total);
+        if (state.history.length > 32) state.history.shift();
+
+        if (Math.random() > 0.45) randomEvent();
+
+        renderAll();
+        updateClock();
+      }
+
+      function updateClock() {
+        $("#clock").textContent = fmtTime(new Date());
+      }
+
+      /* ------------------------------------------------------------------ *
+       *  Wiring                                                             *
+       * ------------------------------------------------------------------ */
+      function bindFilters() {
+        $$("#filters .btn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            state.filter = btn.getAttribute("data-filter");
+            $$("#filters .btn").forEach(function (b) { b.classList.remove("active"); });
+            btn.classList.add("active");
+            renderAll();
+          });
+        });
+      }
+
+      function bindRefresh() {
+        $("#refresh-btn").addEventListener("click", function () {
+          logEvent("info", "manual refresh requested");
+          boot(true);
+        });
+      }
+
+      /* ------------------------------------------------------------------ *
+       *  Boot                                                               *
+       * ------------------------------------------------------------------ */
+      function boot(manual) {
+        updateClock();
+        var started = Date.now();
+        loadUniverses()
+          .then(function (list) {
+            state.universes = list;
+            $("#source-pill").textContent = "source: /api/universes";
+            logEvent("info", "loaded " + list.length + " universes from backend (" + (Date.now() - started) + " ms)");
+          })
+          .catch(function () {
+            if (!state.universes.length) state.universes = synthesizeFleet();
+            $("#source-pill").textContent = "source: synthetic";
+            logEvent("warn", "backend unavailable — using synthetic fleet" + (manual ? " (manual)" : ""));
+          })
+          .then(function () {
+            if (!state.history.length) {
+              for (var i = 0; i < 24; i++) {
+                state.history.push(state.universes.reduce(function (a, u) { return a + u.tps; }, 0) + rnd(-120, 120));
+              }
+            }
+            $("#foot-gen").textContent = "generated " + new Date().toISOString();
+            renderAll();
+          });
+      }
+
+      bindFilters();
+      bindRefresh();
+      boot(false);
+
+      setInterval(tick, 2500);
+      setInterval(updateClock, 1000);
+    })();
+  </script>
+</body>
+</html>

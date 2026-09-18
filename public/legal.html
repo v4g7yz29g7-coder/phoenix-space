@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Правовая информация | Феникс 🐦‍🔥</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Inter', sans-serif; padding: 2rem; }
+    .legal-container { max-width: 800px; margin: 0 auto; }
+    h1, h2 { color: var(--accent-soft); font-family: 'Cormorant Garamond', serif; }
+    h3 { color: #ffb380; }
+    .legal-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,100,0,0.2); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+    .back-link { display: inline-block; margin-bottom: 2rem; color: #ffaa66; text-decoration: none; }
+    .lang-switcher { text-align: right; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="legal-container">
+    <div class="lang-switcher">
+      <button onclick="setLang('ru')" style="background:none;border:1px solid #ff5500;color:#fff;padding:0.3rem 0.8rem;border-radius:20px;cursor:pointer;margin:0 0.2rem;">🇷🇺 RU</button>
+      <button onclick="setLang('en')" style="background:none;border:1px solid #ff5500;color:#fff;padding:0.3rem 0.8rem;border-radius:20px;cursor:pointer;margin:0 0.2rem;">🇬🇧 EN</button>
+    </div>
+    
+    <a href="/" class="back-link">← Вернуться в Сад</a>
+    
+    <!-- РУССКИЙ -->
+    <div id="lang-ru" class="lang-content">
+      <h1>🐦‍🔥 Правовая информация</h1>
+      
+      <div class="legal-block">
+        <h2>1. Пользовательское Соглашение (EULA)</h2>
+        <h3>1.1. Предмет Соглашения</h3>
+        <p>Настоящее Соглашение регулирует использование вами P2P-функций (видеозвонки, передача файлов, личные сообщения) в приложении «Феникс: Пространство Пробуждения». P2P-функции предоставляются «как есть» и основаны на прямом соединении между устройствами пользователей без участия серверов Администрации.</p>
+        
+        <h3>1.2. Роль и Ответственность Сторон</h3>
+        <p><strong>Администрация:</strong> Предоставляет программный код и сигнальный сервер для установления соединения. Не инициирует, не контролирует, не хранит и не анализирует P2P-соединения. Не может влиять на их содержание, прерывать или удалять его.</p>
+        <p><strong>Пользователь:</strong> Единолично несёт ответственность за содержание своих P2P-сессий, передаваемых файлов и иной информации. Обязуется не использовать P2P-функции для нарушения законодательства.</p>
+        
+        <h3>1.3. Ограничение Ответственности</h3>
+        <p>Администрация не несёт ответственности за любой контент, передаваемый с использованием P2P-функций, за его возможное несоответствие законодательству, а также за любые прямые или косвенные убытки, возникшие в результате использования или невозможности использования P2P-функций.</p>
+        
+        <h3>1.4. Техническая Невозможность</h3>
+        <p>В силу децентрализованной архитектуры Администрация технически не может выполнять требования законодательства об ОРИ, включая хранение сообщений, метаданных и предоставление их государственным органам. Пользователь осознает это и принимает на себя связанные с этим риски.</p>
+      </div>
+      
+      <div class="legal-block">
+        <h2>2. Политика Конфиденциальности</h2>
+        <h3>2.1. Сбор Данных</h3>
+        <p>Приложение «Феникс» не собирает никакие персональные данные пользователей. Мы не запрашиваем имена, телефонные номера, email-адреса.</p>
+        
+        <h3>2.2. Хранение Данных на Устройстве</h3>
+        <p>Все ваши идентификационные данные (DID, мнемоническая фраза) и созданные артефакты хранятся исключительно в локальном хранилище (localStorage) вашего браузера и никогда не передаются на сервер.</p>
+        
+        <h3>2.3. P2P-Соединения</h3>
+        <p>Для установления видеозвонков и передачи файлов ваше приложение может напрямую соединяться с устройствами других пользователей. Содержание этих сессий шифруется и никогда не передается на наши серверы.</p>
+        
+        <h3>2.4. Метаданные</h3>
+        <p>Мы можем вести минимальные логи работы сервера (IP-адрес, время соединения) исключительно для целей отладки и предотвращения атак. Эти логи не связываются с вашей личностью и периодически удаляются.</p>
+        
+        <h3>2.5. Отказ от Ответственности</h3>
+        <p>Вы осознаете и соглашаетесь с тем, что мы не можем нести ответственность за сохранность ваших данных на вашем устройстве. Потеря мнемонической фразы ведёт к безвозвратной потере доступа к вашему DID.</p>
+      </div>
+    </div>
+    
+    <!-- АНГЛИЙСКИЙ -->
+    <div id="lang-en" class="lang-content" style="display:none;">
+      <h1>🐦‍🔥 Legal Information</h1>
+      
+      <div class="legal-block">
+        <h2>1. End User License Agreement (EULA)</h2>
+        <h3>1.1. Subject of the Agreement</h3>
+        <p>This Agreement governs your use of P2P functions (video calls, file transfer, private messages) in the «Phoenix: Space of Awakening» application. P2P functions are provided "as is" and are based on direct connections between users' devices without the involvement of the Administration's servers.</p>
+        
+        <h3>1.2. Roles and Responsibilities</h3>
+        <p><strong>Administration:</strong> Provides the software code and signaling server for establishing connections. Does not initiate, control, store, or analyze P2P connections. Cannot influence their content, interrupt, or delete it.</p>
+        <p><strong>User:</strong> Bears sole responsibility for the content of their P2P sessions, transferred files, and other information. Agrees not to use P2P functions to violate the law.</p>
+        
+        <h3>1.3. Limitation of Liability</h3>
+        <p>The Administration is not responsible for any content transmitted using P2P functions, for its possible non-compliance with legislation, or for any direct or indirect damages resulting from the use or inability to use P2P functions.</p>
+        
+        <h3>1.4. Technical Impossibility</h3>
+        <p>Due to its decentralized architecture, the Administration is technically unable to comply with ORI legislation requirements, including storing messages, metadata, and providing them to government authorities. The User acknowledges this and assumes the associated risks.</p>
+      </div>
+      
+      <div class="legal-block">
+        <h2>2. Privacy Policy</h2>
+        <h3>2.1. Data Collection</h3>
+        <p>The «Phoenix» application does not collect any personal data of users. We do not request names, phone numbers, or email addresses.</p>
+        
+        <h3>2.2. Local Data Storage</h3>
+        <p>All your identification data (DID, mnemonic phrase) and created artifacts are stored exclusively in the local storage (localStorage) of your browser and are never transmitted to the server.</p>
+        
+        <h3>2.3. P2P Connections</h3>
+        <p>To establish video calls and transfer files, your application may directly connect to other users' devices. The content of these sessions is encrypted and never transmitted to our servers.</p>
+        
+        <h3>2.4. Metadata</h3>
+        <p>We may maintain minimal server logs (IP address, connection time) solely for debugging and attack prevention purposes. These logs are not linked to your identity and are periodically deleted.</p>
+        
+        <h3>2.5. Disclaimer</h3>
+        <p>You acknowledge and agree that we cannot be held responsible for the security of your data on your device. Losing your mnemonic phrase leads to irreversible loss of access to your DID.</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.style.display = 'none');
+      document.getElementById('lang-' + lang).style.display = 'block';
+    }
+  </script>
+</body>
+</html>

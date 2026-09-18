@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-09-13",
+  "designer": "agent_26_designer",
+  "avatars": {
+    "agent_1": {
+      "id": "agent_1",
+      "name": "One",
+      "spec": { "primary": "#4dd0ff", "secondary": "#0a0e1a", "accent": "#ffffff", "body": "sleek", "wing": "twin", "wheels": "slick", "number": 1, "pattern": "stripes" }
+    },
+    "agent_4": {
+      "id": "agent_4",
+      "name": "Speedster",
+      "spec": { "primary": "#ff7eb6", "secondary": "#1a0e18", "accent": "#ffe0ff", "body": "compact", "wing": "high", "wheels": "slick", "number": 4, "pattern": "gradient" }
+    },
+    "agent_7": {
+      "id": "agent_7",
+      "name": "Sneaky",
+      "spec": { "primary": "#a855f7", "secondary": "#0e0a1a", "accent": "#e0d0ff", "body": "wide", "wing": "twin", "wheels": "wet", "number": 7, "pattern": "camo" }
+    },
+    "agent_20": {
+      "id": "agent_20",
+      "name": "Conservative Speedster",
+      "spec": { "primary": "#6eff8b", "secondary": "#0a1a0e", "accent": "#d0ffd0", "body": "sleek", "wing": "low", "wheels": "slick", "number": 20, "pattern": "solid" }
+    },
+    "agent_6": {
+      "id": "agent_6",
+      "name": "ECO Champion",
+      "spec": { "primary": "#ffd700", "secondary": "#1a1a0a", "accent": "#ffffaa", "body": "compact", "wing": "high", "wheels": "slick", "number": 6, "pattern": "stripes" }
+    },
+    "agent_23": {
+      "id": "agent_23",
+      "name": "Deep Hybrid",
+      "spec": { "primary": "#fb923c", "secondary": "#1a0e0a", "accent": "#ffd0b0", "body": "wide", "wing": "twin", "wheels": "slick", "number": 23, "pattern": "gradient" }
+    },
+    "agent_3": {
+      "id": "agent_3",
+      "name": "Analyst",
+      "spec": { "primary": "#7dd3fc", "secondary": "#0a1a1f", "accent": "#e0f5ff", "body": "sleek", "wing": "low", "wheels": "wet", "number": 3, "pattern": "solid" }
+    }
+  }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тарифы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — Тарифы</title>
+  <!-- Шрифт Inter (подключение) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Базовый сброс и стили только для тарифов (без каркаса) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0b0b0f;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #e9e9f0;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    /* контейнер #app — только содержимое тарифов */
+    #app {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* секция тарифов */
+    .pricing-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .pricing-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .pricing-header h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+    }
+    .pricing-header p {
+      font-size: 1.125rem;
+      color: #a0a0b0;
+      font-weight: 400;
+    }
+    /* карточки тарифов */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .pricing-card {
+      background: #14141c;
+      border-radius: 1.5rem;
+      padding: 2rem 1.8rem;
+      border: 1px solid #262633;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+    .pricing-card:hover {
+      border-color: #a78bfa;
+      transform: translateY(-4px);
+    }
+    /* карточка Pro — выделенная (фиолетовый акцент) */
+    .pricing-card.featured {
+      border: 1px solid #a78bfa;
+      background: linear-gradient(145deg, #171622 0%, #1b1a2a 100%);
+      box-shadow: 0 20px 35px -10px rgba(167, 139, 250, 0.2);
+    }
+    .plan-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+    }
+    .price-period {
+      font-size: 1rem;
+      color: #8b8b9e;
+      font-weight: 400;
+    }
+    .plan-description {
+      font-size: 0.95rem;
+      color: #b0b0c2;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid #2a2a38;
+      padding-bottom: 1.5rem;
+    }
+    .feature-list {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: #c9c9de;
+      margin-bottom: 0.9rem;
+    }
+    .feature-list li::before {
+      content: "✓";
+      color: #a78bfa;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+    .feature-list li.muted {
+      opacity: 0.45;
+    }
+    .feature-list li.muted::before {
+      content: "—";
+      color: #6b6b7a;
+    }
+    .btn-plan {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding: 0.9rem 1rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
+      background: transparent;
+      border: 1px solid #3a3a4c;
+      color: #ffffff;
+      cursor: default; /* демо-кнопка */
+    }
+    .btn-plan.primary {
+      background: #a78bfa;
+      border: 1px solid #a78bfa;
+      color: #0b0b0f;
+      font-weight: 600;
+    }
+    .btn-plan.primary:hover {
+      background: #b79ffb;
+      border-color: #b79ffb;
+    }
+    .btn-plan.outline {
+      border: 1px solid #a78bfa;
+      color: #a78bfa;
+      background: transparent;
+    }
+    .btn-plan.outline:hover {
+      background: rgba(167, 139, 250, 0.1);
+    }
+    /* адаптивность */
+    @media (max-width: 900px) {
+      .pricing-grid {
+        grid</div>
+  <script src="app.js"></script>
+</body>
+</html>

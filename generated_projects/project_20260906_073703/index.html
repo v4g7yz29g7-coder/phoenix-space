@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrameFlow — AI Photo Story Builder</title>
+  <!-- Шрифт Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Базовые сбросы и стили (встроенные для автономности) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0b0b0f;
+      font-family: 'Inter', sans-serif;
+      color: #e5e5e5;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    #app {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      background-color: #0b0b0f;
+    }
+    /* тёмная тема, фиолетовые акценты */
+    .accent {
+      color: #a78bfa;
+    }
+    .btn-primary {
+      background-color: #a78bfa;
+      border: none;
+      color: #0b0b0f;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover {
+      background-color: #c4b5fd;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #a78bfa;
+      color: #a78bfa;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: rgba(167, 139, 250, 0.1);
+      border-color: #c4b5fd;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .card {
+      background: #12121a;
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid #1f1f2b;
+      transition: border 0.2s;
+    }
+    .card:hover {
+      border-color: #a78bfa40;
+    }
+    /* шапка */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #1f1f2b;
+      margin-bottom: 40px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .logo span {
+      color: #a78bfa;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #b0b0c0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #a78bfa;
+    }
+    .header-actions {
+      display: flex;
+      gap: 12px;
+    }
+    /* hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 40px 0 60px;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: #b0b0c0;
+      margin-bottom: 32px;
+      max-width: 90%;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-visual {
+      background: radial-gradient(circle at 30% 30%, #2a1f4a, #0b0b0f 70%);
+      border-radius: 32px;
+      padding: 30px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid #2a2a3a;
+    }
+    .mock-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .mock-item {
+      background: #1e1e2a;
+      border-radius: 12px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a78bfa;
+      font-weight: 500;
+      font-size: 0.8rem;
+      border: 1px solid #2a2a3a;
+    }
+    .mock-item:nth-child(2) {
+      background: #2a2140;
+    }
+    .mock-item:nth-child(4) {
+      background: #2a2140;
+    }
+    .mock-item:nth-child(6) {
+      background: #2a2140;
+    }
+    .mock-label {
+      margin-top: 20px;
+      color: #a78bfa;
+      font-weight: 500;
+      text-align: center;
+      background: #1a1a2a;
+      padding: 8px 12px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+    }
+    /* преимущества */
+    .features {
+      padding: 40px 0 60px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:</div>
+  <script src="app.js"></script>
+</body>
+</html>

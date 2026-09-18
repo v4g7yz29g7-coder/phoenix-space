@@ -1,0 +1,33 @@
+{
+  "id": "recover_lost_git_changes",
+  "name": "Recover Lost Git Changes and Merge into Master",
+  "trigger_patterns": [
+    "can't find those changes",
+    "lost changes after checkout",
+    "merge them into master",
+    "checked out master and lost changes",
+    "find my lost commits"
+  ],
+  "trigger_keywords": [
+    "reflog",
+    "lost",
+    "changes",
+    "master",
+    "merge",
+    "checkout",
+    "recover",
+    "git"
+  ],
+  "recipe_commands": [
+    "git reflog --all --date=iso",
+    "git log --all --reflog --oneline --decorate --graph",
+    "git stash list",
+    "git fsck --lost-found --no-reflogs",
+    "git branch -a --contains $LOST_COMMIT",
+    "git checkout master",
+    "git merge $LOST_COMMIT",
+    "git log --oneline -5"
+  ],
+  "reasoning": "The reflog and fsck reveal dangling commits from the lost changes, then merging the identified commit into master restores them.",
+  "confidence": 0.9
+}

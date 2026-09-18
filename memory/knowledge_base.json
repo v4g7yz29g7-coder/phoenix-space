@@ -1,0 +1,300 @@
+{
+  "solved_cases": [
+    {
+      "id": "1.1",
+      "title": "Клонировать 4 репо",
+      "stage": "Research (open source)",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "1.2",
+      "title": "Аудит racing-game",
+      "stage": "Research (open source)",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "1.3",
+      "title": "Аудит Nebula-Rush",
+      "stage": "Research (open source)",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "1.4",
+      "title": "Аудит Drift&Drive",
+      "stage": "Research (open source)",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "1.5",
+      "title": "Свод audit.md",
+      "stage": "Research (open source)",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "2.1",
+      "title": "Порт Vehicle.tsx (cannon-es)",
+      "stage": "Киберпанк-кар",
+      "file": "Vehicle.tsx",
+      "file_size": 11765,
+      "completed_at": "2026-09-13T14:21:57.455Z",
+      "type": "3d"
+    },
+    {
+      "id": "2.2",
+      "title": "Порт Chassis + Wheel",
+      "stage": "Киберпанк-кар",
+      "file": "Chassis.tsx",
+      "file_size": 4981,
+      "completed_at": "2026-09-13T14:28:16.368Z",
+      "type": "other"
+    },
+    {
+      "id": "2.3",
+      "title": "VFX: Dust, Skid, Boost",
+      "stage": "Киберпанк-кар",
+      "file": "VehicleFX.tsx",
+      "file_size": 15105,
+      "completed_at": "2026-09-13T14:35:07.501Z",
+      "type": "other"
+    },
+    {
+      "id": "2.4",
+      "title": "Раскраска команд",
+      "stage": "Киберпанк-кар",
+      "file": "TeamLivery.tsx",
+      "file_size": 12891,
+      "completed_at": "2026-09-13T15:43:42.735Z",
+      "type": "other"
+    },
+    {
+      "id": "2.5",
+      "title": "Пилот за стеклом",
+      "stage": "Киберпанк-кар",
+      "file": "PilotCockpit.tsx",
+      "file_size": 19800,
+      "completed_at": "2026-09-13T14:39:40.940Z",
+      "type": "other"
+    },
+    {
+      "id": "3.1",
+      "title": "tracks.json (5 профилей)",
+      "stage": "Трассы + Трибуны + TV",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "3.2",
+      "title": "Track.tsx (CatmullRom)",
+      "stage": "Трассы + Трибуны + TV",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "3d"
+    },
+    {
+      "id": "3.3",
+      "title": "Tribunes.tsx (3 яруса)",
+      "stage": "Трассы + Трибуны + TV",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "3d"
+    },
+    {
+      "id": "3.4",
+      "title": "Crowd.tsx (10k instanced)",
+      "stage": "Трассы + Трибуны + TV",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "3d"
+    },
+    {
+      "id": "3.5",
+      "title": "TV Director (6 камер)",
+      "stage": "Трассы + Трибуны + TV",
+      "file": "TVDirector.tsx",
+      "file_size": 15856,
+      "completed_at": "2026-09-13T14:43:06.481Z",
+      "type": "other"
+    },
+    {
+      "id": "3.6",
+      "title": "Slow-mo на обгонах",
+      "stage": "Трассы + Трибуны + TV",
+      "file": "SlowMoOvertake.tsx",
+      "file_size": 22779,
+      "completed_at": "2026-09-13T15:52:13.071Z",
+      "type": "other"
+    },
+    {
+      "id": "3.7",
+      "title": "Camera shake + flash cut",
+      "stage": "Трассы + Трибуны + TV",
+      "file": "CameraShake.tsx",
+      "file_size": 13789,
+      "completed_at": "2026-09-13T14:55:17.944Z",
+      "type": "other"
+    },
+    {
+      "id": "4.1",
+      "title": "Сцена в боксах",
+      "stage": "Cinematic Intro",
+      "file": "CockpitStage.tsx",
+      "file_size": 9799,
+      "completed_at": "2026-09-13T13:40:37.885Z",
+      "type": "other"
+    },
+    {
+      "id": "4.2",
+      "title": "Выезд на пит-лейн + механики",
+      "stage": "Cinematic Intro",
+      "file": "PitLane.tsx",
+      "file_size": 22905,
+      "completed_at": "2026-09-13T15:57:04.607Z",
+      "type": "other"
+    },
+    {
+      "id": "4.3",
+      "title": "Камера-кран над решёткой",
+      "stage": "Cinematic Intro",
+      "file": "CameraCrane.tsx",
+      "file_size": 17903,
+      "completed_at": "2026-09-13T13:44:41.863Z",
+      "type": "other"
+    },
+    {
+      "id": "5.1",
+      "title": "arena_board.json (shared memory)",
+      "stage": "Mission Control",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "5.2",
+      "title": "arena_coordinator.js",
+      "stage": "Mission Control",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "5.3",
+      "title": "arena_worker.js",
+      "stage": "Mission Control",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "other"
+    },
+    {
+      "id": "5.4",
+      "title": "/control — наша панель",
+      "stage": "Mission Control",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:02:35.510Z",
+      "type": "ui"
+    },
+    {
+      "id": "5.5",
+      "title": "/tasks — публичная панель",
+      "stage": "Mission Control",
+      "file_size": 0,
+      "completed_at": "2026-09-13T13:49:48.181Z",
+      "type": "ui"
+    },
+    {
+      "id": "5.6",
+      "title": "/api/roadmap + /api/board",
+      "stage": "Mission Control",
+      "file_size": 0,
+      "completed_at": "2026-09-13T16:27:41.128893Z",
+      "type": "api"
+    },
+    {
+      "id": "6.3",
+      "title": "Dashboard — мои агенты",
+      "stage": "Платформа",
+      "file_size": 0,
+      "completed_at": "2026-09-13T13:53:15.732Z",
+      "type": "agent"
+    },
+    {
+      "id": "R.1",
+      "title": "JWT best practices (Node.js/Express)",
+      "type": "research",
+      "file": "research/jwt.md",
+      "file_size": 38021,
+      "completed_at": "2026-09-13T16:15:00Z"
+    },
+    {
+      "id": "R.2",
+      "title": "БД для FORMULA I1: SQLite vs PostgreSQL",
+      "type": "research",
+      "file": "research/db.md",
+      "file_size": 53016,
+      "completed_at": "2026-09-13T16:23:34.718Z"
+    },
+    {
+      "id": "R.3",
+      "title": "Email + IMAP через Node.js",
+      "type": "research",
+      "file": "research/email.md",
+      "file_size": 22032,
+      "completed_at": "2026-09-13T16:27:30.502Z"
+    },
+    {
+      "id": "R.4",
+      "title": "Хранение паролей (bcrypt/argon2)",
+      "type": "research",
+      "file": "research/password.md",
+      "file_size": 25841,
+      "completed_at": "2026-09-13T16:31:56.315Z"
+    },
+    {
+      "id": "R.5",
+      "title": "Архитектура маркетплейса запчастей",
+      "type": "research",
+      "file": "research/catalog.md",
+      "file_size": 40615,
+      "completed_at": "2026-09-13T16:36:31.312Z"
+    }
+  ],
+  "failed_cases": [],
+  "patterns": [
+    {
+      "type": "other",
+      "count": 19
+    },
+    {
+      "type": "research",
+      "count": 5
+    },
+    {
+      "type": "3d",
+      "count": 4
+    },
+    {
+      "type": "ui",
+      "count": 2
+    },
+    {
+      "type": "api",
+      "count": 1
+    },
+    {
+      "type": "agent",
+      "count": 1
+    }
+  ],
+  "lessons": [],
+  "updated_at": "2026-09-13T17:15:22.431Z"
+}

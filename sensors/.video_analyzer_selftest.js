@@ -1,0 +1,10 @@
+'use strict';
+const m = require('./video_analyzer.js');
+const assert = require('assert');
+assert.strictEqual(typeof m.analyze, 'function', 'analyze must be a function');
+assert.ok(m.VIDEO_EXTENSIONS.includes('.mp4'), 'extensions');
+assert.ok(m.pickFrameTimestamps(10, 4).length === 4, 'timestamps');
+const tl = m.buildTimeline([{ time: 0, text: 'a' }, { time: 1, text: 'b' }]);
+assert.ok(tl.indexOf('[0.0s]') === 0, 'timeline');
+console.log('SELFTEST_OK exports=' + Object.keys(m).length);
+m.capabilities().then((c) => console.log('CAPS ' + JSON.stringify(c))).catch((e) => console.log('CAPS_ERR ' + e.message));

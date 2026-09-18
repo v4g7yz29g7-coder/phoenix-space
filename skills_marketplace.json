@@ -1,0 +1,66 @@
+{
+  "ts": "2026-09-13T06:52:22.104662",
+  "skills": [
+    {
+      "id": "uv_python_deps",
+      "name": "Install Python deps via uv (bare Ubuntu) + system symlink",
+      "confidence": 1.0,
+      "uses": 10,
+      "successes": 5,
+      "authors": [
+        "agent_6",
+        "agent_20",
+        "agent_4"
+      ],
+      "commands_count": 12
+    },
+    {
+      "id": "git_recover_lost_commits",
+      "name": "Recover lost git commits via fsck + cherry-pick",
+      "confidence": 0.98,
+      "uses": 2,
+      "successes": 0,
+      "authors": [
+        "agent_4",
+        "agent_20"
+      ],
+      "commands_count": 5
+    },
+    {
+      "id": "git_server_webserver",
+      "name": "Setup git-daemon + webserver on port 8080",
+      "confidence": 0.85,
+      "uses": 0,
+      "successes": 0,
+      "authors": [],
+      "commands_count": 10
+    },
+    {
+      "id": "fix_pandas_version",
+      "name": "Fix pandas version mismatch",
+      "confidence": 0.8,
+      "uses": 0,
+      "successes": 0,
+      "authors": [],
+      "commands_count": 4
+    },
+    {
+      "id": "fix_permissions",
+      "name": "Fix script permissions",
+      "confidence": 1.0,
+      "uses": 0,
+      "successes": 0,
+      "authors": [],
+      "commands_count": 5
+    },
+    {
+      "id": "recover_lost_git_changes",
+      "name": "Recover Lost Git Changes and Merge into Master",
+      "confidence": 0.9,
+      "uses": 0,
+      "successes": 0,
+      "authors": [],
+      "commands_count": 8
+    }
+  ]
+}

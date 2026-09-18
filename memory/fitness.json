@@ -1,0 +1,758 @@
+{
+  "agents": {
+    "agent_1": {
+      "box": "agent_1",
+      "fitness": 3.603,
+      "runs_total": 44,
+      "wins_total": 16,
+      "last_score_avg": 2.5,
+      "last_updated": "2026-09-16T01:37:33.640Z"
+    },
+    "agent_3": {
+      "box": "agent_3",
+      "fitness": 3.24,
+      "runs_total": 44,
+      "wins_total": 8,
+      "last_score_avg": 2.5,
+      "last_updated": "2026-09-16T01:37:33.640Z"
+    },
+    "agent_7": {
+      "box": "agent_7",
+      "fitness": 2.875,
+      "runs_total": 44,
+      "wins_total": 10,
+      "last_score_avg": 2.25,
+      "last_updated": "2026-09-16T01:37:33.640Z"
+    },
+    "agent_2": {
+      "box": "agent_2",
+      "fitness": 1,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 10,
+      "last_updated": "2026-09-15T21:11:33.480Z"
+    },
+    "agent_4": {
+      "box": "agent_4",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:11:33.480Z"
+    },
+    "agent_5": {
+      "box": "agent_5",
+      "fitness": 1,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 10,
+      "last_updated": "2026-09-15T21:11:33.480Z"
+    },
+    "agent_6": {
+      "box": "agent_6",
+      "fitness": 0.8,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 8,
+      "last_updated": "2026-09-15T21:11:33.480Z"
+    },
+    "agent_8": {
+      "box": "agent_8",
+      "fitness": 0,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "last_updated": "2026-09-15T21:11:33.481Z"
+    },
+    "agent_9": {
+      "box": "agent_9",
+      "fitness": 1,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 10,
+      "last_updated": "2026-09-15T21:11:33.481Z"
+    },
+    "agent_10": {
+      "box": "agent_10",
+      "fitness": 1,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 10,
+      "last_updated": "2026-09-15T21:11:33.481Z"
+    },
+    "agent_11": {
+      "box": "agent_11",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:11:33.481Z"
+    },
+    "agent_12": {
+      "box": "agent_12",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:11:49.423Z"
+    },
+    "agent_13": {
+      "box": "agent_13",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:11:49.423Z"
+    },
+    "agent_14": {
+      "box": "agent_14",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:11:49.423Z"
+    },
+    "agent_15": {
+      "box": "agent_15",
+      "fitness": 1,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 10,
+      "last_updated": "2026-09-15T21:11:49.423Z"
+    },
+    "agent_16": {
+      "box": "agent_16",
+      "fitness": 0,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "last_updated": "2026-09-15T21:11:49.423Z"
+    },
+    "agent_17": {
+      "box": "agent_17",
+      "fitness": 0,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "last_updated": "2026-09-15T21:11:49.423Z"
+    },
+    "agent_18": {
+      "box": "agent_18",
+      "fitness": 0,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "last_updated": "2026-09-15T21:11:49.423Z"
+    },
+    "agent_19": {
+      "box": "agent_19",
+      "fitness": 0,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "last_updated": "2026-09-15T21:11:49.423Z"
+    },
+    "agent_20": {
+      "box": "agent_20",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:12:04.487Z"
+    },
+    "agent_21": {
+      "box": "agent_21",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:12:04.487Z"
+    },
+    "agent_22": {
+      "box": "agent_22",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:12:04.487Z"
+    },
+    "agent_23": {
+      "box": "agent_23",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:12:04.487Z"
+    },
+    "agent_24": {
+      "box": "agent_24",
+      "fitness": 0.9,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 9,
+      "last_updated": "2026-09-15T21:12:04.487Z"
+    },
+    "agent_25": {
+      "box": "agent_25",
+      "fitness": 1,
+      "runs_total": 1,
+      "wins_total": 0,
+      "last_score_avg": 10,
+      "last_updated": "2026-09-15T21:12:04.487Z"
+    },
+    "agent_g2_8d4408": {
+      "box": "agent_g2_8d4408",
+      "fitness": 6.1252,
+      "runs_total": 0,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "born_at": "2026-09-16T04:46:16.032Z",
+      "parents": [
+        "genome-j",
+        "genome-n"
+      ],
+      "generation": 1
+    },
+    "agent_g2_b3cc21": {
+      "box": "agent_g2_b3cc21",
+      "fitness": 5.868400000000001,
+      "runs_total": 0,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "born_at": "2026-09-16T04:46:16.032Z",
+      "parents": [
+        "genome-7",
+        "genome-n"
+      ],
+      "generation": 1
+    },
+    "agent_g2_c65ffd": {
+      "box": "agent_g2_c65ffd",
+      "fitness": 5.8484,
+      "runs_total": 0,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "born_at": "2026-09-16T04:46:16.033Z",
+      "parents": [
+        "genome-n",
+        "genome-d"
+      ],
+      "generation": 1
+    },
+    "agent_g2_5a2b90": {
+      "box": "agent_g2_5a2b90",
+      "fitness": 6.7908,
+      "runs_total": 0,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "born_at": "2026-09-18T08:53:39.121Z",
+      "parents": [
+        "genome-f",
+        "genome-n"
+      ],
+      "generation": 1
+    },
+    "agent_g2_f8df38": {
+      "box": "agent_g2_f8df38",
+      "fitness": 4.3524,
+      "runs_total": 0,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "born_at": "2026-09-18T08:53:39.124Z",
+      "parents": [
+        "genome-f",
+        "genome-7"
+      ],
+      "generation": 1
+    },
+    "agent_g2_e8e1ae": {
+      "box": "agent_g2_e8e1ae",
+      "fitness": 4.150367953841159,
+      "runs_total": 0,
+      "wins_total": 0,
+      "last_score_avg": 0,
+      "born_at": "2026-09-18T08:53:39.126Z",
+      "parents": [
+        "genome-a",
+        "genome-f"
+      ],
+      "generation": 1
+    }
+  },
+  "history": [
+    {
+      "bench_id": "bench_1789378345996",
+      "ts": "2026-09-14T10:00:29.481Z",
+      "scores": {
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 1,
+          "avg_score": 8.67,
+          "avg_time_ms": 67892,
+          "difficulty_points": 43,
+          "fitness": 6.814
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 1,
+          "avg_score": 9.33,
+          "avg_time_ms": 76351,
+          "difficulty_points": 47,
+          "fitness": 7.131
+        },
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 1,
+          "avg_score": 9,
+          "avg_time_ms": 61224,
+          "difficulty_points": 45,
+          "fitness": 6.997
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789378345996",
+      "ts": "2026-09-14T10:01:59.145Z",
+      "scores": {
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 1,
+          "avg_score": 8.67,
+          "avg_time_ms": 67892,
+          "difficulty_points": 43,
+          "fitness": 6.814
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 1,
+          "avg_score": 9.33,
+          "avg_time_ms": 76351,
+          "difficulty_points": 47,
+          "fitness": 7.131
+        },
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 1,
+          "avg_score": 9,
+          "avg_time_ms": 61224,
+          "difficulty_points": 45,
+          "fitness": 6.997
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789380320656",
+      "ts": "2026-09-14T10:15:40.108Z",
+      "scores": {
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 2,
+          "wins": 1,
+          "win_rate": 0.5,
+          "ok_rate": 1,
+          "avg_score": 8.5,
+          "avg_time_ms": 27600,
+          "difficulty_points": 26,
+          "fitness": 7.362
+        },
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 2,
+          "wins": 1,
+          "win_rate": 0.5,
+          "ok_rate": 0.5,
+          "avg_score": 4.5,
+          "avg_time_ms": 44582,
+          "difficulty_points": 9,
+          "fitness": 4.474
+        },
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 2,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 1,
+          "avg_score": 9,
+          "avg_time_ms": 55058,
+          "difficulty_points": 27,
+          "fitness": 6.182
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789381435864",
+      "ts": "2026-09-14T10:30:38.645Z",
+      "scores": {
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 4,
+          "wins": 2,
+          "win_rate": 0.5,
+          "ok_rate": 1,
+          "avg_score": 9,
+          "avg_time_ms": 29872,
+          "difficulty_points": 72,
+          "fitness": 7.585
+        },
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 4,
+          "wins": 2,
+          "win_rate": 0.5,
+          "ok_rate": 1,
+          "avg_score": 9.25,
+          "avg_time_ms": 34728,
+          "difficulty_points": 73,
+          "fitness": 7.663
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 4,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 1,
+          "avg_score": 9,
+          "avg_time_ms": 57777,
+          "difficulty_points": 72,
+          "fitness": 6.173
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789381435864",
+      "ts": "2026-09-14T10:46:11.638Z",
+      "scores": {
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 4,
+          "wins": 2,
+          "win_rate": 0.5,
+          "ok_rate": 1,
+          "avg_score": 9,
+          "avg_time_ms": 29872,
+          "difficulty_points": 72,
+          "fitness": 7.585
+        },
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 4,
+          "wins": 2,
+          "win_rate": 0.5,
+          "ok_rate": 1,
+          "avg_score": 9.25,
+          "avg_time_ms": 34728,
+          "difficulty_points": 73,
+          "fitness": 7.663
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 4,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 1,
+          "avg_score": 9,
+          "avg_time_ms": 57777,
+          "difficulty_points": 72,
+          "fitness": 6.173
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789382701103",
+      "ts": "2026-09-14T10:51:11.252Z",
+      "scores": {
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 4,
+          "wins": 2,
+          "win_rate": 0.5,
+          "ok_rate": 0.75,
+          "avg_score": 7.25,
+          "avg_time_ms": 39485,
+          "difficulty_points": 39,
+          "fitness": 6.253
+        },
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 4,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 0.75,
+          "avg_score": 6.75,
+          "avg_time_ms": 39597,
+          "difficulty_points": 36,
+          "fitness": 4.753
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 4,
+          "wins": 2,
+          "win_rate": 0.5,
+          "ok_rate": 0.75,
+          "avg_score": 7,
+          "avg_time_ms": 32963,
+          "difficulty_points": 46,
+          "fitness": 6.178
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789386398404",
+      "ts": "2026-09-14T11:54:29.017Z",
+      "scores": {
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 0.333,
+          "avg_score": 3,
+          "avg_time_ms": 57520,
+          "difficulty_points": 27,
+          "fitness": 3.007
+        },
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 3,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 0,
+          "avg_score": 0,
+          "avg_time_ms": 35042,
+          "difficulty_points": 0,
+          "fitness": 0.285
+        },
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 0.333,
+          "avg_score": 3,
+          "avg_time_ms": 46794,
+          "difficulty_points": 18,
+          "fitness": 3.047
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789388688671",
+      "ts": "2026-09-14T12:32:55.991Z",
+      "scores": {
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 3,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 0,
+          "avg_score": 0,
+          "avg_time_ms": 44511,
+          "difficulty_points": 0,
+          "fitness": 0.225
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 3,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 0,
+          "avg_score": 0,
+          "avg_time_ms": 66452,
+          "difficulty_points": 0,
+          "fitness": 0.15
+        },
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 3,
+          "wins": 1,
+          "win_rate": 0.333,
+          "ok_rate": 0.333,
+          "avg_score": 2.67,
+          "avg_time_ms": 72610,
+          "difficulty_points": 8,
+          "fitness": 2.804
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789410077087",
+      "ts": "2026-09-14T18:26:12.261Z",
+      "scores": {
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 5,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 0.4,
+          "avg_score": 3.6,
+          "avg_time_ms": 36380,
+          "difficulty_points": 27,
+          "fitness": 2.675
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 5,
+          "wins": 1,
+          "win_rate": 0.2,
+          "ok_rate": 0.6,
+          "avg_score": 5.2,
+          "avg_time_ms": 29949,
+          "difficulty_points": 43,
+          "fitness": 4.334
+        },
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 5,
+          "wins": 3,
+          "win_rate": 0.6,
+          "ok_rate": 0.6,
+          "avg_score": 5.2,
+          "avg_time_ms": 39669,
+          "difficulty_points": 35,
+          "fitness": 5.252
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789505839926",
+      "ts": "2026-09-15T21:04:21.800Z",
+      "scores": {
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 4,
+          "wins": 1,
+          "win_rate": 0.25,
+          "ok_rate": 0.5,
+          "avg_score": 4.25,
+          "avg_time_ms": 42470,
+          "difficulty_points": 25,
+          "fitness": 3.735
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 4,
+          "wins": 1,
+          "win_rate": 0.25,
+          "ok_rate": 0.75,
+          "avg_score": 6.75,
+          "avg_time_ms": 42646,
+          "difficulty_points": 45,
+          "fitness": 5.359
+        },
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 4,
+          "wins": 1,
+          "win_rate": 0.25,
+          "ok_rate": 0.5,
+          "avg_score": 4.5,
+          "avg_time_ms": 50089,
+          "difficulty_points": 27,
+          "fitness": 3.825
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789513940550",
+      "ts": "2026-09-15T23:24:54.165Z",
+      "scores": {
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 5,
+          "wins": 1,
+          "win_rate": 0.2,
+          "ok_rate": 0.4,
+          "avg_score": 3.6,
+          "avg_time_ms": 107295,
+          "difficulty_points": 18,
+          "fitness": 3
+        },
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 5,
+          "wins": 2,
+          "win_rate": 0.4,
+          "ok_rate": 0.4,
+          "avg_score": 3.6,
+          "avg_time_ms": 123142,
+          "difficulty_points": 27,
+          "fitness": 3.5
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 5,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 0.4,
+          "avg_score": 3.6,
+          "avg_time_ms": 119636,
+          "difficulty_points": 27,
+          "fitness": 2.5
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789521920563",
+      "ts": "2026-09-16T01:37:33.640Z",
+      "scores": {
+        "agent_1": {
+          "box": "agent_1",
+          "runs": 4,
+          "wins": 1,
+          "win_rate": 0.25,
+          "ok_rate": 0.25,
+          "avg_score": 2.5,
+          "avg_time_ms": 38407,
+          "difficulty_points": 10,
+          "fitness": 2.51
+        },
+        "agent_7": {
+          "box": "agent_7",
+          "runs": 4,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 0.25,
+          "avg_score": 2.25,
+          "avg_time_ms": 60891,
+          "difficulty_points": 9,
+          "fitness": 1.664
+        },
+        "agent_3": {
+          "box": "agent_3",
+          "runs": 4,
+          "wins": 0,
+          "win_rate": 0,
+          "ok_rate": 0.25,
+          "avg_score": 2.5,
+          "avg_time_ms": 47909,
+          "difficulty_points": 10,
+          "fitness": 1.834
+        }
+      }
+    },
+    {
+      "bench_id": "bench_1789529874877",
+      "ts": "2026-09-16T04:02:31.530Z",
+      "scores": {}
+    }
+  ],
+  "updated_at": "2026-09-16T04:02:31.530Z"
+}

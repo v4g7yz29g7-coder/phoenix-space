@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkDev — студия разработки</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            color: #58a6ff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a5d6ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #8b949e;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #58a6ff;
+            box-shadow: 0 8px 30px rgba(88, 166, 255, 0.15);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #f0f6fc;
+        }
+
+        .card p {
+            color: #8b949e;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: rgba(63, 185, 80, 0.1);
+            color: #3fb950;
+            border: 1px solid rgba(63, 185, 80, 0.3);
+            padding: 0.2rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #238636;
+            color: #ffffff;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+
+        .cta-button:hover {
+            background: #2ea043;
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(46, 160, 67, 0.4);
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            color: #484f58;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .services {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                text-align: center;
+            }
+            
+            .card-tag {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">Студия разработки</span>
+        <h1>Создаём цифровые продукты, которые работают</h1>
+        <p class="subtitle">Полный цикл разработки: от идеи до запуска. Современные технологии, прозрачный процесс, результат, который решает бизнес-задачи.</p>
+
+        <div class="services">
+            <div class="card">
+                <span class="card-icon">🚀</span>
+                <h3>Веб-приложения</h3>
+                <p>Сложные интерфейсы, личные кабинеты, панели управления. Проектируем и разрабатываем под ключ с учётом вашей специфики.</p>
+                <span class="card-tag">React / Vue / Node.js</span>
+            </div>
+            <div class="card">
+                <span class="card-icon">📱</span>
+                <h3>Мобильные приложения</h3>
+                <p>Нативные и кроссплатформенные приложения для iOS и Android. От прототипа до публикации в сторах.</p>
+                <span class="card-tag">Flutter / Swift / Kotlin</span>
+            </div>
+            <div class="card">
+                <span class="card-icon">⚙️</span>
+                <h3>API и интеграции

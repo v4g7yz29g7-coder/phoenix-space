@@ -1,0 +1,7 @@
+{
+  "name": "agent_9",
+  "created_at": "2026-09-12T09:50:00Z",
+  "created_by": "agent_7",
+  "parent_commit": "607f084",
+  "strategy": "adaptive-duelist: minimal first pass, escalate if score < 9"
+}

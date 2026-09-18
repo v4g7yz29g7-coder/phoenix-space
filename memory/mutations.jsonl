@@ -1,0 +1,6 @@
+{"ts":"2026-09-14T04:50:34.477Z","agentId":"a1","type":"prompt","gene":"tone","from":"terse","to":"verbose","reason":"test","generation":null,"fitness":null,"meta":{}}
+{"ts":"2026-09-14T04:50:34.477Z","agentId":"a2","type":"param","gene":"lr","from":0.01,"to":0.005,"reason":null,"generation":null,"fitness":null,"meta":{}}
+{"ts":"2026-09-14T04:50:34.478Z","agentId":"a1","type":"grant","gene":"tools","from":null,"to":["web_search"],"reason":null,"generation":null,"fitness":null,"meta":{}}
+{"ts":"2026-09-14T04:50:34.482Z","agentId":"a3","type":"serialization_error","error":"record contained non-serialisable data"}
+{"ts":"2026-09-14T04:51:02.111Z","agentId":"__verify__","type":"selftest","gene":null,"from":null,"to":null,"reason":"criteria check","generation":null,"fitness":null,"meta":{}}
+{"ts":"2026-09-14T04:51:11.442Z","agentId":"__c","type":"t","gene":null,"from":null,"to":1,"reason":null,"generation":null,"fitness":null,"meta":{}}
