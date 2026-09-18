@@ -446,7 +446,7 @@ try {
   const paths = pathBuilder.buildAll([RACE_ID]);
   const n = Array.isArray(paths) ? paths.length : (paths ? 1 : 0);
   console.log(`📊 Trajectory v2: ${n} путей`);
-  try { pathBuilder.writeReport(RACE_ID); } catch (e) { console.error('⚠️ writeReport: ' + e.message); }
+    // writeReport: no-op (функция отсутствует)
 } catch (e) { console.error('⚠️ Trajectory v2: ' + e.message); }
 
 try {
@@ -461,7 +461,7 @@ try {
   const radioWriter = require('./radio/radio_writer');
   const winnerBox = winner ? winner.box : null;
   if (winnerBox) {
-    const comment = await radioWriter.commentFresh('race_finish', {
+    const comment = await radioWriter.comment('race_finish', {
       winner: winnerBox,
       score: winner.score,
       task: TASK.slice(0, 100),
