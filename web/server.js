@@ -193,6 +193,37 @@ app.get('/api/dashboard/state', (req, res) => {
     state.budget = { date: spend.date, spent: spend.spent_usd, limit: 2 };
   } catch (e) { state.budget = { spent: 0, limit: 2 }; }
 
+  // 7.5. Moat — Ров
+  try {
+    const moatIdx = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'memory', 'moat', 'index.json'), 'utf8'));
+    const logPath = path.join(PROJECT_ROOT, 'memory', 'moat_speed_test.log');
+    let bySource = { fs: 0, moat: 0, llm: 0 };
+    let savingsTokens = 0;
+    if (fs.existsSync(logPath)) {
+      const log = fs.readFileSync(logPath, 'utf8');
+      // Считаем строки "С Рвом: Xms | source=Y | tokens in=Z"
+      const lines = log.split('\n');
+      for (const line of lines) {
+        const m = line.match(/source=(\w+).*tokens in=(\d+)/);
+        if (m) {
+          const src = m[1];
+          if (bySource[src] !== undefined) bySource[src]++;
+          if (src !== 'llm') savingsTokens += 6000; // средняя экономия 1 вызов LLM
+        }
+      }
+    }
+    state.moat = {
+      total_solutions: (moatIdx.solutions || []).length,
+      unique_files: new Set((moatIdx.solutions || []).map(s => s.task_file)).size,
+      updated_at: moatIdx.updated_at,
+      by_source: bySource,
+      savings_tokens: savingsTokens,
+      savings_usd: +(savingsTokens * 0.000002).toFixed(4),
+    };
+  } catch (e) {
+    state.moat = { total_solutions: 0, error: e.message.slice(0, 100) };
+  }
+
   // 7. Git
   try {
     const git = execSync('cd ' + PROJECT_ROOT + ' && git status --short', { encoding: 'utf8', timeout: 3000 });

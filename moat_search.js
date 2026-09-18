@@ -20,6 +20,28 @@ function loadIndex() {
   catch (e) { return { solutions: [] }; }
 }
 
+// Словарь синонимов для fuzzy-поиска
+const SYNONYMS = {
+  'почини': 'исправь', 'исправь': 'почини',
+  'сделай': 'создай', 'создай': 'сделай', 'напиши': 'создай',
+  'файл': 'модуль', 'модуль': 'файл',
+  'функция': 'метод', 'метод': 'функция',
+  'тест': 'проверка', 'проверка': 'тест',
+  'ошибка': 'баг', 'баг': 'ошибка', 'падает': 'ошибка',
+  'добавь': 'дополни', 'дополни': 'добавь',
+  'убери': 'удали', 'удали': 'убери',
+  'мониторинг': 'observability', 'наблюдаемость': 'observability',
+  'конфиг': 'config', 'настройки': 'config',
+  'кэш': 'cache', 'кэширование': 'cache',
+  'лог': 'log', 'логи': 'log', 'логирование': 'log',
+};
+
+// Расширяем слово синонимами
+function expandWord(w) {
+  const syn = SYNONYMS[w];
+  return syn ? [w, syn] : [w];
+}
+
 function extractFile(prompt) {
   if (!prompt) return null;
   const m = String(prompt).match(/[a-zA-Z0-9_\-/]+\.(js|md|json|ts)/);
@@ -41,7 +63,11 @@ function normalizePrompt(prompt) {
 function keywords(prompt, max = 10) {
   const norm = normalizePrompt(prompt);
   const words = norm.split(' ').filter(w => w.length > 3);
-  const unique = [...new Set(words)];
+  const expanded = [];
+  for (const w of words) {
+    for (const e of expandWord(w)) expanded.push(e);
+  }
+  const unique = [...new Set(expanded)];
   return unique.sort((a, b) => b.length - a.length).slice(0, max);
 }
 

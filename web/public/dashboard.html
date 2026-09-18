@@ -79,6 +79,10 @@
       <div class="list" id="pm2-list"></div>
     </div>
     <div class="card">
+      <h2>🐋 Ров (Moat) <span id="moat-total" class="value green">0</span></h2>
+      <div class="list" id="moat-info"></div>
+    </div>
+    <div class="card">
       <h2>Бюджет LLM <span id="budget-spent" class="value">$0</span></h2>
       <div style="font-size:12px;color:#94a3b8">Лимит: $<span id="budget-limit">2</span> / день</div>
       <div style="margin-top:8px">
@@ -148,6 +152,22 @@ async function tick() {
           const st = p.status === 'online' ? 'status-online' : 'status-stopped';
           return `<div class="row"><span>${esc(p.name)}</span><span class="${st}">${p.status} · ${(p.mem/1048576).toFixed(0)}MB</span></div>`;
         }).join('');
+    }
+
+    // Ров (Moat)
+    if (d.moat) {
+      document.getElementById('moat-total').textContent = d.moat.total_solutions || 0;
+      const info = [];
+      info.push(`<div class="row"><span>Уникальных файлов</span><span class="value" style="font-size:14px">${d.moat.unique_files || 0}</span></div>`);
+      info.push(`<div class="row"><span>Экономия токенов</span><span class="value green" style="font-size:14px">${(d.moat.savings_tokens || 0).toLocaleString()}</span></div>`);
+      info.push(`<div class="row"><span>Экономия $</span><span class="value green" style="font-size:14px">$${d.moat.savings_usd || 0}</span></div>`);
+      if (d.moat.by_source) {
+        const src = d.moat.by_source;
+        info.push(`<div class="row"><span>📁 ФС</span><span>${src.fs || 0}</span></div>`);
+        info.push(`<div class="row"><span>🐋 Ров</span><span class="green">${src.moat || 0}</span></div>`);
+        info.push(`<div class="row"><span>🤖 LLM</span><span>${src.llm || 0}</span></div>`);
+      }
+      document.getElementById('moat-info').innerHTML = info.join('');
     }
 
     // Бюджет
