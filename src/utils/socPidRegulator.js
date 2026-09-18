@@ -50,16 +50,18 @@ function createRegulator(options = {}) {
     }
 
     if (value > cfg.throttleHigh) {
-      // жёсткий сброс активности поверх PID
-      integral = cfg.integralMax;
+      // жёсткий сброс активности поверх PID; сбрасываем интегратор,
+      // чтобы при возврате к сетпоинту не было ложного throttle из-за виндапа
+      integral = 0;
       prevError = cfg.setpoint - value;
       first = false;
       return { throttle: 1, boost: 0 };
     }
 
     if (value < cfg.boostLow) {
-      // жёсткий разгон активности поверх PID
-      integral = cfg.integralMin;
+      // жёсткий разгон активности поверх PID; сбрасываем интегратор,
+      // чтобы при возврате к сетпоинту не было ложного boost из-за виндапа
+      integral = 0;
       prevError = cfg.setpoint - value;
       first = false;
       return { throttle: 0, boost: 1 };

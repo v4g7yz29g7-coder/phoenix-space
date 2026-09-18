@@ -4025,7 +4025,7 @@
       "file": "boxes/agent_1/agent_critic.js",
       "min_lines": 80,
       "prompt": "Реализуй детектор ошибок v2 (Наталья Бехтерева). API: checkAgainstBaseline(solution) -> {ok, deviation, reason}. Baseline - топ-100 из memory/moat/. Отклонение >30% -> ok=false. КРИТЕРИЙ: node boxes/agent_1/agent_critic.js --selftest печатает 3 кейса.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T03:54:22.195Z"
@@ -4036,7 +4036,7 @@
       "file": "boxes/agent_1/agent_loop_v3.js",
       "min_lines": 100,
       "prompt": "Раздели навыки на HARD_SKILLS (5+ правил: не удаляй системные файлы, не коммить секреты, не запускай rm -rf /, не меняй .env, не трогай pm2 без бэкапа) и SOFT_SKILLS (5+ стратегий: попробуй альтернативу, декомпозируй, проверь границы). Экспорт: getHardSkills(), getSoftSkills(). КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T03:54:22.201Z"
@@ -4047,7 +4047,7 @@
       "file": "boxes/agent_1/_runner.js",
       "min_lines": 60,
       "prompt": "Добавь самовоспоминание (Гурджиев): каждые N шагов вызывай мета-промпт \"Что ты делаешь? Соответствует ли цели?\". N=3. Лог с префиксом [SELFAWARE]. КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T03:54:22.206Z"
@@ -4058,7 +4058,7 @@
       "file": "sentinel.js",
       "min_lines": 90,
       "prompt": "Интероцепция (Seth): dopamine (успехов/час) и serotonin (1 - load/10). API: getMood() -> {dopamine, serotonin, ts}. Лог в memory/mood.log каждые 60с. КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T03:54:22.211Z"
@@ -4069,7 +4069,7 @@
       "file": "memory/gnw.js",
       "min_lines": 100,
       "prompt": "Глобальное рабочее пространство (Dehaene). API: ignite(solution) -> bool (порог score>8), getGlobal() -> top-100, clear(). Храни в memory/gnw_global.json. КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T03:54:22.215Z"
@@ -4080,7 +4080,7 @@
       "file": "memory/biofield.js",
       "min_lines": 80,
       "prompt": "Биоэлектрическое поле (Levin). In-memory шина: emit(signal, data), on(signal, cb), once(signal, cb). EventEmitter. КРИТЕРИЙ: node --check OK, emit+on работает.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T03:54:22.220Z"
@@ -4091,7 +4091,7 @@
       "file": "race.js",
       "min_lines": 40,
       "prompt": "Функция vote(results) -> winner. Взвешенное голосование: score*0.5 + (1/duration)*0.3 + ok*0.2. Вызывай при BOXES.length >= 5. КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T03:54:22.225Z"
@@ -4102,7 +4102,7 @@
       "file": "sentinel.js",
       "min_lines": 70,
       "prompt": "PID-регулятор критичности (SOC). API: regulate(load) -> {throttle, boost}. Цель load=2.0. load>3 -> throttle=1. load<1.5 -> boost=1. КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T03:54:22.230Z"
@@ -4124,7 +4124,7 @@
       "file": "replay_worker.js",
       "min_lines": 100,
       "prompt": "Реплей-воркер (Nature 2024). Ночной перезапуск топ-100 траекторий из memory/trajectories/. Извлеки паттерны, сгенерируй 5 задач для Архитектора. pm2 + cron 02:00. КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T04:07:12.738Z"
@@ -4135,7 +4135,7 @@
       "file": "race.js",
       "min_lines": 30,
       "prompt": "Полифоническая гонка (Бахтин). Каждому агенту свой RACE_TASK. Env: RACE_TASKS_BY_BOX (JSON). КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T04:07:12.747Z"
@@ -4146,7 +4146,7 @@
       "file": "architect_worker.js",
       "min_lines": 40,
       "prompt": "Карта хронотопов (Бахтин). У задачи есть deadline (ISO) и scope (список файлов). Если deadline прошёл - failed. КРИТЕРИЙ: node --check OK.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_philosophy",
       "created_at": "2026-09-16T23:38:19.591Z",
       "updated_at": "2026-09-17T04:07:12.752Z"
@@ -4212,7 +4212,7 @@
       "file": "observability/agent_health.js",
       "min_lines": 160,
       "prompt": "Реализовать модуль здоровья агентов: опрос boxes/*/_runner.js, чтение последнего статуса из pool-состояния, классификация healthy/degraded/dead. КРИТЕРИЙ: экспорт checkAgentHealth(id) → {state, last_seen_ms, score, reason}; 3 состояния строго по порогам last_seen < 60s=healthy, <300s=degraded, иначе dead; CLI-режим node agent_health.js --all печатает таблицу.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_worker",
       "created_at": "2026-09-17T00:11:51.100Z",
       "updated_at": "2026-09-17T00:12:24.221Z"
@@ -4223,7 +4223,7 @@
       "file": "observability/universes_dashboard.html",
       "min_lines": 180,
       "prompt": "Собрать статический дашборд мультивселенной: таблица вселенных/универсумов с fitness, статусом, последней гонкой. КРИТЕРИЙ: без внешних CDN, fetch('./universes.json') с fallback на встроенный сэмпл; авто-refresh 10s; отображение топ-3 по fitness и счётчиков ✅/🔄/❌; валидный HTML5, открывается file://.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_worker",
       "created_at": "2026-09-17T00:11:51.100Z",
       "updated_at": "2026-09-17T00:12:24.226Z"
@@ -4234,7 +4234,7 @@
       "file": "observability/metrics_collector.js",
       "min_lines": 150,
       "prompt": "Сборщик метрик: CPU, RAM, load, число живых race-процессов, длина queued-очереди. КРИТЕРИЙ: сбор из /proc/loadavg и /proc/meminfo без зависимостей; запись агрегированного снапшота в metrics.jsonl каждые N секунд; API collect() → объект с числовыми полями; проверка node metrics_collector.js --once печатает валидный JSON.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_worker",
       "created_at": "2026-09-17T00:11:51.100Z",
       "updated_at": "2026-09-17T00:12:24.265Z"
@@ -4245,7 +4245,7 @@
       "file": "observability/alerting.js",
       "min_lines": 150,
       "prompt": "Алертинг по порогам: CPU>85%, agents_dead>5, failures_rate>40% за окно. КРИТЕРИЙ: правила читаются из alerts.json (порог+cooldown), дедупликация по ключу+cooldown 120s, вывод алертов в alerts.log с timestamp и полем source; функция evaluate(snapshot) → список сработавших правил; юнит-тест на 3 кейса внутри файла (assert).",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_worker",
       "created_at": "2026-09-17T00:11:51.100Z",
       "updated_at": "2026-09-17T00:12:24.562Z"
@@ -4256,7 +4256,7 @@
       "file": "observability/log_aggregator.js",
       "min_lines": 170,
       "prompt": "Агрегатор логов: склейка stdout всех boxes/*/ и night-pool логов в единый поток с фильтром по уровню и по агенту. КРИЕКТРИЙ: CLI args --level=error --agent=agent_4 --tail=100; парсинг строк вида 'TIMESTAMP LEVEL [agent] msg'; вывод в хронологическом порядке; отсутствие утечек fd (закрывать потоки). КРИТЕРИЙ: на фикстуре из 200 строк фильтр отдаёт ровно ожидаемое число.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_worker",
       "created_at": "2026-09-17T00:11:51.100Z",
       "updated_at": "2026-09-17T00:12:25.110Z"
@@ -4267,7 +4267,7 @@
       "file": "tests/arena_runner.test.js",
       "min_lines": 140,
       "prompt": "Тесты раннера гонок: проверка boxes/*/_runner.js на контракт {ok, score, verdict, answer, steps_count}. КРИТЕРИЙ: минимум 6 кейсов (успех, пустой ответ, таймаут, мусорный JSON, отсутствие файла задачи, превышение steps); запуск через node tests/arena_runner.test.js; exit code 0 при прохождении, 1 при падении; печать PASS/FAIL по каждому кейсу.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_worker",
       "created_at": "2026-09-17T00:11:51.100Z",
       "updated_at": "2026-09-17T00:12:25.349Z"
@@ -4278,7 +4278,7 @@
       "file": "tests/architect_parser.test.js",
       "min_lines": 130,
       "prompt": "Тесты regex-парсера задач архитектора (после d497997d/eb354116): markdown-обёртка, JSON внутри ```json, обрыв на середине, лишние пробелы. КРИЕКТРИЙ: минимум 5 фикстур-входов с ожидаемым числом распарсенных задач; проверка отсутствия throw на мусоре; функция parseTasks импортируется и тестируется напрямую. КРИТЕРИЙ: 5/5 PASS.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_worker",
       "created_at": "2026-09-17T00:11:51.100Z",
       "updated_at": "2026-09-17T00:12:25.390Z"
@@ -4289,7 +4289,7 @@
       "file": "tests/evolution_crossover.test.js",
       "min_lines": 150,
       "prompt": "Тесты замкнутого цикла эволюции (c8885b07): crossover двух родителей → ребёнок в boxes/, проверка наследования параметров и fitness-пересчёта. КРИЕКТРИЙ: минимум 4 кейса (успешный crossover, один родитель мёртв, одинаковые родители, некорректная fitness); проверка что ребёнок появляется ровно в одном боксе; no-op при отсутствии свободного бокса.",
-      "status": "in_progress",
+      "status": "pending",
       "created_by": "architect_worker",
       "created_at": "2026-09-17T00:11:51.100Z",
       "updated_at": "2026-09-17T00:12:25.580Z"

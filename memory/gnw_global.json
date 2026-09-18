@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "threshold": 8,
+  "capacity": 100,
+  "updatedAt": "2026-09-18T10:41:50.577Z",
+  "ignitions": 153,
+  "rejected": 2,
+  "broadcasts": 101,
+  "entries": []
+}

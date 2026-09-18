@@ -2,9 +2,16 @@ const { createResponse } = require('./deepseek_responses');
 const tools = require('./agent_tools');
 const skillsLoader = require('./skills_loader');
 const rag = require('./rag_context');
+const selfaware = require('./selfaware');
 const fs = require('fs');
 
 const MAX_STEPS = 10;
+
+// Гурджиев: САМОВОСПОМИНАНИЕ. Каждые N шагов агент останавливается и
+// задаёт себе мета-вопрос: «Что ты делаешь? Соответствует ли цели?».
+// Это возвращает внимание к исходной цели и не даёт «уснуть» в процессе.
+const SELF_REMEMBER_INTERVAL = parseInt(process.env.SELF_REMEMBER_INTERVAL || '3', 10);
+const SELF_REMEMBER_QUESTION = 'Что ты делаешь? Соответствует ли цели?';
 
 const TOOLS_SPEC = [
   {
@@ -153,6 +160,21 @@ async function executeTool(name, args) {
   }
 }
 
+// Самовоспоминание (Гурджиев): фиксируем мета-вопрос в лог с префиксом [SELFAWARE].
+function selfRemembrance(step, prompt) {
+  const line = '[SELFAWARE] шаг ' + step + '/' + MAX_STEPS +
+    ' | ' + SELF_REMEMBER_QUESTION +
+    ' | цель: ' + String(prompt || '').replace(/\s+/g, ' ').slice(0, 160);
+  console.log(line);
+  // Best-effort durable log — не критично, если запись не удалась.
+  try {
+    const dir = __dirname + '/memory';
+    try { fs.mkdirSync(dir, { recursive: true }); } catch (e) {}
+    fs.appendFileSync(dir + '/selfaware.log', '[' + new Date().toISOString() + '] ' + line + '\n');
+  } catch (e) {}
+  return line;
+}
+
 async function runAgent(prompt) {
   const log = [];
 
@@ -166,6 +188,23 @@ async function runAgent(prompt) {
   const changedTools = [];
 
   for (let step = 0; step < MAX_STEPS; step++) {
+    // Гурджиев: самовоспоминание — каждые N (=3) шагов возвращаемся к цели.
+    if (step > 0 && step % SELF_REMEMBER_INTERVAL === 0) {
+      const meta = selfRemembrance(step, prompt);
+      input.push({
+        role: 'user',
+        content: meta + '\nОстановись. Коротко ответь себе: что ты делаешь сейчас ' +
+                 'и ведёт ли это к исходной цели? Если ты отклонился — вернись к цели.'
+      });
+      log.push({
+        step: step,
+        tool: 'self_remembrance',
+        args: {},
+        ok: true,
+        reason: 'meta-prompt [SELFAWARE]'
+      });
+    }
+
     const response = await createResponse({
       model: 'deepseek-flash',
       instructions: SYSTEM_INSTRUCTIONS_FULL,

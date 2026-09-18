@@ -169,7 +169,7 @@ function searchCode(query, options = {}) {
     // 14.09: grep строго в корне проекта. Никаких /home/ishidin, /, ../.
     // Используем PROJECT_ROOT + "." внутри — исключает выход наружу.
     const safeQuery = String(query).replace(/["'$`\\]/g, '');
-    const cmd = `cd ${PROJECT_ROOT} && grep -rn ${pattern} --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=memory "${safeQuery}" . 2>/dev/null | head -${maxResults}`;
+      const cmd = `cd ${PROJECT_ROOT} && timeout 15 grep -rn ${pattern} --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=memory "${safeQuery}" . 2>/dev/null | head -${maxResults}`;
     const output = execSync(cmd, { encoding: 'utf8', timeout: 15000, cwd: PROJECT_ROOT });
     const lines = output.trim().split('\n').filter(Boolean);
     return { ok: true, query, count: lines.length, matches: lines };

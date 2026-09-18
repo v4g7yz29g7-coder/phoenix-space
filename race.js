@@ -446,7 +446,7 @@ try {
   const paths = pathBuilder.buildAll([RACE_ID]);
   const n = Array.isArray(paths) ? paths.length : (paths ? 1 : 0);
   console.log(`📊 Trajectory v2: ${n} путей`);
-    // writeReport: no-op (функция отсутствует)
+    // writeReport: no-op
 } catch (e) { console.error('⚠️ Trajectory v2: ' + e.message); }
 
 try {

@@ -1,13 +1,33 @@
 const agentV2 = require('./agent_responses');
 const critic = require('./agent_critic');
 const tools = require('./agent_tools');
+// Самовоспоминание (Гурджиев): каждые N шагов (по умолчанию N=3) агент
+// задаёт себе мета-промпт «Что ты делаешь? Соответствует ли цели?».
+// Факт самовоспоминания логируется с префиксом [SELFAWARE].
+const selfaware = require('./selfaware');
 
 const MAX_ATTEMPTS = 3;
 
 async function runWithCritic(prompt) {
   const attempts = [];
+  const goal = prompt;   // исходная цель — к ней возвращаем себя при самовоспоминании
+  let step = 0;
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    // 0. Самовоспоминание: каждый N-й шаг — мета-промпт «Что ты делаешь?
+    //    Соответствует ли цели?». Ответ встраивается в контекст исполнителя,
+    //    а сам факт пишется в лог с префиксом [SELFAWARE].
+    step += 1;
+    const recall = selfaware.remind(step, {
+      goal: goal,
+      last: 'попытка исполнителя #' + attempt
+    });
+    if (recall) {
+      prompt = prompt + '\n\n' + selfaware.PREFIX + ' ' + recall +
+        '\nОтветь себе: (1) какое действие ты совершаешь сейчас, ' +
+        '(2) приближает ли оно исходную цель. Если нет — скорректируй план.';
+    }
+
     // 1. Исполнитель делает работу
     const execResult = await agentV2.runAgent(prompt);
 
