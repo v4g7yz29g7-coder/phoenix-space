@@ -1,0 +1,85 @@
+# === Node ===
+node_modules/
+npm-debug.log*
+
+# === AI-1: временное ===
+.tmp_*
+*_e.txt
+*_e.csv
+*_e.json
+*_e.py
+
+# === Бэкапы ===
+*.bak
+*.bak.*
+*.bak_*
+*.pre_*
+race.js.bak*
+
+# === Логи (все) ===
+*.log
+!memory/races/*.log
+
+# === Runtime memory ===
+memory/*.log
+memory/benchmark.log
+memory/benchmark_loop.log
+memory/architect_worker.log
+memory/night_evolution_report.json
+memory/pool_sync_report.json
+memory/experience_summary.json
+memory/evolution_orchestrator_state.json
+
+# === Копии в боксах (симлинки — ок, копии — нет) ===
+boxes/*/sensors/
+boxes/*/radio/
+boxes/*/_vs_test_run.js
+boxes/users/*/_runtime/
+
+# === Arena3D build output (не source) ===
+web/arena3d/build_out.log
+web/arena3d/node_modules/
+
+# === Snapshots ===
+snapshots/
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+
+# 18.09: критические исключения
+.env
+.env.*
+!.env.example
+boxes/*/.env
+boxes/*/memory/
+.rag_index/
+corpus/
+memory/races/
+memory/patterns/
+memory/trajectories/
+memory/*.log
+*.bak_*
+*.bak.*
+*.pre_*
+logs/
+node_modules/
+
+# 18.09: мусор
+benchmark/archive/
+.mc_head/
+50,
+_extract_routes.js
+*.tmp
+
+# 18.09: большие файлы (не пушим на GitHub)
+corpus/
+.rag_index/
+
+# 18.09: большие временные файлы (не пушим)
+.req_tmp.txt
+.req_scan.txt
+.cf_scan_out.txt
+.commit_scan_out.txt
+.exec_tmp.txt
