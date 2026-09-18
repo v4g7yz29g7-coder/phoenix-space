@@ -1,0 +1,13 @@
+{
+  "hash": "ce463cc36b05",
+  "race_id": "race_1789316644816",
+  "ts": "2026-09-13T16:27:28.253Z",
+  "task_file": "Node.js",
+  "task_prompt": "РЕЖИМ ИССЛЕДОВАНИЯ\nКак читать почту через IMAP в Node.js. Что писать в research/email.md: 1) библиотеки (imap, mailparser), 2) подключение к Gmail/Yandex, 3) парсинг писем, 4) поиск паролей/ссылок в письмах, 5) примеры кода. Используй write.\n\nТы в режиме глубокого исследования. Изучи GitHub, документацию, примеры.\nРезультат: файл research/email.md (используй write).\nНе просто опиши — приведи конкретные примеры кода.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 58136,
+  "answer": "Готово. Файл `research/email.md` создан (634 строки, ~22 КБ).\n\n## Что внутри — все 5 требуемых разделов\n\n**1. Библиотеки** — сравнительная таблица: `imapflow` (рекомендую, async/await, IDLE, OAuth2), `imap` (node-imap, легаси), `mailparser` (стандарт парсинга RFC822), альтернативы (`postal-mime`).\n\n",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.142Z"
+}

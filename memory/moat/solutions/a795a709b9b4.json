@@ -1,0 +1,13 @@
+{
+  "hash": "a795a709b9b4",
+  "race_id": "race_1789333631142",
+  "ts": "2026-09-13T21:08:50.407Z",
+  "task_file": "sensors/ocr_engine.js",
+  "task_prompt": "Создай sensors/ocr_engine.js — Tesseract OCR. API: extract(imagePath). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 18971,
+  "answer": "Готово. `sensors/ocr_engine.js` уже присутствует и полностью удовлетворяет критериям:\n\n| Критерий | Статус |\n|---|---|\n| Файл существует | ✅ `/home/ishidin/phoenix/sensors/ocr_engine.js` |\n| `>150` строк | ✅ **720 строк** |\n| `node --check` OK | ✅ SYNTAX_OK |\n| API `extract(imagePath)` | ✅ `typeof o",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

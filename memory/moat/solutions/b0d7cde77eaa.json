@@ -1,0 +1,13 @@
+{
+  "hash": "b0d7cde77eaa",
+  "race_id": "race_1789333881565",
+  "ts": "2026-09-13T21:13:59.485Z",
+  "task_file": "sensors/video_analyzer.js",
+  "task_prompt": "Создай sensors/video_analyzer.js — GigaChat Vision на видео. API: analyze(videoPath). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 30349,
+  "answer": "Готово. ✅\n\n**`sensors/video_analyzer.js`** — GigaChat Vision видео-сенсор.\n\n## Проверка критериев\n| Критерий | Статус |\n|---|---|\n| Файл создан | ✅ `sensors/video_analyzer.js` |\n| **>200 строк** | ✅ **764 строки** |\n| **`node --check` OK** | ✅ `node --check: OK` |\n| API `analyze(videoPath)` | ✅ стро",
+  "steps_count": 16,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

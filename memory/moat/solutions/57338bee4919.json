@@ -1,0 +1,13 @@
+{
+  "hash": "57338bee4919",
+  "race_id": "parallel_1789614699867_0p07",
+  "ts": "2026-09-17T03:14:44.948Z",
+  "task_file": "metrics_collector.js",
+  "task_prompt": "Собрать metrics_collector.js: сбор системных метрик (CPU, RAM, load, диск) каждые 5s + запись в ring-buffer на 720 точек (1 час). Экспорт: collect() → snapshot, latest(), history(n), percentiles([50,95,99]). КРИТЕРИЙ: после 5 замеров history(5).length === 5, percentiles([95]) возвращает число от 0 до 100 для CPU. Читать /proc/stat для CPU, /proc/meminfo для RAM, os.loadavg(). Без внешних зависимостей.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 72410,
+  "answer": "Готово. `metrics_collector.js` собран, `node --check` OK, все критерии выполнены.\n\n**Проверка (фактический прогон):**\n- `history(5).length === 5` → **true**\n- `percentiles([95])` → `[2.07…]`, `typeof p[0] === \"number\"`, `0 ≤ p[0] ≤ 100` → **true**\n\n**Реализация**\n- Файл: `/home/ishidin/phoenix/metrics_collector.js` (~260 строк, только `fs` + `os`, без внешних зависимостей).\n- **CPU**: `/proc/stat` (строка `cpu `), idle+iowait; считаю **дельту** между замерами (первый замер — среднее с загрузки).\n- **RAM**: `/proc/meminfo` → `MemTotal`/`MemAvailable`, используются байты, `pct = used/total·100`.\n- **Load**: `os.loadavg()` → `{1,5,15}` + `loadavg[]`.\n- **Диск**: `fs.statfsSync('/')` (fallback — нули), `pct` заполнения корня.\n- **Ring-buffer**: `RING_SIZE = 720` (720×5s = 1 час), хвост — свежие.\n\n**API**\n- `collect()` → snapshot (замер + запись в буфер)\n- `latest()` → последний snapshot\n- `history(n)` → последние n snapshot'ов\n- `percentiles([50,95,99])` → **массив чисел CPU (0..100)** в порядке запроса; дополнительно на результат навешены `.cpu/.ram/.load`, `.p95` и т.п.\n- Бонус: `snapshot()` (без записи), `start(5000)/stop()`, автосбор раз в 5s (таймер `.unref()`, отключается `MC_NO_AUTOSTART=1`).\n\nПример факта: `latest()` → `cpu`, `ram=59.2%`, `load={1:5.25,5:1.31,15:0.92}`, `disk.pct=62.48`.",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.102Z"
+}

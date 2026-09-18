@@ -1,0 +1,13 @@
+{
+  "hash": "03c5bed525b4",
+  "race_id": "race_1789389696170",
+  "ts": "2026-09-14T12:42:04.086Z",
+  "task_file": "observability/system_monitor.js",
+  "task_prompt": "Создай observability/system_monitor.js — мониторинг. API: snapshot(), watch(interval). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 27910,
+  "answer": "Готово. ✅\n\n**`observability/system_monitor.js`** создан.\n\n**Проверки:**\n- `node --check` → OK (без ошибок синтаксиса)\n- Объём: **331 непустая строка** (>180 ✓)\n\n**API:**\n- `snapshot()` — синхронный срез метрик (memory, cpu, uptime, fd, health)\n- `snapshotAsync()` — то же + измерение event-loop lag\n-",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.165Z"
+}

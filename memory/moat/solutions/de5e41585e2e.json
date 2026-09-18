@@ -1,0 +1,13 @@
+{
+  "hash": "de5e41585e2e",
+  "race_id": "race_1789205479800",
+  "ts": "2026-09-12T09:32:23.573Z",
+  "task_file": "agent_responses.js",
+  "task_prompt": "Посчитай строки в agent_responses.js.",
+  "winner": "agent_3",
+  "winner_score": 9,
+  "winner_time_ms": 10596,
+  "answer": "Посчитал. Ничего не менял (read-only задача).\n\n**`/home/ishidin/phoenix/agent_responses.js` — 246 строк** (8388 байт, файл корректно завершается символом `\\n`).\n\nДетали:\n- Всего строк: **246**\n- Размер: 8388 байт\n- Последняя строка заканчивается переводом строки, поэтому `wc -l` даёт точное число зн",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.112Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "f4267862492b",
+  "race_id": "race_1789335843863",
+  "ts": "2026-09-13T21:46:11.352Z",
+  "task_file": "observability/system_monitor.js",
+  "task_prompt": "Создай observability/system_monitor.js — мониторинг. API: snapshot(), watch(interval). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 55757,
+  "answer": "Готово. Задача выполнена и проверена.\n\n## Что сделано\n\nСоздан `observability/system_monitor.js` — dependency-free монитор системы на CommonJS (стиль репозитория: `'use strict'`, JSDoc-заголовок, публичный API документирован).\n\n### API\n- **`snapshot(opts)`** — синхронный снимок состояния, никогда не ",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.149Z"
+}

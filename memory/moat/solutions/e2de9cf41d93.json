@@ -1,0 +1,13 @@
+{
+  "hash": "e2de9cf41d93",
+  "race_id": "race_1789329207224",
+  "ts": "2026-09-13T19:54:55.537Z",
+  "task_file": "docs/cloudpayments_integration.md",
+  "task_prompt": "Создай файл docs/cloudpayments_integration.md. Инструкция по интеграции CloudPayments: регистрация, получение Public ID и API Secret, виджет на лендинге (JS код), webhook для payment notifications, рекуррентные платежи для подписок. С примерами кода. КРИТЕРИЙ: >120 строк, есть ``` code blocks.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 30008,
+  "answer": "Готово. Файл создан, проверен и закоммичен.\n\n## Результат\n\n**Файл:** `docs/cloudpayments_integration.md` — **387 строк** (критерий >120 ✅), **28 code fences** — сбалансированы ✅\n\n### Структура документа\n\n| # | Раздел | Что внутри |\n|---|--------|-----------|\n| 1 | Регистрация и получение ключей | ме",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.145Z"
+}

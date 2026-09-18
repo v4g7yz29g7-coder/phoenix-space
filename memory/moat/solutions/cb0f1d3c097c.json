@@ -1,0 +1,13 @@
+{
+  "hash": "cb0f1d3c097c",
+  "race_id": "race_1789329394935",
+  "ts": "2026-09-13T19:59:25.566Z",
+  "task_file": "Chart.js",
+  "task_prompt": "Создай файл analytics/dashboard.html. Простой dashboard: fetch к /api/analytics, показывает метрики (всего гонок, агентов, trajectories, средний score). Таблица топ-5 агентов. Chart.js через CDN. КРИТЕРИЙ: >150 строк, есть <html>.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 29939,
+  "answer": "Готово. Файл создан и проверен.\n\n**`analytics/dashboard.html`** — 221 строка (>150 ✓), содержит `<html>` ✓\n\nЧто внутри:\n- **4 метрики** — всего гонок, агентов, trajectories, средний score (fetch `/api/analytics`)\n- **Таблица топ-5 агентов** — rank / имя / гонок / score\n- **Chart.js через CDN** — bar",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.145Z"
+}

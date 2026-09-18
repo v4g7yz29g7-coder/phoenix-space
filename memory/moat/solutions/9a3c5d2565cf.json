@@ -1,0 +1,13 @@
+{
+  "hash": "9a3c5d2565cf",
+  "race_id": "race_1789389603562",
+  "ts": "2026-09-14T12:41:28.964Z",
+  "task_file": "sandbox/serendipity.js",
+  "task_prompt": "Создай sandbox/serendipity.js — случайные находки. API: roll(). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 22048,
+  "answer": "Готово. `sandbox/serendipity.js` создан.\n\n**Результат:**\n- ✅ `node --check sandbox/serendipity.js` → **OK** (синтаксис валиден)\n- ✅ **215 строк** (> 120)\n- ✅ API `roll()` реализован\n\n**Что внутри:**\n- `roll()` — основная функция; принимает `{ seed, domain, count }`, возвращает одну находку или масси",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.165Z"
+}

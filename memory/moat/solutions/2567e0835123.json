@@ -1,0 +1,13 @@
+{
+  "hash": "2567e0835123",
+  "race_id": "race_1789330934092",
+  "ts": "2026-09-13T20:24:09.942Z",
+  "task_file": "chemistry/task_profiler.js",
+  "task_prompt": "Создай chemistry/task_profiler.js — профиль задачи. API: profile(taskText). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 23689,
+  "answer": "Готово. Действовал так: изучил структуру проекта → обнаружил, что `chemistry/task_profiler.js` уже присутствует, но **не доверял этому** → прогнал полный функциональный аудит всех экспортов и edge-cases → зафиксировал в git.\n\n## Результат\n\n**Файл:** `chemistry/task_profiler.js` — 475 строк, CommonJS",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "c35f26b72582",
+  "race_id": "race_1789517290445",
+  "ts": "2026-09-16T00:10:21.655Z",
+  "task_file": "observability/log_aggregator.js",
+  "task_prompt": "Создай observability/log_aggregator.js — агрегатор логов. API: aggregate(hours). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 35615,
+  "answer": "Задача выполнена. Файл `observability/log_aggregator.js` существует, полностью реализован и удовлетворяет всем критериям.\n\n## Результат проверки\n\n| Критерий | Требование | Факт | Статус |\n|----------|-----------|------|--------|\n| Строк | > 150 | **297** | ✅ |\n| `node --check` | OK | `SYNTAX_OK` | ✅ |\n| API `aggregate(hours)` | присутствует | экспортирован | ✅ |\n\n## Что реализовано\n\n**Файл:** `observability/log_aggregator.js` (297 строк, 8196 байт)\n\n**Публичный API:**\n- `aggregate(hours)` — главный метод: агрегирует записи за окно `hours` часов и возвращает отчёт `{ window, totals, byLevel, bySource, topMessages, timeline, errors }`\n- `ingest(input, origin)` — добавление записей в память (нормализация уровня/времени/источника)\n- `loadFile(path)` / `loadSources()` — асинхронная загрузка логов из файлов (JSON или текстовый формат через `readline`)\n- `configure(overrides)`, `reset()`, `formatReport(report)`, `normalizeEntry()`, `normalizeLevel()`\n- Экспорт: `module.exports = { aggregate, configure, ingest, loadFile, loadSources, formatReport, normalizeEntry, normalizeLevel, reset, LEVELS }`\n\n**Функциональность:**\n- Нормализация уровней (`warning→warn`, `err→error`, `critical→fatal`)\n- Эвристика секунды/миллисекунды для временных меток\n- Фильтрация по временному окну, бакетизация timeline (bucketMinutes)\n- Подсчёт `byLevel`, `bySource`, `topMessages`, `errorRate`, сбор ошибок\n- Парсинг строк: JSON с fallback на `timestamp LEVEL source - message`\n- Приятный текстовый отчёт через `formatReport()`\n\n**Проверка:**\n```\nnode --check observability/log_aggregator.js  →  SYNTAX_OK\nwc -l observability/log_aggregator.js         →  297\n```\n\nВсе критерии соблюдены: >150 строк и синтаксис валиден.",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.202Z"
+}

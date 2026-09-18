@@ -1,0 +1,13 @@
+{
+  "hash": "3abc426fee16",
+  "race_id": "race_1789347637971",
+  "ts": "2026-09-14T01:02:31.656Z",
+  "task_file": "sandbox/random_mutation_loop.js",
+  "task_prompt": "Создай sandbox/random_mutation_loop.js — цикл мутаций. API: start(interval), stop(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 10,
+  "winner_time_ms": 40808,
+  "answer": "Deliverable verified — `sandbox/random_mutation_loop.js` exists, satisfies both criteria, and its `start(interval)` / `stop()` API works correctly at runtime.\n\n## Verification evidence\n\n| Check | Result |\n|---|---|\n| File exists | `sandbox/random_mutation_loop.js` (7515 bytes) |\n| Line count | **290",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

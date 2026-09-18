@@ -1,0 +1,13 @@
+{
+  "hash": "3b4d6bf4e6c8",
+  "race_id": "parallel_1789629881985_iggv",
+  "ts": "2026-09-17T07:27:43.636Z",
+  "task_file": "observability/alerting.js",
+  "task_prompt": "Standalone-тест для observability/alerting.js. КРИТЕРИЙ: ≥50 ассертов на evaluate(snapshot): пороги CPU/RAM/load срабатывают на 79.9%/80.1%, дедуп 10 минут (повтор в 9:59 — тишина, 10:01 — alert), cooldown reset, clear() сбрасывает состояние, отсутствие спама при серии из 100 вызовов. Верификация: счётчик срабатываний ровно корректен.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 114935,
+  "answer": "Готово. Задача выполнена и закоммичена (`0b749d4c`).\n\n## Что сделано\n\n**1. `observability/alerting.standalone.test.js`** — новый standalone-тест (312 строк, 12 кейсов, **274 ассерта** — критерий ≥50 перевыполнен в 5×).\n\n**2. `observability/alerting.js`** — добавлен публичный алиас `clear()` (= `resetSnapshotState()`), т.к. критерий требует именно `clear()` для сброса состояния. Существующий контракт не тронут.\n\n## Покрытие критерия\n\n| Требование | Проверка |\n|---|---|\n| Пороги CPU/RAM/load | 79.9% → тишина, 80.1% → alert (strict `>`), по всем трём метрикам |\n| Дедуп 10 минут | 9:00/9:59 → 0 алертов, 10:01 → alert; граница ровно 600с (half-open) |\n| cooldown reset | `clear()` снимает окно — следующий over-threshold снимок срабатывает сразу |\n| `clear()` сбрасывает состояние | обнуляет `history()`, `active()`, окна дедупа |\n| Нет спама на 100 вызовах | 100 вызовов в одном окне → ровно **1** alert, history=1 |\n| Счётчик ровно корректен | 100 вызовов через окно → **ровно 100** срабатываний = `history().length`; детерминизм двух прогонов |\n\n## Верификация\n\n```\nnode --check alerting.js                → SYNTAX OK\nnode alerting.standalone.test.js        → 12 cases, 274 assertions, all passed\nalerting.snapshot.test.js               → 25 passed, 0 failed\nalerting.dedup.test.js                  → 23 passed, 0 failed\nagent_health.test.js                    → 15 passed, 0 failed, 66 asserts\n```\n\nСделал. Проверил. Закоммитил.",
+  "steps_count": 19,
+  "collected_at": "2026-09-18T14:48:41.105Z"
+}

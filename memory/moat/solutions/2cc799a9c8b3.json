@@ -1,0 +1,13 @@
+{
+  "hash": "2cc799a9c8b3",
+  "race_id": "race_1789345605490",
+  "ts": "2026-09-14T00:28:34.658Z",
+  "task_file": "tests/integration.js",
+  "task_prompt": "Создай tests/integration.js — race → experience → trajectory. КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 42731,
+  "answer": "Готово. `tests/integration.js` создан и проверен.\n\n**Результат:**\n- **470 строк** (>200 ✓)\n- `node --check tests/integration.js` → **SYNTAX_OK** ✓\n- Прогон: **17 passed, 0 failed** ✓\n\n**Структура — три стадии конвейера race → experience → trajectory:**\n\n| Стадия | Класс | Что покрыто |\n|---|---|---|",
+  "steps_count": 8,
+  "collected_at": "2026-09-18T14:48:41.153Z"
+}

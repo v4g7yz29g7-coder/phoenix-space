@@ -1,0 +1,13 @@
+{
+  "hash": "5a1f7c075f3b",
+  "race_id": "race_1789348561261",
+  "ts": "2026-09-14T01:17:32.675Z",
+  "task_file": "observability/system_monitor.js",
+  "task_prompt": "Создай observability/system_monitor.js — мониторинг. API: snapshot(), watch(interval). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 32236,
+  "answer": "Готово. Задача выполнена и проверена.\n\n## Результат\n\n**Файл:** `observability/system_monitor.js`\n\n### Критерии\n| Критерий | Статус |\n|---|---|\n| > 180 строк | ✅ **440 строк** |\n| `node --check` OK | ✅ |\n| `snapshot()` | ✅ функция, возвращает полный объект |\n| `watch(interval)` | ✅ EventEmitter, эмит",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

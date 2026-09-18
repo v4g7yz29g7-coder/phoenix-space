@@ -1,0 +1,13 @@
+{
+  "hash": "92e2d73639f2",
+  "race_id": "race_1789311074612",
+  "ts": "2026-09-13T14:55:15.890Z",
+  "task_file": "research/audit.md",
+  "task_prompt": "ТЫ РАБОТАЕШЬ НАД ЗАДАЧЕЙ ПРОЕКТА AI-1 (FORMULA I1).\n\nЗАДАЧА 3.7: Camera shake + flash cut\nSTAGE: Трассы + Трибуны + TV\nВРЕМЯ: ~2 часов\n\nЧТО ДЕЛАТЬ (ПОШАГОВО):\n1. СНАЧАЛА прочитай research/audit.md — там рекомендации\n2. Найди в research/racing-game/ подходящие файлы\n3. Создай/измени файл в arena_lab/src/\n4. ОБЯЗАТЕЛЬНО используй write для сохранения\n5. Проверь: exec(\"cd arena_lab && npx tsc --noEmit\")\n6. Если ошибки — исправь\n\nДОСТУПНЫЕ ФАЙЛЫ:\n- research/racing-game/  — reference (MIT)\n- research",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 149093,
+  "answer": "Задача 3.7 выполнена. \n\n**Файл:** `arena_lab/src/scene/CameraShake.tsx` (323 строки, уже создан и корректно подключён).\n\n**Что реализовано:**\n1. **CameraShake** (внутри `<Canvas>`) — процедурная Hollywood-«trauma»-тряска активной камеры:\n   - trauma 0..1 с линейным затуханием, амплитуда = trauma²;\n ",
+  "steps_count": 9,
+  "collected_at": "2026-09-18T14:48:41.141Z"
+}

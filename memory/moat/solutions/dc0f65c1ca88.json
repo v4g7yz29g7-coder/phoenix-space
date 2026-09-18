@@ -1,0 +1,13 @@
+{
+  "hash": "dc0f65c1ca88",
+  "race_id": "race_1789330630889",
+  "ts": "2026-09-13T20:20:02.965Z",
+  "task_file": "evolution/biologist_team_builder.js",
+  "task_prompt": "Создай evolution/biologist_team_builder.js — команда: 1 быстрый + 1 диверсант + 1 страховщик. API: buildTeam(profile). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 61177,
+  "answer": "Задача выполнена. Отчёт:\n\n## ✅ `evolution/biologist_team_builder.js` — создан\n\n**Критерии:**\n| Критерий | Статус |\n|---|---|\n| `node --check` | ✅ `OK` |\n| `> 180 строк` | ✅ **580 строк** |\n| API `buildTeam(profile)` | ✅ экспортируется (20 экспортов) |\n| Команда: 1 быстрый + 1 диверсант + 1 страховщи",
+  "steps_count": 15,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

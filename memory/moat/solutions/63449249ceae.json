@@ -1,0 +1,13 @@
+{
+  "hash": "63449249ceae",
+  "race_id": "race_1789326036953",
+  "ts": "2026-09-13T19:04:16.302Z",
+  "task_file": "evolution/reaper_v2.js",
+  "task_prompt": "Создай файл evolution/reaper_v2.js. Правильный Reaper: tasks in_progress > 30 мин → pending (до 3 попыток), затем permanent failed с retry_count=99. НЕ должен циклить. API: reap(roadmap) → {changed:[], permanent_failed:[]}. КРИТЕРИЙ: >150 строк, node --check OK, module.exports содержит {reap}.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 51005,
+  "answer": "Готово. Задача выполнена полностью.\n\n## Что сделано\n\nСоздан **`evolution/reaper_v2.js`** — корректный Reaper, решающий главную проблему старой версии (в `arena_worker.js`): **цикл**, когда задача бесконечно ходила `in_progress → pending → in_progress`.\n\n### Логика\n- Задача в `in_progress` дольше **3",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.144Z"
+}

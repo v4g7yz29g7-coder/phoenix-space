@@ -1,0 +1,13 @@
+{
+  "hash": "48eb1ad84584",
+  "race_id": "race_1789358270493",
+  "ts": "2026-09-14T04:03:10.793Z",
+  "task_file": "architect/speech_experts.md",
+  "task_prompt": "Создай файл architect/speech_experts.md. Исследование: лучшие эксперты по речи, фонологии, просодии для создания цифровых двойников. Разделы: 1) Фонетика и просодия (что такое, зачем), 2) Кто авторитет (учёные, проекты — например, работы по voice cloning: VALL-E, YourTTS, ElevenLabs, исследователи из MIT/Google), 3) Что нужно для аудио-анализа (библиотеки, форматы), 4) Как встроить в Архитектора (text→audio pipeline), 5) Инструменты: Yandex SpeechKit, Whisper, ElevenLabs, Coqui TTS. КРИТЕРИЙ: >1",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 82320,
+  "answer": "Готово. Файл `architect/speech_experts.md` создан.\n\n**Результат:**\n- **284 строки** (критерий >150 ✅)\n- **8 заголовков `##`** ✅\n\n**Разделы:**\n1. Фонетика и просодия (что это, зачем — 1.1–1.4)\n2. Кто авторитет (учёные Klatt/Black/Tokuda, проекты VALL-E/YourTTS/XTTS, MIT/Google/Meta)\n3. Что нужно для ",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.157Z"
+}

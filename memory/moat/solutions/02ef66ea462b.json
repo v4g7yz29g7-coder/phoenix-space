@@ -1,0 +1,13 @@
+{
+  "hash": "02ef66ea462b",
+  "race_id": "race_1789352152768",
+  "ts": "2026-09-14T02:18:24.940Z",
+  "task_file": "sensors/system_metrics.js",
+  "task_prompt": "Создай файл sensors/system_metrics.js. Читает /proc/stat, /proc/meminfo. API: getMetrics() → {cpu: %, ram: %, disk: GB}. КРИТЕРИЙ: >100 строк, node --check OK, module.exports содержит {getMetrics}.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 86846,
+  "answer": "Задача выполнена. Файл `sensors/system_metrics.js` существует и **полностью соответствует всем критериям** — я проверил это исполнением, а не на глаз.\n\n## Результаты проверки\n\n| Критерий | Требование | Факт |\n|---|---|---|\n| Объём | >100 строк | **372 строки** ✅ |\n| Синтаксис | `node --check` OK | `",
+  "steps_count": 16,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

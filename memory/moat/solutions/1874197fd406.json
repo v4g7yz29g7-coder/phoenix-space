@@ -1,0 +1,13 @@
+{
+  "hash": "1874197fd406",
+  "race_id": "race_1789335625861",
+  "ts": "2026-09-13T21:42:15.450Z",
+  "task_file": "sandbox/anomaly_detector.js",
+  "task_prompt": "Создай sandbox/anomaly_detector.js — аномалии. API: detect(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 19732,
+  "answer": "Готово.\n\n**sandbox/anomaly_detector.js** — создан и проверен:\n- ✅ `node --check` → `CHECK_OK`\n- ✅ **366 строк** (>150)\n- ✅ API `detect()` работает: `method: mad`, нашёл аномалии `[5, 6, 9]` в тестовом ряду\n\nРеализовано: класс `AnomalyDetector` с методами `zscore` / `iqr` / `mad` / `auto`, структурны",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.149Z"
+}

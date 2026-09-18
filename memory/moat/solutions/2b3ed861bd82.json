@@ -1,0 +1,13 @@
+{
+  "hash": "2b3ed861bd82",
+  "race_id": "race_1789337613695",
+  "ts": "2026-09-13T22:15:07.445Z",
+  "task_file": "api/rate_limiter.js",
+  "task_prompt": "Создай api/rate_limiter.js — rate limit. API: check(ip), middleware. КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 29812,
+  "answer": "Готово. Создан `api/rate_limiter.js`.\n\n**Что сделано:**\n\n1. **Создан файл** `api/rate_limiter.js` в стиле остальных модулей проекта (`auth.js`, `public_api.js`) — dependency-free, только встроенные модули Node.\n\n2. **API реализован:**\n   - `check(ip, options)` → `{ allowed, remaining, limit, retryAf",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.150Z"
+}

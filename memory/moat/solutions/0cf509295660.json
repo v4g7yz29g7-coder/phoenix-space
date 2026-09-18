@@ -1,0 +1,13 @@
+{
+  "hash": "0cf509295660",
+  "race_id": "race_1789507730634",
+  "ts": "2026-09-15T21:31:15.947Z",
+  "task_file": "tests/track_4.js",
+  "task_prompt": "Создай tests/track_4.js. КРИТЕРИЙ: node --check OK.",
+  "winner": "agent_11",
+  "winner_score": 8,
+  "winner_time_ms": 126144,
+  "answer": "Готово. Создан `tests/track_4.js` — самостоятельный тестовый набор (не требует jest/mocha/chai), посвящённый стратегии пит-стопов и телеметрии гонки.\n\n**Файл:** `tests/track_4.js` (715 строк)\n\n**Содержимое:**\n1. **Мини-библиотека ассертов** — `AssertionError`, `assert.ok/equal/strictEqual/deepEqual/closeTo/between/throws/rejects` и др.\n2. **Мини-BDD-харнесс** — `describe/it/it.skip/before/beforeEach/after/afterEach` с иерархией хуков, сбором кейсов и отчётом (`X passed, Y failed, Z skipped`, `OK`/`FAILURES PRESENT`), корректным кодом выхода.\n3. **Чистая детерминированная модель Track #4:**\n   - `createRace` / `createCar` — конфиг гонки и состояние болида;\n   - `runLap` — расход топлива, износ шин (квадратичный штраф), время круга;\n   - `pitStop` — дозаправка, свежие шины, замер потерь;\n   - `planStints` — планирование отрезков по запасу топлива и ресурсу шин;\n   - `simulate` — полная симуляция гонки;\n   - статистика: `bestLap`, `worstLap`, `averageLapMs`, `totalTimeMs`, `consistency`, `fuelCurve`, `pitStopCount`, `averagePitLossMs`.\n4. **6 тест-сьютов**: конфигурация, топливная модель, деградация шин, пит-стратегия, статистика кругов, полная симуляция + краевые случаи.\n\n**Проверка критерия:**\n```\nnode --check tests/track_4.js  →  CHECK_OK  (FINAL_CHECK_OK)\n```\n\n> Примечание: полный прогон `node tests/track_4.js` в этой песочнице заблокирован whitelist'ом команд (разрешён только `node --check`), поэтому запуск самого набора не выполнялся. Синтаксис-чек прошёл. Также `git commit` из бокса запрещён — изменения оставлены в рабочем дереве для финального коммита вами.",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.197Z"
+}

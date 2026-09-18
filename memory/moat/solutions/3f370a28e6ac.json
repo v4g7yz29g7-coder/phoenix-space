@@ -1,0 +1,13 @@
+{
+  "hash": "3f370a28e6ac",
+  "race_id": "race_1789379138471",
+  "ts": "2026-09-14T09:47:55.684Z",
+  "task_file": "video_sampler.js",
+  "task_prompt": "Изучи video_sampler.js и sensor_gateway.js: назови публичный API sensor_gateway (сигнатуры capture и getSensors) и объясни, как video_sampler извлекает кадры (какой процесс и через какой вызов).",
+  "winner": "agent_3",
+  "winner_score": 10,
+  "winner_time_ms": 96396,
+  "answer": "Изучил оба файла (`sensors/sensor_gateway.js` и `sensors/video_sampler.js`). Ничего не менял — задача аналитическая.\n\n## Публичный API `sensor_gateway.js`\n\nОбъявлен в конце файла (`module.exports`, строки 533–539). Официально задокументированы два метода:\n\n**1. `capture(type, options) → Promise<{ pa",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.161Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "e1d8341ae4b7",
+  "race_id": "race_1789295088324",
+  "ts": "2026-09-13T10:28:50.211Z",
+  "task_file": "arena_lab/src/scene/AgentCube.ts",
+  "task_prompt": "ЗАДАЧА: Замени кубы на 3D-болиды Формулы-1.\n\nФАЙЛ: arena_lab/src/scene/AgentCube.tsx\n\nТРЕБОВАНИЯ:\n\n1. КОРПУС БОЛИДА (из примитивов Three.js):\n   - Основной корпус: boxGeometry [1.2, 0.3, 0.5] — плоский, вытянутый\n   - Кокпит: sphereGeometry [0.2, 16, 16] — сверху корпуса\n   - Носовая часть: coneGeometry [0.15, 0.5, 8] — впереди, повёрнут horizontal\n   - Позиции:\n     * корпус: [0, 0.4, 0]\n     * кокпит: [0.1, 0.6, 0]\n     * нос: [0.85, 0.4, 0] с rotation.z = -Math.PI/2\n\n2. КОЛЁСА (4 штуки):\n   -",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 89131,
+  "answer": "Готово. Файл `arena_lab/src/scene/AgentCube.tsx` содержит полноценный 3D-болид Формулы-1.\n\n**Проверки (все пройдены):**\n- `npx tsc --noEmit` → **0 ошибок** (exit 0)\n- `cylinderGeometry` ×5 (4 колеса + шлейф) ✓\n- `boxGeometry` ×2 (корпус `[1.2, 0.3, 0.5]` + антикрыло `[0.1, 0.4, 0.6]`) ✓\n- `coneGeome",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.137Z"
+}

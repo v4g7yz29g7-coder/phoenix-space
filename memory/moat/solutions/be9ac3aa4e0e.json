@@ -1,0 +1,13 @@
+{
+  "hash": "be9ac3aa4e0e",
+  "race_id": "race_1789347335883",
+  "ts": "2026-09-14T00:56:45.172Z",
+  "task_file": "evolution/fitness_history.js",
+  "task_prompt": "Создай evolution/fitness_history.js — история fitness. API: history(agentId), trends(). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 31839,
+  "answer": "Задача выполнена. Файл `evolution/fitness_history.js` существует, полностью рабочих, соответствует всем критериям.\n\n## Проверка критериев\n\n| Критерий | Результат |\n|---|---|\n| Путь `evolution/fitness_history.js` | ✅ существует |\n| >120 строк | ✅ **547 строк** |\n| `node --check` | ✅ `node --check: OK",
+  "steps_count": 14,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

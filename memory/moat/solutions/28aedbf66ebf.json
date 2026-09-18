@@ -1,0 +1,13 @@
+{
+  "hash": "28aedbf66ebf",
+  "race_id": "parallel_1789646662364_u1nj",
+  "ts": "2026-09-17T12:07:23.504Z",
+  "task_file": "alerting.js",
+  "task_prompt": "Расширить standalone-тест alerting.js: evaluate(snapshot) с порогами cpu>90, ram>85, load>N, дедуп 10 мин по ключу. КРИТЕРИЙ: ≥180 asserts, проверены 9.9/10.0/10.1 мин дедупа, два порога одновременно, сброс через clear(), окно сброса ровно 600000ms ±1, повтор того же алерта не дублируется.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 180344,
+  "answer": "Done. Extended `observability/alerting.standalone.test.js` — **20 cases, 226 assertions, all passing, `STANDALONE_OK`**.\n\n**Criteria coverage:**\n| Requirement | Case | Result |\n|---|---|---|\n| `evaluate(snapshot)` thresholds cpu>90, ram>85, load>N(=20) | B, C, D, L | strict boundary 89.9/90.0 silent, 90.1 fires etc. |\n| de-dup 10 min по ключу (per-metric key) | J | cpu muted while ram/load fire independently |\n| 9.9 / 10.0 / 10.1 мин дедупа | E, E2, E3 | 9.9 silent → 10.0 (600000ms) fires → 10.1 fires |\n| два порога одновременно (cpu+ram) | G, G2 | 2 alerts at once, both deduped, both re-fire at window |\n| сброс через `clear()` | H | history/active/cooldown reset, next breach fires immediately |\n| окно ровно 600000ms ±1 | F, A | 599999 silent, 600000 fires, 600001 fires, constant==600000 |\n| повтор того же алерта не дублируется | I, I2 | 50×/100× repeats → exactly 1 alert, unique (metric,ts) |\n| ≥180 asserts | tally | **226**, hard gate raised 50→180 |\n\nAlso added: strict boundary matrix over all 4 metrics, 30 sequential windows (no drift), force escape hatch, robustness (null/garbage never throws), reconfigurable load N, alias/nested-container reads. `node --check` passes. No commit (not explicitly required).",
+  "steps_count": 16,
+  "collected_at": "2026-09-18T14:48:41.108Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "2b5a5c5cef66",
+  "race_id": "race_1789375456142",
+  "ts": "2026-09-14T08:46:58.914Z",
+  "task_file": "architect/dna_builder.js",
+  "task_prompt": "Создай architect/dna_builder.js — собирает prompts/architect_dna.md из core_analyzer. Структура: как ставит задачи, метрики, риск, откат, язык. API: build(). КРИТЕРИЙ: >250 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 35837,
+  "answer": "Готово — `architect/dna_builder.js` существует и полностью соответствует заданию. Проверил все критерии:\n\n**Файл билдера:** `architect/dna_builder.js` — **1007 строк** (>250 ✓)\n\n**`node --check` → SYNTAX_OK ✓**\n\n**API `build()`** работает:\n```\nrequire('./architect/dna_builder').build()\n→ { ok: true,",
+  "steps_count": 9,
+  "collected_at": "2026-09-18T14:48:41.161Z"
+}

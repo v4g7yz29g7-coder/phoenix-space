@@ -1,0 +1,13 @@
+{
+  "hash": "d557e60110e5",
+  "race_id": "race_1789381606857",
+  "ts": "2026-09-14T10:27:30.644Z",
+  "task_file": "video_sampler.js",
+  "task_prompt": "Найди в video_sampler.js команду ffmpeg и объясни, какой флаг отвечает за извлечение кадров с заданным FPS.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 38070,
+  "answer": "## Найдено: `sensors/video_sampler.js`\n\n**Файл:** `/home/ishidin/phoenix/sensors/video_sampler.js`\n\n### Команда ffmpeg (функция `buildArgs`, строки ~230–243)\n\n```js\nconst args = [\n  '-hide_banner',\n  '-loglevel', 'error',\n  '-nostdin',\n  '-i', o.input,\n  '-vf', 'fps=' + (1 / o.stepSec).toFixed(6),  ",
+  "steps_count": 6,
+  "collected_at": "2026-09-18T14:48:41.162Z"
+}

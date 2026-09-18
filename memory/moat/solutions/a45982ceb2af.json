@@ -1,0 +1,13 @@
+{
+  "hash": "a45982ceb2af",
+  "race_id": "race_1789334472100",
+  "ts": "2026-09-13T21:23:07.277Z",
+  "task_file": "evolution/extinction_detector.js",
+  "task_prompt": "Создай evolution/extinction_detector.js — детектор вымирания. API: detect(). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 8,
+  "winner_time_ms": 38487,
+  "answer": "Задача выполнена. Итог:\n\n## ✅ evolution/extinction_detector.js\n\n**Файл создан и закоммичен** (`e6e0b57`).\n\n### Проверки критериев\n| Критерий | Результат |\n|----------|-----------|\n| `>120 строк` | ✅ **355 строк** |\n| `node --check` OK | ✅ SYNTAX_OK |\n| API `detect()` | ✅ экспортируется, работает |\n\n",
+  "steps_count": 14,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

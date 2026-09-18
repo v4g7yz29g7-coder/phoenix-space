@@ -1,0 +1,13 @@
+{
+  "hash": "3724b82b5cd8",
+  "race_id": "race_1789339067335",
+  "ts": "2026-09-13T22:41:03.574Z",
+  "task_file": "radio/drama_detector.js",
+  "task_prompt": "Создай файл radio/drama_detector.js. API: detectDrama(raceState) → [{type, tension, actors}]. Триггеры: gap >= 2 (отрыв), stuck > 60с (застревание), ok=false (инцидент), gap сократился на lap (сближение). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 69471,
+  "answer": "Задача выполнена. Артефакт `radio/drama_detector.js` существует, полностью соответствует API и прошёл все проверки.\n\n## Проверки\n\n| Критерий | Результат |\n|---|---|\n| Файл `radio/drama_detector.js` | ✅ 364 строки (`>120`) |\n| `node --check` | ✅ `CHECK_OK` |\n| Self-test `node radio/drama_detector.js`",
+  "steps_count": 15,
+  "collected_at": "2026-09-18T14:48:41.150Z"
+}

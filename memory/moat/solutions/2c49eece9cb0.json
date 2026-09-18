@@ -1,0 +1,13 @@
+{
+  "hash": "2c49eece9cb0",
+  "race_id": "race_1789316880505",
+  "ts": "2026-09-13T16:31:54.264Z",
+  "task_file": "Node.js",
+  "task_prompt": "РЕЖИМ ИССЛЕДОВАНИЯ\nКак безопасно хранить пароли пользователей. Что писать: 1) bcrypt vs argon2, 2) соль, 3) cost factor, 4) примеры на Node.js, 5) восстановление пароля через email. Используй write.\n\nТы в режиме глубокого исследования. Изучи GitHub, документацию, примеры.\nРезультат: файл research/password.md (используй write).\nНе просто опиши — приведи конкретные примеры кода.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 39949,
+  "answer": "Готово. Создан `research/password.md` (413 строк) со всеми 5 запрошенными разделами и рабочим кодом.\n\n**Что внутри:**\n\n1. **bcrypt vs argon2** — сравнительная таблица (memory-hard vs CPU-only, лимит 72 байта у bcrypt, параметры), рекомендация OWASP: `argon2id`, baseline `m=19456, t=2, p=1`; bcrypt c",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.142Z"
+}

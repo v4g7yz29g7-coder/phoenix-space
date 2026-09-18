@@ -1,0 +1,13 @@
+{
+  "hash": "1ef0b98ac74e",
+  "race_id": "race_1789389478539",
+  "ts": "2026-09-14T12:38:51.308Z",
+  "task_file": "sandbox/stress_test.js",
+  "task_prompt": "Создай sandbox/stress_test.js — стресс-тест. API: stress(agentId). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 31430,
+  "answer": "Done. `sandbox/stress_test.js` satisfies all criteria:\n\n- **API**: exports `stress(agentId, options?)` → deterministic stress-run report (latency percentiles, throughput, phases, stability, PASS/WARN/FAIL verdict) + CLI mode.\n- **Lines**: 360 (>120 ✔)\n- **Syntax**: `node --check sandbox/stress_test.",
+  "steps_count": 7,
+  "collected_at": "2026-09-18T14:48:41.165Z"
+}

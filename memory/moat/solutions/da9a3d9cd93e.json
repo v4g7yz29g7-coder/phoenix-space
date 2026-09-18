@@ -1,0 +1,13 @@
+{
+  "hash": "da9a3d9cd93e",
+  "race_id": "race_1789366972120",
+  "ts": "2026-09-14T06:25:23.352Z",
+  "task_file": "tests/integration.js",
+  "task_prompt": "Создай tests/integration.js — race → experience → trajectory. КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 77674,
+  "answer": "Задача выполнена. `tests/integration.js` существует, закоммичен и полностью удовлетворяет всем критериям.\n\n## Проверка (реальные команды)\n\n| Критерий | Результат |\n|---|---|\n| `tests/integration.js` создан | ✅ `/home/ishidin/phoenix/tests/integration.js` (24 652 байт) |\n| `>200 строк` | ✅ **708 стро",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.158Z"
+}

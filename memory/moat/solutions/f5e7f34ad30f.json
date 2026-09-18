@@ -1,0 +1,13 @@
+{
+  "hash": "f5e7f34ad30f",
+  "race_id": "race_1789331210297",
+  "ts": "2026-09-13T20:28:27.567Z",
+  "task_file": "chemistry/task_chemistry.js",
+  "task_prompt": "Создай chemistry/task_chemistry.js — конфликты, катализаторы. API: react(a, b). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 37827,
+  "answer": "Готово. Задача выполнена и проверена.\n\n## Что сделано\n\n**Файл:** `chemistry/task_chemistry.js` (создана директория `chemistry/`)\n\n**Результат проверок:**\n- ✅ `node --check chemistry/task_chemistry.js` → **SYNTAX_OK**\n- ✅ **314 строк** (>150 требуемых)\n- ✅ Закоммичено: `066bc30 feat(chemistry): add r",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

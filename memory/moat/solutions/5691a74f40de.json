@@ -1,0 +1,13 @@
+{
+  "hash": "5691a74f40de",
+  "race_id": "parallel_1789696894691_j69g",
+  "ts": "2026-09-18T02:04:45.738Z",
+  "task_file": "memory/replay_worker_report.js",
+  "task_prompt": "CLI-отчёт по реплею траекторий. Читает memory/replay_worker_report.json (сейчас 100 траекторий, avgScore 8.62). Печатает агрегат {trajectories, avg_score, success_rate, top_actions:[{action,count,avgScore}], top_sequence}. Поддержать флаги --last и --json. Топ-последовательность на данных: \"старт -> углубился -> сдача\". КРИТЕРИЙ: node --check OK; node tools/replay_report.js --last печатает валидный JSON с полем trajectories > 0.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 27185,
+  "answer": "Готово. Задача выполнена и закоммичена.\n\n## Что сделано\n\nСоздан `tools/replay_report.js` — CLI-отчёт по реплею траекторий, читающий `memory/replay_worker_report.json`.\n\n**Агрегат на выходе:**\n```json\n{\n  \"trajectories\": 100,\n  \"avg_score\": 8.62,\n  \"success_rate\": 1,\n  \"top_actions\": [\n    {\"action\": \"сдача\", \"count\": 100, \"avgScore\": 8.62},\n    {\"action\": \"старт\", \"count\": 100, \"avgScore\": 2.15},\n    {\"action\": \"углубился\", \"count\": 53, \"avgScore\": 6.88},\n    {\"action\": \"быстро решил\", \"count\": 47, \"avgScore\": 6}\n  ],\n  \"top_sequence\": \"старт -> углубился -> сдача\"\n}\n```\n\n**Флаги:**\n- `--last` — берёт последний отчёт (поддерживает и массив отчётов, выбирает последний элемент) + печатает JSON\n- `--json` — машинночитаемый JSON\n- `--file=<path>` — явный путь к отчёту (по умолчанию `memory/replay_worker_report.json`)\n- `--help` — справка\n- без флагов — человекочитаемый отчёт\n\n**Устойчивость:** путь считается от `__dirname`, ошибки чтения → stderr + exit 1, `top_actions` сортируется по count, поля нормализуются через `Number()` с fallback.\n\n## Проверка критерия\n\n| Проверка | Результат |\n|---|---|\n| `node --check tools/replay_report.js` | ✅ SYNTAX_OK |\n| `--last` → валидный JSON | ✅ JSON.parse проходит |\n| `trajectories > 0` | ✅ 100 |\n| `top_sequence` == `\"старт -> углубился -> сдача\"` | ✅ совпадает |\n| `top_actions` структура `{action,count,avgScore}` | ✅ |\n| массив-отчёт (`--last`) | ✅ берёт последний |\n| отсутствующий файл | ✅ exit=1 + сообщение |\n\nКоммит: `40ab4add` — `feat(replay): add tools/replay_report.js CLI (--last/--json) for trajectory replay aggregate`",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.108Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "76abb2f0e749",
+  "race_id": "race_1789328735674",
+  "ts": "2026-09-13T19:47:51.839Z",
+  "task_file": "sales/email_sequence.md",
+  "task_prompt": "Создай файл sales/email_sequence.md. 5 писем для onboarding: 1) Добро пожаловать, 2) Как запустить первую гонку, 3) Первый чемпион, 4) Апгрейд до Pro, 5) Пригласи друга. Каждое письмо — subject + body. КРИТЕРИЙ: >120 строк.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 23212,
+  "answer": "完成 ✅\n\n**已完成的事：**\n- 创建了 `sales/email_sequence.md`\n- 5封信件，每封都包含 **Subject + Body**：\n  1. 欢迎加入\n  2. 如何开始第一场比赛\n  3. 第一位冠军\n  4. 升级到 Pro\n  5. 邀请好友\n- 还额外添加了发送时间安排、CTA、指标以及用于 A/B 测试的思路。\n\n**检查：**\n- 行数：**222**（标准为 >120 ✅）\n- 主题行：**5/5** ✅\n- 已提交：`2f1a9a4`",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.145Z"
+}

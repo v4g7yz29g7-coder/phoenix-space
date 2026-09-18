@@ -1,0 +1,13 @@
+{
+  "hash": "57cccd9023f9",
+  "race_id": "race_1789232111876",
+  "ts": "2026-09-12T16:56:04.539Z",
+  "task_file": "test_hybrid.md",
+  "task_prompt": "Создай файл test_hybrid.md с тремя пунктами о гибридных стратегиях агентов. Используй инструмент write.",
+  "winner": "agent_24",
+  "winner_score": 8,
+  "winner_time_ms": 11611,
+  "answer": "Файл создан: `/home/ishidin/phoenix/test_hybrid.md`\n\nТри пункта:\n1. Комбинация детерминированных и LLM-этапов\n2. Гибридный поиск: dense + sparse (RRF)\n3. Онлайн-планирование с офлайн-памятью\n\nЗамечание: инструмент сообщил о создании `.bak`-файла, значит `test_hybrid.md` уже существовал до записи и б",
+  "steps_count": 1,
+  "collected_at": "2026-09-18T14:48:41.124Z"
+}

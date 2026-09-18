@@ -1,0 +1,13 @@
+{
+  "hash": "ad95e472efe8",
+  "race_id": "race_1789335978519",
+  "ts": "2026-09-13T21:48:21.454Z",
+  "task_file": "observability/agent_health.js",
+  "task_prompt": "Создай observability/agent_health.js — здоровье агентов. API: checkAll(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 43279,
+  "answer": "Задача выполнена.\n\n## Результат\n\nСоздан **`observability/agent_health.js`** — модуль здоровья агентов.\n\n### Соответствие критериям\n| Критерий | Требование | Факт |\n|---|---|---|\n| Объём | >150 строк | ✅ **533 строки** |\n| Синтаксис | `node --check` OK | ✅ **SYNTAX_OK** |\n| API | `checkAll()` | ✅ реа",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.149Z"
+}

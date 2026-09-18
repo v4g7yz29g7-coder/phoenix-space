@@ -1,0 +1,2462 @@
+{
+  "version": "1.0",
+  "solutions": [
+    {
+      "hash": "57338bee4919",
+      "race_id": "parallel_1789614699867_0p07",
+      "task_file": "metrics_collector.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-17T03:14:44.948Z"
+    },
+    {
+      "hash": "de874c201e97",
+      "race_id": "parallel_1789616529049_kcs3",
+      "task_file": "observability/agent_health.js",
+      "winner": "agent_2",
+      "winner_score": 9,
+      "ts": "2026-09-17T03:45:11.754Z"
+    },
+    {
+      "hash": "7de8ebc5f991",
+      "race_id": "parallel_1789616529061_3ov8",
+      "task_file": "alerting.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-17T03:45:11.684Z"
+    },
+    {
+      "hash": "3b4d6bf4e6c8",
+      "race_id": "parallel_1789629881985_iggv",
+      "task_file": "observability/alerting.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-17T07:27:43.636Z"
+    },
+    {
+      "hash": "fb3f24159b51",
+      "race_id": "parallel_1789646057988_9bex",
+      "task_file": "agent_health.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-17T11:56:13.836Z"
+    },
+    {
+      "hash": "28aedbf66ebf",
+      "race_id": "parallel_1789646662364_u1nj",
+      "task_file": "alerting.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-17T12:07:23.504Z"
+    },
+    {
+      "hash": "5691a74f40de",
+      "race_id": "parallel_1789696894691_j69g",
+      "task_file": "memory/replay_worker_report.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-18T02:04:45.738Z"
+    },
+    {
+      "hash": "92b6fba86862",
+      "race_id": "race_1789203169729",
+      "task_file": "BOX_META.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-12T08:53:56.006Z"
+    },
+    {
+      "hash": "639170ca4984",
+      "race_id": "race_1789203241136",
+      "task_file": "dashboard_server.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-12T08:55:27.371Z"
+    },
+    {
+      "hash": "03235fa7874c",
+      "race_id": "race_1789203539831",
+      "task_file": "BOX_META.js",
+      "winner": "agent_3",
+      "winner_score": 10,
+      "ts": "2026-09-12T09:00:37.781Z"
+    },
+    {
+      "hash": "f89a5e9fbf93",
+      "race_id": "race_1789203805933",
+      "task_file": "BOX_META.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-12T09:04:58.211Z"
+    },
+    {
+      "hash": "d1e01b69a959",
+      "race_id": "race_1789204622886",
+      "task_file": "agent_critic.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-12T09:19:32.854Z"
+    },
+    {
+      "hash": "de5e41585e2e",
+      "race_id": "race_1789205479800",
+      "task_file": "agent_responses.js",
+      "winner": "agent_3",
+      "winner_score": 9,
+      "ts": "2026-09-12T09:32:23.573Z"
+    },
+    {
+      "hash": "5d5b5b3dd3c5",
+      "race_id": "race_1789206321776",
+      "task_file": "agent_responses.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-12T09:46:19.436Z"
+    },
+    {
+      "hash": "87e1b46d568a",
+      "race_id": "race_1789207204464",
+      "task_file": "sentinel.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-12T10:00:34.988Z"
+    },
+    {
+      "hash": "2f6fbb280bb9",
+      "race_id": "race_1789209777175",
+      "task_file": "skills_loader.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-12T10:43:58.844Z"
+    },
+    {
+      "hash": "febd925a64ec",
+      "race_id": "race_1789210226408",
+      "task_file": "agent_critic.js",
+      "winner": "agent_3",
+      "winner_score": 9,
+      "ts": "2026-09-12T10:51:02.840Z"
+    },
+    {
+      "hash": "0b0094db457a",
+      "race_id": "race_1789210267987",
+      "task_file": "skills_loader.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-12T10:51:45.311Z"
+    },
+    {
+      "hash": "d53e7e2e933c",
+      "race_id": "race_1789212367131",
+      "task_file": "sentinel.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-12T11:27:22.653Z"
+    },
+    {
+      "hash": "468ee123930c",
+      "race_id": "race_1789217362516",
+      "task_file": "sentinel.js",
+      "winner": "agent_3",
+      "winner_score": 10,
+      "ts": "2026-09-12T12:51:01.143Z"
+    },
+    {
+      "hash": "d07703443b23",
+      "race_id": "race_1789219268986",
+      "task_file": "dashboard_server.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-12T13:22:24.120Z"
+    },
+    {
+      "hash": "2773e6d0d94b",
+      "race_id": "race_1789232018402",
+      "task_file": "test_hybrid.md",
+      "winner": "agent_3",
+      "winner_score": 9,
+      "ts": "2026-09-12T16:54:20.636Z"
+    },
+    {
+      "hash": "ac61469f426b",
+      "race_id": "race_1789232078843",
+      "task_file": "test_hybrid.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-12T16:54:50.050Z"
+    },
+    {
+      "hash": "57cccd9023f9",
+      "race_id": "race_1789232111876",
+      "task_file": "test_hybrid.md",
+      "winner": "agent_24",
+      "winner_score": 8,
+      "ts": "2026-09-12T16:56:04.539Z"
+    },
+    {
+      "hash": "a3f1b3b9d41c",
+      "race_id": "race_1789232195311",
+      "task_file": "test_hybrid.md",
+      "winner": "agent_20",
+      "winner_score": 8,
+      "ts": "2026-09-12T16:56:49.273Z"
+    },
+    {
+      "hash": "7611aaad11fb",
+      "race_id": "race_1789232264380",
+      "task_file": "test_hybrid.md",
+      "winner": "agent_6",
+      "winner_score": 9,
+      "ts": "2026-09-12T16:58:09.464Z"
+    },
+    {
+      "hash": "484bb285ee67",
+      "race_id": "race_1789233211658",
+      "task_file": "champion_tiebreak.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-12T17:13:41.818Z"
+    },
+    {
+      "hash": "f5c5126db5ec",
+      "race_id": "race_1789233282796",
+      "task_file": "agent_critic.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-12T17:15:05.197Z"
+    },
+    {
+      "hash": "62f44014bbc0",
+      "race_id": "race_1789233472461",
+      "task_file": "champion.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-12T17:20:09.434Z"
+    },
+    {
+      "hash": "a5155dc6226f",
+      "race_id": "race_1789242130016",
+      "task_file": "skills_loader.js",
+      "winner": "agent_3",
+      "winner_score": 10,
+      "ts": "2026-09-12T19:42:41.326Z"
+    },
+    {
+      "hash": "6d1c217642f0",
+      "race_id": "race_1789242877117",
+      "task_file": "agent_responses.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-12T19:55:59.470Z"
+    },
+    {
+      "hash": "947282d3867a",
+      "race_id": "race_1789256512440",
+      "task_file": "dashboard_server.js",
+      "winner": "agent_3",
+      "winner_score": 10,
+      "ts": "2026-09-12T23:42:14.631Z"
+    },
+    {
+      "hash": "e0244efd07e6",
+      "race_id": "race_1789291277609",
+      "task_file": "arena_lab/src/scene/AgentCube.ts",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-13T09:23:10.837Z"
+    },
+    {
+      "hash": "f4a55aeef3e9",
+      "race_id": "race_1789291797775",
+      "task_file": "arena_lab/src/scene/Arena.ts",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T09:33:03.765Z"
+    },
+    {
+      "hash": "15d8ba6d05ae",
+      "race_id": "race_1789294945353",
+      "task_file": "sentinel.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-13T10:23:02.607Z"
+    },
+    {
+      "hash": "e1d8341ae4b7",
+      "race_id": "race_1789295088324",
+      "task_file": "arena_lab/src/scene/AgentCube.ts",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T10:28:50.211Z"
+    },
+    {
+      "hash": "74e31edb2d2c",
+      "race_id": "race_1789299517342",
+      "task_file": "Node.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T11:40:54.917Z"
+    },
+    {
+      "hash": "b5626ee7a0f0",
+      "race_id": "race_1789301933206",
+      "task_file": "web/arena3d/src/scene/F1Car.ts",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T12:21:38.835Z"
+    },
+    {
+      "hash": "9d2d1a8395fd",
+      "race_id": "race_1789307294439",
+      "task_file": "research/audit.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T13:49:45.506Z"
+    },
+    {
+      "hash": "ddfc31c6e797",
+      "race_id": "race_1789307515450",
+      "task_file": "research/audit.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T13:53:13.417Z"
+    },
+    {
+      "hash": "c7b4bfc821f6",
+      "race_id": "race_1789307565785",
+      "task_file": "research/racing-game/src/effects/Cameras.ts",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T13:55:50.574Z"
+    },
+    {
+      "hash": "91558a1b4996",
+      "race_id": "race_1789310140553",
+      "task_file": "research/audit.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T14:39:38.883Z"
+    },
+    {
+      "hash": "ebea58203893",
+      "race_id": "race_1789310410955",
+      "task_file": "research/audit.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T14:43:04.431Z"
+    },
+    {
+      "hash": "92e2d73639f2",
+      "race_id": "race_1789311074612",
+      "task_file": "research/audit.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T14:55:15.890Z"
+    },
+    {
+      "hash": "c1d1c9157234",
+      "race_id": "race_1789314521498",
+      "task_file": "research/audit.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T15:52:11.017Z"
+    },
+    {
+      "hash": "d5e276e9fb74",
+      "race_id": "race_1789314743073",
+      "task_file": "research/audit.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T15:55:23.829Z"
+    },
+    {
+      "hash": "c0e8ca6b7400",
+      "race_id": "race_1789315172230",
+      "task_file": "research/audit.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T16:02:33.455Z"
+    },
+    {
+      "hash": "df9c9796d435",
+      "race_id": "race_1789315990162",
+      "task_file": "Node.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T16:17:39.538Z"
+    },
+    {
+      "hash": "a4bca97cf2d8",
+      "race_id": "race_1789316199128",
+      "task_file": "research/db.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T16:23:17.043Z"
+    },
+    {
+      "hash": "ce463cc36b05",
+      "race_id": "race_1789316644816",
+      "task_file": "Node.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T16:27:28.253Z"
+    },
+    {
+      "hash": "2c49eece9cb0",
+      "race_id": "race_1789316880505",
+      "task_file": "Node.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T16:31:54.264Z"
+    },
+    {
+      "hash": "d1aa14a48be6",
+      "race_id": "race_1789317146317",
+      "task_file": "research/catalog.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T16:36:29.257Z"
+    },
+    {
+      "hash": "dbb14b9bd1dc",
+      "race_id": "race_1789325461717",
+      "task_file": "sensors/sensor_gateway.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T18:53:13.357Z"
+    },
+    {
+      "hash": "2da93de79ec0",
+      "race_id": "race_1789325600501",
+      "task_file": "sensors/gigachat_adapter.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T18:57:17.903Z"
+    },
+    {
+      "hash": "cb7f2a600f43",
+      "race_id": "race_1789325845059",
+      "task_file": "sensors/video_sampler.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-13T18:59:08.499Z"
+    },
+    {
+      "hash": "aa2f5f49c666",
+      "race_id": "race_1789325933119",
+      "task_file": "sensors/system_metrics.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:00:29.786Z"
+    },
+    {
+      "hash": "63449249ceae",
+      "race_id": "race_1789326036953",
+      "task_file": "evolution/reaper_v2.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:04:16.302Z"
+    },
+    {
+      "hash": "467c90af0ae1",
+      "race_id": "race_1789326263458",
+      "task_file": "evolution/academy_threshold.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T19:06:17.368Z"
+    },
+    {
+      "hash": "f1ee42bddeba",
+      "race_id": "race_1789326384909",
+      "task_file": "evolution/experience_aggregator.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:08:34.664Z"
+    },
+    {
+      "hash": "4dea3d071e85",
+      "race_id": "race_1789326521839",
+      "task_file": "evolution/dna_architect.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T19:10:44.228Z"
+    },
+    {
+      "hash": "675c8e9c0697",
+      "race_id": "race_1789326651395",
+      "task_file": "radio/radio_engine.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:12:28.270Z"
+    },
+    {
+      "hash": "1afd7d016973",
+      "race_id": "race_1789326755440",
+      "task_file": "radio/drama_detector.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T19:15:31.030Z"
+    },
+    {
+      "hash": "0039b2eb0176",
+      "race_id": "race_1789326938231",
+      "task_file": "radio/radio_writer.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T19:17:33.575Z"
+    },
+    {
+      "hash": "351c26d15b89",
+      "race_id": "race_1789327060732",
+      "task_file": "radio/race_commentator_v2.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T19:20:41.439Z"
+    },
+    {
+      "hash": "e8c9aa2fb77e",
+      "race_id": "race_1789327616315",
+      "task_file": "trajectory/insight_extractor.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T19:30:22.391Z"
+    },
+    {
+      "hash": "7fb95741c1ea",
+      "race_id": "race_1789327829562",
+      "task_file": "trajectory/peer_hint.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T19:32:08.813Z"
+    },
+    {
+      "hash": "2158c38d4733",
+      "race_id": "race_1789328142422",
+      "task_file": "sales/pitch_deck.md",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:37:13.986Z"
+    },
+    {
+      "hash": "b3896be059eb",
+      "race_id": "race_1789328241136",
+      "task_file": "blog/habr_article_v2.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T19:40:16.814Z"
+    },
+    {
+      "hash": "7468440e83d7",
+      "race_id": "race_1789328423954",
+      "task_file": "blog/twitter_threads.md",
+      "winner": "agent_7",
+      "winner_score": 8,
+      "ts": "2026-09-13T19:41:59.586Z"
+    },
+    {
+      "hash": "750169dc9c41",
+      "race_id": "race_1789328526717",
+      "task_file": "docs/quickstart.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T19:43:37.081Z"
+    },
+    {
+      "hash": "d614def82b19",
+      "race_id": "race_1789328624225",
+      "task_file": "blog/telegram_posts.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:46:12.546Z"
+    },
+    {
+      "hash": "39e69e05ff84",
+      "race_id": "race_1789328671805",
+      "task_file": "sales/b2b_offer.md",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:45:55.670Z"
+    },
+    {
+      "hash": "76abb2f0e749",
+      "race_id": "race_1789328735674",
+      "task_file": "sales/email_sequence.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:47:51.839Z"
+    },
+    {
+      "hash": "efadaada58ca",
+      "race_id": "race_1789328878972",
+      "task_file": "legal/public_offer.md",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-13T19:50:18.405Z"
+    },
+    {
+      "hash": "42a40cc92593",
+      "race_id": "race_1789329025966",
+      "task_file": "legal/privacy_policy.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:53:20.085Z"
+    },
+    {
+      "hash": "e2de9cf41d93",
+      "race_id": "race_1789329207224",
+      "task_file": "docs/cloudpayments_integration.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T19:54:55.537Z"
+    },
+    {
+      "hash": "70eb8690b920",
+      "race_id": "race_1789329302678",
+      "task_file": "analytics/tracker.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-13T19:56:27.774Z"
+    },
+    {
+      "hash": "cb0f1d3c097c",
+      "race_id": "race_1789329394935",
+      "task_file": "Chart.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T19:59:25.566Z"
+    },
+    {
+      "hash": "2592952f9947",
+      "race_id": "race_1789329572710",
+      "task_file": "corpus/architect_cleaner.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:01:39.566Z"
+    },
+    {
+      "hash": "780fa305433c",
+      "race_id": "race_1789329706733",
+      "task_file": "corpus/architect_dna_builder.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:03:53.192Z"
+    },
+    {
+      "hash": "9997b7f6bc91",
+      "race_id": "race_1789329840360",
+      "task_file": "architect_agent.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:05:48.289Z"
+    },
+    {
+      "hash": "71e40b0fd6ae",
+      "race_id": "race_1789329955457",
+      "task_file": "evolution/parent_selector.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:07:18.128Z"
+    },
+    {
+      "hash": "77b83c7952c5",
+      "race_id": "race_1789330045290",
+      "task_file": "Chart.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:09:01.485Z"
+    },
+    {
+      "hash": "5f6f954fa58d",
+      "race_id": "race_1789330148613",
+      "task_file": "evolution/mutation_logger.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:10:30.317Z"
+    },
+    {
+      "hash": "78fc52bb9fde",
+      "race_id": "race_1789330237470",
+      "task_file": "evolution/species_guard.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T20:12:07.205Z"
+    },
+    {
+      "hash": "730004292a1d",
+      "race_id": "race_1789330543476",
+      "task_file": "evolution/biologist_taxonomy.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T20:17:03.732Z"
+    },
+    {
+      "hash": "dc0f65c1ca88",
+      "race_id": "race_1789330630889",
+      "task_file": "evolution/biologist_team_builder.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:20:02.965Z"
+    },
+    {
+      "hash": "6af25c1f660d",
+      "race_id": "race_1789330810136",
+      "task_file": "evolution/biologist_synergy.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:22:06.666Z"
+    },
+    {
+      "hash": "2567e0835123",
+      "race_id": "race_1789330934092",
+      "task_file": "chemistry/task_profiler.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:24:09.942Z"
+    },
+    {
+      "hash": "210c9f331f5f",
+      "race_id": "race_1789331057467",
+      "task_file": "chemistry/chemist_match.js",
+      "winner": "agent_7",
+      "winner_score": 7,
+      "ts": "2026-09-13T20:26:43.128Z"
+    },
+    {
+      "hash": "f5e7f34ad30f",
+      "race_id": "race_1789331210297",
+      "task_file": "chemistry/task_chemistry.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:28:27.567Z"
+    },
+    {
+      "hash": "3892346ac364",
+      "race_id": "race_1789331314740",
+      "task_file": "evolution/dendrologist_genealogy.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:30:20.666Z"
+    },
+    {
+      "hash": "d42e216534a8",
+      "race_id": "race_1789331427827",
+      "task_file": "evolution/dendrologist_rings.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:31:58.363Z"
+    },
+    {
+      "hash": "fb26e681c2ca",
+      "race_id": "race_1789331525535",
+      "task_file": "evolution/dendrologist_health.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:34:03.893Z"
+    },
+    {
+      "hash": "42bafaed8c94",
+      "race_id": "race_1789331651065",
+      "task_file": "evolution/mycologist_network.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:36:22.617Z"
+    },
+    {
+      "hash": "830e84c89ef1",
+      "race_id": "race_1789331789788",
+      "task_file": "evolution/mycologist_symbiosis.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:37:58.118Z"
+    },
+    {
+      "hash": "63fcf0cd0ad3",
+      "race_id": "race_1789331885273",
+      "task_file": "evolution/mycologist_signal.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:39:49.779Z"
+    },
+    {
+      "hash": "ae95697aa2c3",
+      "race_id": "race_1789331996946",
+      "task_file": "docs/whitepaper_v2.md",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:41:59.904Z"
+    },
+    {
+      "hash": "4b1e3d991095",
+      "race_id": "race_1789332127052",
+      "task_file": "docs/architecture.md",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:47:19.389Z"
+    },
+    {
+      "hash": "fd1f3d44dc64",
+      "race_id": "race_1789332452843",
+      "task_file": "docs/api_reference.md",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:50:18.767Z"
+    },
+    {
+      "hash": "4a45f195e4ad",
+      "race_id": "race_1789332625978",
+      "task_file": "docs/tutorials.md",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:52:02.854Z"
+    },
+    {
+      "hash": "0997a3cb7818",
+      "race_id": "race_1789332729997",
+      "task_file": "docs/faq.md",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:53:26.513Z"
+    },
+    {
+      "hash": "9cfa5ff62191",
+      "race_id": "race_1789332813667",
+      "task_file": "docs/changelog.md",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:55:10.795Z"
+    },
+    {
+      "hash": "b85b7ace7c7d",
+      "race_id": "race_1789332917927",
+      "task_file": "tests/runner.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T20:57:27.223Z"
+    },
+    {
+      "hash": "294b715223b8",
+      "race_id": "race_1789333054384",
+      "task_file": "tests/unit.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T20:59:00.638Z"
+    },
+    {
+      "hash": "7e414af9bc76",
+      "race_id": "race_1789333290114",
+      "task_file": "tests/e2e.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:03:06.661Z"
+    },
+    {
+      "hash": "7d9bbb79fc1e",
+      "race_id": "race_1789333469686",
+      "task_file": "tests/coverage.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:05:51.495Z"
+    },
+    {
+      "hash": "6a6057953d63",
+      "race_id": "race_1789333558659",
+      "task_file": "sensors/audio_transcriber.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-13T21:07:03.973Z"
+    },
+    {
+      "hash": "a795a709b9b4",
+      "race_id": "race_1789333631142",
+      "task_file": "sensors/ocr_engine.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T21:08:50.407Z"
+    },
+    {
+      "hash": "886cf0770050",
+      "race_id": "race_1789333737571",
+      "task_file": "sensors/pdf_reader.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T21:11:14.388Z"
+    },
+    {
+      "hash": "b0d7cde77eaa",
+      "race_id": "race_1789333881565",
+      "task_file": "sensors/video_analyzer.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:13:59.485Z"
+    },
+    {
+      "hash": "94347d3f9803",
+      "race_id": "race_1789334046658",
+      "task_file": "sensors/sensor_fusion.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T21:15:40.992Z"
+    },
+    {
+      "hash": "66f70caaa0cc",
+      "race_id": "race_1789334148150",
+      "task_file": "evolution/breeding_cycle.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:17:56.723Z"
+    },
+    {
+      "hash": "94185328ba11",
+      "race_id": "race_1789334374510",
+      "task_file": "evolution/hybrid_vitality.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T21:21:04.932Z"
+    },
+    {
+      "hash": "a45982ceb2af",
+      "race_id": "race_1789334472100",
+      "task_file": "evolution/extinction_detector.js",
+      "winner": "agent_1",
+      "winner_score": 8,
+      "ts": "2026-09-13T21:23:07.277Z"
+    },
+    {
+      "hash": "7ac3d653674a",
+      "race_id": "race_1789334594443",
+      "task_file": "evolution/niche_finder.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:25:21.634Z"
+    },
+    {
+      "hash": "eadc2362142b",
+      "race_id": "race_1789334728804",
+      "task_file": "evolution/fitness_history.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:26:45.029Z"
+    },
+    {
+      "hash": "0a6dc1595053",
+      "race_id": "race_1789334812190",
+      "task_file": "evolution/generation_report.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T21:28:03.603Z"
+    },
+    {
+      "hash": "1c2dc109028b",
+      "race_id": "race_1789334890765",
+      "task_file": "evolution/evolution_orchestrator.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-13T21:29:56.024Z"
+    },
+    {
+      "hash": "0692279893c8",
+      "race_id": "race_1789335003198",
+      "task_file": "sandbox/random_mutation_loop.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-13T21:31:19.315Z"
+    },
+    {
+      "hash": "7f134aedfffa",
+      "race_id": "race_1789335086478",
+      "task_file": "sandbox/chaos_theory.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:33:10.879Z"
+    },
+    {
+      "hash": "aee504724ae1",
+      "race_id": "race_1789335198033",
+      "task_file": "sandbox/breakthrough_detector.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-13T21:35:04.227Z"
+    },
+    {
+      "hash": "9baa0432bdae",
+      "race_id": "race_1789335311383",
+      "task_file": "sandbox/sandbox_runner.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T21:37:02.455Z"
+    },
+    {
+      "hash": "24538332d29d",
+      "race_id": "race_1789335429614",
+      "task_file": "sandbox/cross_domain.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T21:38:47.718Z"
+    },
+    {
+      "hash": "6afd5ad99b6d",
+      "race_id": "race_1789335534875",
+      "task_file": "sandbox/stress_test.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:40:18.701Z"
+    },
+    {
+      "hash": "1874197fd406",
+      "race_id": "race_1789335625861",
+      "task_file": "sandbox/anomaly_detector.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T21:42:15.450Z"
+    },
+    {
+      "hash": "185cd294c32b",
+      "race_id": "race_1789335742607",
+      "task_file": "sandbox/serendipity.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:43:56.708Z"
+    },
+    {
+      "hash": "f4267862492b",
+      "race_id": "race_1789335843863",
+      "task_file": "observability/system_monitor.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:46:11.352Z"
+    },
+    {
+      "hash": "ad95e472efe8",
+      "race_id": "race_1789335978519",
+      "task_file": "observability/agent_health.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:48:21.454Z"
+    },
+    {
+      "hash": "9b054c3df75d",
+      "race_id": "race_1789336317753",
+      "task_file": "observability/metrics_collector.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:54:33.342Z"
+    },
+    {
+      "hash": "3d468dcb2c0c",
+      "race_id": "race_1789336480510",
+      "task_file": "observability/alerting.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:57:07.062Z"
+    },
+    {
+      "hash": "8a1a00a47f00",
+      "race_id": "race_1789336634226",
+      "task_file": "observability/log_aggregator.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T21:58:29.856Z"
+    },
+    {
+      "hash": "394b7e57202d",
+      "race_id": "race_1789336833978",
+      "task_file": "observability/daily_report.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T22:02:14.571Z"
+    },
+    {
+      "hash": "43aef30b2a3e",
+      "race_id": "race_1789336941737",
+      "task_file": "api/public_api.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-13T22:04:02.029Z"
+    },
+    {
+      "hash": "3e1ad949ed1f",
+      "race_id": "race_1789337049185",
+      "task_file": "api/websocket_api.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T22:05:54.693Z"
+    },
+    {
+      "hash": "b785f4c2b119",
+      "race_id": "race_1789337161855",
+      "task_file": "api/sdk_js.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:07:28.137Z"
+    },
+    {
+      "hash": "39687b196329",
+      "race_id": "race_1789337354886",
+      "task_file": "api/docs.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T22:11:03.945Z"
+    },
+    {
+      "hash": "2a6fb26d0275",
+      "race_id": "race_1789337471080",
+      "task_file": "api/auth.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:13:26.529Z"
+    },
+    {
+      "hash": "2b3ed861bd82",
+      "race_id": "race_1789337613695",
+      "task_file": "api/rate_limiter.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:15:07.445Z"
+    },
+    {
+      "hash": "4a52f5e5c727",
+      "race_id": "race_1789337714605",
+      "task_file": "api/tests.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:17:09.861Z"
+    },
+    {
+      "hash": "c18dc3d622e8",
+      "race_id": "race_1789338005380",
+      "task_file": "sensors/gigachat_adapter.js",
+      "winner": "agent_7",
+      "winner_score": 8,
+      "ts": "2026-09-13T22:22:08.447Z"
+    },
+    {
+      "hash": "448f361937de",
+      "race_id": "race_1789338135609",
+      "task_file": "sensors/video_sampler.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T22:23:11.453Z"
+    },
+    {
+      "hash": "9c2c633c7c50",
+      "race_id": "race_1789338198607",
+      "task_file": "sensors/system_metrics.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T22:25:34.188Z"
+    },
+    {
+      "hash": "a54e14bc2ca8",
+      "race_id": "race_1789338486837",
+      "task_file": "evolution/academy_threshold.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:30:19.852Z"
+    },
+    {
+      "hash": "3724b82b5cd8",
+      "race_id": "race_1789339067335",
+      "task_file": "radio/drama_detector.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:41:03.574Z"
+    },
+    {
+      "hash": "013e7631d071",
+      "race_id": "race_1789339270748",
+      "task_file": "radio/radio_writer.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:42:49.493Z"
+    },
+    {
+      "hash": "11729543ae67",
+      "race_id": "race_1789339376693",
+      "task_file": "radio/race_commentator_v2.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:46:36.672Z"
+    },
+    {
+      "hash": "668256964651",
+      "race_id": "race_1789339606803",
+      "task_file": "trajectory/tick_logger.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T22:48:30.355Z"
+    },
+    {
+      "hash": "c3e2aaf0a598",
+      "race_id": "race_1789340066313",
+      "task_file": "trajectory/peer_hint.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T22:57:48.501Z"
+    },
+    {
+      "hash": "28ed2748a9f2",
+      "race_id": "race_1789340475473",
+      "task_file": "sales/pitch_deck.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T23:03:08.381Z"
+    },
+    {
+      "hash": "b8e8119e2578",
+      "race_id": "race_1789340709247",
+      "task_file": "blog/twitter_threads.md",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T23:06:38.907Z"
+    },
+    {
+      "hash": "155e8a40512f",
+      "race_id": "race_1789340919717",
+      "task_file": "blog/telegram_posts.md",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T23:11:06.909Z"
+    },
+    {
+      "hash": "a16a3fd540c1",
+      "race_id": "race_1789341074038",
+      "task_file": "sales/b2b_offer.md",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T23:12:29.771Z"
+    },
+    {
+      "hash": "cc54c60e1156",
+      "race_id": "race_1789341651061",
+      "task_file": "analytics/tracker.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T23:22:16.552Z"
+    },
+    {
+      "hash": "c0b40dcd7dad",
+      "race_id": "race_1789341995827",
+      "task_file": "corpus/architect_dna_builder.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-13T23:28:30.493Z"
+    },
+    {
+      "hash": "8193d7799c14",
+      "race_id": "race_1789342383629",
+      "task_file": "Chart.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T23:35:21.970Z"
+    },
+    {
+      "hash": "9e09e5101e06",
+      "race_id": "race_1789342780621",
+      "task_file": "architect_review.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T23:41:13.321Z"
+    },
+    {
+      "hash": "eae96b193554",
+      "race_id": "race_1789343240148",
+      "task_file": "evolution/biologist_team_builder.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-13T23:50:23.012Z"
+    },
+    {
+      "hash": "d61b8c98a7fa",
+      "race_id": "race_1789343430171",
+      "task_file": "evolution/biologist_synergy.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-13T23:52:34.391Z"
+    },
+    {
+      "hash": "a021184be85b",
+      "race_id": "race_1789343561575",
+      "task_file": "chemistry/task_profiler.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-13T23:54:05.045Z"
+    },
+    {
+      "hash": "941736bc3187",
+      "race_id": "race_1789343652203",
+      "task_file": "chemistry/chemist_match.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T23:56:05.991Z"
+    },
+    {
+      "hash": "56781e260e9e",
+      "race_id": "race_1789343867966",
+      "task_file": "evolution/dendrologist_genealogy.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-13T23:59:03.181Z"
+    },
+    {
+      "hash": "50cb46315894",
+      "race_id": "race_1789343950340",
+      "task_file": "evolution/dendrologist_rings.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:01:45.030Z"
+    },
+    {
+      "hash": "1d54757bc0ca",
+      "race_id": "race_1789344292987",
+      "task_file": "evolution/mycologist_network.js",
+      "winner": "agent_7",
+      "winner_score": 8,
+      "ts": "2026-09-14T00:06:41.483Z"
+    },
+    {
+      "hash": "5fc48c88b74f",
+      "race_id": "race_1789344408636",
+      "task_file": "evolution/mycologist_symbiosis.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:08:05.072Z"
+    },
+    {
+      "hash": "e502e9984885",
+      "race_id": "race_1789344492227",
+      "task_file": "evolution/mycologist_signal.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:09:25.803Z"
+    },
+    {
+      "hash": "55550c66adf7",
+      "race_id": "race_1789344727591",
+      "task_file": "docs/architecture.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T00:14:58.074Z"
+    },
+    {
+      "hash": "cb7e0346a666",
+      "race_id": "race_1789345009465",
+      "task_file": "docs/tutorials.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T00:18:34.474Z"
+    },
+    {
+      "hash": "770b40c7b3de",
+      "race_id": "race_1789345121611",
+      "task_file": "docs/faq.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:20:55.340Z"
+    },
+    {
+      "hash": "fa640d3e7297",
+      "race_id": "race_1789345262483",
+      "task_file": "docs/changelog.md",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:23:13.784Z"
+    },
+    {
+      "hash": "2cc799a9c8b3",
+      "race_id": "race_1789345605490",
+      "task_file": "tests/integration.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T00:28:34.658Z"
+    },
+    {
+      "hash": "2a18cee09e7a",
+      "race_id": "race_1789345721819",
+      "task_file": "tests/e2e.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:31:35.992Z"
+    },
+    {
+      "hash": "56b4a4e1158f",
+      "race_id": "race_1789345995198",
+      "task_file": "tests/coverage.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T00:34:35.772Z"
+    },
+    {
+      "hash": "acf2dd07b256",
+      "race_id": "race_1789346296495",
+      "task_file": "sensors/pdf_reader.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:40:27.778Z"
+    },
+    {
+      "hash": "0caf8fca5c04",
+      "race_id": "race_1789346434937",
+      "task_file": "sensors/video_analyzer.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T00:42:33.199Z"
+    },
+    {
+      "hash": "e46b64e7f1a5",
+      "race_id": "race_1789346560350",
+      "task_file": "sensors/sensor_fusion.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:44:59.193Z"
+    },
+    {
+      "hash": "713b6c32576a",
+      "race_id": "race_1789346706359",
+      "task_file": "evolution/breeding_cycle.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T00:46:46.593Z"
+    },
+    {
+      "hash": "71592c104134",
+      "race_id": "race_1789346813751",
+      "task_file": "evolution/species_classifier.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:48:30.450Z"
+    },
+    {
+      "hash": "6460e081fd92",
+      "race_id": "race_1789346917605",
+      "task_file": "evolution/hybrid_vitality.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:49:53.489Z"
+    },
+    {
+      "hash": "940369727180",
+      "race_id": "race_1789347000648",
+      "task_file": "evolution/extinction_detector.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T00:52:35.124Z"
+    },
+    {
+      "hash": "be9ac3aa4e0e",
+      "race_id": "race_1789347335883",
+      "task_file": "evolution/fitness_history.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T00:56:45.172Z"
+    },
+    {
+      "hash": "d4b444c30fdd",
+      "race_id": "race_1789347534201",
+      "task_file": "evolution/evolution_orchestrator.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T01:00:30.806Z"
+    },
+    {
+      "hash": "3abc426fee16",
+      "race_id": "race_1789347637971",
+      "task_file": "sandbox/random_mutation_loop.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-14T01:02:31.656Z"
+    },
+    {
+      "hash": "eff5f515d79a",
+      "race_id": "race_1789347885536",
+      "task_file": "sandbox/breakthrough_detector.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T01:06:24.730Z"
+    },
+    {
+      "hash": "f49d091cd579",
+      "race_id": "race_1789348164322",
+      "task_file": "sandbox/cross_domain.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T01:10:59.501Z"
+    },
+    {
+      "hash": "fa7a2fb0780e",
+      "race_id": "race_1789348436086",
+      "task_file": "sandbox/serendipity.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T01:15:54.102Z"
+    },
+    {
+      "hash": "5a1f7c075f3b",
+      "race_id": "race_1789348561261",
+      "task_file": "observability/system_monitor.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T01:17:32.675Z"
+    },
+    {
+      "hash": "23394aceb9f2",
+      "race_id": "race_1789348659841",
+      "task_file": "observability/agent_health.js",
+      "winner": "agent_7",
+      "winner_score": 10,
+      "ts": "2026-09-14T01:19:38.901Z"
+    },
+    {
+      "hash": "cd49a67e0105",
+      "race_id": "race_1789348892587",
+      "task_file": "observability/metrics_collector.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T01:22:47.680Z"
+    },
+    {
+      "hash": "23154791b525",
+      "race_id": "race_1789348974856",
+      "task_file": "observability/alerting.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T01:24:59.165Z"
+    },
+    {
+      "hash": "6539637072ed",
+      "race_id": "race_1789349106333",
+      "task_file": "observability/log_aggregator.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T01:26:23.914Z"
+    },
+    {
+      "hash": "5660250a71f9",
+      "race_id": "race_1789349358109",
+      "task_file": "observability/daily_report.js",
+      "winner": "agent_7",
+      "winner_score": 7,
+      "ts": "2026-09-14T01:31:00.982Z"
+    },
+    {
+      "hash": "a4c079292623",
+      "race_id": "race_1789349557908",
+      "task_file": "api/websocket_api.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T01:34:32.979Z"
+    },
+    {
+      "hash": "1aa66b07b31d",
+      "race_id": "race_1789349680142",
+      "task_file": "api/sdk_js.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T01:36:06.944Z"
+    },
+    {
+      "hash": "63a0430e8431",
+      "race_id": "race_1789350023253",
+      "task_file": "api/auth.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T01:42:01.733Z"
+    },
+    {
+      "hash": "9617adf5ff48",
+      "race_id": "race_1789350249971",
+      "task_file": "api/tests.js",
+      "winner": "agent_7",
+      "winner_score": 8,
+      "ts": "2026-09-14T01:45:30.483Z"
+    },
+    {
+      "hash": "fe82a967c04a",
+      "race_id": "race_1789352066369",
+      "task_file": "sensors/video_sampler.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T02:15:45.606Z"
+    },
+    {
+      "hash": "02ef66ea462b",
+      "race_id": "race_1789352152768",
+      "task_file": "sensors/system_metrics.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T02:18:24.940Z"
+    },
+    {
+      "hash": "85d864965806",
+      "race_id": "race_1789352339401",
+      "task_file": "architect/core_analyzer.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T02:21:24.607Z"
+    },
+    {
+      "hash": "0e125c861559",
+      "race_id": "race_1789352491774",
+      "task_file": "architect/dna_builder.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T02:24:08.117Z"
+    },
+    {
+      "hash": "8fc5ae16e153",
+      "race_id": "race_1789352662979",
+      "task_file": "architect/rag_indexer.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T02:31:12.610Z"
+    },
+    {
+      "hash": "8f87b56990d2",
+      "race_id": "race_1789353513854",
+      "task_file": "evolution/dna_architect.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T02:42:38.507Z"
+    },
+    {
+      "hash": "783bac6e83d9",
+      "race_id": "race_1789353765661",
+      "task_file": "radio/radio_engine.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T02:50:36.265Z"
+    },
+    {
+      "hash": "a8ac12153f79",
+      "race_id": "race_1789354243435",
+      "task_file": "radio/drama_detector.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T02:54:43.116Z"
+    },
+    {
+      "hash": "947e8ff185eb",
+      "race_id": "race_1789355029593",
+      "task_file": "universes/architect_race/cmd_a_formalist/DNA.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T03:06:49.765Z"
+    },
+    {
+      "hash": "b38204275b22",
+      "race_id": "race_1789356194724",
+      "task_file": "universes/architect_race/_judge/architect_judge.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T03:26:37.894Z"
+    },
+    {
+      "hash": "ac90d3e466e3",
+      "race_id": "race_1789356940431",
+      "task_file": "universes/architect_race/cmd_d_minimalist/DNA.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T03:38:07.829Z"
+    },
+    {
+      "hash": "78292e443b45",
+      "race_id": "race_1789357269090",
+      "task_file": "architect/voice_analyzer.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T03:46:25.106Z"
+    },
+    {
+      "hash": "48eb1ad84584",
+      "race_id": "race_1789358270493",
+      "task_file": "architect/speech_experts.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T04:03:10.793Z"
+    },
+    {
+      "hash": "88135847084e",
+      "race_id": "race_1789359257059",
+      "task_file": "blog/habr_article_v2.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T04:16:53.451Z"
+    },
+    {
+      "hash": "b85ce557cf26",
+      "race_id": "race_1789359719049",
+      "task_file": "sales/b2b_offer.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T04:24:07.906Z"
+    },
+    {
+      "hash": "b43ab1ef2ac6",
+      "race_id": "race_1789360132757",
+      "task_file": "legal/privacy_policy.md",
+      "winner": "agent_1",
+      "winner_score": 8,
+      "ts": "2026-09-14T04:31:19.709Z"
+    },
+    {
+      "hash": "5ebf0e2bedf3",
+      "race_id": "race_1789360941649",
+      "task_file": "architect_agent.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T04:44:21.673Z"
+    },
+    {
+      "hash": "e18b4df2eb1c",
+      "race_id": "race_1789361068849",
+      "task_file": "evolution/parent_selector.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T04:47:32.918Z"
+    },
+    {
+      "hash": "51e63a70f0df",
+      "race_id": "race_1789361375433",
+      "task_file": "evolution/mutation_logger.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T04:51:16.874Z"
+    },
+    {
+      "hash": "d5e4ea5c2f19",
+      "race_id": "race_1789361744301",
+      "task_file": "architect_review.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T04:57:13.155Z"
+    },
+    {
+      "hash": "f40e55fb5a10",
+      "race_id": "race_1789362306052",
+      "task_file": "evolution/biologist_taxonomy.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T05:09:28.372Z"
+    },
+    {
+      "hash": "9d415c211f58",
+      "race_id": "race_1789362584655",
+      "task_file": "evolution/biologist_team_builder.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T05:12:58.787Z"
+    },
+    {
+      "hash": "49a8391c95a2",
+      "race_id": "race_1789363879311",
+      "task_file": "evolution/dendrologist_rings.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T05:34:10.591Z"
+    },
+    {
+      "hash": "13e435f62047",
+      "race_id": "race_1789364057802",
+      "task_file": "evolution/dendrologist_health.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T05:35:32.685Z"
+    },
+    {
+      "hash": "a0dabf8b27fa",
+      "race_id": "race_1789364139865",
+      "task_file": "evolution/mycologist_network.js",
+      "winner": "agent_1",
+      "winner_score": 8,
+      "ts": "2026-09-14T05:40:38.111Z"
+    },
+    {
+      "hash": "017d0ae3a443",
+      "race_id": "race_1789366379808",
+      "task_file": "docs/faq.md",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T06:15:07.163Z"
+    },
+    {
+      "hash": "aab7e2654b90",
+      "race_id": "race_1789366514676",
+      "task_file": "docs/changelog.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T06:17:26.630Z"
+    },
+    {
+      "hash": "0e4e23906d88",
+      "race_id": "race_1789366653809",
+      "task_file": "tests/runner.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T06:20:23.281Z"
+    },
+    {
+      "hash": "da9a3d9cd93e",
+      "race_id": "race_1789366972120",
+      "task_file": "tests/integration.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T06:25:23.352Z"
+    },
+    {
+      "hash": "c29cd8e9e7c2",
+      "race_id": "race_1789367408849",
+      "task_file": "sensors/audio_transcriber.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T06:32:57.262Z"
+    },
+    {
+      "hash": "eaeb0829e417",
+      "race_id": "race_1789368267302",
+      "task_file": "evolution/species_classifier.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T06:50:30.067Z"
+    },
+    {
+      "hash": "ceec57d1df20",
+      "race_id": "race_1789368643991",
+      "task_file": "evolution/hybrid_vitality.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T06:55:21.918Z"
+    },
+    {
+      "hash": "eb3d62667252",
+      "race_id": "race_1789368981897",
+      "task_file": "evolution/extinction_detector.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T07:03:16.415Z"
+    },
+    {
+      "hash": "5d5d5a6801ec",
+      "race_id": "race_1789370128209",
+      "task_file": "sandbox/chaos_theory.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-14T07:16:58.434Z"
+    },
+    {
+      "hash": "7f95011c2e19",
+      "race_id": "race_1789370225608",
+      "task_file": "sandbox/breakthrough_detector.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T07:20:41.563Z"
+    },
+    {
+      "hash": "5e598d0a5d98",
+      "race_id": "race_1789370448745",
+      "task_file": "sandbox/sandbox_runner.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T07:24:00.107Z"
+    },
+    {
+      "hash": "6d2c0f71f94f",
+      "race_id": "race_1789370887443",
+      "task_file": "sandbox/anomaly_detector.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T07:29:54.376Z"
+    },
+    {
+      "hash": "cea1115aba77",
+      "race_id": "race_1789372290932",
+      "task_file": "api/public_api.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T07:53:25.313Z"
+    },
+    {
+      "hash": "72d017420c21",
+      "race_id": "race_1789372431387",
+      "task_file": "api/websocket_api.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T07:55:55.894Z"
+    },
+    {
+      "hash": "23091bd5bfe0",
+      "race_id": "race_1789372563332",
+      "task_file": "api/sdk_js.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T07:58:47.345Z"
+    },
+    {
+      "hash": "ab01d1fa52c4",
+      "race_id": "race_1789373425927",
+      "task_file": "api/rate_limiter.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T08:11:49.646Z"
+    },
+    {
+      "hash": "15744b0750b9",
+      "race_id": "race_1789374030309",
+      "task_file": "architect/phonology_profile.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T08:23:53.683Z"
+    },
+    {
+      "hash": "0c6a747641ad",
+      "race_id": "race_1789374240870",
+      "task_file": "architect/speech_experts.md",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T08:25:51.731Z"
+    },
+    {
+      "hash": "44254858f0d1",
+      "race_id": "race_1789374358868",
+      "task_file": "prompts/architect_dna_v3.md",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T08:28:32.216Z"
+    },
+    {
+      "hash": "833655f98090",
+      "race_id": "race_1789375307062",
+      "task_file": "architect/core_analyzer.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T08:44:08.977Z"
+    },
+    {
+      "hash": "2b5a5c5cef66",
+      "race_id": "race_1789375456142",
+      "task_file": "architect/dna_builder.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T08:46:58.914Z"
+    },
+    {
+      "hash": "72e0d6f63b7a",
+      "race_id": "race_1789376038638",
+      "task_file": "sensors/sensor_gateway.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T08:57:46.445Z"
+    },
+    {
+      "hash": "65d04c75f179",
+      "race_id": "race_1789376274580",
+      "task_file": "sensors/gigachat_adapter.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-14T09:00:09.630Z"
+    },
+    {
+      "hash": "549029602ed7",
+      "race_id": "race_1789376672481",
+      "task_file": "evolution/reaper_v2.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T09:07:44.496Z"
+    },
+    {
+      "hash": "110240a886c4",
+      "race_id": "race_1789377761507",
+      "task_file": "universes/architect_race/cmd_c_constitutionalist/DNA.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T09:24:08.897Z"
+    },
+    {
+      "hash": "1f73b3dc096c",
+      "race_id": "race_1789379020651",
+      "task_file": "pool_sync.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T09:45:35.854Z"
+    },
+    {
+      "hash": "3f370a28e6ac",
+      "race_id": "race_1789379138471",
+      "task_file": "video_sampler.js",
+      "winner": "agent_3",
+      "winner_score": 10,
+      "ts": "2026-09-14T09:47:55.684Z"
+    },
+    {
+      "hash": "7d8004232675",
+      "race_id": "race_1789380474129",
+      "task_file": "/phoenix/pool_sync.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T10:09:14.236Z"
+    },
+    {
+      "hash": "720b45261804",
+      "race_id": "race_1789380558468",
+      "task_file": "/phoenix/sensors/sensor_gateway.js",
+      "winner": "agent_3",
+      "winner_score": 9,
+      "ts": "2026-09-14T10:09:58.489Z"
+    },
+    {
+      "hash": "f843b6d0c847",
+      "race_id": "race_1789381487745",
+      "task_file": "pool_sync.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-14T10:26:42.415Z"
+    },
+    {
+      "hash": "d557e60110e5",
+      "race_id": "race_1789381606857",
+      "task_file": "video_sampler.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T10:27:30.644Z"
+    },
+    {
+      "hash": "bad96eb2f95b",
+      "race_id": "race_1789381654786",
+      "task_file": "sensor_gateway.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T10:28:10.916Z"
+    },
+    {
+      "hash": "57e4a69c869b",
+      "race_id": "race_1789382764384",
+      "task_file": "pool_sync.js",
+      "winner": "agent_3",
+      "winner_score": 10,
+      "ts": "2026-09-14T10:46:20.818Z"
+    },
+    {
+      "hash": "4e8ace77d5b6",
+      "race_id": "race_1789382784964",
+      "task_file": "video_sampler.js",
+      "winner": "agent_1",
+      "winner_score": 10,
+      "ts": "2026-09-14T10:47:02.667Z"
+    },
+    {
+      "hash": "f8e703b9ad72",
+      "race_id": "race_1789382826829",
+      "task_file": "race.js",
+      "winner": "agent_3",
+      "winner_score": 9,
+      "ts": "2026-09-14T10:49:06.644Z"
+    },
+    {
+      "hash": "6da73fd1a4a0",
+      "race_id": "race_1789384811226",
+      "task_file": "trajectory/peer_hint.js",
+      "winner": "agent_7",
+      "winner_score": 8,
+      "ts": "2026-09-14T11:22:12.976Z"
+    },
+    {
+      "hash": "a0c4d7137fb7",
+      "race_id": "race_1789385154038",
+      "task_file": "blog/twitter_threads.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T11:26:31.098Z"
+    },
+    {
+      "hash": "87339f2de5de",
+      "race_id": "race_1789385376185",
+      "task_file": "sales/email_sequence.md",
+      "winner": "agent_1",
+      "winner_score": 8,
+      "ts": "2026-09-14T11:30:40.036Z"
+    },
+    {
+      "hash": "b9290f7bd64c",
+      "race_id": "race_1789385447173",
+      "task_file": "legal/public_offer.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T11:31:33.579Z"
+    },
+    {
+      "hash": "b75dfac95535",
+      "race_id": "race_1789385500716",
+      "task_file": "legal/privacy_policy.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T11:32:35.473Z"
+    },
+    {
+      "hash": "f389e90fcb27",
+      "race_id": "race_1789385562603",
+      "task_file": "docs/cloudpayments_integration.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T11:33:19.971Z"
+    },
+    {
+      "hash": "59b81e1fb231",
+      "race_id": "race_1789386643237",
+      "task_file": "scorer.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T11:51:39.223Z"
+    },
+    {
+      "hash": "865c4e05b3c6",
+      "race_id": "race_1789386872177",
+      "task_file": "chemistry/chemist_match.js",
+      "winner": "agent_1",
+      "winner_score": 8,
+      "ts": "2026-09-14T11:55:47.191Z"
+    },
+    {
+      "hash": "759d2ca80dfd",
+      "race_id": "race_1789386954448",
+      "task_file": "chemistry/task_chemistry.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T11:56:32.976Z"
+    },
+    {
+      "hash": "cd006e0664d8",
+      "race_id": "race_1789387326742",
+      "task_file": "evolution/mycologist_symbiosis.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T12:03:37.264Z"
+    },
+    {
+      "hash": "28004c5d3bf4",
+      "race_id": "race_1789387515417",
+      "task_file": "docs/whitepaper_v2.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T12:06:25.113Z"
+    },
+    {
+      "hash": "adcf68086830",
+      "race_id": "race_1789388239230",
+      "task_file": "sensors/audio_transcriber.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-14T12:17:59.070Z"
+    },
+    {
+      "hash": "dcc1da91888f",
+      "race_id": "race_1789389178250",
+      "task_file": "sandbox/random_mutation_loop.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T12:33:33.156Z"
+    },
+    {
+      "hash": "ae86caca61a8",
+      "race_id": "race_1789389225472",
+      "task_file": "sandbox/chaos_theory.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T12:35:10.309Z"
+    },
+    {
+      "hash": "1ef0b98ac74e",
+      "race_id": "race_1789389478539",
+      "task_file": "sandbox/stress_test.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T12:38:51.308Z"
+    },
+    {
+      "hash": "9a3c5d2565cf",
+      "race_id": "race_1789389603562",
+      "task_file": "sandbox/serendipity.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T12:41:28.964Z"
+    },
+    {
+      "hash": "03c5bed525b4",
+      "race_id": "race_1789389696170",
+      "task_file": "observability/system_monitor.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-14T12:42:04.086Z"
+    },
+    {
+      "hash": "d241f0dde47f",
+      "race_id": "race_1789389731263",
+      "task_file": "observability/agent_health.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T12:43:38.562Z"
+    },
+    {
+      "hash": "ce868622b003",
+      "race_id": "race_1789389996919",
+      "task_file": "observability/alerting.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T12:47:35.084Z"
+    },
+    {
+      "hash": "afc1c532e331",
+      "race_id": "race_1789390270813",
+      "task_file": "api/public_api.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-14T12:51:55.551Z"
+    },
+    {
+      "hash": "e9057ad65dc4",
+      "race_id": "race_1789410175617",
+      "task_file": "/race_director.js",
+      "winner": "agent_3",
+      "winner_score": 8,
+      "ts": "2026-09-14T18:24:19.250Z"
+    },
+    {
+      "hash": "3b71b8d9e1e5",
+      "race_id": "race_1789491192285",
+      "task_file": "observability/daily_report.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-15T16:53:45.746Z"
+    },
+    {
+      "hash": "d9636cadb043",
+      "race_id": "race_1789494443355",
+      "task_file": "trajectory/tick_logger.js",
+      "winner": "agent_1",
+      "winner_score": 8,
+      "ts": "2026-09-15T17:48:53.469Z"
+    },
+    {
+      "hash": "ea27cebd3ce2",
+      "race_id": "race_1789494541558",
+      "task_file": "trajectory/path_builder.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-15T17:49:54.959Z"
+    },
+    {
+      "hash": "0d90690cc278",
+      "race_id": "race_1789495307744",
+      "task_file": "sales/email_sequence.md",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-15T18:02:23.037Z"
+    },
+    {
+      "hash": "e4e119998b11",
+      "race_id": "race_1789495502455",
+      "task_file": "analytics/tracker.js",
+      "winner": "agent_7",
+      "winner_score": 7,
+      "ts": "2026-09-15T18:06:14.377Z"
+    },
+    {
+      "hash": "f0907806c01a",
+      "race_id": "race_1789496428720",
+      "task_file": "chemistry/task_profiler.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-15T18:20:51.015Z"
+    },
+    {
+      "hash": "7304ae3f9211",
+      "race_id": "race_1789497793494",
+      "task_file": "tests/e2e.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-15T18:43:55.449Z"
+    },
+    {
+      "hash": "9fc3ecc1d9ab",
+      "race_id": "race_1789498717246",
+      "task_file": "evolution/fitness_history.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-15T18:59:50.218Z"
+    },
+    {
+      "hash": "1bb2d66f7520",
+      "race_id": "race_1789500228972",
+      "task_file": "api/rate_limiter.js",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-15T19:24:23.947Z"
+    },
+    {
+      "hash": "71c6174acab5",
+      "race_id": "race_1789501374720",
+      "task_file": "universes/architect_race/cmd_b_narrator/DNA.md",
+      "winner": "agent_4",
+      "winner_score": 7,
+      "ts": "2026-09-15T19:44:21.079Z"
+    },
+    {
+      "hash": "7c1a00aa2beb",
+      "race_id": "race_1789502657945",
+      "task_file": "trajectory/tick_logger.js",
+      "winner": "agent_7",
+      "winner_score": 9,
+      "ts": "2026-09-15T20:05:26.005Z"
+    },
+    {
+      "hash": "a35191a53d9c",
+      "race_id": "race_1789503237579",
+      "task_file": "blog/telegram_posts.md",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-15T20:14:52.790Z"
+    },
+    {
+      "hash": "0fc92e2fb5b5",
+      "race_id": "race_1789507730527",
+      "task_file": "tests/track_1.js",
+      "winner": "agent_1",
+      "winner_score": 8,
+      "ts": "2026-09-15T21:31:05.178Z"
+    },
+    {
+      "hash": "6e3c156116a8",
+      "race_id": "race_1789507730575",
+      "task_file": "tests/track_2.js",
+      "winner": "agent_4",
+      "winner_score": 8,
+      "ts": "2026-09-15T21:31:42.593Z"
+    },
+    {
+      "hash": "ca87b258f3a8",
+      "race_id": "race_1789507730605",
+      "task_file": "tests/track_3.js",
+      "winner": "agent_7",
+      "winner_score": 8,
+      "ts": "2026-09-15T21:31:49.945Z"
+    },
+    {
+      "hash": "0cf509295660",
+      "race_id": "race_1789507730634",
+      "task_file": "tests/track_4.js",
+      "winner": "agent_11",
+      "winner_score": 8,
+      "ts": "2026-09-15T21:31:15.947Z"
+    },
+    {
+      "hash": "40e5d7bf7a21",
+      "race_id": "race_1789507730667",
+      "task_file": "tests/track_5.js",
+      "winner": "agent_13",
+      "winner_score": 8,
+      "ts": "2026-09-15T21:30:22.042Z"
+    },
+    {
+      "hash": "cfd78074b96d",
+      "race_id": "race_1789507730759",
+      "task_file": "tests/track_8.js",
+      "winner": "agent_22",
+      "winner_score": 8,
+      "ts": "2026-09-15T21:30:54.400Z"
+    },
+    {
+      "hash": "64771f617635",
+      "race_id": "race_1789508091234",
+      "task_file": "tests/track_7.js",
+      "winner": "agent_20",
+      "winner_score": 9,
+      "ts": "2026-09-15T21:35:17.643Z"
+    },
+    {
+      "hash": "b255b3aee298",
+      "race_id": "race_1789509099152",
+      "task_file": "scripts/race_dashboard.js",
+      "winner": "agent_4",
+      "winner_score": 9,
+      "ts": "2026-09-15T21:53:38.082Z"
+    },
+    {
+      "hash": "072312df860a",
+      "race_id": "race_1789514151338",
+      "task_file": "_runner.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-15T23:18:48.048Z"
+    },
+    {
+      "hash": "93a2c7f131a2",
+      "race_id": "race_1789514345686",
+      "task_file": "_runner.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-15T23:19:42.838Z"
+    },
+    {
+      "hash": "26e2945b9d78",
+      "race_id": "race_1789514822017",
+      "task_file": "tests/coverage.js",
+      "winner": "agent_1",
+      "winner_score": 7,
+      "ts": "2026-09-15T23:27:40.074Z"
+    },
+    {
+      "hash": "734aa4941aba",
+      "race_id": "race_1789516364897",
+      "task_file": "sandbox/sandbox_runner.js",
+      "winner": "agent_1",
+      "winner_score": 7,
+      "ts": "2026-09-15T23:54:36.075Z"
+    },
+    {
+      "hash": "c35f26b72582",
+      "race_id": "race_1789517290445",
+      "task_file": "observability/log_aggregator.js",
+      "winner": "agent_1",
+      "winner_score": 9,
+      "ts": "2026-09-16T00:10:21.655Z"
+    },
+    {
+      "hash": "76e8ef31ce9f",
+      "race_id": "race_1789723315388",
+      "task_file": "tests/track_1.js",
+      "winner": "agent_2",
+      "winner_score": 8,
+      "ts": "2026-09-18T09:23:42.700Z"
+    },
+    {
+      "hash": "d0ba8200d5ba",
+      "race_id": "race_1789723315524",
+      "task_file": "tests/track_3.js",
+      "winner": "agent_9",
+      "winner_score": 7,
+      "ts": "2026-09-18T09:23:29.153Z"
+    },
+    {
+      "hash": "d5464a98d563",
+      "race_id": "race_1789723315708",
+      "task_file": "tests/track_4.js",
+      "winner": "agent_10",
+      "winner_score": 8,
+      "ts": "2026-09-18T09:22:46.514Z"
+    },
+    {
+      "hash": "bb7509a362a3",
+      "race_id": "race_1789723316256",
+      "task_file": "tests/track_6.js",
+      "winner": "agent_17",
+      "winner_score": 8,
+      "ts": "2026-09-18T09:23:24.340Z"
+    },
+    {
+      "hash": "fa64c3f1d12e",
+      "race_id": "race_1789723316607",
+      "task_file": "tests/track_7.js",
+      "winner": "agent_19",
+      "winner_score": 8,
+      "ts": "2026-09-18T09:24:00.033Z"
+    }
+  ],
+  "updated_at": "2026-09-18T14:48:41.208Z"
+}

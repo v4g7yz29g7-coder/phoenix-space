@@ -1,0 +1,13 @@
+{
+  "hash": "3892346ac364",
+  "race_id": "race_1789331314740",
+  "ts": "2026-09-13T20:30:20.666Z",
+  "task_file": "evolution/dendrologist_genealogy.js",
+  "task_prompt": "Создай evolution/dendrologist_genealogy.js — древо. API: ancestors, descendants, tree. КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 38565,
+  "answer": "Готово. Создан `evolution/dendrologist_genealogy.js`.\n\n## Результат\n\n**Критерии выполнены:**\n- ✅ **521 строка** (требовалось >180)\n- ✅ **`node --check` OK** — синтаксис валиден\n- ✅ Закоммичен (`c57bfca`)\n\n## API (как требовалось: ancestors, descendants, tree)\n\n| Функция | Назначение |\n|---|---|\n| `a",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

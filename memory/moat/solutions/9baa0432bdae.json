@@ -1,0 +1,13 @@
+{
+  "hash": "9baa0432bdae",
+  "race_id": "race_1789335311383",
+  "ts": "2026-09-13T21:37:02.455Z",
+  "task_file": "sandbox/sandbox_runner.js",
+  "task_prompt": "Создай sandbox/sandbox_runner.js — изолированный запуск. API: run(experiment). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 22090,
+  "answer": "Готово.\n\n**Создан `sandbox/sandbox_runner.js`**\n- **521 строка** (>200 ✅)\n- **`node --check` → SYNTAX_OK** ✅\n- Runtime-проверка: `run({source:'console.log(1+1); return 42'})` → `{status:\"ok\", result:42, output:\"[log] 2\"}` ✅\n\n**API `run(experiment)`** — принимает функцию, строку-исходник или объект `",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.149Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "d9636cadb043",
+  "race_id": "race_1789494443355",
+  "ts": "2026-09-15T17:48:53.469Z",
+  "task_file": "trajectory/tick_logger.js",
+  "task_prompt": "Создай файл trajectory/tick_logger.js. Слушает race:tick, append записи в memory/patterns/race_<id>_ticks.jsonl. Формат: {ts, positions:[{agent,lap,progress}]}. КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 8,
+  "winner_time_ms": 57493,
+  "answer": "Задача уже полностью решена в репозитории — файл существует, соответствует всем критериям и подтверждён реальным выводом. Проверка:\n\n**Файл:** `trajectory/tick_logger.js`\n- **442 строки** → критерий `> 120` ✅\n- `node --check trajectory/tick_logger.js` → **SYNTAX_OK** ✅\n- Подписка на событие: `event: 'race:tick'` (строка 66) + `attach()`/`connect()` для socket.io ✅\n- Запись: `memory/patterns/race_<id>_ticks.jsonl` (prefix `race_` + `sanitizeId` + suffix `_ticks.jsonl`) ✅\n- Формат `{ts, positions:[{agent,lap,progress}]}` ✅\n\n**Подтверждено реальным выводом** из `memory/patterns/race_smoke_1789339707504_ticks.jsonl`:\n```json\n{\"ts\":1789339707504,\"positions\":[{\"agent\":\"agent_1\",\"lap\":1,\"progress\":0.5},{\"agent\":\"agent_2\",\"lap\":0,\"progress\":0.25}]}\n{\"ts\":1789339707504,\"positions\":[{\"agent\":\"agent_1\",\"lap\":2,\"progress\":0.9}]}\n```\n\n**Возможности модуля:**\n- `logger.connect()` / `attach(socket)` / `disconnect()` — управление подпиской\n- `logger.onTick(payload)` — ручная обработка тика (офлайн/тесты)\n- `logger.pathFor(raceId)` — путь JSONL-файла\n- `logger.flush()` — дождаться сброса очереди на диск\n- `logger.getStats()` — телеметрия (received/enqueued/written/dropped/errors)\n- Асинхронная очередь с батчингом (`flushIntervalMs`), защита `maxQueue`, авто-создание `memory/patterns`, ленивая загрузка `socket.io-client` (не падает под `node --check`)\n- Экспорт: синглтон + `TickLogger` + `create()` + `buildRecord`/`normalizePositions`/`sanitizeId`/`resolveRaceId`\n- Самопроверка: `node trajectory/tick_logger.js` (self-test, 3 demo-тика)\n\nИстория git подтверждает: коммит `316ea432 feat(trajectory): add tick_logger.js (race:tick -> race_<id>_ticks.jsonl)`, рабочее дерево чистое — изменений не требовалось.",
+  "steps_count": 16,
+  "collected_at": "2026-09-18T14:48:41.191Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "734aa4941aba",
+  "race_id": "race_1789516364897",
+  "ts": "2026-09-15T23:54:36.075Z",
+  "task_file": "sandbox/sandbox_runner.js",
+  "task_prompt": "Создай sandbox/sandbox_runner.js — изолированный запуск. API: run(experiment). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 7,
+  "winner_time_ms": 111154,
+  "answer": "Все критерии подтверждены. Итоговая сводка:\n\n## ✅ Задача выполнена\n\n**Файл:** `sandbox/sandbox_runner.js` (в проекте `/home/ishidin/phoenix`)\n\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Существование | файл создан | `sandbox/sandbox_runner.js` | ✅ |\n| Размер | **> 200 строк** | **683 строки** | ✅ |\n| Синтаксис | `node --check` OK | `SYNTAX_OK` | ✅ |\n| API | `run(experiment)` | экспортирован | ✅ |\n\n### Реализованный API\n```js\nconst run = require('./sandbox/sandbox_runner.js');\nconst result = await run(experiment);   // основной вход\nrun.runMany([...], { concurrency: 2 }); // пакетный запуск\nnew run.SandboxRunner({ timeoutMs });   // chainable-обёртка\n```\n\nДескриптор `experiment` поддерживает:\n- `source` — JS-тело (можно `return` / `await`)\n- `entry` — именованная функция внутри source\n- `fn` — нативная функция напрямую\n- `input` — массив → spread-аргументы, иначе один аргумент\n- `options` / top-level: `timeoutMs`, `memoryMb`, `maxOutputBytes`/`maxOutput`\n- `id`, `meta`\n\nРезультат всегда plain-object (никогда не reject): `{ ok, status, result, output, logs, error, durationMs, killedBy, truncated, id, meta }`, где `status ∈ {ok, error, timeout, invalid}`.\n\n### Изоляция (проверено чтением кода)\n1. `node:vm` — отдельный realm только с захваченным `console` и таймерами;\n2. `codeGeneration: { strings:false, wasm:false }` — запрет `eval`/`new Function` внутри;\n3. sync-`timeout` в `runInContext` + внешний `withDeadline` от async-зависаний;\n4. безопасное усечение вывода по байтам.\n\n### Верификация (exec)\n```\nnode --check sandbox/sandbox_runner.js  →  SYNTAX_OK\ncat sandbox/sandbox_runner.js | grep -c ''  →  683\ngrep exports  →  module.exports = run; module.exports.run = run; … SandboxRunner, runMany\n```\n\nФайл полностью соответствует ТЗ (изолированный запуск, API `run(experiment)`, >200 строк, `node --check` проходит). Готовый smoke-тест `sandbox/.tmp_sandbox_runner_smoke.js` подтверждает контракт API (happy-path, ошибки, timeout, изоляция, batch, класс-обёртка).",
+  "steps_count": 16,
+  "collected_at": "2026-09-18T14:48:41.201Z"
+}

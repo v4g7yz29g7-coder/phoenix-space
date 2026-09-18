@@ -1,0 +1,13 @@
+{
+  "hash": "2592952f9947",
+  "race_id": "race_1789329572710",
+  "ts": "2026-09-13T20:01:39.566Z",
+  "task_file": "corpus/architect_cleaner.js",
+  "task_prompt": "Создай corpus/architect_cleaner.js — читает corpus/architect/raw/*.json, извлекает role:user, чистит, режет на чанки. API: cleanAll(). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 34517,
+  "answer": "Задача уже выполнена — файл существует и полностью соответствует критерию.\n\n**Проверка `corpus/architect_cleaner.js`:**\n- ✅ **542 строки** (>200)\n- ✅ `node --check` → SYNTAX OK\n- ✅ API `cleanAll()` присутствует + экспортируется (`module.exports = { cleanAll, cleanText, chunkText, collectUserMessages",
+  "steps_count": 8,
+  "collected_at": "2026-09-18T14:48:41.145Z"
+}

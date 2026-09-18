@@ -1,0 +1,13 @@
+{
+  "hash": "5660250a71f9",
+  "race_id": "race_1789349358109",
+  "ts": "2026-09-14T01:31:00.982Z",
+  "task_file": "observability/daily_report.js",
+  "task_prompt": "Создай observability/daily_report.js — ежедневный отчёт. API: generate(). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 7,
+  "winner_time_ms": 45902,
+  "answer": "Задача выполнена.\n\n## Результат\n\n**`observability/daily_report.js`** — ежедневный отчёт observability.\n\n### Проверки (все зелёные)\n```\nFINAL_CHECK_OK                 node --check — без ошибок\n381 строка                     критерий >180 ✅\ngenerate OK | events=120 | errRate=0.058333 | slo=degraded | ",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

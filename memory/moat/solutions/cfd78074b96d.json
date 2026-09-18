@@ -1,0 +1,13 @@
+{
+  "hash": "cfd78074b96d",
+  "race_id": "race_1789507730759",
+  "ts": "2026-09-15T21:30:54.400Z",
+  "task_file": "tests/track_8.js",
+  "task_prompt": "Создай tests/track_8.js. КРИТЕРИЙ: node --check OK.",
+  "winner": "agent_22",
+  "winner_score": 8,
+  "winner_time_ms": 110261,
+  "answer": "Готово. Создал `tests/track_8.js`.\n\n**Что внутри:**\n- Самодостаточный BDD-харнесс (без внешних зависимостей): `describe/it/it.skip/before/beforeEach`, мини-библиотека `assert` (включая `closeTo`, `rejects`, `deepEqual`).\n- Модель «Track #8» — квалификация, формирование стартовой решётки и гоночная стратегия:\n  - `formatLap`, `createSession`, `recordLap`, `lapsByDriver`, `drivers`\n  - `bestLap` (учитывает только валидные круги), `grid`, `poleSitter`, `gapToPoleMs`\n  - `fuelPlan` (расчёт топлива с запасом), `pitWindow` (окна пит-стопов), `summarize`\n- Тесты покрывают форматирование, валидацию входов, порядок решётки, гэпы, топливо, пит-окна, пустые сессии и async-кейс.\n- Точка входа через `require.main === module`, `module.exports = { Track8, run }`.\n\n**Проверка критерия:**\n```\nnode --check tests/track_8.js   → OK (пустой вывод, exit 0)\n```\n\nКоммит из бокса запрещён — изменения нужно зафиксировать вручную:\n```bash\ngit add tests/track_8.js && git commit -m \"test(track_8): add self-contained Track #8 qualifying/grid suite\"\n```",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.197Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "5f6f954fa58d",
+  "race_id": "race_1789330148613",
+  "ts": "2026-09-13T20:10:30.317Z",
+  "task_file": "evolution/mutation_logger.js",
+  "task_prompt": "Создай evolution/mutation_logger.js — лог мутаций в memory/mutations.jsonl. API: log(mutation), history(agentId). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 17640,
+  "answer": "Готово.\n\n**`evolution/mutation_logger.js`** — 194 строки, `node --check` → OK.\n\nAPI:\n- `log(mutation)` — нормализует запись, добавляет `id`/`timestamp`/`status`, аппендит JSONL в `memory/mutations.jsonl` (создаёт `memory/` при необходимости, переживает circular payload).\n- `history(agentId)` — читае",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

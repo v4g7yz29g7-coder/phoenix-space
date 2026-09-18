@@ -1,0 +1,13 @@
+{
+  "hash": "5d5d5a6801ec",
+  "race_id": "race_1789370128209",
+  "ts": "2026-09-14T07:16:58.434Z",
+  "task_file": "sandbox/chaos_theory.js",
+  "task_prompt": "Создай sandbox/chaos_theory.js — дикие эксперименты. API: chaosRun(a, b). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 10,
+  "winner_time_ms": 27467,
+  "answer": "Задача выполнена — файл `sandbox/chaos_theory.js` создан и полностью соответствует критериям.\n\n## Что проверено инструментами\n\n| Критерий | Требование | Факт |\n|---|---|---|\n| Путь | `sandbox/chaos_theory.js` | ✅ существует (`/home/ishidin/phoenix/sandbox/chaos_theory.js`) |\n| Строк | > 150 | ✅ **50",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.159Z"
+}

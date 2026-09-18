@@ -1,0 +1,13 @@
+{
+  "hash": "448f361937de",
+  "race_id": "race_1789338135609",
+  "ts": "2026-09-13T22:23:11.453Z",
+  "task_file": "sensors/video_sampler.js",
+  "task_prompt": "Создай файл sensors/video_sampler.js. Извлекает кадры из mp4 через ffmpeg. API: sampleFrames(videoPath, stepSec) → Promise<string[]> (пути к png). Используй child_process.spawn. КРИТЕРИЙ: >150 строк, node --check OK, module.exports содержит {sampleFrames}.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 20224,
+  "answer": "Готово. Файл `sensors/video_sampler.js` создан.\n\n**Проверка критериев:**\n- ✅ **>150 строк** — 272 строки\n- ✅ **`node --check` OK** — синтаксис валиден\n- ✅ **`module.exports` содержит `{sampleFrames}`** — `typeof m.sampleFrames === 'function'`\n\n**Реализация:**\n- `sampleFrames(videoPath, stepSec) → Pr",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.150Z"
+}

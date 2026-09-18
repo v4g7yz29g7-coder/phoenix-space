@@ -1,0 +1,13 @@
+{
+  "hash": "cb7e0346a666",
+  "race_id": "race_1789345009465",
+  "ts": "2026-09-14T00:18:34.474Z",
+  "task_file": "docs/tutorials.md",
+  "task_prompt": "Создай docs/tutorials.md — 5 учебников. КРИТЕРИЙ: >250 строк.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 35252,
+  "answer": "Готово. Создан `docs/tutorials.md` с 5 учебниками.\n\n**Результат:**\n- Путь: `/home/ishidin/phoenix/docs/tutorials.md`\n- Объём: **491 строка** (критерий >250 выполнен с запасом)\n\n**Содержимое — 5 учебников:**\n1. Первый запуск и настройка окружения (venv, pip/uv, проверка)\n2. Работа с данными (CSV → оч",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.153Z"
+}

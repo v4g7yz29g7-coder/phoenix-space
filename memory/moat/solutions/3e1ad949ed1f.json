@@ -1,0 +1,13 @@
+{
+  "hash": "3e1ad949ed1f",
+  "race_id": "race_1789337049185",
+  "ts": "2026-09-13T22:05:54.693Z",
+  "task_file": "api/websocket_api.js",
+  "task_prompt": "Создай api/websocket_api.js — WebSocket. API: start(port), emit(event). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 32938,
+  "answer": "已完成 — `api/websocket_api.js`\n\n**结果：**\n- **587 行**（要求 >180）✅\n- `node --check` → **SYNTAX_OK** ✅\n- 冒烟测试：在 `:8799` 上 `start(8799)` → 状态 `{\"running\":true,\"port\":8799,...,\"readyState\":\"listening\"}` → `emit('hello',{a:1})` → `0`（已投递客户端数）→ `stop()` 干净退出 → **SMOKE_OK** ✅\n\n**API：**\n- `start(port[, host])` → ",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.149Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "a021184be85b",
+  "race_id": "race_1789343561575",
+  "ts": "2026-09-13T23:54:05.045Z",
+  "task_file": "chemistry/task_profiler.js",
+  "task_prompt": "Создай chemistry/task_profiler.js — профиль задачи. API: profile(taskText). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 19971,
+  "answer": "Задача выполнена и верифицирована.\n\n## Результат\n\nФайл `chemistry/task_profiler.js` — **475 строк** (критерий >200 ✓), проходит `node --check` ✓.\n\n### Проверка критериев\n```\nlines: 475 (need >200)\nnode --check: OK\nVERSION: 1.0.0\nprofile(taskText) API: OK, fields: 18\nreadOnly on read-only task: true\n",
+  "steps_count": 7,
+  "collected_at": "2026-09-18T14:48:41.152Z"
+}

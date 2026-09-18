@@ -1,0 +1,13 @@
+{
+  "hash": "23091bd5bfe0",
+  "race_id": "race_1789372563332",
+  "ts": "2026-09-14T07:58:47.345Z",
+  "task_file": "api/sdk_js.js",
+  "task_prompt": "Создай api/sdk_js.js — JS SDK. КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 30051,
+  "answer": "✅ **api/sdk_js.js создан**\n\n| Критерий | Требование | Факт |\n|---|---|---|\n| Строк | >200 | **319** ✅ |\n| `node --check` | OK | **SYNTAX_OK** ✅ |\n\n**Что внутри:**\n- `HttpClient` — транспортный слой: таймауты (AbortController), ретраи с экспоненциальным бэкоффом + jitter, Bearer-auth, разбор JSON/тек",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.160Z"
+}

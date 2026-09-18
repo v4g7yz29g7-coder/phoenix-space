@@ -1,0 +1,13 @@
+{
+  "hash": "6d2c0f71f94f",
+  "race_id": "race_1789370887443",
+  "ts": "2026-09-14T07:29:54.376Z",
+  "task_file": "sandbox/anomaly_detector.js",
+  "task_prompt": "Создай sandbox/anomaly_detector.js — аномалии. API: detect(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 37425,
+  "answer": "Готово. Задача выполнена.\n\n## Результат\n\n**`sandbox/anomaly_detector.js`** — создан и прошёл все проверки:\n\n| Критерий | Требование | Факт |\n|---|---|---|\n| Размер | > 150 строк | **409 строк** ✅ |\n| Синтаксис | `node --check` OK | **NODE_CHECK_OK** ✅ |\n| API | `detect()` | экспортируется ✅ |\n\n### Ч",
+  "steps_count": 15,
+  "collected_at": "2026-09-18T14:48:41.159Z"
+}

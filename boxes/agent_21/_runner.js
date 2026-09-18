@@ -1,6 +1,7 @@
 // Runner для бокса — устанавливает BOX_NAME и запускает agent_loop_v3
+// 18.09: добавлена проверка Рва (Moat) ПЕРЕД вызовом LLM
 const path = require('path');
-const boxName = path.basename(__dirname); // agent_1, agent_2, ...
+const boxName = path.basename(__dirname);
 process.env.BOX_NAME = boxName;
 
 require('dotenv').config({ path: __dirname + '/.env' });
@@ -11,6 +12,30 @@ if (!task) {
   process.exit(1);
 }
 
+// === MOAT: проверка Рва ===
+let moatResult = null;
+try {
+  const moat = require('../../moat_inject');
+  moatResult = moat.trySolve({ file: null, prompt: task });
+  if (moatResult && moatResult.solved) {
+    console.log(JSON.stringify({
+      ok: true,
+      score: moatResult.score || 9,
+      verdict: 'approve',
+      answer: (moatResult.answer || '').slice(0, 5000),
+      steps_count: 0,
+      source: moatResult.source,
+      moat_winner: moatResult.winner || null,
+      moat_hash: moatResult.hash || null,
+    }));
+    process.exit(0);
+  }
+} catch (e) {
+  // Ров не сработал — идём к LLM
+  console.error('[moat] error:', e.message.slice(0, 200));
+}
+
+// === LLM: обычный путь ===
 const loop = require('./agent_loop_v3');
 loop.runWithCritic(task)
   .then(r => {
@@ -18,8 +43,9 @@ loop.runWithCritic(task)
       ok: r.ok,
       score: r.critic && r.critic.score,
       verdict: r.critic && r.critic.verdict,
-      answer: (r.answer || '').slice(0, 5000),  // 14.09: увеличено с 300 — нужно полное решение для кэша
-      steps_count: (r.steps || []).length
+      answer: (r.answer || '').slice(0, 5000),
+      steps_count: (r.steps || []).length,
+      source: 'llm',
     }));
   })
   .catch(e => {

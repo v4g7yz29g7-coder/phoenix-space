@@ -1,0 +1,13 @@
+{
+  "hash": "b5626ee7a0f0",
+  "race_id": "race_1789301933206",
+  "ts": "2026-09-13T12:21:38.835Z",
+  "task_file": "web/arena3d/src/scene/F1Car.ts",
+  "task_prompt": "# SPRINT 2: CIRCULAR RACING + LAP COUNTER\n\n## ЦЕЛЬ\nГонка по кругу. 1 задача = 1 круг. Обгон на круг = cinematic.\n\n## ЗАДАЧА 1: F1Car движение по кривой\nФайл: web/arena3d/src/scene/F1Car.tsx\n- import { getTrackProgress } from \"./Track\"\n- Убрать targetX = -20 + progress * 40\n- Заменить на: const pos = getTrackProgress(progress % 1)\n- group.position.set(pos.x, pos.y + 0.25, pos.z)\n- Направление: rotation.y смотрит по кривой\n  const ahead = getTrackProgress((progress + 0.01) % 1)\n  group.rotation.y ",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 84558,
+  "answer": "✅ **SPRINT 2 COMPLETE — все 4 задачи реализованы, критерии выполнены**\n\n## Результаты\n\n**ЗАДАЧА 1 — F1Car.tsx** ✓\n- `import { getTrackProgress } from './Track'` присутствует, `targetX` удалён\n- Позиция: `getTrackProgress(t)` где `t = ((progress % 1) + 1) % 1` (нормировка 0..1)\n- Направление: `rotati",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.139Z"
+}

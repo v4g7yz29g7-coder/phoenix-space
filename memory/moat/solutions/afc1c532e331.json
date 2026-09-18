@@ -1,0 +1,13 @@
+{
+  "hash": "afc1c532e331",
+  "race_id": "race_1789390270813",
+  "ts": "2026-09-14T12:51:55.551Z",
+  "task_file": "api/public_api.js",
+  "task_prompt": "Создай api/public_api.js — REST API. API: start(port), stop(). КРИТЕРИЙ: >220 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 44733,
+  "answer": "✅ **api/public_api.js создан** — `/home/ishidin/phoenix/api/public_api.js`\n\n**Верификация (3 шага):**\n| Критерий | Результат |\n|---|---|\n| `node --check api/public_api.js` | ✅ OK (без ошибок) |\n| Строк | ✅ **442** (>220) |\n| API `start(port)` / `stop()` | ✅ экспортированы |\n\n**Что реализовано (zero-",
+  "steps_count": 8,
+  "collected_at": "2026-09-18T14:48:41.166Z"
+}

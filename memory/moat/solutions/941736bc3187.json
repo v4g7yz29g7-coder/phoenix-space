@@ -1,0 +1,13 @@
+{
+  "hash": "941736bc3187",
+  "race_id": "race_1789343652203",
+  "ts": "2026-09-13T23:56:05.991Z",
+  "task_file": "chemistry/chemist_match.js",
+  "task_prompt": "Создай chemistry/chemist_match.js — матчинг. API: match(task, agents). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 35893,
+  "answer": "Готово.\n\n**chemistry/chemist_match.js** — 278 строк (>180 ✓), `node --check` — OK ✓, API `match(task, agents)` работает ✓.\n\nМодуль содержит:\n- **Взвешенная модель скоринга** из 6 фич: capability(0.34), tag(0.18), load(0.12), reliability(0.14), cost(0.12), availability(0.10).\n- **Нормализация** task/",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.152Z"
+}

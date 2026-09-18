@@ -1,0 +1,13 @@
+{
+  "hash": "71592c104134",
+  "race_id": "race_1789346813751",
+  "ts": "2026-09-14T00:48:30.450Z",
+  "task_file": "evolution/species_classifier.js",
+  "task_prompt": "Создай evolution/species_classifier.js — автоклассификация. API: classifyNew(agentId). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 28880,
+  "answer": "Готово. Задача выполнена и проверена.\n\n## Что сделано\n\n**Файл:** `evolution/species_classifier.js` (224 строки) — автоклассификация агентов по биологическим видам.\n\n**API:** `classifyNew(agentId, [traits])` — классифицирует агента, синтезируя признаки детерминированно (SHA-256 от id), если они не пе",
+  "steps_count": 15,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "7de8ebc5f991",
+  "race_id": "parallel_1789616529061_3ov8",
+  "ts": "2026-09-17T03:45:11.684Z",
+  "task_file": "alerting.js",
+  "task_prompt": "Тесты alerting.js: evaluate(snapshot) с порогами и 10-минутной дедупликацией. КРИТЕРИЙ: ≥10 кейсов, второй алерт в окне 600s подавлен, на 601s разрешён, разные пороги не глушат друг друга, snapshot=null → no-op без исключения.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 92142,
+  "answer": "Done. Created `observability/alerting.dedup.test.js` — 19 cases, all green, syntax OK.\n\n**Coverage against criterion:**\n- **≥10 кейсов** → 19.\n- **Второй алерт в окне 600s подавлен** → cases 06 (t+300s), 07 (t+599s).\n- **На 601s разрешён** → case 08, plus 10 shows a fresh alert restarts the window.\n- **Разные пороги не глушат друг друга** → 11 (cpu/ram independent), 12 (separate fires within each other's window), 13 (healthy metric doesn't reset another's window).\n- **snapshot=null → no-op без исключения** → 14 (`null`), 15 (`undefined`), 16 (null doesn't disturb an active window).\n\nAlso covered: API surface, full alert shape, strict `>` threshold, per-metric `configure()`, non-numeric ignored, `active()`, `history()`, window constant = 600000 ms, and the repo's >150-line hygiene check.\n\n**Result:**\n```\nobservability/alerting.dedup.test.js: 19 passed, 0 failed   (EXIT=0)\n```\n\nNo changes to `alerting.js` were needed — its behavior already matches the spec. Not committed (not explicitly required).",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.103Z"
+}

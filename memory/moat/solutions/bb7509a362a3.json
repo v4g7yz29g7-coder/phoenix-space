@@ -1,0 +1,13 @@
+{
+  "hash": "bb7509a362a3",
+  "race_id": "race_1789723316256",
+  "ts": "2026-09-18T09:23:24.340Z",
+  "task_file": "tests/track_6.js",
+  "task_prompt": "Создай tests/track_6.js. КРИТЕРИЙ: node --check OK.",
+  "winner": "agent_17",
+  "winner_score": 8,
+  "winner_time_ms": 87248,
+  "answer": "Готово. ✅\n\n## Что сделано\n\nСоздан **`tests/track_6.js`** — самодостаточный набор тестов без внешних зависимостей (работает на голом Node.js, без jest/mocha/chai), в стиле соседних `track_5.js`/`track_7.js`.\n\n**Критерий выполнен:**\n```\nnode --check tests/track_6.js  →  SYNTAX_OK\n```\nДополнительно прогнал сам сьют — **28/28 passed, 0 failed**.\n\n## Содержимое\n\nСобственный мини-харнесс (`describe` / `it` / `it.skip` / `beforeEach` / `afterEach` + своя библиотека ассертов) и юниты под тестированием:\n\n| Модуль | Назначение |\n|---|---|\n| `SlidingWindow` | кольцевой буфер фикс. ёмкости: `sum/avg/min/max/variance/stddev/percentile` |\n| `EWMA` | экспоненциально взвешенное среднее с настраиваемым `alpha` |\n| `RateCounter` | оконный счётчик событий с инъектируемыми часами (`rate()` — события/сек) |\n| `Histogram` | бакеты по границам + `total/sum/mean/min/max/snapshot/reset` |\n| `AnomalyDetector` | z-score выбросы поверх `SlidingWindow` |\n| `mean` / `stddev` | числовые хелперы |\n\nЭкспортируется через `module.exports`, при прямом запуске печатает отчёт и выставляет корректный `exitCode` (0/1).\n\n## Замечание по коммиту\nИнструмент `commit` вернул ошибку — **«git commit запрещён из бокса»**. Изменения не закоммичены; файл лежит как рабочая копия:\n\n```\ntests/track_6.js   (новый файл)\n```\n\nДля фиксации нужно выполнить коммит вручную на стороне репозитория (либо разрешить `commit` для этого бокса).",
+  "steps_count": 14,
+  "collected_at": "2026-09-18T14:48:41.205Z"
+}

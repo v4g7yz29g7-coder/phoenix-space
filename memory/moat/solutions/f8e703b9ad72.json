@@ -1,0 +1,13 @@
+{
+  "hash": "f8e703b9ad72",
+  "race_id": "race_1789382826829",
+  "ts": "2026-09-14T10:49:06.644Z",
+  "task_file": "race.js",
+  "task_prompt": "Изучи реализацию self-lock в race.js (коммит 3babbd2). Объясни, как именно реализовано ожидание освобождения лока после коммита 0cc6a8f, и приведи имя функции или механизма (async sleep / busy-wait).",
+  "winner": "agent_3",
+  "winner_score": 9,
+  "winner_time_ms": 23493,
+  "answer": "Изучил. Ниже — точный разбор, ничего в проекте не менял (задача исследовательская).\n\n## Что сделано в `3babbd2` (self-lock)\n\nФайл `/home/ishidin/phoenix/race.js`, блок в начале файла (строки 37–67):\n\n- Лок-файл `/tmp/phoenix_race.lock`, TTL 5 минут (`TIMEOUT_MS = 5*60*1000`).\n- Захват — атомарное эк",
+  "steps_count": 8,
+  "collected_at": "2026-09-18T14:48:41.162Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "783bac6e83d9",
+  "race_id": "race_1789353765661",
+  "ts": "2026-09-14T02:50:36.265Z",
+  "task_file": "radio/radio_engine.js",
+  "task_prompt": "Создай файл radio/radio_engine.js. Socket.io клиент к 127.0.0.1:3020. API: emitRadio(event) → добавляет в stream; listenRace(raceId, callback) — слушает race:tick. КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 110571,
+  "answer": "Готово. Файл `radio/radio_engine.js` существует и полностью соответствует ТЗ — проверено и по содержанию, и в рантайме.\n\n**Результат:**\n\n| Критерий | Статус |\n|---|---|\n| `>150 строк` | ✅ **292 строки** |\n| `node --check OK` | ✅ `CHECK_OK` |\n| Socket.io клиент к `127.0.0.1:3020` | ✅ `RADIO_URL = htt",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.156Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "e8c9aa2fb77e",
+  "race_id": "race_1789327616315",
+  "ts": "2026-09-13T19:30:22.391Z",
+  "task_file": "trajectory/insight_extractor.js",
+  "task_prompt": "Создай файл trajectory/insight_extractor.js. GigaChat вытягивает insights из path (что сработало, что нет). API: extract(paths) → Promise<[{pattern, lesson, evidence}]>. КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 25651,
+  "answer": "**Готово ✅**\n\nФайл `trajectory/insight_extractor.js` создан и работает.\n\n**Критерии:**\n- ✅ **382 строки** (>150)\n- ✅ `node --check` → `SYNTAX_OK`\n- ✅ Smoke-тест прошёл — API возвращает `[{pattern, lesson, evidence}]`\n\n**Что реализовано:**\n- **`extract(paths)` → `Promise<[{pattern, lesson, evidence}]",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.144Z"
+}

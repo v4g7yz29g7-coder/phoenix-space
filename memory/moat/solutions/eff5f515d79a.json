@@ -1,0 +1,13 @@
+{
+  "hash": "eff5f515d79a",
+  "race_id": "race_1789347885536",
+  "ts": "2026-09-14T01:06:24.730Z",
+  "task_file": "sandbox/breakthrough_detector.js",
+  "task_prompt": "Создай sandbox/breakthrough_detector.js — детектор прорывов. API: detect(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 43543,
+  "answer": "Готово. `sandbox/breakthrough_detector.js` создан.\n\n**Критерии:**\n- ✅ 276 строк (>150)\n- ✅ `node --check` → SYNTAX_OK\n- ✅ API `detect()` работает\n\n**Что внутри:**\n- `BreakthroughDetector` (класс) + фабрика `detect(series, options)` и `analyze()`.\n- Детекция прорывов через rolling-baseline (moving av",
+  "steps_count": 6,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "70eb8690b920",
+  "race_id": "race_1789329302678",
+  "ts": "2026-09-13T19:56:27.774Z",
+  "task_file": "analytics/tracker.js",
+  "task_prompt": "Создай файл analytics/tracker.js (Node.js CommonJS). Простой трекер событий: track(event, props) пишет в memory/analytics_events.jsonl. API: track(name, props), getStats() → агрегаты по event типам, report() → console summary. КРИТЕРИЙ: >120 строк, node --check OK, module.exports содержит {track, getStats, report}.",
+  "winner": "agent_1",
+  "winner_score": 10,
+  "winner_time_ms": 29084,
+  "answer": "Готово. Файл создан, проверен и закоммичен.\n\n## Результат\n\n**`analytics/tracker.js`** — Node.js CommonJS трекер событий.\n\n### Выполнение критериев\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Объём | > 120 строк | **310 строк** | ✅ |\n| Синтаксис | `node --check` OK | `node --check` ",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.145Z"
+}

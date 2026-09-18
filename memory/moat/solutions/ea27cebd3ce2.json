@@ -1,0 +1,13 @@
+{
+  "hash": "ea27cebd3ce2",
+  "race_id": "race_1789494541558",
+  "ts": "2026-09-15T17:49:54.959Z",
+  "task_file": "trajectory/path_builder.js",
+  "task_prompt": "Создай файл trajectory/path_builder.js. Из tick_history строит реальный path каждого участника: [{step, action, outcome, score}]. Заменяет абстрактные steps из v1. API: buildPath(raceId) → {agent: [...]}. КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 53396,
+  "answer": "The file already exists and fully satisfies the task. Verified:\n\n**`trajectory/path_builder.js`**\n- **497 lines** (>150 ✓)\n- **`node --check` → OK** ✓\n- **API:** `buildPath(raceId) → { agent: [{step, action, outcome, score}, ...] }` ✓\n\nWhat it implements (real path from tick history, replacing v1 abstract steps):\n- **Primary source:** `memory/patterns/race_<id>_ticks.jsonl` (format `{ts, positions:[{agent,lap,progress}]}` produced by `tick_logger.js`).\n- **Secondary source:** `memory/patterns/<raceId>.json` — supplies terminal `score`/`winner` for authoritative final step.\n- **Diff engine:** `classifyAction(prev, cur)` recovers concrete actions — `старт / новый круг / рывок / застой / откат / движение / финиш / сдача`.\n- **Credit model:** per-step running `score` denormalized from positive progress gain, terminal step pinned to the real race score (or a `start→solve→submit` fallback for result-only agents).\n- **Robustness:** tolerant race-id forms (`race_123`/`123`), lazy `tick_logger` reuse with local JSONL fallback, corrupt-line skipping, no hard socket.io dep (loads under bare `node --check`).\n- Exports `buildPath`, `buildReport`, `writeReport`, plus internals for tests; sane CLI.\n\nNo changes were needed — the deliverable is complete and meets both criteria. Not committed (no commit explicitly required).",
+  "steps_count": 15,
+  "collected_at": "2026-09-18T14:48:41.191Z"
+}

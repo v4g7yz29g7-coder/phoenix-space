@@ -1,0 +1,13 @@
+{
+  "hash": "865c4e05b3c6",
+  "race_id": "race_1789386872177",
+  "ts": "2026-09-14T11:55:47.191Z",
+  "task_file": "chemistry/chemist_match.js",
+  "task_prompt": "Создай chemistry/chemist_match.js — матчинг. API: match(task, agents). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 8,
+  "winner_time_ms": 73612,
+  "answer": "Готово. Создан `chemistry/chemist_match.js`.\n\n**Что сделано:**\n1. Проверил окружение, создал каталог `chemistry/` через `node -e fs.mkdirSync`.\n2. Написал модуль матчинга задач↔агентов.\n3. Проверил `node --check` → **SYNTAX OK**.\n4. Прогнал функциональный smoke-тест — работает.\n5. Убрал `.bak_*` пос",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.164Z"
+}

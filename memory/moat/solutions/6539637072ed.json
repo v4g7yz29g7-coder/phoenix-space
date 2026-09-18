@@ -1,0 +1,13 @@
+{
+  "hash": "6539637072ed",
+  "race_id": "race_1789349106333",
+  "ts": "2026-09-14T01:26:23.914Z",
+  "task_file": "observability/log_aggregator.js",
+  "task_prompt": "Создай observability/log_aggregator.js — агрегатор логов. API: aggregate(hours). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 22080,
+  "answer": "Done. Both criteria met.\n\n**`observability/log_aggregator.js`** (266 lines, `node --check` ✅)\n\n**API:** `aggregate(hours)` returns a normalized report.\n\n**Structure:**\n- **Ingest buffer** — normalized entries (`timestamp`, `level`, `service`, `message`, `meta`) with a 100k cap; helpers `ingest`, `in",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

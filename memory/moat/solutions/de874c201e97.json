@@ -1,0 +1,13 @@
+{
+  "hash": "de874c201e97",
+  "race_id": "parallel_1789616529049_kcs3",
+  "ts": "2026-09-17T03:45:11.754Z",
+  "task_file": "observability/agent_health.js",
+  "task_prompt": "Покрыть тестами модуль observability/agent_health.js: heartbeat registry с TTL 30s, статусы OK/STALE/DEAD, метод check(). КРИТЕРИЙ: ≥12 assert-кейсов, границы TTL проверены на 29.9s (OK) и 30.1s (STALE), 61s → DEAD, пустой реестр → пустой ответ без throw.",
+  "winner": "agent_2",
+  "winner_score": 9,
+  "winner_time_ms": 94548,
+  "answer": "Done. Committed as `5495d7b9`.\n\n## Что сделано\n\nСоздан `tests/agent_health.test.js` — тесты именно для модуля `observability/agent_health.js` (его heartbeat-реестр реэкспортируется из `./agent_registry`, а не из отдельного `heartbeat_registry.js`, который уже был покрыт).\n\n**Как проверял гипотезу:** сначала нашёл, что существующий `tests/heartbeat_registry.test.js` тестирует *другой* модуль (`observability/heartbeat_registry.js`), а не `agent_health.js`. Семантику `agent_registry.js` вскрыл через `node -e` и grep: `age < ttl → OK`, `ttl ≤ age < 2·ttl → STALE`, `≥ 2·ttl → DEAD`. Отсюда точные границы.\n\n**Критерии — закрыты:**\n| Требование | Результат |\n|---|---|\n| ≥12 assert-кейсов | ✅ **19 кейсов, 82 `assert.*` вызова** |\n| 29.9s → OK | ✅ явный кейс + `statusOf`/`check` |\n| 30.1s → STALE | ✅ (+ бонус: ровно 30s и 59.9s) |\n| 61s → DEAD | ✅ + `check().dead===1` |\n| Пустой реестр → пустой ответ без throw | ✅ `check()` → `{0,0,0,0}`, `checkAll()` → `total:0, agents:[]` |\n\n**Покрытие:**\n- Константы: `DEFAULT_TTL_MS===30000`, `STATUS.OK/STALE/DEAD`\n- Границы TTL (29.9 / ровно 30 / 30.1 / 59.9 / 61s), смешанный набор `{alive:1,stale:1,dead:1}` + `byStatus`\n- Мутации: `heartbeat()` (STALE→OK), `unregisterAgent()`, `registerAgent()` throws без id, неизвестный id → `null`\n- `checkAll()` — по-агентные статусы и `checks[]`\n- `toEpochMs()` — ms / секунды / ISO / мусор\n- Нативное ядро: `checkAgentHealth` (5s healthy, 300s degraded, 700s dead), `scanAgents`, пустой каталог, `selfTest()` (25 боксов)\n\nВсе тесты детерминированы (фиксированные часы `BASE`), изоляция через `clearRegistry()` в `beforeEach`.\n\n**Результат:** `19 passed, 0 failed` (25/25 вместе с существующим тестом).",
+  "steps_count": 20,
+  "collected_at": "2026-09-18T14:48:41.103Z"
+}

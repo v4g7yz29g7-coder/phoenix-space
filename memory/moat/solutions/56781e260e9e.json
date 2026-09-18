@@ -1,0 +1,13 @@
+{
+  "hash": "56781e260e9e",
+  "race_id": "race_1789343867966",
+  "ts": "2026-09-13T23:59:03.181Z",
+  "task_file": "evolution/dendrologist_genealogy.js",
+  "task_prompt": "Создай evolution/dendrologist_genealogy.js — древо. API: ancestors, descendants, tree. КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 22796,
+  "answer": "Готово ✅\n\n**Файл:** `evolution/dendrologist_genealogy.js`\n- **316 строк** (>180 ✓)\n- **`node --check` OK** ✓\n\n**API (3 ядра + бонусы):**\n- `ancestors(id, opts)` — родители/деды/… (BFS/DFS, maxDepth, withDepth)\n- `descendants(id, opts)` — дети/внуки/…\n- `tree(id, opts)` — вложенное дерево (direction:",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.152Z"
+}

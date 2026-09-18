@@ -1,0 +1,13 @@
+{
+  "hash": "c3e2aaf0a598",
+  "race_id": "race_1789340066313",
+  "ts": "2026-09-13T22:57:48.501Z",
+  "task_file": "trajectory/peer_hint.js",
+  "task_prompt": "Создай файл trajectory/peer_hint.js. API: suggestHint(leader, follower, raceState) → {hint, reference, trigger}. Лидер даёт направление отстающему, не решение. КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 51423,
+  "answer": "Готово. Задача выполнена и проверена.\n\n## Результат\n\n**Файл:** `trajectory/peer_hint.js`\n\n**Соответствие критериям:**\n| Критерий | Статус |\n|---|---|\n| `>120 строк` | ✅ **265 строк** |\n| `node --check` | ✅ OK |\n| API `suggestHint(leader, follower, raceState)` | ✅ `module.exports = { suggestHint, ...",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.151Z"
+}

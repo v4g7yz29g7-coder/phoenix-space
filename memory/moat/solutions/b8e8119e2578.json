@@ -1,0 +1,13 @@
+{
+  "hash": "b8e8119e2578",
+  "race_id": "race_1789340709247",
+  "ts": "2026-09-13T23:06:38.907Z",
+  "task_file": "blog/twitter_threads.md",
+  "task_prompt": "Создай файл blog/twitter_threads.md. 5 тредов для Twitter/X по 5-7 твитов. Темы: 1) Что такое AI-1, 2) Как работают гонки агентов, 3) MVP клонирования, 4) Trajectory > Skills, 5) Приглашение на арену. КРИТЕРИЙ: >100 строк, ## заголовки.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 39945,
+  "answer": "Готово. Файл создан, проверен и закоммичен.\n\n## Что сделано\n\nСоздан/улучшен `blog/twitter_threads.md` — 5 тредов для Twitter/X, аутентичных проекту **AI-1 Evolution Arena** (использованы реальные данные: 24 гонки, стратегии Conservative/Analyst/Disruptor, клон score 8.6 за 3 гонки, trajectory_builde",
+  "steps_count": 15,
+  "collected_at": "2026-09-18T14:48:41.151Z"
+}

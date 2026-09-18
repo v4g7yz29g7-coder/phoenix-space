@@ -1,0 +1,13 @@
+{
+  "hash": "bad96eb2f95b",
+  "race_id": "race_1789381654786",
+  "ts": "2026-09-14T10:28:10.916Z",
+  "task_file": "sensor_gateway.js",
+  "task_prompt": "Разбери sensor_gateway.js: опиши сигнатуру функции capture(type, options) и перечисли, какие значения type она принимает.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 22807,
+  "answer": "Разобрал `sensors/sensor_gateway.js` (проверил синтаксис `node --check` + рантайм-пробы). Вот результат.\n\n## Сигнатура `capture(type, options)`\n\n```\nasync function capture(type, options) -> Promise<{ path: string, size: number }>\n```\n\nОбъявлена в строке 504 как `async function capture(type, options)",
+  "steps_count": 6,
+  "collected_at": "2026-09-18T14:48:41.162Z"
+}

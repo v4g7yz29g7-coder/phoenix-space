@@ -1,0 +1,13 @@
+{
+  "hash": "63fcf0cd0ad3",
+  "race_id": "race_1789331885273",
+  "ts": "2026-09-13T20:39:49.779Z",
+  "task_file": "evolution/mycologist_signal.js",
+  "task_prompt": "Создай evolution/mycologist_signal.js — сигналы. API: emitSignal(from, to, type, payload). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 29634,
+  "answer": "Готово. Задача выполнена.\n\n## Результат\n\nСоздан файл **`evolution/mycologist_signal.js`** (453 строки), реализующий сигнальный слой мицелиальной сети.\n\n### Соответствие критериям\n\n| Критерий | Статус |\n|---|---|\n| `node --check` OK | ✅ `NODE_CHECK=OK` |\n| `>150` строк | ✅ 453 строки |\n| API `emitSig",
+  "steps_count": 9,
+  "collected_at": "2026-09-18T14:48:41.147Z"
+}

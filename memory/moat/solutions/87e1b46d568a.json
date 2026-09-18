@@ -1,0 +1,13 @@
+{
+  "hash": "87e1b46d568a",
+  "race_id": "race_1789207204464",
+  "ts": "2026-09-12T10:00:34.988Z",
+  "task_file": "sentinel.js",
+  "task_prompt": "Посчитай строки в sentinel.js.",
+  "winner": "agent_7",
+  "winner_score": 10,
+  "winner_time_ms": 7759,
+  "answer": "**sentinel.js** — **61 строка**.\n\nПроверено двумя способами:\n- `wc -l ./sentinel.js` → 61\n- `grep -c '' ./sentinel.js` → 61\n\nФайл: `./sentinel.js` (ничего не менял).",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.113Z"
+}

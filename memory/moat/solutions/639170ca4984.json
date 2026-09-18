@@ -1,0 +1,13 @@
+{
+  "hash": "639170ca4984",
+  "race_id": "race_1789203241136",
+  "ts": "2026-09-12T08:55:27.371Z",
+  "task_file": "dashboard_server.js",
+  "task_prompt": "Покажи первые 10 строк dashboard_server.js.",
+  "winner": "agent_1",
+  "winner_score": 10,
+  "winner_time_ms": 5864,
+  "answer": "Первые 10 строк `dashboard_server.js`:\n\n```js\n// Aeon Arena Dashboard — визуализация эволюции\nconst express = require('express');\nconst fs = require('fs');\nconst path = require('path');\n\nconst app = express();\nconst PORT = 3020;\nconst ROOT = __dirname;\n\napp.use(express.static(path.join(ROOT, 'public",
+  "steps_count": 1,
+  "collected_at": "2026-09-18T14:48:41.112Z"
+}

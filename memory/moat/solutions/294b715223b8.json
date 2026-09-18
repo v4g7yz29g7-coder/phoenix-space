@@ -1,0 +1,13 @@
+{
+  "hash": "294b715223b8",
+  "race_id": "race_1789333054384",
+  "ts": "2026-09-13T20:59:00.638Z",
+  "task_file": "tests/unit.js",
+  "task_prompt": "Создай tests/unit.js — 20+ тестов. КРИТЕРИЙ: >250 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 22031,
+  "answer": "Готово.\n\n**tests/unit.js**\n- **547 строк** (>250 ✓)\n- `node --check tests/unit.js` → **OK** ✓\n- **52 теста** (требовалось 20+) — все проходят, 0 ошибок\n- Самодостаточный: свой assertion-хелпер + раннер, без внешних зависимостей\n- Покрытие: `Util.*` (sum, unique, chunk, clamp, isPalindrome, slugify, ",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.147Z"
+}

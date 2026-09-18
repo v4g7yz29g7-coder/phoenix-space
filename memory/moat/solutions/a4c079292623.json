@@ -1,0 +1,13 @@
+{
+  "hash": "a4c079292623",
+  "race_id": "race_1789349557908",
+  "ts": "2026-09-14T01:34:32.979Z",
+  "task_file": "api/websocket_api.js",
+  "task_prompt": "Создай api/websocket_api.js — WebSocket. API: start(port), emit(event). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 32369,
+  "answer": "Задача выполнена. `api/websocket_api.js` существует, полностью реализован и проверен.\n\n## Итог\n\n**Файл:** `api/websocket_api.js`\n- **Строк:** 587 (`>180` ✅)\n- **`node --check`:** OK ✅ (синтаксис валиден)\n- **Git:** закоммичен, рабочее дерево чистое ✅\n\n### Требуемый API\n| Метод | Где | Поведение |\n|-",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

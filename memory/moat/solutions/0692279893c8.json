@@ -1,0 +1,13 @@
+{
+  "hash": "0692279893c8",
+  "race_id": "race_1789335003198",
+  "ts": "2026-09-13T21:31:19.315Z",
+  "task_file": "sandbox/random_mutation_loop.js",
+  "task_prompt": "Создай sandbox/random_mutation_loop.js — цикл мутаций. API: start(interval), stop(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 10,
+  "winner_time_ms": 21317,
+  "answer": "Готово. Задача выполнена и проверена.\n\n## Результат\n\n**`sandbox/random_mutation_loop.js`** — создан, работает, закоммичен (`8da7636`).\n\n### Критерии — все выполнены ✅\n| Критерий | Требование | Факт |\n|----------|-----------|------|\n| Объём | >150 строк | **290 строк** ✅ |\n| Синтаксис | `node --check",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

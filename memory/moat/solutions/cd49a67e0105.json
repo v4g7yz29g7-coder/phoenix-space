@@ -1,0 +1,13 @@
+{
+  "hash": "cd49a67e0105",
+  "race_id": "race_1789348892587",
+  "ts": "2026-09-14T01:22:47.680Z",
+  "task_file": "observability/metrics_collector.js",
+  "task_prompt": "Создай observability/metrics_collector.js — сбор метрик. API: collect(), query(range). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 19817,
+  "answer": "Готово. `observability/metrics_collector.js` создан и проверен.\n\n**Результат:**\n- ✅ **255 строк** (>180)\n- ✅ `node --check` — SYNTAX_OK\n- ✅ Runtime smoke-test прошёл: `collect()` и `query(range)` работают\n\n**API:**\n- `collect(name, value, tags)` — принимает число или `{value, tags, timestamp}`, хран",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

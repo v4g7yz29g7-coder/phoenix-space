@@ -1,0 +1,13 @@
+{
+  "hash": "780fa305433c",
+  "race_id": "race_1789329706733",
+  "ts": "2026-09-13T20:03:53.192Z",
+  "task_file": "corpus/architect_dna_builder.js",
+  "task_prompt": "Создай corpus/architect_dna_builder.js — собирает prompts/architect_dna.md. API: buildDNA(). КРИТЕРИЙ: >250 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 24546,
+  "answer": "Готово. `corpus/architect_dna_builder.js` создан и полностью соответствует критериям.\n\n**Результат:**\n- `corpus/architect_dna_builder.js` — **787 строк** (>250 ✓), `node --check` → **OK** ✓\n- API: `buildDNA()` экспортируется, `require.main` CLI (`--dry-run`) тоже есть\n- Реально работает: `buildDNA()",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.145Z"
+}

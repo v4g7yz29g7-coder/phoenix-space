@@ -1,0 +1,13 @@
+{
+  "hash": "b85b7ace7c7d",
+  "race_id": "race_1789332917927",
+  "ts": "2026-09-13T20:57:27.223Z",
+  "task_file": "tests/runner.js",
+  "task_prompt": "Создай tests/runner.js — test runner. КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 66545,
+  "answer": "Done. Fixed all critic issues:\n\n**`tests/runner.js`** — 547 lines (criterion >180 ✓), `node --check` OK ✓\n\nFixes applied:\n1. **Ordering bug** — `module.exports` is now assigned *before* `main()` runs, so the cyclic `require('./runner.js')` from loaded test files resolves to a live API (no more `desc",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.147Z"
+}

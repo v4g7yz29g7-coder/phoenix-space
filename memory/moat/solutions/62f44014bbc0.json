@@ -1,0 +1,13 @@
+{
+  "hash": "62f44014bbc0",
+  "race_id": "race_1789233472461",
+  "ts": "2026-09-12T17:20:09.434Z",
+  "task_file": "champion.md",
+  "task_prompt": "Создай файл champion.md с анализом 5 лучших агентов проекта. Используй write и read.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 60697,
+  "answer": "Готово ✅\n\nСоздан файл **`champion.md`** (3.8 КБ) с анализом 5 лучших агентов проекта.\n\n**Источники данных** (собраны за 2 вызова): `memory/champions.json`, `memory/tournament_v2_protocol.json`, `logs/tournament_v2.log`, `logs/night_races.log`, `logs/quick_races.log`.\n\n**ТОП-5 (композитный рейтинг):*",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.125Z"
+}

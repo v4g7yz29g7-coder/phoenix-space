@@ -1,0 +1,13 @@
+{
+  "hash": "acf2dd07b256",
+  "race_id": "race_1789346296495",
+  "ts": "2026-09-14T00:40:27.778Z",
+  "task_file": "sensors/pdf_reader.js",
+  "task_prompt": "Создай sensors/pdf_reader.js — чтение PDF. API: read(pdfPath). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 25747,
+  "answer": "Задача выполнена. Вот результат проверки:\n\n## Итог: `sensors/pdf_reader.js`\n\n**Критерии — выполнены ✅**\n\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Размер файла | > 180 строк | **513 строк** | ✅ |\n| Синтаксис | `node --check` OK | `node --check: OK` | ✅ |\n| API | `read(pdfPath)` |",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.153Z"
+}

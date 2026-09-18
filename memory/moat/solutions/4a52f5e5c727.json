@@ -1,0 +1,13 @@
+{
+  "hash": "4a52f5e5c727",
+  "race_id": "race_1789337714605",
+  "ts": "2026-09-13T22:17:09.861Z",
+  "task_file": "api/tests.js",
+  "task_prompt": "Создай api/tests.js — тесты API. API: run(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 32147,
+  "answer": "✅ Готово — `api/tests.js` создан.\n\n**Проверка критериев:**\n- **Строк:** 361 (`>150` ✔)\n- **`node --check`:** SYNTAX_OK ✔\n- **API `run()`:** экспортируется и работает ✔\n\n**Что внутри:**\n- `run(options) → Promise<Report>` — главная точка входа, запускает все кейсы, возвращает `{ok, base, reachable, to",
+  "steps_count": 5,
+  "collected_at": "2026-09-18T14:48:41.150Z"
+}

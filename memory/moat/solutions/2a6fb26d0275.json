@@ -1,0 +1,13 @@
+{
+  "hash": "2a6fb26d0275",
+  "race_id": "race_1789337471080",
+  "ts": "2026-09-13T22:13:26.529Z",
+  "task_file": "api/auth.js",
+  "task_prompt": "Создай api/auth.js — JWT. API: generateToken, verifyToken. КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 35241,
+  "answer": "Готово. Задача выполнена полностью.\n\n## Результат\n\n**Создан файл:** `/home/ishidin/phoenix/api/auth.js`\n\n### Критерии — все выполнены ✅\n| Критерий | Статус | Факт |\n|---|---|---|\n| Файл `api/auth.js` создан | ✅ | 16 358 байт |\n| Экспорт `generateToken` | ✅ | строка 258 |\n| Экспорт `verifyToken` | ✅ ",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.150Z"
+}

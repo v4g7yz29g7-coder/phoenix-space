@@ -1,0 +1,13 @@
+{
+  "hash": "b785f4c2b119",
+  "race_id": "race_1789337161855",
+  "ts": "2026-09-13T22:07:28.137Z",
+  "task_file": "api/sdk_js.js",
+  "task_prompt": "Создай api/sdk_js.js — JS SDK. КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 40597,
+  "answer": "Готово. Создал `api/sdk_js.js`.\n\n**Выполнено:**\n- Файл: `api/sdk_js.js` (рабочая директория `/home/ishidin/phoenix`)\n- **646 строк** (критерий >200 — выполнен с запасом)\n- `node --check api/sdk_js.js` → **OK** (синтаксис валиден)\n- Smoke-тест при загрузке через `require()` прошёл: `SMOKE_OK`\n\n**Что ",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.150Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "5d5b5b3dd3c5",
+  "race_id": "race_1789206321776",
+  "ts": "2026-09-12T09:46:19.436Z",
+  "task_file": "agent_responses.js",
+  "task_prompt": "Посчитай строки в agent_responses.js.",
+  "winner": "agent_7",
+  "winner_score": 10,
+  "winner_time_ms": 6837,
+  "answer": "**agent_responses.js — 246 строк.**",
+  "steps_count": 1,
+  "collected_at": "2026-09-18T14:48:41.113Z"
+}

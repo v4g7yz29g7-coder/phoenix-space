@@ -1,0 +1,13 @@
+{
+  "hash": "6a6057953d63",
+  "race_id": "race_1789333558659",
+  "ts": "2026-09-13T21:07:03.973Z",
+  "task_file": "sensors/audio_transcriber.js",
+  "task_prompt": "Создай sensors/audio_transcriber.js — Yandex SpeechKit. API: transcribe(audioPath). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 10,
+  "winner_time_ms": 31963,
+  "answer": "Готово. Задача выполнена и проверена.\n\n## Что сделано\nСоздан `sensors/audio_transcriber.js` — аудио-сенсор на Yandex SpeechKit (STT), в стиле существующих сенсоров (`gigachat_adapter.js`, `video_sampler.js`): только stdlib (`https`/`fs`/`path`), JSDoc, единый экспорт.\n\n## Критерии\n| Критерий | Требо",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

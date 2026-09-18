@@ -1,0 +1,13 @@
+{
+  "hash": "7304ae3f9211",
+  "race_id": "race_1789497793494",
+  "ts": "2026-09-15T18:43:55.449Z",
+  "task_file": "tests/e2e.js",
+  "task_prompt": "Создай tests/e2e.js — агент → гонка → EverOS. КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 41949,
+  "answer": "Готово.\n\n**`tests/e2e.js`** — переписан как самодостаточный детерминированный E2E-пайплайн **агент → гонка → EverOS**.\n\n**Проверка критерия:**\n- `wc -l` → **556 строк** (>180 ✅)\n- `node --check tests/e2e.js` → **CHECK_OK** ✅\n\n**Что внутри (без внешних зависимостей — только node: builtin):**\n1. **Утилиты** — `mulberry32` (детерминированный PRNG), `sha256`, `clamp01`, `uid`.\n2. **`EventBus`** — шина событий с `on/off/emit/history` (наблюдаемость пайплайна).\n3. **`Agent`** — capability-токен при регистрации, детерминированный `solve(task)` со `score ∈ [0,1]` и sha256-хэшем решения.\n4. **`Race`** — параллельный запуск N боксов (`Promise.all` + уступка цикла событий), кворум, ранжирование (score desc, hash asc как тайбрейк), **ровно один победитель**, события `race.started`/`race.finished`.\n5. **`EverOS`** — долговременная память: `commit / getById / getBySubject / search / verify / flush`, верификация по sha256.\n6. **`runPipeline`** — склейка всех трёх фаз.\n\n**16 тестов (node:test + assert):** регистрация агента, детерминизм solve, отказ без capability, единственный победитель и ранжирование, события гонки, недостижение кворума, commit→getById→verify, поиск по subject/полнотекст, обнаружение подделки записи, детерминизм пайплайна по seed, полный E2E, персистентность на диск, self-проверка на >180 строк и на `node --check`.\n\nФайл перезаписывался с бэкапом (`tests/e2e.js.bak_1789497818525`).",
+  "steps_count": 7,
+  "collected_at": "2026-09-18T14:48:41.193Z"
+}

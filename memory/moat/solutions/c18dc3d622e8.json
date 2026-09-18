@@ -1,0 +1,13 @@
+{
+  "hash": "c18dc3d622e8",
+  "race_id": "race_1789338005380",
+  "ts": "2026-09-13T22:22:08.447Z",
+  "task_file": "sensors/gigachat_adapter.js",
+  "task_prompt": "Создай файл sensors/gigachat_adapter.js. Обёртка GigaChat Vision API через https. API: analyze(imagePath, prompt) → Promise<{text}>. OAuth: POST https://ngw.devices.sberbank.ru:9443/api/v2/oauth, rejectUnauthorized=false. КРИТЕРИЙ: >150 строк, node --check OK, module.exports содержит {analyze}.",
+  "winner": "agent_7",
+  "winner_score": 8,
+  "winner_time_ms": 57259,
+  "answer": "Готово. Задача выполнена и проверена.\n\n## ✅ Файл `sensors/gigachat_adapter.js` создан\n\n**Все критерии подтверждены:**\n\n| Критерий | Статус | Факт |\n|---|---|---|\n| `>150 строк` | ✅ | **382 строки** |\n| `node --check OK` | ✅ | без ошибок |\n| `module.exports` содержит `{analyze}` | ✅ | `analyze` — фун",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.150Z"
+}

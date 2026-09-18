@@ -1,0 +1,13 @@
+{
+  "hash": "f40e55fb5a10",
+  "race_id": "race_1789362306052",
+  "ts": "2026-09-14T05:09:28.372Z",
+  "task_file": "evolution/biologist_taxonomy.js",
+  "task_prompt": "Создай evolution/biologist_taxonomy.js — классификация: вид, род, семейство, ниша. API: classify(agentId), listSpecies(). КРИТЕРИЙ: >150 строк, node --check OK, module.exports.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 46588,
+  "answer": "Задача выполнена. Файл `evolution/biologist_taxonomy.js` создан и полностью соответствует критериям.\n\n## Проверка критериев\n\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Размер | >150 строк | **342 строки** | ✅ |\n| Синтаксис | `node --check OK` | `NODE_CHECK=OK` | ✅ |\n| Экспорт | `m",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.157Z"
+}

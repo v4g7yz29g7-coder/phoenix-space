@@ -1,0 +1,13 @@
+{
+  "hash": "1aa66b07b31d",
+  "race_id": "race_1789349680142",
+  "ts": "2026-09-14T01:36:06.944Z",
+  "task_file": "api/sdk_js.js",
+  "task_prompt": "Создай api/sdk_js.js — JS SDK. КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 22804,
+  "answer": "Задача выполнена. **Сделал → Проверил → Закоммитил.**\n\n## Результат\n\n**`api/sdk_js.js`** — JavaScript SDK готов и удовлетворяет критериям:\n\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Объём | > 200 строк | **599 строк** | ✅ |\n| Синтаксис | `node --check` OK | **OK** | ✅ |\n| Загрузк",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

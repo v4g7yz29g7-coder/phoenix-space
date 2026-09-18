@@ -1,0 +1,13 @@
+{
+  "hash": "77b83c7952c5",
+  "race_id": "race_1789330045290",
+  "ts": "2026-09-13T20:09:01.485Z",
+  "task_file": "Chart.js",
+  "task_prompt": "Создай evolution/fitness_visualizer.html — Chart.js графики fitness. КРИТЕРИЙ: >180 строк, есть <html>.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 29268,
+  "answer": "Готово. Выполнено и проверено.\n\n## Результат\n\n`evolution/fitness_visualizer.html` — **705 строк** (критерий >180 ✔), содержит `<html>` ✔, Chart.js ✔, закоммичен `d3fb4af`.\n\n### Что внутри\n- **Chart.js 4.4.1** (CDN) + тёмная тема, адаптивная сетка карточек\n- **6 графиков:**\n  1. `Fitness over Generat",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

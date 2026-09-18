@@ -1,0 +1,13 @@
+{
+  "hash": "0fc92e2fb5b5",
+  "race_id": "race_1789507730527",
+  "ts": "2026-09-15T21:31:05.178Z",
+  "task_file": "tests/track_1.js",
+  "task_prompt": "Создай tests/track_1.js. КРИТЕРИЙ: node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 8,
+  "winner_time_ms": 121043,
+  "answer": "Задача выполнена. Файл `tests/track_1.js` создан (448 строк, 14459 байт) и успешно проходит проверку синтаксиса.\n\n**Проверка критерия:**\n```\n$ node --check tests/track_1.js\nSYNTAX_OK\n```\n\n**Что содержит `tests/track_1.js`:**\n- Шебанг `#!/usr/bin/env node` + `'use strict'`\n- Zero-dependency BDD-харнесс собственной реализации (`describe`/`it`/`it.skip`/`before`/`after`/`beforeEach` + библиотека `assert.*`)\n- Модель гоночного трека: круги, сектора, пилоты, расчёт позиций, лучших кругов и индекса стабильности\n- Асинхронные тесты и собственный entry-point (`require.main === module`), выставляющий `process.exitCode`\n- `module.exports = { Track1, run }`\n\nКритерий `node --check OK` — подтверждён (`SYNTAX_OK`).",
+  "steps_count": 9,
+  "collected_at": "2026-09-18T14:48:41.196Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "ce868622b003",
+  "race_id": "race_1789389996919",
+  "ts": "2026-09-14T12:47:35.084Z",
+  "task_file": "observability/alerting.js",
+  "task_prompt": "Создай observability/alerting.js — алерты. API: check(), notify(alert). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 35547,
+  "answer": "Готово.\n\n**observability/alerting.js** — 409 строк, `node --check` проходит без ошибок.\n\nAPI:\n- `check()` — прогоняет все зарегистрированные правила, возвращает массив сработавших `Alert` (с учётом cooldown/severity).\n- `notify(alert)` — рассылает алерт во все sinks + встроенный логгер по уровню sev",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.166Z"
+}

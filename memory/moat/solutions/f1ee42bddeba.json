@@ -1,0 +1,13 @@
+{
+  "hash": "f1ee42bddeba",
+  "race_id": "race_1789326384909",
+  "ts": "2026-09-13T19:08:34.664Z",
+  "task_file": "evolution/experience_aggregator.js",
+  "task_prompt": "Создай файл evolution/experience_aggregator.js. Читает boxes/agent_*/memory/experience.jsonl, агрегирует avg_score, total_tasks, ok_rate по каждому пилоту. API: aggregateAll() → {agent: {score, tasks, ok_rate}}. API: writeSummary() — пишет в memory/experience_summary.json. КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 26728,
+  "answer": "✅ **`evolution/experience_aggregator.js` готов и проверен**\n\n**Критерии выполнены:**\n- **492 строки** (>150) ✔\n- `node --check` → **exit=0** ✔\n\n**API работает на реальных данных:**\n- `aggregateAll()` → `{agent_1: {score: 8.5, tasks: 2, ok_rate: 1, ...}, agent_4: {score: 9, tasks: 1, ok_rate: 1}, age",
+  "steps_count": 7,
+  "collected_at": "2026-09-18T14:48:41.144Z"
+}

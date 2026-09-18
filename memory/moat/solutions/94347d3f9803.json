@@ -1,0 +1,13 @@
+{
+  "hash": "94347d3f9803",
+  "race_id": "race_1789334046658",
+  "ts": "2026-09-13T21:15:40.992Z",
+  "task_file": "sensors/sensor_fusion.js",
+  "task_prompt": "Создай sensors/sensor_fusion.js — слияние сенсоров. API: fuse(inputs). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 20745,
+  "answer": "Готово.\n\n**sensors/sensor_fusion.js** — 376 строк, `node --check` OK, self-test прошёл.\n\nAPI `fuse(inputs, options)`:\n- Принимает скаляры и векторы (`value: number | number[]`).\n- Стратегии: `inverse_variance` (по умолчанию), `mean`, `weighted`, `median`, `trimmed`.\n- Автоотбрасывание выбросов по mo",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

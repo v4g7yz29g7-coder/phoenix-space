@@ -1,0 +1,13 @@
+{
+  "hash": "a0dabf8b27fa",
+  "race_id": "race_1789364139865",
+  "ts": "2026-09-14T05:40:38.111Z",
+  "task_file": "evolution/mycologist_network.js",
+  "task_prompt": "Создай evolution/mycologist_network.js — карта мицелия. API: network(). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 8,
+  "winner_time_ms": 50726,
+  "answer": "Готово. ✅\n\n## Что сделано\n\nСоздан файл **`evolution/mycologist_network.js`** — карта мицелия.\n\n**Критерии выполнены:**\n| Критерий | Результат |\n|---|---|\n| `node --check` OK | ✅ SYNTAX OK |\n| >200 строк | ✅ **483 строки** |\n| API `network()` | ✅ экспортирован |\n| Закоммичено | ✅ `1bbf69f` |\n\n**Реали",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.158Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "71e40b0fd6ae",
+  "race_id": "race_1789329955457",
+  "ts": "2026-09-13T20:07:18.128Z",
+  "task_file": "evolution/parent_selector.js",
+  "task_prompt": "Создай evolution/parent_selector.js — выбор родителей: top-3 с разнообразием. API: pickParents(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 19633,
+  "answer": "Задача выполнена. Все критерии подтверждены фактическими проверками.\n\n## Итог\n\n**`evolution/parent_selector.js`** — создан и закоммичен (`3953ea1`).\n\n### Проверка критериев\n\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Объём | >150 строк | **494 строки** | ✅ |\n| Синтаксис | `node --",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

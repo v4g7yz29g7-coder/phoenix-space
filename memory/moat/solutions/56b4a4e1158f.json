@@ -1,0 +1,13 @@
+{
+  "hash": "56b4a4e1158f",
+  "race_id": "race_1789345995198",
+  "ts": "2026-09-14T00:34:35.772Z",
+  "task_file": "tests/coverage.js",
+  "task_prompt": "Создай tests/coverage.js — покрытие. API: report(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 23820,
+  "answer": "Готово.\n\n**`tests/coverage.js`** — создан (358 строк, `node --check` → OK).\n\n**API `report()`** работает — возвращает `{ summary, files, totals }`, поддерживает опции `{threshold, includeUntracked, format:'json'|'text'}`.\n\nПроверка:\n```\nreport() → object, files: 1\n[coverage] coverage report v1.0.0\nT",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.153Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "78fc52bb9fde",
+  "race_id": "race_1789330237470",
+  "ts": "2026-09-13T20:12:07.205Z",
+  "task_file": "evolution/species_guard.js",
+  "task_prompt": "Создай evolution/species_guard.js — защита видов от вымирания. API: check() → [{species, risk, action}]. КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 17872,
+  "answer": "Готово. `evolution/species_guard.js` создан и проверен.\n\n**Итог:**\n- **257 строк** (>150 ✓)\n- `node --check` → `SYNTAX_OK` ✓\n- API `check()` возвращает массив `[{species, risk, action}]` ✓\n\n**Что внутри:**\n- `SPECIES_REGISTRY` — 10 видов (тигр, панда, синий кит, носорог, горилла, черепаха, лиса, ява",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

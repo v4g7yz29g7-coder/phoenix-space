@@ -1,0 +1,13 @@
+{
+  "hash": "adcf68086830",
+  "race_id": "race_1789388239230",
+  "ts": "2026-09-14T12:17:59.070Z",
+  "task_file": "sensors/audio_transcriber.js",
+  "task_prompt": "Создай sensors/audio_transcriber.js — Yandex SpeechKit. API: transcribe(audioPath). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 31434,
+  "answer": "Готово. Реализация на месте и проверена.\n\n## Результат\n\n**Файл:** `sensors/audio_transcriber.js` — Yandex SpeechKit STT\n\n**Критерии:**\n- ✅ **423 строки** (>180)\n- ✅ **`node --check sensors/audio_transcriber.js` → OK**\n- ✅ **`transcribe(audioPath)`** экспортируется и вызывается\n\n**Что внутри:**\n- `tr",
+  "steps_count": 14,
+  "collected_at": "2026-09-18T14:48:41.165Z"
+}

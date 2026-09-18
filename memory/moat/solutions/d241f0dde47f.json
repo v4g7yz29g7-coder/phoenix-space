@@ -1,0 +1,13 @@
+{
+  "hash": "d241f0dde47f",
+  "race_id": "race_1789389731263",
+  "ts": "2026-09-14T12:43:38.562Z",
+  "task_file": "observability/agent_health.js",
+  "task_prompt": "Создай observability/agent_health.js — здоровье агентов. API: checkAll(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 23713,
+  "answer": "`node --check` passed and the file is well over 150 lines.\n\nDone. Created `observability/agent_health.js`:\n\n- **API:** `checkAll(options?)` → aggregate `Report` (`ts`, `total`, `healthy`, `degraded`, `unhealthy`, `unknown`, `system`, `agents[]`, `summary`). Supports `{ deep: true }` to actively run ",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.165Z"
+}

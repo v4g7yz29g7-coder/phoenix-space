@@ -1,0 +1,13 @@
+{
+  "hash": "13e435f62047",
+  "race_id": "race_1789364057802",
+  "ts": "2026-09-14T05:35:32.685Z",
+  "task_file": "evolution/dendrologist_health.js",
+  "task_prompt": "Создай evolution/dendrologist_health.js — здоровье ветви. API: health(agentId). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 21075,
+  "answer": "Готово.\n\n**`evolution/dendrologist_health.js`** — 305 строк, `node --check` OK, smoke-тест прошёл.\n\n**API:** `health(agentId)` возвращает `{ agentId, score, status, factors, metrics, recommendations, updatedAt }`.\n\n**Факторы здоровья ветви** (взвешенная свёртка → score 0..1):\n| фактор | вес | смысл ",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.158Z"
+}

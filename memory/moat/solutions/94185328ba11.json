@@ -1,0 +1,13 @@
+{
+  "hash": "94185328ba11",
+  "race_id": "race_1789334374510",
+  "ts": "2026-09-13T21:21:04.932Z",
+  "task_file": "evolution/hybrid_vitality.js",
+  "task_prompt": "Создай evolution/hybrid_vitality.js — гибридная сила. API: analyze(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 17680,
+  "answer": "Готово. ✓\n\n**Файл:** `evolution/hybrid_vitality.js` (197 строк, >150 ✓)\n\n**Проверка:** `node --check` → `CHECK_OK` ✓\n\n**API:** `analyze(input, options) -> Report`\n\nДополнительно экспортированы хелперы: `analyzeBatch`, `quickGrade`, `mergeReports`, `classify`, `synergyFactor`, `weightedCore`, `DEFAUL",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

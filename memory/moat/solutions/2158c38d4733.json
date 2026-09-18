@@ -1,0 +1,13 @@
+{
+  "hash": "2158c38d4733",
+  "race_id": "race_1789328142422",
+  "ts": "2026-09-13T19:37:13.986Z",
+  "task_file": "sales/pitch_deck.md",
+  "task_prompt": "Создай файл sales/pitch_deck.md. Питчдек 15 слайдов в Markdown. Каждый слайд: '## Slide N: Title' + 3-5 bullet points. Слайды: 1) Проблема, 2) Решение (AI-1 Arena), 3) Рынок, 4) Продукт, 5) Демо, 6) Технология, 7) Бизнес-модель, 8) Traction (36 задач roadmap, 152 гонки), 9) Команда, 10) Конкуренты (AutoGPT, CrewAI), 11) Наши отличия (evolution, races, trajectory), 12) Roadmap, 13) Метрики, 14) Ask, 15) Контакты. КРИТЕРИЙ: >150 строк, есть ## заголовки.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 22383,
+  "answer": "Файл создан и проверен.\n\n**Результат:**\n- `sales/pitch_deck.md` — 165 строк (>150 ✅)\n- 15 слайдов с заголовками `## Slide N: Title` ✅\n- Каждый слайд — 4-5 bullet points\n- Все требуемые темы покрыты (Проблема → Контакты), включая Traction (36 задач, 152 гонки), Конкуренты (AutoGPT, CrewAI) и Отличия ",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.145Z"
+}

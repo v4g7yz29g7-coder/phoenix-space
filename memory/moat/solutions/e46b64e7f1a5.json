@@ -1,0 +1,13 @@
+{
+  "hash": "e46b64e7f1a5",
+  "race_id": "race_1789346560350",
+  "ts": "2026-09-14T00:44:59.193Z",
+  "task_file": "sensors/sensor_fusion.js",
+  "task_prompt": "Создай sensors/sensor_fusion.js — слияние сенсоров. API: fuse(inputs). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 20073,
+  "answer": "Задача выполнена — файл `sensors/sensor_fusion.js` существует, полностью функционален и соответствует всем критериям.\n\n## Проверка критериев\n\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Объём | > 200 строк | **376 строк** | ✅ |\n| Синтаксис | `node --check` OK | OK, код выполняется ",
+  "steps_count": 7,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "759d2ca80dfd",
+  "race_id": "race_1789386954448",
+  "ts": "2026-09-14T11:56:32.976Z",
+  "task_file": "chemistry/task_chemistry.js",
+  "task_prompt": "Создай chemistry/task_chemistry.js — конфликты, катализаторы. API: react(a, b). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 32623,
+  "answer": "✅ Готово.\n\n**Файл:** `/home/ishidin/phoenix/chemistry/task_chemistry.js`\n- **Строк:** 253 (>150 ✓)\n- **`node --check`:** OK ✓\n\n**API: `react(a, b, opts)`** — возвращает отчёт о взаимодействии двух сущностей:\n- `score`, `speed`, `stability`, `affinity`, `verdict`\n- `shared_tags` / `unique_tags`\n- акт",
+  "steps_count": 6,
+  "collected_at": "2026-09-18T14:48:41.164Z"
+}

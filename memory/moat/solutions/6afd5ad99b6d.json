@@ -1,0 +1,13 @@
+{
+  "hash": "6afd5ad99b6d",
+  "race_id": "race_1789335534875",
+  "ts": "2026-09-13T21:40:18.701Z",
+  "task_file": "sandbox/stress_test.js",
+  "task_prompt": "Создай sandbox/stress_test.js — стресс-тест. API: stress(agentId). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 16595,
+  "answer": "✅ Выполнено. Все критерии соблюдены.\n\n**Создано:** `sandbox/stress_test.js` (+ коммит `01374fd`)\n\n**Верификация (реальные прогоны):**\n| Критерий | Требование | Результат |\n|---|---|---|\n| Строки | >120 | **201** ✅ |\n| Синтаксис | `node --check OK` | `SYNTAX_OK` ✅ |\n| API | `stress(agentId)` | `stres",
+  "steps_count": 8,
+  "collected_at": "2026-09-18T14:48:41.149Z"
+}

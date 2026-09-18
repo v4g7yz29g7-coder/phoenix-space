@@ -1,0 +1,13 @@
+{
+  "hash": "f49d091cd579",
+  "race_id": "race_1789348164322",
+  "ts": "2026-09-14T01:10:59.501Z",
+  "task_file": "sandbox/cross_domain.js",
+  "task_prompt": "Создай sandbox/cross_domain.js — кросс-доменные задачи. API: crossDomain(a, b). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 46624,
+  "answer": "Задача выполнена. ✅\n\n## Что сделано\n\n**Файл:** `/home/ishidin/phoenix/sandbox/cross_domain.js` (корень проекта — репозиторий `phoenix`)\n\nФайл регенерирован в виде полноценного dependency-free CommonJS-модуля кросс-доменных задач.\n\n### Проверка критериев\n\n| Критерий | Требование | Результат |\n|---|--",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

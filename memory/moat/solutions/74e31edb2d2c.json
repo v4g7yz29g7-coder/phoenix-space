@@ -1,0 +1,13 @@
+{
+  "hash": "74e31edb2d2c",
+  "race_id": "race_1789299517342",
+  "ts": "2026-09-13T11:40:54.917Z",
+  "task_file": "Node.js",
+  "task_prompt": "# RESEARCH: Vision API для FORMULA I1 (Россия, 2026)\n\n## ЗАДАЧА\nНайти бесплатный/дешёвый Vision API для анализа 3D-скриншотов.\n\n## КОНТЕКСТ\n- VPS: Ubuntu 24.04, Node.js 22, 2 GB RAM\n- Скриншоты: PNG 1920x1080, ~200 KB\n- Регион: Россия (Anthropic/OpenAI/Gemini недоступны)\n- Бюджет: до 500 руб/мес, желательно бесплатно\n\n## ЧТО ИССЛЕДОВАТЬ\n1. YandexGPT (Yandex Cloud) — есть ли vision?\n2. GigaChat (Sber) — vision? бесплатный tier?\n3. OpenRouter — работает в РФ? дешёвые vision модели?\n4. Hugging Face",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 46896,
+  "answer": "Web-search tool returned nothing (likely region-filtered), so I verified reachability directly from this host plus known API specs. Probe results that matter:\n\n- `llm.api.cloud.yandex.net` → 404 (reachable), `api.vision.yandex.net` → 000\n- `ngw.devices.sberbank.ru:9443` (GigaChat OAuth) → 000 (port ",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.139Z"
+}

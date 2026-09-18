@@ -1,0 +1,13 @@
+{
+  "hash": "dcc1da91888f",
+  "race_id": "race_1789389178250",
+  "ts": "2026-09-14T12:33:33.156Z",
+  "task_file": "sandbox/random_mutation_loop.js",
+  "task_prompt": "Создай sandbox/random_mutation_loop.js — цикл мутаций. API: start(interval), stop(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 27289,
+  "answer": "Готово. ✅\n\n**`sandbox/random_mutation_loop.js`** — 291 строка, `node --check` → **CHECK_OK**.\n\n**API:**\n- `start(interval)` — запускает цикл (`setInterval`, минимум 10ms, дефолт 1000ms), таймер `unref()`, защита от повторного запуска.\n- `stop()` — останавливает и освобождает таймер.\n\nДополнительно: ",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.165Z"
+}

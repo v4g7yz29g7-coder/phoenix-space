@@ -1,0 +1,13 @@
+{
+  "hash": "0039b2eb0176",
+  "race_id": "race_1789326938231",
+  "ts": "2026-09-13T19:17:33.575Z",
+  "task_file": "radio/radio_writer.js",
+  "task_prompt": "Создай файл radio/radio_writer.js. GigaChat генерация коротких комментариев (не > 100 симв) по контексту гонки. API: comment(event, context) → Promise<string>. КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 28271,
+  "answer": "Готово.\n\n**Файл:** `radio/radio_writer.js`\n- **472 строки** (>180 ✅)\n- **`node --check` → SYNTAX_OK** ✅\n- Runtime-тест: fallback вернул комментарий длиной 36 симв. (≤100 ✅)\n\nЧто реализовано:\n- **API:** `comment(event, context) → Promise<string>` — гарантирует длину ≤ `RADIO_MAX_LEN` (100) и никогда ",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.144Z"
+}

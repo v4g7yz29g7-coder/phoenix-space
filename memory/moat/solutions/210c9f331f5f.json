@@ -1,0 +1,13 @@
+{
+  "hash": "210c9f331f5f",
+  "race_id": "race_1789331057467",
+  "ts": "2026-09-13T20:26:43.128Z",
+  "task_file": "chemistry/chemist_match.js",
+  "task_prompt": "Создай chemistry/chemist_match.js — матчинг. API: match(task, agents). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 7,
+  "winner_time_ms": 45376,
+  "answer": "✅ **Готово. Задача выполнена и проверена.**\n\n**chemistry/chemist_match.js** — матчинг агентов под задачи.\n\n| Критерий | Статус |\n|---|---|\n| Файл создан | ✅ `chemistry/chemist_match.js` |\n| >180 строк | ✅ **291 строка** |\n| `node --check` | ✅ **OK, без ошибок** |\n| API `match(task, agents)` | ✅ эксп",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

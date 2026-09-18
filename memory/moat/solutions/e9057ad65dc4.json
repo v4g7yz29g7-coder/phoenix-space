@@ -1,0 +1,13 @@
+{
+  "hash": "e9057ad65dc4",
+  "race_id": "race_1789410175617",
+  "ts": "2026-09-14T18:24:19.250Z",
+  "task_file": "/race_director.js",
+  "task_prompt": "Открой ./race_director.js и объясни в 3 пунктах: как обрабатываются async trajectory v1 и v2, где стоит await, и почему каждая попытка обёрнута в изолированный try/catch.",
+  "winner": "agent_3",
+  "winner_score": 8,
+  "winner_time_ms": 54284,
+  "answer": "Правок не требовалось (только чтение/анализ), поэтому коммитить нечего — и commit из бокса запрещён.\n\n**Резюме в 3 пунктах:**\n1. **v1** — `race.js` → `trajectory_builder.publishTrajectory()` (синхронно); **v2** — `trajectory/path_builder` (sync) + `insight_extractor.extractFromRace` (async) + radio.\n2. **`await`** стоит только на async-API: `extractFromRace(...)` и `radioWriter.commentFresh(...)`; остальное синхронно, а сам блок легален благодаря async-IIFE.\n3. **Изолированный `try/catch`** на каждый модуль — потому что trajectory это best-effort пост-обработка поверх уже записанного протокола: один сбой не должен ронять цепочку и процесс.\n\nИ главное: **в `race_director.js` траекторий нет** — весь этот код находится в `race.js` (коммит `756efa0f`).",
+  "steps_count": 19,
+  "collected_at": "2026-09-18T14:48:41.190Z"
+}

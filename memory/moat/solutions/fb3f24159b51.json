@@ -1,0 +1,13 @@
+{
+  "hash": "fb3f24159b51",
+  "race_id": "parallel_1789646057988_9bex",
+  "ts": "2026-09-17T11:56:13.836Z",
+  "task_file": "agent_health.js",
+  "task_prompt": "Документация observability-стека: agent_health.js, metrics_collector.js, alerting.js, log_aggregator.js, universes_dashboard.html. Для каждого модуля — публичный API, сигнатуры, пример вызова. КРИТЕРИЙ: ≥5 модулей, ≥12 примеров кода, Mermaid-схема потока данных, таблица порогов (TTL 30s, dedup 10min, rotation 50MB).",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 68155,
+  "answer": "Готово. Создана `observability/OBSERVABILITY.md` (434 строки).\n\n**Соответствие критериям:**\n| Критерий | Требуется | Факт |\n|----------|-----------|------|\n| Модулей | ≥5 | **5** (agent_health, metrics_collector, alerting, log_aggregator, universes_dashboard) |\n| Примеров кода | ≥12 | **18** (Примеры 1–18, 21 code-блок) |\n| Mermaid-схема потока | да | **1** (`flowchart TD`: агенты → health/logs/metrics → alerting → snapshot → dashboard) |\n| Таблица порогов | TTL 30s, dedup 10min, rotation 50MB | **все три** + 11 доп. констант |\n\nДля каждого модуля задокументированы: публичный API (таблицы методов с сигнатурами и типами возврата), константы, и исполняемые примеры вызова (`require`/`node -e`).\n\nИзвлечённые из исходников факты:\n- `agent_health.js` — heartbeat TTL `DEFAULT_TTL_MS = 30_000`, статусы `OK/STALE/DEAD`, `check()/checkAll()/registerAgent()/heartbeat()`, сканер с порогами `HEALTHY_MS=120s`, `DEGRADED_MS=600s`.\n- `alerting.js` — `SNAPSHOT_DEDUP_WINDOW_MS = 10*60*1000`, пороги cpu 85 / ram 90 / load 4 / disk 85, notifiers (console/buffer/webhook).\n- `log_aggregator.js` — `MAX_SCAN_FILE_BYTES = 50*1024*1024`, `DEDUP_WINDOW_MS = 5min`, `tail/topErrors/byLevel/scan`.\n- `universes_dashboard.html` — endpoint `/api/observability/snapshot`, `REFRESH_MS = 5000`, KPI/таблица/графики/алерты.\n\nФайл не закоммичен (коммит не требовался).",
+  "steps_count": 14,
+  "collected_at": "2026-09-18T14:48:41.108Z"
+}

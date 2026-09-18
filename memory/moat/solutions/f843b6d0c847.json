@@ -1,0 +1,13 @@
+{
+  "hash": "f843b6d0c847",
+  "race_id": "race_1789381487745",
+  "ts": "2026-09-14T10:26:42.415Z",
+  "task_file": "pool_sync.js",
+  "task_prompt": "Открой pool_sync.js и перечисли, какие поля статуса агента он синхронизирует с файловой системой.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 15556,
+  "answer": "## `pool_sync.js` — открыт и разобран\n\nФайл: `/home/ishidin/phoenix/pool_sync.js` (114 строк, без изменений — `git status` чист).\n\n**Важное уточнение по формулировке задачи:** файл синхронизирует статусы **задач** (`tasks` из `tasks_night_pool.json`) с файловой системой, а **не статусы агентов**. По",
+  "steps_count": 5,
+  "collected_at": "2026-09-18T14:48:41.162Z"
+}

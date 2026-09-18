@@ -1,0 +1,13 @@
+{
+  "hash": "d4b444c30fdd",
+  "race_id": "race_1789347534201",
+  "ts": "2026-09-14T01:00:30.806Z",
+  "task_file": "evolution/evolution_orchestrator.js",
+  "task_prompt": "Создай evolution/evolution_orchestrator.js — оркестратор. API: start(interval), stop(), status(). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 19456,
+  "answer": "✅ `evolution/evolution_orchestrator.js` — готово. Файл уже присутствует и полностью удовлетворяет требованиям:\n\n| Критерий | Статус |\n|---|---|\n| `>200` строк | ✅ **564** строки |\n| `node --check` OK | ✅ `NODE_CHECK_OK` |\n| `start(interval)` | ✅ запускает цикл, клэмпит интервал (50→1000ms) |\n| `stop",
+  "steps_count": 5,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

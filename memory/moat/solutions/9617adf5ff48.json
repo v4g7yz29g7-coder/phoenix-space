@@ -1,0 +1,13 @@
+{
+  "hash": "9617adf5ff48",
+  "race_id": "race_1789350249971",
+  "ts": "2026-09-14T01:45:30.483Z",
+  "task_file": "api/tests.js",
+  "task_prompt": "Создай api/tests.js — тесты API. API: run(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 8,
+  "winner_time_ms": 35047,
+  "answer": "✅ **Готово. Сделано. Проверено.**\n\n## `api/tests.js` — тесты API\n\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Объём | > 150 строк | **768 строк** | ✅ |\n| Синтаксис | `node --check` OK | `node --check api/tests.js` → OK | ✅ |\n| API контракт | `run()` | `module.exports.run(options) -",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

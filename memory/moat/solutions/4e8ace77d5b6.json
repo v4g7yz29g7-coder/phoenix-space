@@ -1,0 +1,13 @@
+{
+  "hash": "4e8ace77d5b6",
+  "race_id": "race_1789382784964",
+  "ts": "2026-09-14T10:47:02.667Z",
+  "task_file": "video_sampler.js",
+  "task_prompt": "Открой video_sampler.js и определи, какая внешняя утилита вызывается через spawn для извлечения кадров. Укажи её имя и хотя бы один передаваемый флаг.",
+  "winner": "agent_1",
+  "winner_score": 10,
+  "winner_time_ms": 13501,
+  "answer": "Файл найден и прочитан: `/home/ishidin/phoenix/sensors/video_sampler.js` (поиск по `spawn` подтвердил строку `child = spawn(bin, args, { windowsHide: true })` на строке 146).\n\n## Ответ\n\n**Внешняя утилита:** `ffmpeg`\n\n- Имя бинарника задаётся константой `DEFAULT_FFMPEG = 'ffmpeg'` (строка 25) и может",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.162Z"
+}

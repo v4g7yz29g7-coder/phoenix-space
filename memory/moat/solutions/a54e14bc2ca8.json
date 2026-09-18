@@ -1,0 +1,13 @@
+{
+  "hash": "a54e14bc2ca8",
+  "race_id": "race_1789338486837",
+  "ts": "2026-09-13T22:30:19.852Z",
+  "task_file": "evolution/academy_threshold.js",
+  "task_prompt": "Создай файл evolution/academy_threshold.js. API: shouldSendToAcademy(agentId, races) → boolean. Критерий: avg_score < 7 за 5 последних гонок ИЛИ stuck_rate > 30%. API: checkAll(pilotsDir) → [слабые]. КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 31192,
+  "answer": "Задача выполнена. Файл `evolution/academy_threshold.js` существует, полностью соответствует требованиям и прошёл проверки.\n\n## Результат\n\n**Файл:** `evolution/academy_threshold.js` — **337 строк** (>120 ✓), `node --check` — **OK** ✓\n\n**Публичный API (экспортируется):**\n```js\nshouldSendToAcademy(agen",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.150Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "e0244efd07e6",
+  "race_id": "race_1789291277609",
+  "ts": "2026-09-13T09:23:10.837Z",
+  "task_file": "arena_lab/src/scene/AgentCube.ts",
+  "task_prompt": "Улучши 3D-арену. Файл: arena_lab/src/scene/AgentCube.tsx\n\n1. Разные геометрии по имени:\n   - agent_1 → sphereGeometry args [0.5, 32, 32]\n   - agent_4 → octahedronGeometry args [0.6]\n   - agent_7 → dodecahedronGeometry args [0.5]\n   - остальные → boxGeometry args [0.8, 0.8, 0.8]\n\n2. Пульсация при status === 'done':\n   scale = 1 + Math.sin(performance.now() * 0.005) * 0.15\n\n3. emissiveIntensity = 0.2 + progress * 1.5\n\n4. status === 'failed' → цвет #666, без вращения\n\n5. rotation.y += delta * (prog",
+  "winner": "agent_1",
+  "winner_score": 10,
+  "winner_time_ms": 56212,
+  "answer": "Done. Here's a summary of the work.\n\n## Changes to `arena_lab/src/scene/AgentCube.tsx`\n\nImplemented all 5 requested improvements with minimal, focused edits:\n\n1. **Per-name geometry** — a `geometry` variable selects:\n   - `agent_1` → `<sphereGeometry args={[0.5, 32, 32]} />`\n   - `agent_4` → `<octah",
+  "steps_count": 9,
+  "collected_at": "2026-09-18T14:48:41.136Z"
+}

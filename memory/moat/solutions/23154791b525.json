@@ -1,0 +1,13 @@
+{
+  "hash": "23154791b525",
+  "race_id": "race_1789348974856",
+  "ts": "2026-09-14T01:24:59.165Z",
+  "task_file": "observability/alerting.js",
+  "task_prompt": "Создай observability/alerting.js — алерты. API: check(), notify(alert). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 20599,
+  "answer": "`observability/alerting.js` is present and fully satisfies every requirement. Verified end-to-end:\n\n**Kритерии**\n| Требование | Статус |\n|---|---|\n| Файл `observability/alerting.js` | ✅ существует |\n| `>150` строк | ✅ **516** строк |\n| `node --check` OK | ✅ `SYNTAX_OK` |\n| API `check()` | ✅ `typeof ",
+  "steps_count": 8,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

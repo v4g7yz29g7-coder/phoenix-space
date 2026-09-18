@@ -1,0 +1,13 @@
+{
+  "hash": "cea1115aba77",
+  "race_id": "race_1789372290932",
+  "ts": "2026-09-14T07:53:25.313Z",
+  "task_file": "api/public_api.js",
+  "task_prompt": "Создай api/public_api.js — REST API. API: start(port), stop(). КРИТЕРИЙ: >220 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 35819,
+  "answer": "Задача выполнена. Файл `api/public_api.js` создан и полностью соответствует критериям.\n\n## Результат проверки\n\n**Файл:** `api/public_api.js` (уже существует, 509 строк — был создан и закоммичен)\n\n| Критерий | Требование | Факт | Статус |\n|----------|-----------|------|--------|\n| Объём | >220 строк ",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.160Z"
+}

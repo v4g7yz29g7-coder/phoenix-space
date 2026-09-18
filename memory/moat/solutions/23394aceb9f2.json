@@ -1,0 +1,13 @@
+{
+  "hash": "23394aceb9f2",
+  "race_id": "race_1789348659841",
+  "ts": "2026-09-14T01:19:38.901Z",
+  "task_file": "observability/agent_health.js",
+  "task_prompt": "Создай observability/agent_health.js — здоровье агентов. API: checkAll(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 10,
+  "winner_time_ms": 62292,
+  "answer": "Done. ✅\n\n## Итог\n\nСоздан `observability/agent_health.js` — восстановлен и переписан под реальный контракт (старая версия имела неверный API: `unhealthy` вместо `critical`, без `probes`/`score`/`checks()`).\n\n**Проверки (все зелёные):**\n| Критерий | Результат |\n|---|---|\n| `node --check` | ✅ SYNTAX_OK",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}

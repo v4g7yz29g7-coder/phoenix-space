@@ -1,0 +1,13 @@
+{
+  "hash": "730004292a1d",
+  "race_id": "race_1789330543476",
+  "ts": "2026-09-13T20:17:03.732Z",
+  "task_file": "evolution/biologist_taxonomy.js",
+  "task_prompt": "Создай evolution/biologist_taxonomy.js — классификация: вид, род, семейство, ниша. API: classify(agentId), listSpecies(). КРИТЕРИЙ: >150 строк, node --check OK, module.exports.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 19123,
+  "answer": "Готово. Создан `evolution/biologist_taxonomy.js`.\n\n**Результат:**\n- ✅ **223 строки** (>150)\n- ✅ `node --check` → SYNTAX_OK\n- ✅ `module.exports` → `classify, listSpecies, setAgentProvider, reset, DEFAULT_TRAITS, RANKS`\n- ✅ Smoke-тест прошёл\n\n**Что реализовано:**\n- `classify(agentId)` — раскладывает а",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.146Z"
+}

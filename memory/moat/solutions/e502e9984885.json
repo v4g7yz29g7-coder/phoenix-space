@@ -1,0 +1,13 @@
+{
+  "hash": "e502e9984885",
+  "race_id": "race_1789344492227",
+  "ts": "2026-09-14T00:09:25.803Z",
+  "task_file": "evolution/mycologist_signal.js",
+  "task_prompt": "Создай evolution/mycologist_signal.js — сигналы. API: emitSignal(from, to, type, payload). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 19491,
+  "answer": "Файл `evolution/mycologist_signal.js` готов и соответствует критериям.\n\n**Проверено:**\n- **API:** `emitSignal(from, to, type, payload)` — экспортируется и работает (smoke-тест вернул сигнал типа `spore`).\n- **Строк:** 354 (> 150). ✅\n- **Синтаксис:** `node --check` → OK. ✅\n\nДополнительно модуль экспо",
+  "steps_count": 6,
+  "collected_at": "2026-09-18T14:48:41.152Z"
+}

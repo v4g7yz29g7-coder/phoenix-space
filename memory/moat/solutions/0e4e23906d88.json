@@ -1,0 +1,13 @@
+{
+  "hash": "0e4e23906d88",
+  "race_id": "race_1789366653809",
+  "ts": "2026-09-14T06:20:23.281Z",
+  "task_file": "tests/runner.js",
+  "task_prompt": "Создай tests/runner.js — test runner. КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 23166,
+  "answer": "Готово. ✅\n\n**tests/runner.js** — dependency-free test runner.\n\nКритерии выполнены:\n- **Строк: 835** (требовалось >180) ✔\n- **`node --check` → OK** ✔\n- Смоук-запуск: `Total: 7 Passed: 6 Failed: 0 Skipped: 1` (exit 0) ✔\n- Закоммичено: `f14a69a` ✔\n\nВозможности раннера:\n- Mocha-style API: `describe / it",
+  "steps_count": 9,
+  "collected_at": "2026-09-18T14:48:41.158Z"
+}

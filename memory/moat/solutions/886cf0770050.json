@@ -1,0 +1,13 @@
+{
+  "hash": "886cf0770050",
+  "race_id": "race_1789333737571",
+  "ts": "2026-09-13T21:11:14.388Z",
+  "task_file": "sensors/pdf_reader.js",
+  "task_prompt": "Создай sensors/pdf_reader.js — чтение PDF. API: read(pdfPath). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 60047,
+  "answer": "Готово.\n\n**`sensors/pdf_reader.js`** — создан, полностью самодостаточный (только `fs` + `zlib`).\n\nКритерии выполнены:\n- **513 строк** (>180 ✅)\n- **`node --check` → SYNTAX_OK** ✅\n\nAPI:\n- `read(pdfPath[, options]) → Promise<PDFDocument>` — основной метод\n- дополнительно: `readText()`, класс `PDFReader",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

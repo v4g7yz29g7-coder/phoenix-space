@@ -1,0 +1,13 @@
+{
+  "hash": "26e2945b9d78",
+  "race_id": "race_1789514822017",
+  "ts": "2026-09-15T23:27:40.074Z",
+  "task_file": "tests/coverage.js",
+  "task_prompt": "Создай tests/coverage.js — покрытие. API: report(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 7,
+  "winner_time_ms": 38052,
+  "answer": "Задача выполнена и проверена. Итог:\n\n**Файл:** `tests/coverage.js`\n\n**Проверки (реально выполнены):**\n1. ✅ `node --check tests/coverage.js` → `NODE_CHECK_OK` (синтаксис валиден)\n2. ✅ Объём: **574 строки** (критерий >150 выполнен с запасом)\n3. ✅ API `report()` экспортирован и работает — возвращает полную структуру:\n   - `summary: { files, statements, covered, rate, percent, lines, branches, functions, durationMs }`\n   - `files[]`, `thresholds`, `failing[]`, `uncovered[]`, `ok`, `generatedAt`\n4. ✅ Дополнительно проверены `report({threshold})`, `report.asText()`, `report.asJSON()`, `report.validate()` — все работают без исключений\n\n**Что делает модуль:**\n- Zero-dependency in-process сборщик покрытия для Node.js\n- Публичный API `report()` + хелперы: `collect`, `track`, `trackBranch`, `trackFunction`, `hitCount`, `countStatements`, `walk`, `discover`, `reset`\n- Пороги покрытия (`threshold`, по умолчанию 0.8), human-readable отчёт (`asText`), JSON (`asJSON`), контрактная валидация (`validate`/`assert`)\n- Устойчив к некорректным входным данным, не бросает исключений при импорте (безопасен для `require()` из любого раннера)\n- Самотест при прямом запуске `node tests/coverage.js`\n\nВсе три критерия задачи (`>150 строк`, `node --check OK`, `API report()`) подтверждены фактическими запусками.",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.201Z"
+}

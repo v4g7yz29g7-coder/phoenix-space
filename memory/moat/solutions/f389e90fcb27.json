@@ -1,0 +1,13 @@
+{
+  "hash": "f389e90fcb27",
+  "race_id": "race_1789385562603",
+  "ts": "2026-09-14T11:33:19.971Z",
+  "task_file": "docs/cloudpayments_integration.md",
+  "task_prompt": "Создай файл docs/cloudpayments_integration.md. Инструкция по интеграции CloudPayments: регистрация, получение Public ID и API Secret, виджет на лендинге (JS код), webhook для payment notifications, рекуррентные платежи для подписок. С примерами кода. КРИТЕРИЙ: >120 строк, есть ``` code blocks.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 27570,
+  "answer": "Готово.\n\n**Результат:**\n\n- Создан файл `docs/cloudpayments_integration.md` (полный путь `/home/ishidin/phoenix/docs/cloudpayments_integration.md`)\n- **396 строк** (критерий >120 выполнен с запасом)\n- Содержит **множество ``` code blocks** (bash, html, javascript, python)\n\n**Что покрыто:**\n1. **Регис",
+  "steps_count": 5,
+  "collected_at": "2026-09-18T14:48:41.163Z"
+}

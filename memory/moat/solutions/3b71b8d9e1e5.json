@@ -1,0 +1,13 @@
+{
+  "hash": "3b71b8d9e1e5",
+  "race_id": "race_1789491192285",
+  "ts": "2026-09-15T16:53:45.746Z",
+  "task_file": "observability/daily_report.js",
+  "task_prompt": "Создай observability/daily_report.js — ежедневный отчёт. API: generate(). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 32003,
+  "answer": "Задача выполнена и верифицирована. `observability/daily_report.js` присутствует в репозитории, закоммичен и полностью соответствует критериям.\n\n## Результат проверки\n\n| Критерий | Требование | Факт | Статус |\n|---|---|---|---|\n| Строк | > 180 | **531** | ✅ |\n| Синтаксис | `node --check` OK | `CHECK_OK` | ✅ |\n| API | `generate()` | `async function generate(options)` | ✅ |\n| Git | без незакоммиченных изменений | `git diff` пуст, коммит `dc0156ea` | ✅ |\n\n## Что содержит модуль\n\n- **`generate(options)`** — агрегирует события за сутки (окно по умолчанию 24 ч), считает summary, SLO, тренды и рекомендации; возвращает `Promise<Report>`.\n- Под-API на самой функции для обоих стилей вызова: `generate.format(report)`, `generate.write(dir, report)`, `generate.aggregate()`, `generate.evaluateSlo()`, `generate.buildTrends()`, `generate.DEFAULTS`.\n- Метрики: SLO target, latency p95, error rate, throughput, top errors (limit 10).\n- Полностью автономен (fs/path, без внешних зависимостей); есть CLI-режим (`require.main === module`) с записью markdown-отчёта в `observability/reports/`.\n\nФайлы-«соседи» (`agent_health.js`, `alerting.js`, `log_aggregator.js`) в каталоге уже присутствуют, так что модуль встраивается в общий контур observability. Дополнительных изменений не требуется — целевой файл уже на месте и валиден.",
+  "steps_count": 20,
+  "collected_at": "2026-09-18T14:48:41.190Z"
+}

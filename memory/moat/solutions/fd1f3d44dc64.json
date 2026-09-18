@@ -1,0 +1,13 @@
+{
+  "hash": "fd1f3d44dc64",
+  "race_id": "race_1789332452843",
+  "ts": "2026-09-13T20:50:18.767Z",
+  "task_file": "docs/api_reference.md",
+  "task_prompt": "Создай docs/api_reference.md — справочник API. КРИТЕРИЙ: >200 строк.",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 84919,
+  "answer": "`docs/api_reference.md` already exists and fully satisfies the criterion. No changes needed.\n\n**Verification:**\n- **Path:** `/home/ishidin/phoenix/docs/api_reference.md`\n- **Lines:** **638** (criterion: >200 ✅)\n- **Size:** 20,234 bytes\n- **Git status:** clean (tracked, no pending modifications)\n\n**S",
+  "steps_count": 9,
+  "collected_at": "2026-09-18T14:48:41.147Z"
+}

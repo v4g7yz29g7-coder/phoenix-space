@@ -1,0 +1,13 @@
+{
+  "hash": "72e0d6f63b7a",
+  "race_id": "race_1789376038638",
+  "ts": "2026-09-14T08:57:46.445Z",
+  "task_file": "sensors/sensor_gateway.js",
+  "task_prompt": "Создай файл sensors/sensor_gateway.js (Node.js CommonJS). API: capture(type, options) → Promise<{path,size}>; getSensors() → string[]. Поддержи типы: 'screenshot', 'frame', 'audio'. Используй puppeteer и child_process. КРИТЕРИЙ: файл >200 строк, node --check OK, module.exports содержит {capture, getSensors}. ПРОВЕРКА: node -e \"console.log(Object.keys(require('./sensors/sensor_gateway')))\"",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 29078,
+  "answer": "Готово. Все критерии выполнены и проверены.\n\n## Результат\n\n**Файл:** `sensors/sensor_gateway.js` — committed (0575a09)\n\n### Критерии ✅\n| Критерий | Статус |\n|---|---|\n| Файл > 200 строк | ✅ **539 строк** |\n| `node --check` OK | ✅ `node --check: OK` |\n| `module.exports` содержит `{capture, getSensors",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.161Z"
+}

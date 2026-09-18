@@ -1,0 +1,13 @@
+{
+  "hash": "63a0430e8431",
+  "race_id": "race_1789350023253",
+  "ts": "2026-09-14T01:42:01.733Z",
+  "task_file": "api/auth.js",
+  "task_prompt": "Создай api/auth.js — JWT. API: generateToken, verifyToken. КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 18646,
+  "answer": "✅ **api/auth.js создан**\n\n| Критерий | Результат |\n|---|---|\n| >150 строк | **369 строк** ✅ |\n| `node --check` | **SYNTAX: OK** ✅ |\n| API `generateToken` | ✅ |\n| API `verifyToken` | ✅ |\n| Round-trip тест | `generateToken` → `verifyToken` → `{userId:42, iat, exp}` ✅ |\n| Подделка подписи | отвергнута ",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.155Z"
+}

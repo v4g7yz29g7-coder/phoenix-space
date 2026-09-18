@@ -1,0 +1,13 @@
+{
+  "hash": "eb3d62667252",
+  "race_id": "race_1789368981897",
+  "ts": "2026-09-14T07:03:16.415Z",
+  "task_file": "evolution/extinction_detector.js",
+  "task_prompt": "Создай evolution/extinction_detector.js — детектор вымирания. API: detect(). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 131280,
+  "answer": "## Готово ✅\n\n**Файл `evolution/extinction_detector.js`** переписан под полный контракт API. Старая реализация (Map по видам, статусы UPPERCASE, `detect()` без аргумента возвращал `undefined`) не проходила тест-спеку — заменена.\n\n### Критерии\n| Критерий | Результат |\n|---|---|\n| `node --check` | ✅ SY",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.159Z"
+}

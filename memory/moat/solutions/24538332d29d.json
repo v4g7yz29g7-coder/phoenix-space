@@ -1,0 +1,13 @@
+{
+  "hash": "24538332d29d",
+  "race_id": "race_1789335429614",
+  "ts": "2026-09-13T21:38:47.718Z",
+  "task_file": "sandbox/cross_domain.js",
+  "task_prompt": "Создай sandbox/cross_domain.js — кросс-доменные задачи. API: crossDomain(a, b). КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 35648,
+  "answer": "Готово.\n\n**Файл:** `sandbox/cross_domain.js`\n\n**Проверки:**\n- `node --check` → `SYNTAX_OK` ✅\n- Строк: **339** (>180) ✅\n- API: `crossDomain(a, b)` — диспетчер по имени домена + payload, всегда возвращает `{ok, task, value, error}`\n- Смоук-тест прошёл: `average`, `distance`, `hash`, `slugify`, `conver",
+  "steps_count": 5,
+  "collected_at": "2026-09-18T14:48:41.149Z"
+}

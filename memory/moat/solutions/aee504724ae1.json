@@ -1,0 +1,13 @@
+{
+  "hash": "aee504724ae1",
+  "race_id": "race_1789335198033",
+  "ts": "2026-09-13T21:35:04.227Z",
+  "task_file": "sandbox/breakthrough_detector.js",
+  "task_prompt": "Создай sandbox/breakthrough_detector.js — детектор прорывов. API: detect(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 10,
+  "winner_time_ms": 17586,
+  "answer": "Задача выполнена и проверена. Файл `sandbox/breakthrough_detector.js` существует, закоммичен и полностью соответствует критериям:\n\n**Проверки:**\n- ✅ `wc -l sandbox/breakthrough_detector.js` → **537 строк** (>150)\n- ✅ `node --check sandbox/breakthrough_detector.js` → **NODE_CHECK_OK** (синтаксис вали",
+  "steps_count": 10,
+  "collected_at": "2026-09-18T14:48:41.149Z"
+}

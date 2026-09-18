@@ -1,0 +1,13 @@
+{
+  "hash": "6e3c156116a8",
+  "race_id": "race_1789507730575",
+  "ts": "2026-09-15T21:31:42.593Z",
+  "task_file": "tests/track_2.js",
+  "task_prompt": "Создай tests/track_2.js. КРИТЕРИЙ: node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 158459,
+  "answer": "✅ Готово.\n\n**Файл создан:** `tests/track_2.js`\n**Критерий:** `node --check tests/track_2.js` → OK (пустой stdout/stderr, exit 0).\n\nЧто внутри:\n- Самодостаточный тест-сьют без внешних зависимостей (только встроенный `assert`).\n- Мини-харнесс `test()` / `testAsync()` с накоплением результатов.\n- Юниты `utils` (add, clamp, sum, average, unique, flatten, memoize, range) и `asyncUtils` (delay, sequence, parallel, withTimeout).\n- 9 синхронных + 4 асинхронных кейса, раннер `main()`, экспорт `report()`.\n- `require.main === module` guard — можно запускать напрямую (`node tests/track_2.js`) или импортировать.\n\nСинтаксис прошёл `node --check` с первой попытки — 2 шага.",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.196Z"
+}

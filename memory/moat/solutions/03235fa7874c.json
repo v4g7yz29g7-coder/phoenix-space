@@ -1,0 +1,13 @@
+{
+  "hash": "03235fa7874c",
+  "race_id": "race_1789203539831",
+  "ts": "2026-09-12T09:00:37.781Z",
+  "task_file": "BOX_META.js",
+  "task_prompt": "Покажи содержимое BOX_META.json agent_1.",
+  "winner": "agent_3",
+  "winner_score": 10,
+  "winner_time_ms": 42096,
+  "answer": "Содержимое `boxes/agent_1/BOX_META.json`:\n\n```json\n{\n  \"name\": \"agent_1\",\n  \"created_at\": \"2026-09-11T19:14:43.443Z\",\n  \"parent_commit\": \"2232f398b907fcfe8b9e905a9a68055c201961c4\",\n  \"everos_user_id\": \"ishidin\"\n}\n```\n\nДополнительно:\n- **Путь:** `/home/ishidin/phoenix/boxes/agent_1/BOX_META.json` (16",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.112Z"
+}

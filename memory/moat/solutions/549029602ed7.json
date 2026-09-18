@@ -1,0 +1,13 @@
+{
+  "hash": "549029602ed7",
+  "race_id": "race_1789376672481",
+  "ts": "2026-09-14T09:07:44.496Z",
+  "task_file": "evolution/reaper_v2.js",
+  "task_prompt": "Создай файл evolution/reaper_v2.js. Правильный Reaper: tasks in_progress > 30 мин → pending (до 3 попыток), затем permanent failed с retry_count=99. НЕ должен циклить. API: reap(roadmap) → {changed:[], permanent_failed:[]}. КРИТЕРИЙ: >150 строк, node --check OK, module.exports содержит {reap}.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 27354,
+  "answer": "Готово. Файл `evolution/reaper_v2.js` создан и полностью проверен.\n\n## Результат проверки\n| Критерий | Статус |\n|---|---|\n| `>150` строк | ✅ **263** строки |\n| `node --check` OK | ✅ `SYNTAX_OK` |\n| `module.exports` содержит `{reap}` | ✅ строка 254 |\n| Не циклит (idempotent) | ✅ повторный прогон → `{",
+  "steps_count": 3,
+  "collected_at": "2026-09-18T14:48:41.161Z"
+}

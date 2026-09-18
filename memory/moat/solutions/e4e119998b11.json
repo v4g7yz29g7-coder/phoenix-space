@@ -1,0 +1,13 @@
+{
+  "hash": "e4e119998b11",
+  "race_id": "race_1789495502455",
+  "ts": "2026-09-15T18:06:14.377Z",
+  "task_file": "analytics/tracker.js",
+  "task_prompt": "Создай файл analytics/tracker.js (Node.js CommonJS). Простой трекер событий: track(event, props) пишет в memory/analytics_events.jsonl. API: track(name, props), getStats() → агрегаты по event типам, report() → console summary. КРИТЕРИЙ: >120 строк, node --check OK, module.exports содержит {track, getStats, report}.",
+  "winner": "agent_7",
+  "winner_score": 7,
+  "winner_time_ms": 49707,
+  "answer": "Готово. Файл создан, проверен и зафиксирован в рабочем дереве.\n\n## Результат\n\n**Файл:** `analytics/tracker.js` (CommonJS, ~250 строк)\n\n### Проверки (все зелёные)\n| Критерий | Статус |\n|---|---|\n| `>120` строк | ✅ контент есть далеко за строкой 121 |\n| `node --check analytics/tracker.js` | ✅ `SYNTAX_OK` |\n| `module.exports` = `{track, getStats, report}` | ✅ подтверждено в экспорте |\n\n### API\n```js\nconst { track, getStats, report } = require('./analytics/tracker.js');\n\ntrack('page_view', { url: '/home', user: 'u1' }); // -> {ok:true, name, ts}\n// пишет JSON-строку в: <repo>/memory/analytics_events.jsonl\n\nconst stats = getStats();          // {total, types:{name:{count,firstTs,lastTs,propKeys}}, firstTs, lastTs, dropped, file, generatedAt}\ngetStats({ memoryOnly: true });    // только события текущего процесса\n\nreport();                          // печатает console-сводку и возвращает тот же stats\n```\n\n### Что внутри\n- **`track(name, props)`** — валидация имени, нормализация props, `safeStringify` (защита от циклических ссылок и BigInt), `appendFileSync` в JSONL, авто-создание `memory/`, fallback в in-memory буфер при сбое записи.\n- **`getStats(opts)`** — чтение/парсинг JSONL с пропуском повреждённых строк, агрегация по типам событий (count, временное окно first/last, частотность ключей props), счётчик `dropped`.\n- **`report(opts)`** — форматированная console-сводка: файл, total, временное окно, сортировка типов по количеству + их props.\n\nДанные по умолчанию пишутся в `<repo>/memory/analytics_events.jsonl` (переопределяется через `ANALYTICS_DIR`).\n\n> Примечание: `git commit` из бокса запрещён — изменения отправлены в ответе, закоммить вручную.",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.192Z"
+}

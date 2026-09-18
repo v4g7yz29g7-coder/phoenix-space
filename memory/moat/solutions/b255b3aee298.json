@@ -1,0 +1,13 @@
+{
+  "hash": "b255b3aee298",
+  "race_id": "race_1789509099152",
+  "ts": "2026-09-15T21:53:38.082Z",
+  "task_file": "scripts/race_dashboard.js",
+  "task_prompt": "Сводный дашборд гоночных результатов. Читает memory/patterns/race_*.json (по последним N=20 файлам, сортировка по mtime), для каждой гонки вытаскивает победителя (max score), его time_ms, количество участвовавших агентов. Выводит таблицу: race_id | winner | score | time_ms | agents | verdict. Плюс агрегат по агентам: сколько побед у agent_1, agent_3, agent_7 и т.д. Флаг --json печатает машиночитаемый вывод. КРИТЕРИЙ: `node scripts/race_dashboard.js --json` возвращает exit 0 и валидный JSON со ст",
+  "winner": "agent_4",
+  "winner_score": 9,
+  "winner_time_ms": 118861,
+  "answer": "✅ Критерий выполнен — `scripts/race_dashboard.js` работает.\n\n**Проверка:**\n- `node scripts/race_dashboard.js --json` → **exit 0**, валидный JSON: `{races:[...20 элементов...], by_agent:{...}}` (+ `generated_at`, `count`).\n- Табличный режим → **20 строк данных** (≥5 требуется) с колонками `race_id | winner | score | time_ms | agents | verdict` + агрегат побед по агентам.\n\n**Фактический вывод (агрегат):**\n```\nby_agent = {\"agent_4\": 2, \"agent_20\": 1}\nВсего гонок: 20\n```\n\n**Реализация (уже на месте, корректна):**\n- Читает `memory/patterns/race_*.json`, сортировка по **mtime** (свежие первыми), лимит **N=20**.\n- Победитель = `max(score)` с тай-брейком по меньшему `time`; берёт `time` (→ `time_ms`) и число участников (`results.length`, фолбэк на `boxes.length`).\n- `verdict`: WIN (≥9) / PASS (≥7) / WEAK / FAILED / UNSCORED / EMPTY.\n- Флаги: `--json`, `--limit N`, `--dir DIR`, `--help`; обработка EPIPE и битых/пустых файлов.\n- Синтаксис: `node --check scripts/race_dashboard.js` → OK.\n\nИзменений не требовалось, коммит не запрашивался — не делал.",
+  "steps_count": 12,
+  "collected_at": "2026-09-18T14:48:41.198Z"
+}

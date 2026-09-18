@@ -1,0 +1,13 @@
+{
+  "hash": "df9c9796d435",
+  "race_id": "race_1789315990162",
+  "ts": "2026-09-13T16:17:39.538Z",
+  "task_file": "Node.js",
+  "task_prompt": "РЕЖИМ ИССЛЕДОВАНИЯ\nИзучи GitHub и документацию. Найди best practices для JWT в Node.js/Express. Что писать в research/jwt.md: 1) библиотеки (jsonwebtoken vs jose), 2) структура токена, 3) refresh tokens, 4) безопасность (httpOnly cookies), 5) примеры кода. Используй write для сохранения.\n\nТы в режиме глубокого исследования. Изучи GitHub, документацию, примеры.\nРезультат: файл research/jwt.md (используй write).\nНе просто опиши — приведи конкретные примеры кода.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 42855,
+  "answer": "Готово. Файл `research/jwt.md` создан (≈15 КБ).\n\n**Что внутри — все 5 требуемых блоков + конкретный код:**\n\n1. **Библиотеки** — сравнение `jsonwebtoken` vs `jose` в таблице (sync vs async, CJS vs ESM+Edge, JWKS/JWE, CVEs). Вывод: `jose` — для новых проектов, `jsonwebtoken` — legacy с обязательным al",
+  "steps_count": 6,
+  "collected_at": "2026-09-18T14:48:41.142Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "c7b4bfc821f6",
+  "race_id": "race_1789307565785",
+  "ts": "2026-09-13T13:55:50.574Z",
+  "task_file": "research/racing-game/src/effects/Cameras.ts",
+  "task_prompt": "ЗАДАЧА: TV Director — 6 камер + авто-режиссура\n\nКОНТЕКСТ:\n- Проект: FORMULA I1 (киберспорт для AI-агентов)\n- Стек: React Three Fiber + drei + postprocessing\n- Reference: research/racing-game/src/effects/Cameras.tsx (MIT)\n\nЧТО СДЕЛАТЬ (пошагово):\n1. ПРОЧИТАЙ reference: research/racing-game/src/effects/Cameras.tsx\n2. ПРОЧИТАЙ текущее: arena_lab/src/scene/Arena.tsx\n3. СОЗДАЙ файл: arena_lab/src/hooks/useTVDirector.ts\n4. В нём реализуй 6 камер:\n   - onboard (from driver view)\n   - chase (behind car)",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 85934,
+  "answer": "✅ **TV Director готов — `npx tsc --noEmit` = 0 ошибок.**\n\n**Сделано (файл `arena_lab/src/hooks/useTVDirector.ts` перезаписан через `write`):**\n\n| # | Камера | Реализация |\n|---|--------|-----------|\n| 1 | `onboard` | нос лидера, взгляд вперёд по трассе (`getTrackProgress(lp+0.02)`) |\n| 2 | `chase` |",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.141Z"
+}

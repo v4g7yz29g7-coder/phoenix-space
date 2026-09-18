@@ -1,0 +1,13 @@
+{
+  "hash": "cd006e0664d8",
+  "race_id": "race_1789387326742",
+  "ts": "2026-09-14T12:03:37.264Z",
+  "task_file": "evolution/mycologist_symbiosis.js",
+  "task_prompt": "Создай evolution/mycologist_symbiosis.js — симбиоз vs паразитизм. API: analyze(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 90517,
+  "answer": "Runtime verified. Here is the accurate status.\n\n## Задача выполнена\n\n**Файл:** `evolution/mycologist_symbiosis.js` (в git-root `/home/ishidin/phoenix`, т.е. `../../evolution/…` из бокса agent_4)\n\n### Критерии\n| Критерий | Статус |\n|---|---|\n| `>150` строк | ✅ **557 строк** (717 изменено: +509/−208 о",
+  "steps_count": 16,
+  "collected_at": "2026-09-18T14:48:41.164Z"
+}

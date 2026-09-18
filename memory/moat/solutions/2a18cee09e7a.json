@@ -1,0 +1,13 @@
+{
+  "hash": "2a18cee09e7a",
+  "race_id": "race_1789345721819",
+  "ts": "2026-09-14T00:31:35.992Z",
+  "task_file": "tests/e2e.js",
+  "task_prompt": "Создай tests/e2e.js — агент → гонка → EverOS. КРИТЕРИЙ: >180 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 40085,
+  "answer": "Задача выполнена и проверена. Файл `tests/e2e.js` существует, соответствует критериям и проходит прогон.\n\n## Что сделано (реальные действия)\n\n1. **Разведка проекта** — определил стек (`node v22`, express/socket.io/sqlite), нашёл слои агента (`agent_loop_v3.js`, `agent_critic.js`), гонки (`race.js`, ",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.153Z"
+}

@@ -1,0 +1,13 @@
+{
+  "hash": "7d9bbb79fc1e",
+  "race_id": "race_1789333469686",
+  "ts": "2026-09-13T21:05:51.495Z",
+  "task_file": "tests/coverage.js",
+  "task_prompt": "Создай tests/coverage.js — покрытие. API: report(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 21074,
+  "answer": "✅ Готово. `tests/coverage.js` создан и проверен.\n\n**Проверки (все прошли):**\n\n| Критерий | Результат |\n|---|---|\n| Файл `tests/coverage.js` существует | ✅ tracked + закоммичен (`27dbf5f`) |\n| >150 строк | ✅ **447 строк** |\n| `node --check tests/coverage.js` | ✅ `CHECK_OK` (exit 0) |\n| API `report()`",
+  "steps_count": 14,
+  "collected_at": "2026-09-18T14:48:41.148Z"
+}

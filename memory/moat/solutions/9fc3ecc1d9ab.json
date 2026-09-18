@@ -1,0 +1,13 @@
+{
+  "hash": "9fc3ecc1d9ab",
+  "race_id": "race_1789498717246",
+  "ts": "2026-09-15T18:59:50.218Z",
+  "task_file": "evolution/fitness_history.js",
+  "task_prompt": "Создай evolution/fitness_history.js — история fitness. API: history(agentId), trends(). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 72966,
+  "answer": "Готово ✅\n\n**Создан `evolution/fitness_history.js`** — модуль истории fitness.\n\n**Критерии:**\n- `node --check` → **OK**\n- **418 строк** (>120)\n- Работает на реальных данных `memory/fitness.json`\n\n**API:**\n- `history(agentId, options)` → временной ряд агента по бенчмаркам: `{bench_id, ts, fitness, avg_score, win_rate, ok_rate, avg_time_ms, difficulty_points, ...}`. Опции: `limit`, `newestFirst`, `since`, `minFitness`.\n- `trends(options)` → тренды по всем агентам: `direction` (improving/declining/stable), `slope` (МНК), `delta`/`deltaPct`, `current/best/worst`, `projectedNext`, `confidence`, `volatility` + рейтинг, `best`/`worst`.\n\n**Доп. экспорты:** `load`, `agents`, `latest`, `summarize`, `trendFor`, `formatTrends`, `CONFIG`. CLI: `node evolution/fitness_history.js [history <id>|trends] [--json]`.\n\n**Проверка на живых данных:**\n```\nagent_1: 9 точек, fitness 6.814 → 5.252, direction=declining\n         slope=-0.525, delta=-1.562 (-22.9%), confidence=0.522\n```\nСтиль выдержан по конвенциям `evolution/` (шапка-док, injectable `_now`, безопасная обработка битого файла, `module.exports` + CLI).",
+  "steps_count": 16,
+  "collected_at": "2026-09-18T14:48:41.193Z"
+}

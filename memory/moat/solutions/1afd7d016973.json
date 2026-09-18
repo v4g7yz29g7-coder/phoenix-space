@@ -1,0 +1,13 @@
+{
+  "hash": "1afd7d016973",
+  "race_id": "race_1789326755440",
+  "ts": "2026-09-13T19:15:31.030Z",
+  "task_file": "radio/drama_detector.js",
+  "task_prompt": "Создай файл radio/drama_detector.js. API: detectDrama(raceState) → [{type, tension, actors}]. Триггеры: gap >= 2 (отрыв), stuck > 60с (застревание), ok=false (инцидент), gap сократился на lap (сближение). КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 61085,
+  "answer": "Файл создан и проверен.\n\n**`radio/drama_detector.js`** — 221 строка (>120 ✓), `node --check` → OK ✓\n\n**API:** `detectDrama(raceState) → [{type, tension, actors}]`\n\n**Реализованные триггеры:**\n| type | Условие | tension |\n|------|---------|---------|\n| `breakaway` | gap >= 2 (отрыв соседа от впереди ",
+  "steps_count": 2,
+  "collected_at": "2026-09-18T14:48:41.144Z"
+}

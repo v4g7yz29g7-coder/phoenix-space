@@ -1,0 +1,13 @@
+{
+  "hash": "f0907806c01a",
+  "race_id": "race_1789496428720",
+  "ts": "2026-09-15T18:20:51.015Z",
+  "task_file": "chemistry/task_profiler.js",
+  "task_prompt": "Создай chemistry/task_profiler.js — профиль задачи. API: profile(taskText). КРИТЕРИЙ: >200 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 8,
+  "winner_time_ms": 22286,
+  "answer": "Задача уже выполнена — файл `chemistry/task_profiler.js` существует и полностью соответствует критериям:\n\n**Проверка:**\n- ✅ **Строк:** 526 (>200)\n- ✅ **`node --check`:** CHECK_OK (синтаксис валиден)\n- ✅ **API:** `profile(taskText)` экспортируется и работает\n\n**Функциональный тест:**\n```\nnode -e \"require('./chemistry/task_profiler.js').profile('...')\"\n→ JSON c ключами: version, generatedAt, input, summary, features,\n  assessment, requirements, strategy, suggestions, notes\n```\n\n**Экспортируемый API (`module.exports`):**\n- `profile(taskText)` — основной профилировщик задачи\n- `summarize(...)` — сводка\n- `_internal.*` — утилиты: `normalize`, `tokenize`, `splitSentences`, `detectDomains`, `detectActions`, `extractEntities`, `extractKeywords`, `extractConstraints`, `assessRisks`, `assessComplexity`, `classifyTask`, `confidence`, `buildStrategy`, `buildRequirements`, `buildNotes`\n\nФайл чистый (без внешних зависимостей), API контракт соблюдён. Коммит не требуется (не был запрошен).",
+  "steps_count": 9,
+  "collected_at": "2026-09-18T14:48:41.192Z"
+}

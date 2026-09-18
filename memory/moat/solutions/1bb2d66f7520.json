@@ -1,0 +1,13 @@
+{
+  "hash": "1bb2d66f7520",
+  "race_id": "race_1789500228972",
+  "ts": "2026-09-15T19:24:23.947Z",
+  "task_file": "api/rate_limiter.js",
+  "task_prompt": "Создай api/rate_limiter.js — rate limit. API: check(ip), middleware. КРИТЕРИЙ: >120 строк, node --check OK.",
+  "winner": "agent_4",
+  "winner_score": 7,
+  "winner_time_ms": 34969,
+  "answer": "✅ **api/rate_limiter.js создан**\n\n**Критерии:**\n- `node --check api/rate_limiter.js` → `SYNTAX_OK` ✔\n- Объём: **290 непустых строк** (файл целиком заметно > 120) ✔\n\n**Реализовано:**\n- `RateLimiter` — sliding-window limiter (Map с временными метками, изоляция по ключу)\n- **`check(ip, consume?)`** → `{allowed, remaining, limit, reset, total}` (программный API)\n- **`middleware(options?)`** — Express-совместимый `(req, res, next)` с заголовками `X-RateLimit-*`, `Retry-After`, ответом `429`\n- Доп.: `isAllowed()`, `reset()`, `resetAll()`, `cleanup()` (GC), `startCleanup()/stopCleanup()`\n- Извлечение IP из `X-Forwarded-For` / `X-Real-IP` / `req.ip` (`extractIp`)\n- Фабрика `createRateLimiter()` + экспорт констант по умолчанию\n\n**Быстрый пример:**\n```js\nconst { createRateLimiter } = require('./api/rate_limiter');\nconst limiter = createRateLimiter({ windowMs: 60000, max: 100 });\napp.use('/api', limiter.middleware());\nlimiter.check('1.2.3.4'); // → { allowed, remaining, limit, reset, total }\n```",
+  "steps_count": 4,
+  "collected_at": "2026-09-18T14:48:41.194Z"
+}

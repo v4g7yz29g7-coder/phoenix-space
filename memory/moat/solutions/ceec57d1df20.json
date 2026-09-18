@@ -1,0 +1,13 @@
+{
+  "hash": "ceec57d1df20",
+  "race_id": "race_1789368643991",
+  "ts": "2026-09-14T06:55:21.918Z",
+  "task_file": "evolution/hybrid_vitality.js",
+  "task_prompt": "Создай evolution/hybrid_vitality.js — гибридная сила. API: analyze(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_7",
+  "winner_score": 9,
+  "winner_time_ms": 67029,
+  "answer": "完成。任务已执行并通过检查。\n\n## 结果\n\n**文件：** `evolution/hybrid_vitality.js`\n\n**检查（全部通过）：**\n- ✅ 行数：**292** 行（要求 >150）\n- ✅ `node --check` → **SYNTAX_OK**\n- ✅ API `analyze()` → 函数，返回有效的指标对象\n- ✅ 提交：`9172a92`（仅目标文件，未混入无关文件）\n\n**模块内容（混合活力）：**\n- `analyze(ctx?)` — 公共 API：对多个“生命力流”进行加权聚合\n- `VitalityStream` — 流（名称/权重/区间 + e",
+  "steps_count": 13,
+  "collected_at": "2026-09-18T14:48:41.159Z"
+}

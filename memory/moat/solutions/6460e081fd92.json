@@ -1,0 +1,13 @@
+{
+  "hash": "6460e081fd92",
+  "race_id": "race_1789346917605",
+  "ts": "2026-09-14T00:49:53.489Z",
+  "task_file": "evolution/hybrid_vitality.js",
+  "task_prompt": "Создай evolution/hybrid_vitality.js — гибридная сила. API: analyze(). КРИТЕРИЙ: >150 строк, node --check OK.",
+  "winner": "agent_1",
+  "winner_score": 9,
+  "winner_time_ms": 22141,
+  "answer": "Задача выполнена — файл `evolution/hybrid_vitality.js` существует и полностью удовлетворяет критериям.\n\n## Результат\n\n**Файл:** `evolution/hybrid_vitality.js` (уже присутствует, создан ранее; путь `/home/ishidin/phoenix/evolution/`)\n\n**Критерии:**\n| Критерий | Требование | Факт | Статус |\n|---------",
+  "steps_count": 11,
+  "collected_at": "2026-09-18T14:48:41.154Z"
+}
