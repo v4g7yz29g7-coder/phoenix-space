@@ -218,7 +218,15 @@ function spawnBox(boxPath, task, timeoutMs = 180000) {
 
     const killTree = () => {
       try {
-        process.kill(-proc.pid, 'SIGKILL');    // ← убить всю группу
+        process.kill(-proc.pid, 'SIGKILL');
+      try { require('child_process').execSync('pkill -9 -P ' + proc.pid + ' 2>/dev/null || true', { timeout: 3000 }); } catch (e) {}
+      setTimeout(() => {
+        try { require('child_process').execSync('pkill -9 -f "node _runner.js" 2>/dev/null || true', { timeout: 2000 }); } catch (e) {}
+      }, 1000);
+      try { require('child_process').execSync('pkill -9 -P ' + proc.pid + ' 2>/dev/null || true', { timeout: 3000 }); } catch (e) {}
+      setTimeout(() => {
+        try { require('child_process').execSync('pkill -9 -f "node _runner.js" 2>/dev/null || true', { timeout: 2000 }); } catch (e) {}
+      }, 1000);
       } catch (e) {
         try { proc.kill('SIGKILL'); } catch (_) {}
       }
