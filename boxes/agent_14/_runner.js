@@ -16,7 +16,9 @@ if (!task) {
 let moatResult = null;
 try {
   const moat = require('../../moat_inject');
-  moatResult = moat.trySolve({ file: null, prompt: task });
+  if (process.env.MOAT_DISABLED !== '1') {
+    moatResult = moat.trySolve({ file: null, prompt: task });
+  }
   if (moatResult && moatResult.solved) {
     console.log(JSON.stringify({
       ok: true,
