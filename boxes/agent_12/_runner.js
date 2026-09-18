@@ -12,6 +12,18 @@ if (!task) {
   process.exit(1);
 }
 
+// === GUARDIAN: проверка входа ===
+try {
+  const guardian = require('../../security/guardian');
+  const g = guardian.inspectInput(task, boxName);
+  if (!g.ok) {
+    console.log(JSON.stringify({ ok: false, error: 'Guardian blocked input', flags: g.flags }));
+    process.exit(0);
+  }
+} catch (e) {
+  console.error('[guardian] error:', e.message.slice(0, 200));
+}
+
 // === MOAT: проверка Рва ===
 let moatResult = null;
 try {

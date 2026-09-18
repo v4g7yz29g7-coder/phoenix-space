@@ -57,7 +57,7 @@ async function runParallel({ maxTracks = 8, timeout_sec = 180 } = {}) {
   }
 
   // 2. 8 трасс × 3 бокса
-  const tracks = distributeTracks(boxes);
+  const tracks = distributeTracks(boxes).slice(0, maxTracks);
   log(`🎯 Трасс: ${tracks.length}`);
   for (const [i, t] of tracks.entries()) {
     log(`   Track ${i + 1}: ${t.join(', ')}`);
@@ -118,7 +118,7 @@ if (require.main === module) {
       cycle++;
       log(`\n══════ ЦИКЛ #${cycle} ══════`);
       try {
-        await runParallel({ maxTracks: 8, timeout_sec: 180 });
+        await runParallel({ maxTracks: 3, timeout_sec: 180 });
       } catch (e) {
         log(`❌ Цикл #${cycle} упал: ${e.message}`);
       }

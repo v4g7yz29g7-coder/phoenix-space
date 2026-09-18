@@ -193,6 +193,14 @@ app.get('/api/dashboard/state', (req, res) => {
     state.budget = { date: spend.date, spent: spend.spent_usd, limit: 2 };
   } catch (e) { state.budget = { spent: 0, limit: 2 }; }
 
+  // 7.4. Guardian — статистика безопасности
+  try {
+    const guardian = require(path.join(PROJECT_ROOT, 'security', 'guardian'));
+    state.guardian = guardian.stats();
+  } catch (e) {
+    state.guardian = { error: e.message.slice(0, 100) };
+  }
+
   // 7.5. Moat — Ров
   try {
     const moatIdx = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'memory', 'moat', 'index.json'), 'utf8'));

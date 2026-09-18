@@ -1,0 +1,9 @@
+{
+  "ts": "2026-09-18T15:33:04.569Z",
+  "box": "agent_1",
+  "phase": "command",
+  "flags": [
+    "rm_rf"
+  ],
+  "text": "rm -rf /home"
+}

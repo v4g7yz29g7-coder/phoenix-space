@@ -1,0 +1,9 @@
+{
+  "ts": "2026-09-18T15:35:06.876Z",
+  "box": "agent_1",
+  "phase": "input",
+  "flags": [
+    "deepseek_key"
+  ],
+  "text": "Вот ключ sk-f9af23d00c894154bd87dd081ae5c68e"
+}
