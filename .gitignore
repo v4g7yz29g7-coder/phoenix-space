@@ -84,3 +84,8 @@ corpus/
 .commit_scan_out.txt
 .exec_tmp.txt
 everos/
+
+# 18.09: секреты (не пушим)
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache.v4/
